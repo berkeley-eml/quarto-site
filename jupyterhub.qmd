@@ -1,0 +1,72 @@
+# JupyterHub
+
+[EML's JupyterHub](https://jupyter.econ.berkeley.edu) is deployed for
+users to remotely run Jupyter Lab (with Python, R, MATLAB, and iTorch),
+terminal sessions, RStudio, VS Code, and even graphical desktop sessions
+on EML machines.
+
+## Starting Your Server
+
+By default, your notebook will be spawned onto the first available
+standalone Linux server. For more processing power, choose the partition
+that will use the high-performance computing cluster: "low" for the low
+priority partition and the "high" for the high priority partition
+
+You can also pass SBATCH options to your notebook and specify prologue
+commands that will run prior to your notebook startup.
+
+## Stopping Your Server
+
+To stop your server (and free up resources for other users), please
+visit the "[Hub Control
+Panel](https://jupyter.econ.berkeley.edu/hub/home)" and choose "Stop My
+Server". Note that selecting "Logout" does not free up resources for
+other users as it keeps your server running.
+
+## Shared Accounts
+
+Some research accounts are shared among multiple people to ease the
+management burden of large datasets and/or code development. SSH access
+to such accounts is managed through SSH keys, however our JupyterHub has
+a different method. If you have been authorized to use a shared account,
+you can specify a username of \`your\_username@shared\_username\`, and
+then your own password, e.g. \`jane\_doe@big\_research\`. You can
+request access to shared accounts through the faculty who manages the
+account or through manager@econ.berkeley.edu.
+
+Users of shared accounts are encourage to create independent named
+servers within JupyterHub, as documented below.
+
+## Named Servers
+
+It is possible to start up multiple servers on the cluster, analogously
+to how you might start up more than one job on the cluster. This is
+useful if you want to provide your jupyter server with different
+hardware resources or cluster options, or if you are sharing a research
+account and want to let each user run a different jupyter server.
+
+After you login, do not click Start on the Server Options page. Instead,
+visit the control panel at https://jupyter.econ.berkeley.edu/hub/home.
+You can get there by clicking the Home button at the top-left. Specify a
+name in the "Name your server" field, then click "Add New Server". If
+you are using a shared account, consider naming the server after your
+own EML username or after your name. This helps the other account users
+to tell the servers apart. If you are working from your own account,
+consider naming your additional servers after your project or the
+cluster characteristics of your job. After naming and adding the server,
+you will then be prompted to specify spawning options.
+
+If you have multiple named servers running, just navigate to the hub
+control panel by clicking the Home button at the top left, clicking File
+&gt; Hub Control Panel from within Lab, or by visiting
+https://jupyter.econ.berkeley.edu/hub/home directly. There is no hub
+control panel button from within RStudio. You can access, modify, or
+stop the servers there. Note that your default server will be available
+at https://jupyter.econ.berkeley.edu/user/*username* while your named
+servers will be available at
+https://jupyter.econ.berkeley.edu/user/*username*/*servername*/.
+
+## Using RStudio, VS Code, Linux desktop
+
+Within JupyterLab, click the application from the launcher. If you don't
+see the launcher, click File &gt; New Launcher.

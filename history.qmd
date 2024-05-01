@@ -1,0 +1,88 @@
+# A Brief History of the EML
+
+The Econometrics Laboratory became operational in December 1991 and was
+formally opened on January 24, 1992. It is was originally a Unix
+facility dedicated to graduate student and faculty teaching and research
+in the Department of Economics, University of California at Berkeley.
+The EML emphasizes new developments in computationally intensive
+econometrics. During the Spring 1992 semester it was used for
+instruction in three graduate courses in economics with a total
+enrollment of over 100 students. In its first year of operation, the EML
+supported an average user base of approximately 75 graduate students and
+faculty members in addition to the graduate courses. By the end of the
+academic year 1994-95, the EML supported a user base of roughly 400
+graduate students and faculty members, and had provided instructional
+support to eight graduate courses.
+
+In its first phase of equipment acquisition, completed in the Spring of
+1992, the EML was comprised of a Sun SPARCstation 2 fileserver with six
+gigabytes of disk storage, serving a SPARCstation 2 and four x-terminals
+in the faculty cluster, and ten SPARCstation IPXs in the student
+cluster. EML facilities also included an Exabyte tape drive, three DAT
+tape drives, two CD ROM drives, two laserprinters, and a port selector
+that served seven 14.4K modems.
+
+In its second phase of equipment acquisition, completed in the Spring of
+1995, the EML installed a Sun SPARCcenter 2000 fileserver with
+twenty-seven gigabytes of disk storage. Its faculty cluster was expanded
+to two SPARC 2, two SPARC 10, and two SPARC 20 compute servers, while
+its graduate student cluster was expanded to fifteen SPARCstation IPXs.
+The original SPARC 2 fileserver became the
+[ELSA](http://emlab.Berkeley.EDU/elsa) web server. Peripheral devices
+includes two additional CD ROMs, an additional laserprinter, a DAT
+autoloader, and an upgrade to the port selector to support PPP.
+
+Additional disk packs continued to be added to the fileserver; the EML
+handle droughly 200GB in 1995 of disk storage; by 2000 we had two fully
+packed D1000 trays and roughly 400MB of disks; in 2001 we acquired an
+A3500 cabinet with 1 terabyte of storage.
+
+In 1996 the EML acquired an UltraSPARC 3000 enterprise server. It is a
+dedicated compute server for programs requiring vector processing
+capabilities. The core of IPX workstations was upgraded and an
+additional network laserprinter was added. In 1997, Sun Microsystems
+generously donated 14 Ultra 1 workstations to replace our aging core of
+IPX workstations. The Lab subsequently upgraded its ethernet
+infrastructure to 100 mb/s. In 1998, the Lab installed a PRI line and
+upgraded its modem bank to 23 57.6K modems and added another network
+printer. The ELSA web server was upgraded to a SPARC 10 and new disk
+packs were installed that more than doubles its storage capacity.
+
+In 2000, with a grant from Sun Microsystems, the Lab's Ultra 1
+workstations were upgraded to Ultra 5s and 10s. The web/ftp server was
+upgraded to an Ultra 1, and a new database server was installed. An
+additional 200GB of disk storage was acquired along with a new DLT tape
+autoloader.
+
+In 2001, the EML embarked on an ambitious program. We upgraded the
+entire Economics Department from a shared 10 mb/s infrastructure to
+fully switched, 100 mb/s fast ethernet (previously, only the EML's Suns
+had been upgraded to fast ethernet); expanded the "econ" domain to two
+subnets, and acquired a new Sun Fire 3800e fileserver. The EML also
+acquired an 8 kilovolt UPS for its servers.
+
+In 2002, the EML received an equipment grant from the National Science
+Foundation, to fund acquisition of an LTO tape library and a 660 GB T3B
+fiber channel, RAID5-enabled disk tray for the new server. The EML now
+held more than 1 terabyte of disks, with the largest allocations going
+toward faculty research projects and graduate student dissertation
+research. Through a grant from Sun Microsystems, the EML also upgraded
+16 Ultra 5s to Sun Blade 150s in 2002. Over the past few years, EML
+users have engaged in ever larger empirical research projects, and
+through grants from Sun, NSF, and other sources, the EML has kept pace
+with their computational needs.
+
+From 2005 to the present, the EML continues to add powerful compute
+servers, upgrade file servers to increase disk storage, and improve
+backup hardware to accommodate the increasing demand for large data
+store on fast hardware. In 2009, the EML received matching funding from
+the department to replace the Unix workstations in the general public
+lab with Apple iMacs.
+
+The Laboratory continues to pursue its mission of providing outstanding
+computational support in econometrics and statistics to its faculty and
+graduate students. Creation of the EML was motivated by Professor Daniel
+McFadden's vision; its implementation was accomplished through the
+generous financial support of the National Science Foundation, the E.
+Morris Cox Endowment, the College of Letters and Science, the Office of
+the Vice Chancellor for Research, and individual faculty associates.

@@ -1,0 +1,60 @@
+# FAQs
+
+## Accounts
+
+-   [How are computing accounts issued?](486)
+-   [What are the rules of the computing facility?](545)
+-   [How do I access a project account?](483)
+-   [How do I enable or disable users from accessing my files?](492)
+-   [What is the operating schedule of the computing facility?](549)
+-   [What ergonomic resources are available to me?](ergonomics.qmd)
+-   [How do I manage my passwords?](527)
+
+## Nodes
+
+-   [Compute Server Policy](compute-servers-policy.qmd)
+-   [What computers can I remotely connect to?](520)
+-   [The Linux Cluster](cluster.qmd)
+-   [Memory Management](memory.qmd)
+-   [Why does Tensorflow fail with an "Illegal Instruction"?](tf-avx.qmd)
+
+## Remote Access
+
+-   [JupyterHub](jupyterhub.qmd)
+-   [SSH](ssh.qmd)
+-   [Copy files with SFTP/SCP](sftp-scp.qmd)
+-   [SSH Keys](ssh-keys.qmd)
+-   [SSH Tunneling](ssh-tunnel.qmd)
+-   [Remote Desktop](rdp.qmd)
+-   [How can I mount my home directory remotely?](558)
+-   [When and/or why will computers or the network be down?](501)
+-   [X Windows](x-windows.qmd)
+-   [x2go](x2go.qmd)
+-   [How do I publish files on the web?](homepage.qmd)
+
+## Files
+
+-   [How do I compress or uncompress files?](494)
+-   [What files can be easily deleted to save disk space?](497)
+-   [What is my disk quota?](498)
+-   [What temporary disk space is available?](499)
+-   [Disk Space](disk-space.qmd)
+-   [Tape Backups](tape-backups.qmd)
+
+## Software
+
+-   [Install Python packages into your account](python-packages.qmd)
+-   [Install R libraries into your account](r-libraries.qmd)
+-   [Use (and install) Julia packages](julia-packages.qmd)
+
+## UNIX
+
+-   [How do I run my program in the background?](489)
+-   [How do I install R packages?](543)
+-   [How do I correctly terminate an R session?](544)
+-   [How do I manage UNIX processes?](536)
+
+## Document Processing
+
+-   [How do I use TeX/LaTeX?](522)
+-   [How do I use the ucthesis LaTeX style?](85)

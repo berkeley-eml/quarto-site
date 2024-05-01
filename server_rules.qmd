@@ -1,0 +1,17 @@
+# Compute Server Rules
+
+-   For jobs that will require more than 15 minutes, limit the use of
+    resources to no more than 25% of each machine
+-   Monitor/check hour long jobs every 15 minutes and twice a day for
+    jobs that take more than 4 hours.
+
+  
+
+Report any problems regarding equipment or system failure to the EML (or
+SCF) staff by sending email to trouble@econ or by reporting the problem
+directly to room 643 Evans or 499 Evans. For more information or
+questions on the use of application packages, programming languages,
+libraries, or compilers, send mail to consult@econ. Questions or
+problems about accounts should be sent to manager@econ. In case of a
+machine-related emergency, there is a list of people to contact posted
+on the door of 450 Evans Hall (the machine room).

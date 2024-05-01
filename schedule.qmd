@@ -1,0 +1,49 @@
+# Operating Schedule
+
+## Scheduled Downtimes
+
+Downtimes shall be scheduled as follows:
+
+1.  Monthly system backups are performed on the first Sunday of each
+    month, except in January which is done on the second day of the
+    month (Jan 2), and is usually scheduled for a 8 hour period starting
+    a 4:00pm. The hours for the monthly dumps will be posted 10 days in
+    advance. The monthly and semester dump schedules may vary from the
+    above schedule if the backups are being performed on an official
+    holiday or during a semester break.
+
+2.  Regular reserved downtimes: Every attempt will be made to schedule
+    system down times during this time for disk configurations and other
+    system maintenance.
+
+3.  Downtimes may otherwise be scheduled to occur between 5PM and 8AM;
+    during the day if necessary (eg, for hardware work); and by special
+    arrangement with the EML staff.
+
+## Unscheduled Downtimes
+
+All workstations and servers will be taken down under the following
+circumstances:
+
+1.  Emergency hardware or software conditions may occur, including
+    emergency filesystem repair, which may result in unscheduled system
+    downtime. As much advance warning as possible will be given; but at
+    times the system must be taken down rapidly to avoid further damage
+    to hardware or other system resources.
+
+2.  Scheduled system downtime is posted in the ssh login message. An
+    attempt will be made to post the message at least 24 hours in
+    advance. The announcement will state the date(s) and time(s) of the
+    downtime and every attempt will be made not to exceed the posted
+    downtime hours. Whenever possible, 10 minutes warning will be given
+    prior to shutting the system down.
+
+3.  If it is transparent to all users (which in practice means that
+    there are no users on the system and no user background jobs
+    running) the system may be taken down (for no more than 30 minutes)
+    without advance message of the day warning.
+
+4.  The machines usually can reboot themselves from a crash, but
+    occasionally the system will be unavailable until a qualified person
+    can be reached.
+

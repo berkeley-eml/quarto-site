@@ -1,0 +1,52 @@
+
+
+Backup Schedule
+---------------
+
+Weekly filesystem snapshots are performed on Sunday night at 10:00 pm.
+We keep about four weekly snapshots at a time. A weekly snapshot
+reflects the content of the files prior to the time of the creation of
+the previous monthly backup tape. Incremental changes to files can be
+recovered on a weekly basis from subsequent weekly backup tapes for up
+to five weeks.
+
+Monthly back-ups are performed on the first Sunday night of each month
+between the hours of 5:00pm and 12:00 midnight. Monthly backup tapes are
+retained for six months before being rotated on a new cycle. A monthly
+backup tape contains all user data.
+
+Requesting File Restoration
+---------------------------
+
+Contact <trouble@econ.berkeley.edu> to request file restoration. You
+need to supply the following information:
+
+1.  The absolute pathnames of each file/directory you want restored,
+    e.g. `/accounts/projects/foobar`, or just `~joe/pathname` if you are
+    user joe and the pathname is in your home directory.
+
+2.  The date and time they were deleted.
+
+3.  The date and time the files were last modified (very important).
+
+Usually the restorations can be done within 24 hours of the request. The
+files can usually be reconstructed to their state prior to the last
+backup which was done before they were destroyed. Since backups are done
+once every day, it is possible to lose whatever work was done during the
+previous 24 hours.
+
+There is a $20 service fee (and if applicable, the cost of media) to
+recover files from any account that has been closed.
+
+Policy
+------
+
+In the event of a catastrophic disaster, for example, damage resulting
+from either an earthquake, fire, or bomb, access to the computing
+facilities and/or entry to Evans Hall may be prohibited on either a
+temporary or permanent basis. Users must be aware that the EML does not
+store information off-site. (outside of Evans Hall) If a user has a need
+for that level of protection, the user is responsible for maintaining
+their own backups.
+
+

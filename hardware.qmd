@@ -1,0 +1,56 @@
+# Hardware
+
+## Workstations
+
+The EML supports ten public workstations composed of Apple iMac
+machines. These permit one user at the console, and many simultaneous
+remote logins. The operating system for the Apple iMac is OSX and a
+multi-user, multi-tasking system. We do not limit the number of
+simultaneous logins, which can include one user at the console, and
+multiple concurrent remote logins and file transfers.
+
+## Servers
+
+The EML supports ten linux [compute servers](servers.qmd). The compute
+servers processing units vary from 8-80 and the memory on each vary from
+6 GB to 754 GB. A complete list is available at our [Grafana
+dashboards](monitoring.qmd) which are only available to EML users. The
+operating system for the compute servers is Ubuntu.
+
+## Computing Cluster
+
+The EML also has a high performance computing cluster, containing twelve
+nodes (eight nodes containing 32 CPU cores, four nodes containing 56 CPU
+cores each, and four nodes containing ) available for compute jobs. Four
+nodes have 264 GB dedicated RAM, four nodes have 132 GB dedicated RAM,
+and four nodes have 768 GB dedicated RAM. It is managed by the SLURM
+queueing software. Slurm provides a standard batch queueing system
+through which users submit jobs to the cluster. Jobs are typically
+submitted to Slurm via a user's shell script which executes one's
+application code. Users may also query the cluster to see job status.
+All software running on EML Linux machines and compute servers are also
+available on the cluster. Users can also compile programs on any EML
+Linux machine and then run that program on the [cluster](cluster.qmd).
+
+## GPU
+
+The EML provides a GPU (an Nvidia A40 with 46 GB GPU memory), with
+associated software (CUDA, CuDNN, Tensorflow, Pytorch), available
+through the 'gpu' partition on the [cluster](cluster.qmd).
+
+## Condo Node at Savio
+
+EML users may access the condo node at Savio, the high-performance
+computational cluster managed by the Berkeley Research Computing (BRC)
+program. This allows EML users to run jobs with priority access to 2
+nodes. They are also entitled to use the extra resource available on the
+Savio cluster through a low priority QoS. More information is available
+at the [Savio
+website](http://research-it.berkeley.edu/services/high-performance-computing).
+
+## Printers
+
+There are two network printers are available in the public lab (616
+Evans).
+
+

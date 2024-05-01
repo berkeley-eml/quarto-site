@@ -1,0 +1,46 @@
+
+
+Compute Servers Policy
+----------------------
+
+Access to the compute server nerlove is restricted to individuals who
+have obtained instructions regarding the use and limitations of running
+jobs on the compute servers. Please contact the EML staff to register as
+a compute server user or to schedule access to additional resources on
+the EML compute servers. Only individuals who have registered as a
+compute server are allowed to use the compute servers. When registering,
+users will need to identify the computational resources required for
+their work and their ability to monitor the status of those jobs. User
+names will be added to a mailing list to be used for announcements
+concerning scheduling of special projects and downtimes for maintenance
+and repairs.
+
+Please observe the following policies:
+
+-   Access to the compute servers is restricted to individuals who are
+    familiar with running batch jobs in a UNIX/Linux environment. If you
+    are not familiar with running jobs in this way, you can contact
+    consult@econ.berkeley.edu.
+
+-   Jobs must be nice'd to a value of 19. Any job that is running on a
+    compute server with a lower priority (without prior authorization)
+    may be terminated.
+
+-   The maximum number of jobs can be running on a server at any one
+    time is equal to the number of processors. The number of CPUs on a
+    machine can be seen on our [Grafana dashboards](/monitoring). If you
+    see (using top) that all CPUs are busy, do not run/start a job on
+    that server until resources become available.
+
+-   A user should not run so many simultaneous jobs on a compute server
+    such that other users are prevented from starting jobs due to lack
+    of resources. This policy is intended to ensure that CPU cycles and
+    memory are used fairly and effectively. Accommodations will be made
+    based on availability and the current needs of the user community.
+    Please send mail to "manager" if you need temporary or long term
+    access to additional computing resources.
+
+-   Use the command '**sitehosts cserver**' for the list of computers
+    whose use is restricted and covered by these rules.
+
+

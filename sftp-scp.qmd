@@ -1,0 +1,36 @@
+# Secure File Transfer
+
+## SFTP
+
+You can start sftp in much the same way you start ssh, e.g. '**sftp
+username@remotehost**'. Once you are connected, the environment
+functions like traditional ftp:
+
+    $ sftp eml_user@iia.berkeley.edu
+    sftp> cd /tmp
+    sftp> put Book1.gnumeric
+    Uploading Book1.gnumeric to /tmp/Book1.gnumeric
+    sftp> get asdf
+    Fetching /tmp/asdf to asdf
+    sftp> quit
+
+ 
+
+## SCP
+
+SCP is useful for non-interactive file copying. The following will copy
+`file` into the user's home direcory on the remote side:
+
+    $ scp file eml_user@iia.berkeley.edu:
+    eml_user@iia.berkeley.edu's password: 
+    file                100% |*****************************|   595       00:00
+
+ 
+
+The following will copy the remote directory `dir/` to the local
+directory `dir2/` via the '**-r**' (recursive) command-line switch:
+
+    $ scp -r eml_user@iia.berkeley.edu:dir dir2/
+    eml_user@iia.berkeley.edu's password: 
+    $ ls dir2/
+    dir

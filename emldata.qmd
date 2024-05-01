@@ -1,0 +1,116 @@
+
+
+## EML Data Links
+
+  
+**GENERAL REFERENCES**  
+[California Digital Library](http://www.cdlib.org)  
+[American Economic
+Review](http://www.ingentaselect.com/rpsv/cw/aea/00028282/contp1-1.htm)
+(UCB only; via Ingenta Select)  
+[Journal of Economic
+Literature](http://www.ingentaselect.com/rpsv/cw/aea/00220515/contp1-1.htm)
+(UCB only' via Ingenta Select)  
+[Journal of Economic
+Perspectives](http://www.ingentaselect.com/rpsv/cw/aea/08953309/contp1-1.htm)
+(UCB only; via Ingenta Select)  
+[Berkeley Electronic Press](http://www.bepress.com), including journals
+in [theoretical economics](http://www.bepress.com/bejte),
+[macroeconomics](http://www.bepress.com/bejm), and [economic analysis
+and policy](http://www.bepress.com/bejeap).  
+[eScholarship Working Paper Repository](http://repositories.cdlib.org/)
+(You can [join the
+Repository](http://repositories.cdlib.org/escholarship/join.html) and
+contribute your working paper series!)  
+[EBSCO Online](https://www.ebsco.com/)  
+[Elsevier E-Journals](http://www.elsevier.com) (UCB only; can also be
+accessed via the [CDL](http://www.cdlib.org))  
+[Springer
+E-Journals](http://link.springer-ny.com/link/service/journals/) (UCB
+only; can also be accessed via the [CDL](http://www.cdlib.org))  
+[Wiley E-Journals](http://www.interscience.wiley.com) (UCB only; can
+also be accessed via the [CDL](http://www.cdlib.org))  
+[Encyclopedia Britannica](http://search.eb.com/) (UCB only)  
+[Encyclopedia Americana](http://go.grolier.com/gol) (UCB only)  
+[FirstSearch](http://newfirstsearch.oclc.org/FSIP/) (UCB only; can also
+be accessed via the [CDL](http://www.cdlib.org))  
+[JSTOR](http://www.jstor.org) (UCB only)  
+[UC DATA Archives](https://dlab.berkeley.edu/data-resources/uc-data)  
+[Proquest Direct](http://www.lib.berkeley.edu/BUSI/) (UCB only; use link
+on Long Library's homepage  
+[Science Direct](http://sciencedirect.com) (UCB only; can also be
+accessed via the [CDL](http://www.cdlib.org))  
+[NESSTAR](http://www.nesstar.org)  
+[EconDoc (German libraries)](http://www.econdoc.de/_de/)  
+[RAND California](http://ca.rand.org/index_classic.html)
+
+**CENSUS**  
+[Census Bureau Home Page](http://www.census.gov)  
+[California Census Research Data Center](http://www.ccrdc.ucla.edu)  
+[Government and Social Science Data
+Library](http://sunsite.berkeley.edu/GovData/info)  
+[CIESIN/SEDAC Census
+Archive](http://sedac.ciesin.org/plue/cenguide.html)
+
+**ICPSR**  
+[ICPSR Home Page](http://www.icpsr.umich.edu)  
+[PSID](http://www.umich.edu/~psid) (web)  
+[AHEAD and HRS](http://www.umich.edu/~hrswww)
+
+**LABOR STATISTICS**  
+[NLSY97](http://www.bls.gov/nls/home.htm) [Bureau of Labor Statistics
+Home Page](http://www.bls.gov)  
+[Most Requested Series:](http://stats.bls.gov:80/top20.html)
+
+**NATIONAL BUREAU OF ECONOMIC RESEARCH**  
+[Survey of Income and Program Participation
+(SIPP)](http://www.nber.org/data/sipp.html), including sample SAS,
+Stata, and SPSS programs [NBER Home Page](http://www.nber.org)  
+[Penn-World Tables](http://pwt.econ.upenn.edu)  
+[Macro History
+Database](http://www.nber.org/databases/macrohistory/contents/)  
+[Official Business Cycle Dates](http://www.nber.org/cycles.html)  
+[Manufacturing Industry Productivity](http://www.nber.org/nberces/)  
+
+**OTHER FEDERAL GOVERNMENT SOURCES** [NSF's Industrial Research and
+Development Information System
+(IRIS)](http://www.nsf.gov/sbe/srs/iris/start.htm)  
+  
+[U.S. Federal Government
+Statistics](https://nces.ed.gov/partners/fedstat.asp)  
+- Bureau of Economic Analysis  
+- Bureau of Labor Statistics  
+- Bureau of Justice Statistics  
+- Bureau of Transportation Statistics  
+- Bureau of the Census  
+- Energy Information and Administration  
+- Economic Research Service  
+- Environmental Protection Agency  
+- IRS Statistics of Income Division  
+... and much, much more!  
+[FedWorld Information Network (NTIS)](http://www.fedworld.gov)  
+[Federal Reserve Bank Data from FRED](http://www.stls.frb.org)  
+[Federal Reserve Board's Survey of Consumer
+Finances](http://www.federalreserve.gov/pubs/oss/oss2/scfindex.html)  
+[Federal Reserve Board's Survey of Consumer Finances from Ohio State
+University](http://www.hec.ohio-state.edu/scf/)
+
+**OTHER MISCELLANEOUS SOURCES**  
+[Nielsen Scanner
+Data](https://guides.lib.berkeley.edu/c.php?g=4395&p=5048306) (UCB
+only)  
+[ABI/Inform](http://proquest.umi.com/pqdweb?RQT=306&TS=1049905988) (UCB
+only; via Proquest)  
+[CIESIN](http://www.ciesin.org)  
+[Digital Dissertations](http://wwwlib.umi.com/dissertations/search) (UCB
+only)  
+[Economic Growth Resources](http://www.nuff.ox.ac.uk/Economics/Growth)  
+[IMF's International Financial
+Statistics](http://www.imfstatistics.org/)  
+[ISI Emerging Markets](http://site.securities.com)  
+[Wharton Research Data Service](http://wrds.wharton.upenn.edu/) (WRDS;
+UCB only - WRDS use is restricted to UCB faculty and graduate students.
+Reguires a password issued by WRDS. Click on the link, choose "account
+request," and if you qualify, a password will be sent by email.)  
+[Zillow's Assessor and Real Estate Database
+(ZTRAX)](https://dlab.berkeley.edu/data-resources) (UCB only) 

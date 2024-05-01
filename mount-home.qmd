@@ -1,0 +1,51 @@
+# Network Volumes Access
+
+The EML allows users to "mount" their home directories onto their
+personal computers so that they appear as a volume or "hard drive" on
+their desktop. Due to security restrictions, this is only available
+within the EML networks. It is possible, however, to use an SSH tunnel
+to secure the connection from any network address.
+
+Configuring PuTTY with port forwarding
+
+-   Start PuTTY and create a new session or load your existing session
+    for logging in.
+-   Expand the Connection-&gt;SSH menu option in the Category tree-list
+    and select Tunnels.
+-   Add a new forwarded port:
+-   For the Source port, fill in the IP address of your loopback
+    adapter, plus the port 44445 (NOT 445!). The entry field might seem
+    to small for it, but it will work. If you have configured your
+    loopback adapter exactly as in the previous section, then fill in
+-   10.255.255.1:44445.
+-   For the Destination, fill in eml.berkeley.edu:445.
+-   Click on Add.
+
+Map the network drive
+
+-   Start Windows Explorer and right-click on Computer and select "Map
+    Network Drive"
+-   In the next screen, choose an available drive letter.
+-   Type in as the Folder name: \\\10.255.255.1\EML\_username&gt;
+-   Check of Reconnect on Logon and Connect Using Different credentials
+-   In the next screen, select "Use Another Account"
+-   For the User name, fill in the eml\EML\_username
+-   For the Password, fill in your EML samba password and press OK.
+-   Click on Finish to complete the network drive mapping.
+
+For Macs
+
+1.  Disable Windows file sharing in the Sharing section of System
+    Preferences.
+2.  Follow the [SSH tunnel instructions](/557), making sure to use the
+    ports for SMB traffic.
+3.  Connect to smb://localhost/USERNAME (via the Finder's Go &gt;
+    Connect to Server). For you web area, use slash www instead of slash
+    USERNAME.
+4.  When prompted, enter your EML username and your EML "PC password"
+    (which may or may not be the same as your UNIX password).
+
+If you have not yet set a PC password, contact
+<manager@econ.berkeley.edu>.
+
+

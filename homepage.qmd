@@ -1,0 +1,45 @@
+# Publish a personal website
+
+The EML enables users to publish documents and data on the web. Users
+may place files in a directory so that outside users can view them with
+a web browser.
+
+## Guidelines
+
+Only individuals who are associated with the Economics Department are
+eligible to use this resource to distribute information. Participants
+must observe all departmental and UC campus rules and regulations, and
+all copyright laws. The EML reserves the right not to post submitted
+material.
+
+Graduate students may maintain their own homepage using the following
+guidelines:
+
+-   Posted material at the top level home page is limited to information
+    related to the individual's academic interests. Listed below are
+    examples of the type of information that is appropriate for the top
+    level homepage:
+    1.  Biographical information (including the student's photograph).
+    2.  Dissertation abstract.
+    3.  Data sets (with the signed approval of faculty advisor).
+    4.  Links to other professionally relevant sites.
+-   Personal information can be included in a sub-level home page that
+    is clearly identified as containing personal information. This area
+    can include links to sites that are not related to to the
+    individual's academic work.
+-   The posting or advertising of personal items for sale and the
+    posting of any published material (including articles authored by
+    the student) is forbidden.
+
+## Setting up the web area
+
+In order to publish material on the web, you will create or deposit your
+files into a user-specific directory, /accounts/web/public/{username}/.
+
+Follow the instructions below to create your web area:
+
+1.  Send mail to [manager@econ.berkeley.edu](mailto:manager@econ.berkeley.edu) requesting the creation of an area in /accounts/web/public/.
+2.  Manager will reply with the name of your directory. (usually /accounts/web/public/{username})
+3.  Visit Rowilma in 643 Evans to sign a copyright form.
+4.  Create your homepage, for example "index.html" in your web directory.
+5.  View your site at https://eml.berkeley.edu/~{username}.

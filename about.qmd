@@ -1,0 +1,17 @@
+# The Econometrics Laboratory
+
+The Econometrics Laboratory (EML) is a computing facility dedicated to
+instruction at the graduate level and research by graduate students and
+faculty in the Department of Economics. This work concentrates on new
+developments in computationally intensive econometrics.
+
+EML is a unit of the Institute of Business and Economic Research,
+located in space provided by the Department of Economics at the
+University of California, Berkeley.
+
+The Laboratory's Director is David Card. He is the Class of 1950
+Professor of Economics and the Director for the Center for Labor
+Economics at the University of California, Berkeley. He is also the
+Director of the Labor Studies Program at the National Bureau of Economic
+Research.
+

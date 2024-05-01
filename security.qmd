@@ -1,0 +1,52 @@
+# Security Issues and Policies
+
+The Econometrics Laboratory is a shared resource, and is subject to
+strict security procedures to protect the integrity of the system for
+all its users.
+
+-   Do not give your password to anyone.
+-   Do not write your password down where it can be seen.
+-   Do not let anyone look over your shoulder when you log in.
+-   Always logout properly when you leave a workstation.
+-   Pay attention to your directory and file permissions.
+-   Change your password frequently.
+-   If you suspect someone's been using your account, report it
+    immediately to "trouble" .
+
+Users should also be aware that electronic files stored on disk in an
+individual's account, a shared project account, or a system partition
+are not personal property, regardless of content, intended use at the
+time of creation, or purpose. Appropriate use of University of
+California facilities and infrastructure is defined in policies and
+guidelines posted on University of California web sites.
+
+As such the Econometrics Laboratory (EML) reserve the right to review,
+modify, or delete any file or terminate any activity that may interfere
+with the operations of the EML's computing facility. The EML will comply
+with prevailing University of California systemwide and Berkeley campus
+policies and guidelines governing the security and appropriate use of
+electronic and network resources. Further, the EMLwill comply with
+prevailing University of California systemwide and Berkeley campus
+policies and guidelines governing use of electronic and network
+resources and an individual's right to privacy.
+
+Links to relevant policies and guidelines are listed here. The list is
+not comprehensive or exhaustive; users are encouraged to follow links to
+other documents contained in these more general sites.
+
+[UC Electronic Communications
+Policy](http://www.ucop.edu/ucophome/policies/ec/)  
+[UC Email
+Policy](http://www.ucop.edu/ucophome/policies/email/email.html)  
+[Berkeley Campus Electronic (E-Berkeley)
+Policy](http://socrates.berkeley.edu:7015/e-Berkeley.policy.html)  
+[Berkeley Campus Implementation of UC Electronic Mail
+Policy](http://socrates.Berkeley.EDU:7015/email/)  
+[Berkeley Campus Computer Use
+Policy](http://itpolicy.berkeley.edu:7015/usepolicy.html)  
+[Berkeley Guidelines for Appropriate Use of Campus Computing and Network
+Services](http://socrates.berkeley.edu:7015/approp.use.html)  
+[Berkeley Guide to Selected Privacy and Confidentiality
+Regulations](http://socrates.berkeley.edu:7015/privacy/guidelines.html)  
+[Berkeley Campus Privacy Statement for
+Websites](http://socrates.berkeley.edu:7015/privacy/statement.html)

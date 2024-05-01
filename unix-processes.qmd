@@ -1,0 +1,328 @@
+# Managing UNIX processes
+
+## The 'ps' command
+
+The output of `ps` will indicate the name of the program, its
+process I.D., and the amount of CPU time it has consumed so far.
+
+1.  To display information about a specific user's processes:
+
+```bash
+ps -U USERNAME
+```
+
+where USERNAME is your username
+
+2.  To display information about a specific running program:
+
+```bash
+ps -ef | grep PROGRAM
+```
+
+where PROGRAM is the program's name
+
+See `man ps` for additional information.
+
+## Killing Processes
+
+To kill a running program, type:
+
+```bash
+kill PID
+```
+
+where PID is the process I.D. obtained by running `ps`.
+
+If the first form does not kill your process, try
+
+```bash
+kill -9 PID
+```
+
+To kill all your background processes, execute:
+
+```bash
+kill 0
+```
+
+## Input and Output
+
+Most programs initially inherit the current terminal or pseudo-terminal
+for doing input and output. This means that these programs have a
+"controlling terminal". The "controlling terminal", and therefore all
+output, is lost if you logout before your background job completes. To
+avoid this loss, you should either code your program to read all input
+and write all output to specific files, or your should redirect input
+and output for the program by using the shell operators: &lt;, &gt;,
+&gt;&gt;, and &gt;&.
+
+It is recommended that you redirect standard output and standard error
+to a log file for all programs run in the background. For example:
+
+```bash
+myprog >& logfile &
+```
+
+will run `myprog` in the background, redirecting all output to the
+file '`logfile`' in the current directory. See `man bash` for details
+on shell redirection operators.
+
+## Running Intensive Processes
+
+A "big job" is any CPU-bound process which requires over one minute of
+CPU time.
+
+### Guidelines
+
+In order to run big jobs without slowing down the entire system and
+inconveniencing all users, everyone must follow certain procedures.
+
+1.  Class accounts are restricted to running their jobs on the public
+    workstations (Use the command `sitehosts public` for a list of
+    public workstations). Class accounts are not allowed to run a job on
+    a faculty workstation without the prior consent of the faculty
+    member.
+
+2.  Run the program in background. Do not run the program as "a.out".
+    Please rename the "a.out" file before executing the program and do
+    not remove the program "binary" before the program has completed
+    executing.
+
+3.  Run only one background job at a time per machine. If you need to
+    run multiple jobs on one machine, run them in sequence, not in
+    parallel, by putting all the commands in a shell script. Select
+    another computer if a large job is already running on the computer
+    that you have selected. Use the command `idle` to select a host
+    and `top` to examine the most CPU intensive jobs are running on
+    that host.
+
+4.  Please do not submit jobs to more than 8 computers at any one time.
+    If you have special requirements, you can request an increase in the
+    number of computers to use concurrently by notifying the EML staff.
+    This will enable the EML staff to evaluate load requirements and to
+    monitor the system resources, which will help to avoid conflicts
+    with other users.
+
+5.  Big jobs should run at low priority, or high "nice value", of 18
+    or 19. By default, all programs run at nice value 0. But on the EML
+    systems, the following minumum nice values are required for big
+    jobs:
+
+    
+
+    **Table 1. Appropriate nice values**
+
+    <table>
+    <thead>
+    <tr class="header">
+    <th>CPU time</th>
+    <th>Minimum nice value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="odd">
+    <td>1 - 5 minutes</td>
+    <td>18</td>
+    </tr>
+    <tr class="even">
+    <td>over 5 minutes</td>
+    <td>19</td>
+    </tr>
+    </tbody>
+    </table>
+
+For example, suppose one wanted to run Matlab in the background with
+nice value of 19:
+
+```bash
+% nice +19 matlab &
+```
+
+For more information on these commands, see "man nice" (but note that
+where the manual says "nice -10" the C shell requires "nice +10". Each
+user is responsible for ensuring that his/her big jobs are running at
+appropriate priorities. The superuser is free to renice appropriately
+any process which is slowing the system down.
+
+If you need to nice a process while it is running, look up the PID as
+described above and run:
+
+```bash
+% renice +19 PID
+```
+
+### Memory Usage
+
+Computer memory is necessary for the computer to operate on your data.
+As the size of the data you're working with gets bigger and bigger, the
+computer tends to need more memory. Thus, when you're working with lots
+of data and your program prints an error message, especially one which
+reports a number of bytes or kilobytes of memory requested, the problem
+is most likely computer memory. The first step is to lift the default
+restriction on the use of memory which is imposed by the shell, by
+typing the command:
+
+```bash
+limit datasize unlimited
+```
+
+at the UNIX command prompt, before you run the program which is failing
+to obtain the required memory. If the problem persists, in general your
+only alternative is to run the job on a computer which has more memory.
+Please send mail to consult to get information about the memory
+resources of the different EML machines.
+
+### Hints to Improve Efficiency
+
+Some people run 2-hour CPU-time jobs only to discover afterwords that
+the program didn't even do what they wanted. Avoid this. Debug your
+program using small test cases until you're sure you've got it right.
+Only then should you run the big monster.
+
+If it's a very long computation and you can wait for the results, use
+the "batch" and "at" commands to run it when the system is unloaded.
+
+### Timing Jobs
+
+Two common questions when running big jobs are "How do I find out the
+running time?" and "How do I capture the program output which would
+normally go to the screen?". Here is one simple way to do both (as:
+
+```bash
+% nice +18 /usr/bin/time program-name >& ouput-filename
+```
+
+Where program-name is the name of your program and ouput-filename is the
+name of the file in which you want to capture output. The running time
+will be the last line of the output file, formatted like this:
+
+    60.0 real        10.0 user         0.5 sys
+
+In this example, the cpu time used was 10.5 seconds (10.0 user + 0.5
+sys) and the elapsed (wall-clock) time was 60.0 seconds. By division,
+your program used 10.5/60 or just over 1/6th of the available cpu time
+while it ran.
+
+### Running sequential jobs
+
+Users should run only one background job at a time per machine. If you
+must run several jobs in background, run them sequentially, not
+simultaneously. If your programs are 'prog1', 'prog2' and 'prog3', run
+them in background via the shell command:
+
+```bash
+(prog1 ; prog2 ; prog3) >& log &
+```
+
+Another way is to use a semicolon:
+
+```bash
+run1 >& run1.log ; run2 >& run2.log
+```
+
+where run1 and run2 are the programs you wish to run and run1.log and
+run2.log are the logfiles.
+
+Yet annother way is to set up a shell script file, for example
+'`run_all`', containing:
+
+    #!/bin/sh run1 >& run1.log run2 >& run2.log
+
+By specifying the &gt; sign, you save the output from run1 into file
+run1.log. By also including the & sign, it also saves any error message
+output into run1.log.
+
+Then from the unix prompt:
+
+```bash
+% chmod +x run_all
+```
+
+to allow the script to be executable, and then type:
+
+```bash
+./run_all
+```
+
+to run the script. You could also type:
+
+```bash
+./run_all &
+```
+
+to have it run in the background.
+
+## Scheduling Jobs
+
+The `at` and `batch` commands allow the system to queue up big
+jobs and run them at a later time. `at` allows you to specify when
+the commands should be executed, while jobs queued with `batch` will
+execute as soon as the system load level permits. These commands provide
+a mechanism for big jobs to run without slowing down interactive
+response and interfering with other people trying to use the computer.
+
+### Queue Execution
+
+To use `at` or `batch`, create a script file which contains the
+unix commands you want to run. Suppose your script file is called
+'filename'. To run it in batch, type the command:
+
+```bash
+batch filename
+```
+
+To run the script at a specific time, use:
+
+```bash
+at time date filename
+```
+
+where time is in the form `0815`, `0815am`, `8:15am`, `now`, and `5 pm`;
+and date is in the form `Jan 24`, `Friday`, `tomorrow`, and `today`.
+
+If you leave out the date field, the date will default to `today`.
+
+The computer will respond:
+
+```bash
+job N at <full date>
+```
+
+where 'N' is the job number it creates. When the job finishes, it will
+mail you the output of the script, unless output was redirected. (see
+below)
+
+### Shell Features
+
+By default, /bin/sh is used as the shell interpreter for the commands in
+your script. If your script-file is a /bin/csh script, use the '-c'
+flag, as in 'at -c 1 pm script'.
+
+If the commands in your script file need any input, create separate
+input files which contain the necessary input and use the '&lt;' shell
+feature in the script file. To redirect the output of a particular
+command in your script, use the '&gt;' shell feature. For example, your
+script file might contain the line:
+
+> proga &lt; inputa &gt; outputa
+
+This would cause the program 'proga' to take its input from the file
+'inputa' and send output to 'outputa'.
+
+### Controlling jobs
+
+To find out the status of your jobs, type the command:
+
+```bash
+at -l
+```
+
+This will report both 'batch' and 'at' jobs. If 'N' is the job number
+reported by 'at -l' then the command:
+
+```bash
+at -r N
+```
+
+will remove that job from the queue (whether or not it is already
+running) and interrupt it (if it is already running).

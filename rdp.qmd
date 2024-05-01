@@ -1,0 +1,35 @@
+# Remote Desktop
+
+Remote Desktop enables you to remotely connect to a graphical Linux
+desktop running on the EML servers.
+
+One option is to access Remote Desktop through your browser via the [EML
+JupyterHub](jupyterhub.qmd).
+
+## RDP
+
+Alternatvely, you can install an RDP (remote desktop protocol) program
+such as Microsoft Remote Desktop on your device. The Microsoft app comes
+with Windows and can be [downloaded from the App
+Store](https://apps.apple.com/us/app/microsoft-remote-desktop-10/id1295203466?mt=12)
+for Mac.
+
+### VPN
+
+You are now required to first login to [the campus
+VPN](https://security.berkeley.edu/services/bsecure/bsecure-remote-access-vpn)
+when using RDP from off-campus. Note that if you are already connected
+to the VPN and change your wifi network, you will need to disconnect and
+reconnect to the VPN.
+
+Collaborators on EML project accounts that do not have access to the
+campus VPN and use the Remote Desktop Application to access EML can
+create an [SSH tunnel](ssh-tunnel.qmd).
+
+### Configuration
+
+Choose an [EML server](servers.qmd), and specify your username in your RDP
+program. You may want to also change the defaults for sound output and
+whether you want the application to run in fullscreen.
+
+

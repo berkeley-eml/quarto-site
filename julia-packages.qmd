@@ -1,0 +1,69 @@
+# Julia Packages
+
+We provide Julia, available on all machines by invoking \`julia\`.
+
+To see what Julia packages we have installed, you can run
+
+    $ ls /usr/local/linux/julia-1.8.5/packages
+
+To see what Julia packages are directly available for loading (via
+\`using\` or \`import\`) through our system project, you can run
+
+    $ cat /usr/local/linux/julia-1.8.5/share/julia/environments/v1.8/Project.toml
+
+At the moment, there are very few packages installed and available
+system-wide at the moment. However, we're happy to install additional
+packages system-wide, particularly if they seem like they would be
+useful to multiple people. Just email <consult@econ.berkeley.edu>.
+
+For Julia 1.8.5, for any packages not in the system project (see above),
+you need to add the packages to your Julia project (which might simply
+be your default project in \`~/.julia/environments/v1.8\`) using
+\`Pkg.add\` (see below). Packages installed on the system won't be
+reinstalled (unless a newer version is available than the one we
+installed); they'll simply be associated with your project.
+
+### Install Julia packages into your account
+
+You can also install additional packages into your own account. Packages
+are associated with Julia projects. You can view your current project
+with \`Base.active\_project()\` and activate a project using
+\`Pkg.activate()\`.
+
+Here is an example of installing the \`GaussianMixtures\` package for
+your current project:
+
+    julia> using Pkg
+    julia> Pkg.add("GaussianMixtures")
+    julia> using GaussianMixtures
+
+By running the 'using' command immediately, Julia will precompile the
+package.
+
+Note that if the current version of \`GaussianMixtures\` were already
+installed at the system level, Julia won't reinstall it, but will simply
+make the system-installed package available in your current project.
+
+Versions
+--------
+
+You can use Linux environment modules to switch between different Julia
+versions. This can be done on a one-time basis in a given terminal
+session or cluster submission script, or can be done in your .bashrc
+(after the stanza involving ~skel/std.bashrc) to set a default different
+than the system default.
+
+To see what older versions are available and use one of them:
+
+    $ module avail julia
+    $ module load julia/1.6.6
+
+To switch from Julia 1.6.6 to Julia 1.8:
+
+    $ module switch julia/1.6.6 julia/1.8
+
+To see what Julia is being used:
+
+    module list
+
+

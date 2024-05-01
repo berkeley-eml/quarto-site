@@ -1,0 +1,33 @@
+# Putty
+
+## SSH
+
+1.  Generate an [SSH key pair](ssh-keys.qmd)
+2.  Open Putty
+3.  On the Host Name, type in an EML hostname 
+4.  Under the Connection - "SSH" (on the left menu), click on "Auth". On
+    the field ""Private key file for authentication", click on Browse.
+    Look for the private key file that you had saved (ends with .ppk).
+    Find and select "Open" in the file window.
+5.  On the left menu, click Session and type a name for the session and
+    hit "Save" button.
+6.  On the bottom, click "Open". Login in with the project account
+    username and type the passphrase.
+
+## Using WinSCP
+
+1.  Generate an [SSH key pair](ssh-keys.qmd), and
+    have the project account administrator install the private key into
+    the account.
+2.  Open WinSCP. Under Hostname, type in an EML hostname
+3.  Under Username, type in project account username
+4.  Click on Advanced
+5.  Click on Authentication (under SSH)
+6.  Under the section Authentication parameters, Private key file, click
+    on the icon with three dots to browse for the private key file that
+    you saved.
+7.  Click Ok.
+8.  Click on Login
+9.  You should be asked for the passphrase you used when you generated
+    the key pair.
+

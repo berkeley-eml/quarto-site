@@ -1,0 +1,148 @@
+# X Windows
+
+This article describes the steps necessary to install X server software
+on your home computer. This will enable you to display windows and
+graphics created by applications running on remote UNIX systems.
+
+Note that in many cases you may be better of using the [EML
+JupyterHub](jupyterhub) for browser-based access to RStudio and VS Code,
+or [Remote Desktop](rdp) to run any graphical program in a remote
+desktop window.
+
+<span id="exceed"></span>Windows: eXceed
+----------------------------------------
+
+Most of our users who require X server software tend to choose
+Hummingbird's eXceed because of its availability to the Berkeley campus,
+its broad feature set, and its Microsoft Windows compatability.
+
+### Download
+
+Hummingbird eXceed can be downloaded from
+<http://software.berkeley.edu>. You are required to authenticate with
+your CalNet ID.
+
+### Install
+
+Installation is fairly simple; just double-click on the installation
+program. The installer runs some display diagnostics towards the end so
+expect the installation process to take longer than most software
+installations.
+
+### Configure
+
+The best way to run eXceed is in conjunction with SSH software. This
+ensures that your connection is secure and that anyone snooping on your
+internet connection will not be able to read any passwords or other
+secure information that you type. When you run eXceed and SSH software,
+you will launch programs from the SSH window and eXceed will be able to
+display them. See these [instructions](http://www.econ.berkeley.edu/554)
+for information on downloading and installing SSH software.
+
+#### Enable Passive mode
+
+To enable eXceed to work with SSH clients, it will have to be configured
+to wait for X connections, as opposed to initiating X sessions itself.
+
+Run the **Xconfig** utility that comes with eXceed. In the Xconfig
+control panel, open the **Communication** item and configure your
+connection to be **Passive**.
+
+#### SSH X Forwarding
+
+Your Windows SSH client must be configured to forward X Window System
+communication from the machine you are connecting to to your PC's
+display.
+
+-   putty
+
+    Launch **putty.exe**, click on the plus sign to the left of "SSH" in
+    the left hand pane, then click "X11" and check the box labelled
+    "Enable X11 Forwarding".
+
+-   SSH Communications Security
+
+    Choose **Settings...** from the **Edit** menu and then choose
+    **Tunneling** from the **Profile Settings** tree on the left. Check
+    **Tunnel X11 connections** in the pane on the right.
+
+    The above works fine if you start **eXceed** first and then start
+    your SSH client. It is possible, however, to create a shortcut on
+    your desktop that will automatically start both **eXceed** and your
+    SSH client automatically. To enable this:
+
+    -   Open the **Xsession** utility that came with **eXceed**.
+
+    -   In the **Xsession Session Startup Application** popup window,
+        click on **New Program**. Then choose **Windows App** and then
+        the **OK** button.
+
+    -   In the **Wstart** popup window, fill in:
+
+            Description:  ssh
+            Command line: the path to ssh.exe (Browse for it)
+            Working directory: the path up to \ssh, i.e., c:\data fellows\f-secure\ssh
+            Run:  Normal
+
+        Then choose **Save** from the **File** menu and name the file
+        `ssh.ws`. Then quit the **Wstart** window.
+
+    -   Now in the Xsession window, you will see `ssh.ws ssh` under
+        **Available Programs**. `ssh.ws` is the new filename, and `ssh`
+        is the description.
+
+        Click on `ssh.ws ssh` to enable the Add button. Click on
+        **Add**. This adds the `ssh.ws` file to **Included Programs**.
+
+    -   Next choose **Save** from the **File** menu and name the file
+        `ssh.ses`. Again, the default path is the user directory in the
+        exceed tree.
+
+    -   The last step is to find where **eXceed** saved `ssh.ses` and
+        create a shortcup to it on your desktop. This is the icon you
+        should double-click to start your secure X session.
+
+<span id="xming"></span>Windows: Xming
+--------------------------------------
+
+Xming is the X Windows Software from [X.Org](http://www.x.org) ported to
+Microsoft Windows. It shares source code with Cygwin's X server (see
+below), but you do not need the full cygwin environment to run it. You
+can use this X server in much the same way you use eXceed, though it
+does not come with many of the features of eXceed. If, for some reason,
+eXceed becomes unavailable to you, try this software. It can be
+downloaded from <http://www.straightrunning.com/XmingNotes/>.
+
+<span id="cygwin"></span>Windows: Cygwin
+----------------------------------------
+
+The [Cygwin](http://www.cygwin.com) UNIX environment also includes the
+XFree86 X Window System. It can be downloaded from
+<http://www.cygwin.com/xfree/>.
+
+<span id="xquartz"></span>Apple: XQuartz
+----------------------------------------
+
+### Install
+
+Download XQuartz from <https://www.xquartz.org>.
+
+### Forwarding X11
+
+For forwarding remote X sessions over ssh you can use either
+**Terminal.app** (also found in `/Applications/Utilities`) or **xterm**.
+If you are using the macOS Terminal, you will need to set your DISPLAY
+variable. Enter this statement into the file `~/.bashrc` on your own
+computer (not your EML account):
+
+    if [ -z "$DISPLAY" ]; then export DISPLAY=:0.0; fi
+
+and then start a new Terminal window. If you are using xterm from with
+XQuartz (via the Application menu &gt; xterm), the variable should be
+set for you.
+
+On the Mac you should also use the -X and -Y options:
+
+    ssh -X -Y username@hostname
+
+

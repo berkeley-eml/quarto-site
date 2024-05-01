@@ -1,0 +1,88 @@
+# Remote Access to the EML Systems
+
+The EML consist of multi-user, macOS and Linux systems that may be
+accessed remotely using either your browser (via the EML JupyterHub) or
+a program which uses the secure shell (SSH) protocol. This encrypts your
+data as it is transmitted over the network.
+
+## Jupyter notebooks and other remote applications via a browser
+
+[EML's JupyterHub](https://jupyter.econ.berkeley.edu) is deployed for
+users to remotely run Jupyter notebooks (using Python, R, Julia, MATLAB
+and other languages), terminal sessions, RStudio, and even graphical
+Remote Desktop sessions on EML machinesthrough your web browser. See
+[our JupyterHub documentation](jupyterhub.qmd) for more information.
+
+## Access via SSH or via a Remote Desktop application
+
+The list of hostnames users can access is listed on our
+[dashboards](monitoring.qmd). Only Linux workstations and compute servers
+allow you to view graphics/images, use the graphical user interface of
+certain programs and provide desktop connections.
+
+### <span id="windows">Connecting remotely from a Windows Computer</span>
+
+Command-line Access
+
+[PuTTY](http://www.putty.org) is a free SSH client for Windows.
+![](images/putty.png){fig-alt="putty image" width="156" height="138"}
+
+1.  Click on the session category
+2.  Enter the hostname
+3.  Click Open
+4.  Type your username and password when prompted
+
+File Transfer using Drag and Drop
+
+[WinSCP](http://winscp.net/eng/download.php) is a free graphical SFTP
+client that allows you to copy/transfer files between your windows
+computer and your EML account.
+![](images/winscp.jpg"){fig-alt="winscp image" width="200"}
+
+1.  Click on the session category
+2.  Enter the hostname
+3.  Enter the username and password
+4.  Click Login
+
+<span class="small">Note: If it is the first time you connect to a
+particular EML system, the SSH program will ask you if you want to
+accept the new host key. Click 'Yes'.</span>
+
+Using Graphical User Interface of Unix Applications
+
+[Xming](http://sourceforge.net/projects/xming/) is X Windows Software
+from X.Org ported to Microsoft Windows. This requires the use of an SSH
+client such as PuTTY.
+[<img src="images/x11.PNG" alt="x11_image" width="200" />](images/x11.PNG)
+
+1.  Install and open the Xming application.
+2.  Launch PuTTY, click on the plus sign to the left of "SSH" in the
+    left hand pane, then click "X11" and check the box labelled "Enable
+    X11 Forwarding".
+3.  Under "Category" on the left, click on Session. Under Saved
+    Sessions, select a name for the session and click on "Save".
+4.  Log-on to one of the Linux servers (not an emily) following
+    instructions on logging in using PuTTY
+5.  Type in the commands of the GUI program such as xstata, nautilus
+    (file explorer), etc on PuTTY's command-line window.
+
+Remote (Graphical) Desktop Environment Access
+
+[Windows Remote Desktop](rdp.qmd) allows remote desktop connections to the
+EML Linux systems. [X2Go](x2go.qmd) is a remote desktop solution that
+provides fast and secure graphical access to an EML desktop with support
+for copy and paste between local and remote computers.
+
+### <span id="mac">Connecting remotely from a macOS Computer</span>
+
+1.  Command line access and using graphical user interface applications
+2.  File Transfer
+3.  Remote Desktop Access
+
+### <span id="linux">Connecting remotely from Linux</span>
+
+1.  Command line access and using graphical user interface applications
+2.  File Transfer
+3.  Remote (Graphical) Desktop Environment Access
+
+

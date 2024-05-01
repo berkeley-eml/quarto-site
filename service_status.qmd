@@ -1,0 +1,18 @@
+
+
+Service Status
+--------------
+
+  
+
+Electrical Load Test 10/23 and 10/30  
+The EML server room will be brought offline on the mornings of 10/23 and
+10/30 for an electrical load test. On 10/23, electricity to our server
+room will be turned off so that campus can install monitoring equipment.
+Power will be restored shortly after and we will then bring all
+equipment and services online. This will repeat on 10/30 when the
+monitoring equipment will be removed. We do not yet know the time or
+duration of each event, however we anticipate they will probably be in
+the early morning and last for a couple of hours.
+
+

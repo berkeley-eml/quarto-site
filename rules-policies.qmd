@@ -1,0 +1,72 @@
+# Rules and Policies
+
+Do not share account information with any other individual. Any user who
+is identified as having logged in to another user's account will have
+his or her account closed immediately. If such access was freely
+granted, then both parties will have their accounts closed. Such
+activity may also result in further disciplinary action. Note that
+
+-   Each individual is responsible for ALL activity associated with his
+    or her account.
+-   DO NOT log into your own account from another user's account, and do
+    not permit another user to log into your account.
+-   Send mail to "manager" immediately if you suspect that someone has
+    gained access to your account.
+
+Initial login to your Econometrics Laboratory account certifies that you
+understand and agree to (a) publication of your email address as
+directory information, and (b) comply with [university policies governing email](http://www.ucop.edu/ucophome/policies/ec/html/pp081805ecp.html), [campus online activities policy](http://technology.berkeley.edu/policy/online.html), and [appropriate use of university computer facilities](http://technology.berkeley.edu/policy/usepolicy.html).
+
+Abuse of any computer account by an individual within the EML system or
+abuse of any other computer system may lead to termination of the
+individual's EML account and permanent suspension of ALL EML privileges.
+
+Abuse of an account includes, but is not limited to:
+
+-   Unauthorized attempts to access accounts, files, or system
+    resources.
+-   Malicious mischief of any sort, including using a computer account
+    that you are not authorized to use.
+-   Obtaining a password for a computer account without the consent of
+    the account owner.
+-   Using the campus network to gain unauthorized access to any computer
+    systems anywhere.
+-   Knowingly performing an act that will interfere with the normal
+    operation of computers, terminals, peripherals, or networks.
+-   Knowingly running or installing on any computer system or network,
+    or giving to another user, a program intended to damage or to place
+    excessive load on a computer system or network. this includes but is
+    not limited to programs known as computer viruses, Trojan horses,
+    and worms.
+-   Attempting to circumvent data protection schemes or uncover security
+    loopholes.
+-   Violating terms of applicable software licensing agreements or
+    copyright laws.
+-   Wasting system resources, such as playing games or broadcasting
+    "chain" letters.
+-   Masking the identity of an account or machine.
+-   Any activity originating from an EML account (on any computer
+    system) that results in an official complaint being logged against
+    the user, such as broadcasting "for sale" or "want ad" messages to
+    multiple departmental mailling lists (known as "spam"). Note that
+    your account will be quickly and permanently revoked if you spam
+    multiple departmental mailing lists that result in one or more
+    complaints.
+-   Unsolicited electronic communication with an individual who is not
+    known to the user; using electronic mail to harass others.
+-   Use of an EML account for commercial or personal benefit or
+    financial gain.
+-   Posting on electronic bulletin boards materials that violate
+    existing laws or the University's codes of conduct.
+-   Attempting to monitor or tamper with another user's electronic
+    communications, or reading, copying, changing, or deleting another
+    user's files or software without the explicit agreement of the
+    owner.
+-   Failure to cooperate with requests of the system staff regarding use
+    of the system resources. System staff include all Statistical
+    Computing Facility staff as well as all Econometrics Laboratory
+    staff.
+-   Repeated failure to follow posted rules.
+-   Activities will not be considered misuse when authorized by
+    appropriate University officials for security or performance
+    testing.

@@ -1,0 +1,31 @@
+
+
+EML Computing Cluster
+=====================
+
+The Econometrics Laboratory (EML) has a high-performance computing
+cluster that consists of low priority partition and a high priority
+partition. This system allow users to work with massive data sets and
+easily manage long-running jobs. All software running on EML Linux
+machines is available on the cluster. Users can also compile programs on
+any EML Linux machine and then run that program on the cluster. It is
+managed by the SLURM queuing software. SLURM provides a standard batch
+queuing system through which users submit jobs to the cluster. Jobs are
+typically submitted to SLURM using a user-defined shell script that
+executes one's application code. Interactive use is also an option.
+Users may also query the cluster to see job status.
+
+The high priority partition has has eight nodes, divided into two sets
+of four nodes each. The first set has four nodes each with two 8-core
+CPUs. Each core has two hyperthreads, for a total of 128 processing
+units. Each node has 768 GB dedicated RAM. The second set has four nodes
+each with two 14-core CPUs. Each core has two hyperthreads, for a total
+of 224 processing units. Each node has 132 GB dedicated RAM. The lower
+priority partition has has eight nodes, each with two 16-core CPUs
+available for compute jobs (i.e., 32 cores per node), for a total of 256
+cores. Each node has 248 GB dedicated RAM.
+
+We provide [documentation on how to use the EML compute
+cluster.](https://eml.berkeley.edu/cluster)
+
+

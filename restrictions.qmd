@@ -1,0 +1,62 @@
+# Restrictions and Limitations
+
+EML student accounts are issued only to students who are currently
+registered with the University of California at Berkeley, and all
+accounts are subject to approval. An account is issued to a specific
+individual who is responsible for all activity within his/her account
+and who agrees not to allow any other individual to access his/her
+account. EML policies apply to all accounts, and acceptance of an
+account implies acknowledgement and acceptance of all EML policies. An
+EML account is a privilege and as such can be revoked if misused. Any
+graduate student who receives a degree from the Department of Economics
+is eligible for an "alumni" account, a one-year extension of his/her
+student account upon graduation. Alumni accounts require the sponsorship
+of a faculty member within the Department of Economics.
+
+Accounts that are issued to students, alumni, guests, and visitors will
+be closed on January 1 and July 1 of each year. ONLY accounts belonging
+to currently registered Economics graduate students will remain open
+beyond that date. Individuals having other accounts must apply for an
+extension. No extensions are granted for class accounts.
+
+Class accounts will be removed after 3PM of the first Monday after final
+exams of the semester for which they were assigned. Be sure to make any
+arrangements for permanent or backup storage of your class account files
+before the accounts are closed. There will be a $20 fee (plus the cost
+of media) for recovering files from accounts that have been closed. Upon
+request, mail messages can be forwarded to another account for up to 60
+days after an account has been closed. (This does not apply to class
+accounts.)
+
+All user accounts have disk use quotas which impose an absolute limit on
+the amount of disk space the account may consume. For more information,
+see "[What is my disk quota?](https://eml.berkeley.edu/498)". User
+accounts are also subject to periodic purging of certain files. 
+
+Be warned that abuse of any account on any EML UNIX system (or any other
+computer system) may lead to termination of that account and suspension
+of all EML system privileges for the offender. "Abuse of an account"
+includes, but is not limited to: repeated failure to follow posted rules
+for use of terminal rooms; playing of games; unauthorized attempts to
+access accounts, files, or system resources not one's own; malicious
+mischief of any sort; and failure to cooperate with requests of the
+System Staff regarding use of system resources. Files under accounts are
+not personal property; as such the EML reserves the right to review,
+modify, or delete any file or terminate any activity that may interfere
+with the operations or security of the EML.
+
+Please refer to our [email
+guidelines](http://www.econ.berkeley.edu/help/?f=email-guidelines) for
+policy information on electronic email privacy.
+
+## Related Information
+
+-   [What are the rules of the Econometrics Laboratory?](rules)
+
+-   [How do I manage UNIX processes?](https://eml.berkeley.edu/536)
+
+-   [How much disk space am I using?](https://eml.berkeley.edu/500)
+
+-   [What temporary disk storage is
+    available?](https://eml.berkeley.edu/499)
+

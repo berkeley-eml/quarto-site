@@ -1,0 +1,20 @@
+
+
+Using the Campus VPN
+--------------------
+
+1.  Download the AnyConnect software from the bottom of its [Software
+    Central page](https://software.berkeley.edu/cisco-vpn).
+2.  Run the AnyConnect client and on the Connection tab, in the field
+    marked **Connect to** enter *ucbvpn.berkeley.edu* as the hostname.
+3.  When prompted enter your CalNet credentials for the username and
+    password fields.
+4.  Choose a connection group. The first option is suitable for most
+    cases:
+    -   **1-Campus\_VPN**: tunnel only campus traffic through the VPN
+    -   **2-Campus\_VPN\_Full\_Tunnel:** tunnel all of your internet
+        traffic through it
+    -   **3-Library\_VPN groups**: just library traffic
+5.  Click the **Connect** button.
+
+

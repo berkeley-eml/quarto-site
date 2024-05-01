@@ -1,0 +1,51 @@
+# Account Types
+
+Computer accounts are issued to individuals in the following categories:
+
+1.  Class accounts: Economics courses which require computer access may
+    obtain class accounts. Class accounts are assigned to individual
+    students by the course instructor or TA. Course instructors should
+    contact the EML Manager in room 643 Evans. Please allow 2 weeks for
+    class accounts to be added to the system.
+
+2.  Departmental accounts: Currently registered students (undergraduates
+    or graduates) and faculty in the Economics Departments, and
+    employees of the Economics Department.
+
+3.  Campus student accounts: Currently registered students
+    (undergraduates or graduates) from other UC departments with a
+    demonstrated need for specific EML services (such as statistical
+    packages). This type of account cannot be used for work that is
+    funded by either grants and/or outside funds. This type of account
+    requires faculty approval and must be renewed each semester.
+
+4.  Campus staff accounts: Currently active UC staff employees from
+    other UC departments with a demonstrated need for specific EML
+    services (such as statistical packages). This type of account cannot
+    be used for work that is funded by either grants and/or outside
+    funds and must be renewed annually.
+
+5.  Research accounts: Persons working within the UC system on specific
+    research projects which are funded by grants and/or outside funds.
+
+6.  Official guests (visiting faculty) and visitors (associate research
+    fellows) in the Department, at the invitation (and with the
+    approval) of faculty.
+
+7.  Alumni accounts: Past students of the Economics Department. The
+    alumni category also includes past employees of the Economics
+    Department. This type of account is issued to individuals who have
+    left the Department in good standing and is only valid for one year
+    after separation from the Department. It may not be renewed. If one
+    of the above relationships with the Department resumes, then a new
+    account may be issued, but the alumni account is terminated after
+    one year. The alumni account only provides for up to 5MB under the
+    home directory. It will be necessary to obtain a contrator account
+    if additional resources are required.
+
+8.  Contractor accounts: An individual may obtain an account on a
+    recharge basis. The person will be billed monthly for the use of
+    system resources (login time, cpu time, disk usage, and printing).
+    Any person who does not fall into one of the above categories may
+    apply for a contractor account. This type of account is valid
+    indefinitely, as long as the account is in good standing.

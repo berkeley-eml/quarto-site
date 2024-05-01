@@ -1,0 +1,194 @@
+# Account Policies
+
+The general EML rules are available to all users along with the account
+application form. The University of California's computer use guidelines
+are also available via posted weblinks. It is the user's responsibility
+to read them, understand them, and obey them. These rules are also
+posted in 616 Evans, on the door to 616 and 614 Evans.
+
+Do not share account information with any other individual. Any user who
+is identified as having logged in to another user's account will have
+his or her account closed immediately. If such access was freely
+granted, then both parties will have their accounts closed. Such
+activity may also result in further disciplinary action. Note that
+
+-   Each individual is responsible for ALL activity associated with his
+    or her account.
+-   DO NOT log into your own account from another user's account, and do
+    not permit another user to log into your account.
+-   Send mail to "manager" immediately if you suspect that someone has
+    gained access to your account.
+
+Initial login to your Econometrics Laboratory account certifies that you
+understand and agree to (a) publication of your email address as
+directory information, and (b) comply with [university policies
+governing
+email](http://www.ucop.edu/ucophome/policies/ec/html/pp081805ecp.html),
+[campus online activities
+policy](http://technology.berkeley.edu/policy/online.html), and
+[appropriate use of university computer
+facilities](http://technology.berkeley.edu/policy/usepolicy.html).
+
+Abuse of any computer account by an individual within the EML system or
+abuse of any other computer system may lead to termination of the
+individual's EML account and permanent suspension of ALL EML privileges.
+
+Abuse of an account includes, but is not limited to:
+
+-   Unauthorized attempts to access accounts, files, or system
+    resources.
+-   Malicious mischief of any sort, including using a computer account
+    that you are not authorized to use.
+-   Obtaining a password for a computer account without the consent of
+    the account owner.
+-   Using the campus network to gain unauthorized access to any computer
+    systems anywhere.
+-   Knowingly performing an act that will interfere with the normal
+    operation of computers, terminals, peripherals, or networks.
+-   Knowingly running or installing on any computer system or network,
+    or giving to another user, a program intended to damage or to place
+    excessive load on a computer system or network. this includes but is
+    not limited to programs known as computer viruses, Trojan horses,
+    and worms.
+-   Attempting to circumvent data protection schemes or uncover security
+    loopholes.
+-   Violating terms of applicable software licensing agreements or
+    copyright laws.
+-   Wasting system resources, such as playing games or broadcasting
+    "chain" letters.
+-   Masking the identity of an account or machine.
+-   Any activity originating from an EML account (on any computer
+    system) that results in an official complaint being logged against
+    the user, such as broadcasting "for sale" or "want ad" messages to
+    multiple departmental mailling lists (known as "spam"). Note that
+    your account will be quickly and permanently revoked if you spam
+    multiple departmental mailing lists that result in one or more
+    complaints.
+-   Unsolicited electronic communication with an individual who is not
+    known to the user; using electronic mail to harass others.
+-   Use of an EML account for commercial or personal benefit or
+    financial gain.
+-   Posting on electronic bulletin boards materials that violate
+    existing laws or the University's codes of conduct.
+-   Attempting to monitor or tamper with another user's electronic
+    communications, or reading, copying, changing, or deleting another
+    user's files or software without the explicit agreement of the
+    owner.
+-   Failure to cooperate with requests of the system staff regarding use
+    of the system resources. System staff include all Statistical
+    Computing Facility staff as well as all Econometrics Laboratory
+    staff.
+-   Repeated failure to follow posted rules.
+-   Activities will not be considered misuse when authorized by
+    appropriate University officials for security or performance
+    testing.
+
+#### Accounts must be renewed according to the following schedule:
+
+-   Class accounts expire at the end of each semester and cannot be
+    renewed.
+-   Graduate accounts for Economics students are valid as long as the
+    individual is currently enrolled (registered)
+-   Alumni accounts are issued upon request to individuals who have left
+    the Department in good standing and are valid for up to two months
+    after separation from the Department if reasonable cause can be
+    demonstrated. Alumni accounts cannot be renewed.
+-   All other student accounts expire on January 1 and July 1 of each
+    year and must be renewed.
+-   Guest accounts must be renewed each year by July 1 and require
+    approval of the sponsoring faculty member.
+-   Faculty and visitor (associate research fellows) accounts expire
+    upon termination of their appointments.
+-   Contractor accounts are valid indefinitely, as long as the account
+    is in good standing.
+-   All other accounts expire on July 1 of each year and must be
+    renewed.
+
+Requests for extension of an account must be received within 5 days of
+the account expiration date (send electronic mail to rowilma
+@econ.berkeley.edu).
+
+#### Account Disk Space
+
+The allocation of disk space on all accounts (grads, faculty, staff,
+projects, etc.) is controlled by disk quotas. Disk quotas exist to
+ensure equitable access and to facilitate maintenance. In spite of these
+limits, from time to time it may be necessary to ask users to reduce
+their usage of disk space.
+
+Below are the default allocations for home directories:
+
+      Graduate students: 1 GB
+      Faculty: 1 GB
+      Staff: 500 MB
+      Visiting Faculty: 100 MB
+      Guest Accounts: 25 MB
+
+  
+
+When users reach their limit, the system will warn the users to remove
+files when they first login (in the login banner message), and will
+continue to do so for 7 days, after which the system will prevent the
+user from logging in again. To check quota limits, please run the
+command "quota -v" on a terminal or click "Quota" on the Mac. We
+appreciate your effort in conserving disk usage.
+
+If more disk space is required, the user can request additional space by
+providing written justification to the EML manager. It is expected that
+requests for increased disk allocation come after basic account
+maintenance: deletion of files in trashcans and wastebaskets, removal of
+obsolete data, archiving or compressing of no longer used files, and so
+forth. An individual user is not limited to use of the disk space in a
+personal account. You may, at one time or other, have shared use of a
+project account, for example. Or, when you advance to dissertation
+status, you may request extended dissertation storage.
+
+All users have access to additional disk areas on the EML system. These
+include:
+
+> **/tmp** is local to every workstation, i.e., to emily1,...,emily10,
+> compute servers and the other workstations we support. /tmp is
+> volatile, and is never backed up. Depending on the machine, this space
+> could be quite large. Files can be erased at any time if the
+> workstation is rebooted. Files may be automatically deleted after 24
+> hours. This is truly "temporary" storage. Users should remove their
+> files as soon as their work has been completed. Do not store/create
+> files under the directory /var/temp.
+>
+> Public directories in the scratch partition **(/scratch/public)** is a
+> cen/common area on the main server. Anyone can write files to this
+> area. Make a subdirectory under your login name, and store all your
+> files there. This is not private, so don't put anything in public
+> scratch that is sensitive in nature. Files are not backed up, but they
+> do not disappear when the server is rebooted. We will remove files by
+> age (oldest first) and by size, as the area fills up.
+
+Users are recommended to store critical files and confidential files
+safely in personal accounts, and use the unix file permissions to make
+these files secure and private (see 'man chmod'). Delete any old files
+that are no longer needed or that can be easily re-created. Compress
+large files. The command 'bigfiles' will show you your biggest files
+when invoked in your current working directory.
+
+To prevent quota problems, users are required to manage mailboxes and
+disk space usage. In order for a user to occupy their current
+allocation, system and network administrators may compress mail
+folder/files older than 6 months and truncate the following files:
+
+-   Spam
+-   Contents stored under trash directories and trash files (eg.
+    ~/Trash)
+-   Application/program generated temporary files (eg. cache)
+
+  
+
+#### Printing
+
+-   Printing: Student and faculty accounts are charged $0.05/page for
+    any printing above their quota established according to the
+    following categories:
+-   Contractor and non-economics UC staff accounts are charged for all
+    printing at the rate of $0.05/page. Research projects are charges
+    for all printing at the rate of $0.10/page.
+
+

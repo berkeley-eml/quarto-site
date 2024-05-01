@@ -1,0 +1,21 @@
+# Copyright Compliance Agreement
+
+All Econometrics Laboratory (EML) users must comply with copyright law.
+The contents of all accounts (including all files that are owned or
+created by the user regardless of location) administred by the EML are
+subject to copyright law.
+
+The copyright law (Title 17, United States Code) governs the
+circumstances under which computer files may be copied. All "original
+works of authorship" that are produced or distributed are covered by
+copyright law. An individual cannot store or distribute (make
+available), in part or in whole, any item that is protected by copyright
+law without the written permission of the copyright owner. Certain
+exceptions are permitted under the Fair Use Doctrine (Section 107 of the
+copyright law).
+
+When you acquire an EML user account or submit contributions to the ELSA
+software archive, you are agreeing to operate the EML account and to
+utilize the archive in compliance with all copyright laws, and in
+addition, you are agreeing to assume full financial responsibility for
+any infringement that may result from your failure to do so.

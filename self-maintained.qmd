@@ -1,0 +1,68 @@
+
+
+Services for Self-Maintained Computers
+--------------------------------------
+
+### File
+
+Users can directly read from and write to their UNIX home directories
+and web areas. This service is provided by Samba and may require that
+the user have the same account name on their computer as they do on the
+EML.
+
+### Printing
+
+#### Printers
+
+ECON-LP1: HP LaserJet 4015X, "616a" printer
+
+ECON-LP6: HP LaserJet 4015X, "616b" printer
+
+Users can print from local applications to network printers. Printer
+drivers may be required on the user's computer which must be installed
+by the user.
+
+#### Windows
+
+1.  Click Start, then Run...
+2.  Type \\\\ls-printserver.ls.berkeley.edu\\printername in the search
+    box (i.e., \\\\ls-printserver.ls.berkeley.edu\\ECON-LP1 or
+    \\\\ls-printserver.ls.berkeley.edu\\ECON-LP6). There may be a delay
+    as your computer connects to the print server.
+3.  If prompted to login, enter your CalNet ID (in the form
+    CAMPUS.berkeley.edu\\user) and passphrase. Be sure to check the box
+    to save your login information. The driver will download from the
+    server; it may make a few minutes.
+
+#### Mac
+
+1.  Go to System Preferences, the Print & Scan.
+2.  Click the + sign, then select Add Other Printer or Scanner (if you
+    see that option).
+3.  Right-click or Control-click in a black area of the the Add Printer
+    toolbar
+4.  Select "Customize Your Toolbar"
+5.  Drag the "Advanced" gear icon into the toolbar
+6.  Click "Done"
+7.  Click "Advanced", from the "Type" drop down menu select: "Windows
+    printer via spools"
+8.  In the URL field, type:
+    smb://ls-printserver.ls.berkeley.edu:139/ECON-LP1
+9.  Choose the driver
+10. When printing for the first time, enter CalNet ID and passphrase,
+    click the box "Remember this password in the keychain"
+
+### Network
+
+Access to the internet is available by a wireless connection to an
+eduroam access point. eduroam is available to all offices within the
+Department of Economics.
+
+### Consulting
+
+The EML will provide information and recommendations on how to resolve
+problems and give advice on the administration of computers. This
+information will be provided to the best of our ability and is limited
+to information that we have at hand.
+
+

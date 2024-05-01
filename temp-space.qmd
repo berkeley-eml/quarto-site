@@ -1,0 +1,69 @@
+# Temporary Disk Space
+
+There are several places where users can temporarily store data.
+
+### Note
+
+Temporary storage locations are not backed up and may be removed without
+notice.
+
+/tmp
+----
+
+Files put in the `/tmp` directory are only accessible on the machine on
+which they were created and are automatically wiped everytime the
+computer is rebooted. Files may also be deleted with little or no
+warning if resources become scarce. However, if you need a large amount
+of disk space for a short amount of time, `/tmp` provides a solution
+which does not need any staff intervention. Remember that there is no
+guarantee that files stored in `/tmp` are safe. Do not use `/tmp` for
+data that that is difficult or expensive to re-create.
+
+No special permissions are required to use `/tmp`. To reference your
+files using `/tmp`, use '`/tmp`' as the prefix to the name of the file,
+for example '`/tmp/myfile`'. If you are storing more than a handful of
+files, reduce the clutter by using a subdirectory of /tmp named with
+your account name, for example '`/tmp/username/myfile`'.
+
+The limit to the amount of storage a user can take up is the physical
+limitation of the partition. However, if `/tmp` is full, editors,
+compilers, and many other programs will not work or behave erratically.
+To find out how much space is available in /tmp on your system, type
+'**df -k /tmp**'. Do not use `/tmp` if less than 30% of the space is
+available. Remove files when they are no longer needed.
+
+/var/tmp, /Users/Shared
+-----------------------
+
+The `/var/tmp` directory functions similarly to `/tmp`, however, files
+are not automatically removed after the machine is rebooted. This
+directory does get erased, however, whenever the workstation needs to be
+reinstalled or reconfigured. Otherwise, the same policies that apply to
+`/tmp` apply to `/var/tmp`.
+
+The `/Users/Shared` directory functions identically to `/var/tmp`,
+except it is only found on our Macintosh computers.
+
+/var/tmp/scratch
+----------------
+
+The `/var/tmp/scratch` directory exists on some workstations that have
+secondary disks. This directory functions similarly to `/var/tmp`,
+however, it does not get erased when the computer is reinstalled or
+reconfigured.
+
+/scratch/public
+---------------
+
+Directories under `/scratch/public` can be used for projects requiring
+large files that are modified frequently. The scratch directories exist
+on the file server and not on the local workstations, however if space
+becomes limited we may automatically compress/gzip files or (if time
+permitting) ask users to either remove or archive files that are no
+longer needed in order to make room for other users needs. Files that
+are not actively being used and are compressible should be stored in a
+compressed format.
+
+ 
+
+

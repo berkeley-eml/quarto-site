@@ -1,0 +1,114 @@
+project:
+  type: website
+  render:
+    - "*.ejs"
+    - "*.qmd"
+    - "*.ipynb"
+    - "!sandbox/"
+
+website:
+  title: "Econometrics Laboratory"
+  image: EML_logo_small.png
+  repo-url: https://github.com/berkeley-eml/quarto-site
+  #repo-actions: [edit, issue]
+  page-navigation: true
+  #bread-crumbs: true
+  favicon: images/favicon.ico
+  navbar:
+    background: light
+    logo: EML_logo_small.png
+    logo-alt: "EML logo"
+    search: true
+    left:
+      - text: Home
+        href: index.qmd
+      - text: About
+        href: about.qmd
+      - text: Services
+        href: services.qmd
+      - text: Help
+        href: help.qmd
+      - text: Contact
+        href: contact.qmd
+  sidebar:
+    style: "floating"
+    search: true
+    contents:
+      - section: "About"
+        contents:
+          - history.qmd
+          - schedule.qmd
+          - service_status.qmd
+      - section: "Accounts"
+        contents:
+          - account_rules.qmd
+          - accounts.qmd
+          - passwords.qmd
+          - disk-quota.qmd
+          - disk-space.qmd
+          - eligibility.qmd
+          - lab-rules.qmd
+          - restrictions.qmd
+          - rules-policies.qmd
+          - rules.qmd
+          - server_rules.qmd
+          - homepage.qmd
+          - copyright.qmd
+          - types.qmd
+          - setup.qmd
+          - ergonomics.qmd
+      - section: "Remote Access"
+        contents:
+          - jupyterhub.qmd
+          - section: "Secure Shell"
+            contents:
+              - ssh.qmd
+              - ssh-keys.qmd
+              - ssh-tunnel.qmd
+              - putty.qmd
+          - section: "File Transfer"
+            contents:
+              - sftp-scp.qmd
+              - globus.qmd
+              - rclone.qmd
+              - mount-home.qmd
+          - rdp.qmd
+          - vpn.qmd
+          - x2go.qmd
+          - x-windows.qmd
+      - section: "Cluster"
+        contents:
+          - cluster.qmd
+          - ccluster.qmd
+          - compute-servers-policy.qmd
+          - background.qmd
+          - grafana.qmd
+          - hardware.qmd
+          - servers.qmd
+          - memory.qmd
+          - savio.qmd
+      - section: "Data and Storage"
+        contents:
+          - tape-backups.qmd
+          - file-permissions.qmd
+          - temp-space.qmd
+          - emldata.qmd
+          - elsa.qmd
+      - section: "Software"
+        contents:
+          - software.qmd
+          - python-packages.qmd
+          - r-libraries.qmd
+          - julia-packages.qmd
+          - security.qmd
+          - self-maintained.qmd
+          - terminate-r.qmd
+          - tex.qmd
+          - tensorflow.qmd
+          - ucthesis.qmd
+          - unix-processes.qmd
+format:
+  html:
+    theme: cosmo
+    #css: styles.css
+    toc: true

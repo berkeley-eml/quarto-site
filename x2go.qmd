@@ -1,0 +1,36 @@
+# X2Go
+
+X2Go provides fast and secure graphical access to an EML desktop with
+support for copy and paste between the local and remote computers.
+
+## Download
+
+There are clients for both
+[Mac](http://code.x2go.org/releases/X2GoClient_latest_macosx_10_13.dmg)
+and
+[Windows](http://code.x2go.org/releases/X2GoClient_latest_mswin32-setup.exe).
+If you have a Mac, make sure you have
+[Xquartz](http://xquartz.macosforge.org) installed.
+
+## Settings
+
+Launch the application and create a new session. The following settings
+override the default values:
+
+-   Session
+    1.  Session name: *Your Favorite Machine*
+    2.  Host: *machine-name.berkeley.edu*
+    3.  Login: *YOUR EML LOGIN*
+    4.  Enable "*Try auto login (ssh-agent or default ssh key)*" if you
+        use ssh-agent to connect to the EML [without your
+        password](/node/3483). If you do not enable this you will be
+        prompted to enter your EML password when connecting.
+    5.  Session type: *XFCE*
+-   Input/Output
+    1.  Custom: 1024x768 (or whatever you desire)
+    2.  Set display DPI: 100
+-   Media
+    1.  Disable "*Enable sound support*"
+    2.  Disable "*Client side printing support*"
+
+

@@ -1,0 +1,14 @@
+# Tensorflow
+
+## Why does Tensorflow fail with an "Illegal Instruction"?
+
+Recent versions of Tensorflow by default make use of AVX instructions, a
+feature of newer chips. If Tensorflow is run on these older machines,
+the instruction is not available and the error occurs. To avoid this,
+when submitting your job via Slurm, include \`-c avx\`. If you are
+directly accessing a compute server, you can run \`grep avx
+/proc/cpuinfo | wc - l\`. If the result is \`0\`, the AVX instructions
+are not available and you should use a newer machine, such as klein,
+fargo, quesnay, or sargan.
+
+

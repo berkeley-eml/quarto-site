@@ -1,0 +1,33 @@
+![](./images/EML_logo.png){fig-alt="EML logo"}
+
+Welcome to the Econometrics Laboratory (EML) at the University of
+California at Berkeley. The Lab is a state-of-the-art and highly
+service-oriented computing facility that provides extensive server
+services, comprehensive user support and is committed to provide the
+best possible computational hardware and wide selection of statistical,
+mathematical and econometric software for its users.
+
+  
+## Getting Started
+
+-   [Getting an EML account](setup.qmd)
+-   [Remote Access](remote.qmd)
+-   [Compute Cluster](cluster.qmd)
+
+## Announcements
+
+-   EML has a [condo node](savio.qmd) at
+    [Savio](http://research-it.berkeley.edu/services/high-performance-computing)
+-   [Stata 16](http://stata.com/new-in-stata/) is available to all EML
+    systems
+-   [Matlab Distributed
+    Server](http://www.mathworks.com/products/distriben/) is available
+
+## Related Resources
+
+-   [Software Archive](elsa.qmd)
+-   [Data Sources](emldata.qmd)
+-   [Computing
+    Resources](https://www.econ.berkeley.edu/resources/computing)
+-   [Econometrics
+    Seminar](http://events.berkeley.edu/index.php/calendar/sn/econ.html?view=summary&timeframe=range&startdate=2013-01-01&enddate=2013-05-31&filter=Secondary%20Event%20Type&filtersel=1062)

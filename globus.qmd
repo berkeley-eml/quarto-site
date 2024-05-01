@@ -1,0 +1,64 @@
+# Globus
+
+[Globus](https://app.globus.org) is a data management service that
+allows you to easily transfer data (including fast transfers of
+extremely large datasets) between machines and share data with others.
+You logon and specify the transfer to be made, and Globus takes care of
+it in a robust manner without you having to monitor the transfer or
+worry about the connection between the machines being lost.
+
+The easiest thing you can do is transfer files between machines/systems
+that are already registered with Globus as Globus endpoints. Some
+endpoints that may be useful for Berkeley affiliates include Berkeley
+Research Computing's Savio campus cluster and NERSC:
+
+<table>
+<thead>
+<tr class="header">
+<th>Endpoint</th>
+<th>Display Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ucb#economics</td>
+<td>UC Berkeley Economics Department</td>
+</tr>
+<tr class="even">
+<td>ucb#statistics</td>
+<td>UC Berkeley Statistics Department</td>
+</tr>
+<tr class="odd">
+<td>ucb#brc</td>
+<td>UC Berkeley Savio campus Linux cluster</td>
+</tr>
+<tr class="even">
+<td>nersc#cori</td>
+<td><a href="http://www.nersc.gov/users/computational-systems/cori/">NERSC Cori</a></td>
+</tr>
+<tr class="odd">
+<td>nersc#hpss</td>
+<td><a href="http://www.nersc.gov/users/storage-and-file-systems/hpss/">NERSC HPSS</a></td>
+</tr>
+</tbody>
+</table>
+
+Visit the [Globus Web App](https://app.globus.org) to transfer files.
+You should be able to authenticate with your Berkeley credentials. Enter
+the name of the endpoint and authenticate to the resource by following
+the directions given. Once both endpoints are authenticated, it's
+straightforward to drag and drop to transfer files. Globus will email
+you when the transfer is complete.
+
+You can also transfer to/from your own machine. To do so, first get the
+[Globus Connect
+Personal](https://www.globus.org/globus-connect-personal) client for
+your machine (see the lower right of the webpage to download the client
+for your operating system). Your machine will then be registered as one
+of your personal endpoints. When selecting an endpoint, you should be
+able to click on the box labelled "Endpoint" and select the resource
+from the list in "My Endpoints". To transfer to an external drive, see
+[these
+instructions](https://docs.globus.org/faq/globus-connect-endpoints/#does_globus_recognize_a_usb_external_drive_on_my_laptop_as_part_of_an_endpoint).
+
+

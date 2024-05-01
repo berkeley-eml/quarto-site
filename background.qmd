@@ -1,0 +1,46 @@
+
+
+How do I run my program in the background?
+------------------------------------------
+
+Unix has the ability to run your program in the background. This means
+that instead of waiting for the program to finish execution, the UNIX
+shell prompts you again and you can run other commands at the same time
+that the background process is running. To run the program '**myprog**'
+in background, type:
+
+    myprog &
+
+The shell will respond with a number, its process identification number
+(or PID) and then return to the prompt.
+
+It is also possible to leave a big job running in the background even
+after you logout. To keep the program '**myprog**' running in
+background, type:
+
+    nohup myprog &
+
+For example, to run your **R** job in the background from tcsh with a
+nice level of 19:
+
+    nohup nice +19 R --slave < infile.R &
+
+Or from bash:
+
+    nohup nice -19 R --slave < in.R > R.out 2>&1 &
+
+Or **MATLAB** from tcsh, while running it with a nice level of 19:
+
+    nohup nice +19 matlab < infile.m > outfile &
+
+### screen
+
+You may alternatively choose to use **GNU screen** to run your jobs so
+that you can leave them running when you logout. Just invoke
+'**screen**' from your shell, type a space or carriage return to dismiss
+the startup message, then start your job. When you want to detach, type
+Control-a followed by Control-d. You can then exit from your terminal
+session. When you want to access your job again, connect to the same
+machine your job is running on and type '**screen -r**'.
+
+

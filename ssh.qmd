@@ -1,0 +1,71 @@
+# SSH
+
+## Introduction
+
+SSH provides a secure means to access a UNIX command-line shell on a
+remote computer. It also provides a way of transfering files and
+securing otherwise unsafe protocols.
+
+The term 'SSH' may be used to name the secure connection protocol and
+the name of the primary program that implements the protocol.
+
+## Software
+
+### Windows
+
+Newer versions of Windows 10 come with a built-in SSH client. It must be
+[enabled](https://www.howtogeek.com/336775/how-to-enable-and-use-windows-10s-built-in-ssh-commands/).
+
+The most popular SSH program for Windows is [putty](https://www.putty.org). The putty
+executable is a single file, so it can be stored wherever you find it
+convenient.
+
+### macOS
+
+macOS comes with OpenSSH preinstalled. Open Terminal.app (in
+`/Applications/Utilities/`) and use SSH as you would on UNIX.
+
+### Linux
+
+Linux comes with OpenSSH preinstalled. If not, you will need to use your
+distribution's software management program to install SSH.
+
+### Others
+
+You can visit the [EML's JupyterHub](https://jupyter.econ.berkeley.edu) in any browser. Once you
+start your server you can launch New &gt; Terminal. This isn't SSH, but
+it does let you access the EML in a remote terminal.
+
+## Basic Usage
+
+The most common way of logging into a remote site is with '**ssh
+username@remotehost**'. An alternative is '**ssh -l username
+remotehost**'. If your local username is the same as your remote
+username, you needn't specify it on the command line, e.g. '**ssh
+remotehost**'.
+
+Here is an example login:
+
+```{bash}
+$ ssh eml_user@iia.berkeley.edu
+The authenticity of host 'iia.berkeley.edu' can't be established.
+RSA key fingerprint is xx:yy...
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'iia.berkeley.edu' (RSA) to the list of known hosts.
+eml_user@iia.berkeley.edu's password:  
+You have mail.
+...
+```
+
+Whenever SSH connects to another computer, it receives a digital
+fingerprint of that computer. If you are connecting to a computer for
+the first time, it asks whether you want to continue, and then saves the
+fingerprint for the next time you want to connect. If you have connected
+to that computer before, it checks to make sure that the fingerprint is
+the same as it was the first time you connected to that machine. If the
+fingerprints are different, it will warn you that someone might have
+installed nefarious ssh software on the remote host. This is useful
+because bad people to break into computer seldom know the passphrase
+that the remote administrator used to generate the fingerprint with.
+
+

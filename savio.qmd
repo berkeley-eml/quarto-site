@@ -1,0 +1,20 @@
+# EML Condo Node at Savio
+
+EML has purchased a condo node at Savio, the high-performance
+computational cluster managed by the Berkeley Research Computing (BRC)
+program. EML users may be able access to 2 compute nodes.
+
+If you are interested in using this resource, please create an account
+at [https://mybrc.brc.berkeley.edu/](https://mybrc.brc.berkeley.edu).
+Once your account is created and you've signed the cluster user access
+agreement, from the welcome page, click on "Join" next to 2. Create or
+join a project. Look for co\_econ and click "Join" next to it. You will
+receive notificaiton when your request has been approved.
+
+Instructions on how to access the SAVIO cluster, hardware details,
+filesystems, job scheduler all are available at this [user
+guide](http://research-it.berkeley.edu/services/high-performance-computing/user-guide).
+Instructions on how to submit jobs to your condo are also available on
+this page.
+
+
