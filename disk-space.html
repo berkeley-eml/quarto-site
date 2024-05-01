@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./eligibility.html" rel="next">
+<link href="./file-permissions.html" rel="next">
 <link href="./disk-quota.html" rel="prev">
 <link href="./images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./account_rules.html">Accounts</a></li><li class="breadcrumb-item"><a href="./disk-space.html">How do I manage disk space?</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./disk-quota.html">Data and Storage</a></li><li class="breadcrumb-item"><a href="./disk-space.html">Manage Disk Space</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -171,17 +171,23 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">Accounts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./account_rules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Account Policies</span></a>
+  <a href="./account-apply.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apply For an Account</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./account-types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Account Types</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -196,22 +202,25 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Managing Passwords</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./disk-quota.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is my disk quota?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./disk-space.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">How do I manage disk space?</span></a>
-  </div>
-</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Policies and Rules</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./eligibility.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Eligibility Policies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./account_rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Account Policies</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -246,26 +255,16 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./homepage.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Publish a personal website</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./copyright.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Copyright Compliance Agreement</span></a>
   </div>
 </li>
+      </ul>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./types.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Account Types</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Set Up an EML Account</span></a>
+  <a href="./homepage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Publish a personal website</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -278,13 +277,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
  <span class="menu-text">Remote Access</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./monitoring.html" class="sidebar-item-text sidebar-link">
@@ -299,13 +298,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
  <span class="menu-text">Secure Shell</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ssh.html" class="sidebar-item-text sidebar-link">
@@ -334,13 +333,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">File Transfer</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sftp-scp.html" class="sidebar-item-text sidebar-link">
@@ -395,13 +394,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
  <span class="menu-text">Cluster</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./cluster.html" class="sidebar-item-text sidebar-link">
@@ -460,17 +459,23 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
  <span class="menu-text">Data and Storage</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tape-backups.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Backup Schedule</span></a>
+  <a href="./disk-quota.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Disk Quota</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./disk-space.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Manage Disk Space</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -481,14 +486,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./temp-space.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Temporary Disk Space</span></a>
+  <a href="./emldata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EML Data Links</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./emldata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">EML Data Links</span></a>
+  <a href="./tape-backups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Backup Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -501,13 +506,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
  <span class="menu-text">Software</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./software.html" class="sidebar-item-text sidebar-link">
@@ -586,18 +591,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-do-i-manage-disk-space" id="toc-how-do-i-manage-disk-space" class="nav-link active" data-scroll-target="#how-do-i-manage-disk-space">How do I manage disk space?</a></li>
-  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">Table Of Contents</a></li>
-  <li><a href="#determining-usage" id="toc-determining-usage" class="nav-link" data-scroll-target="#determining-usage"><span id="howmuch"></span>Determining usage</a></li>
-  <li><a href="#temporary-disk-space" id="toc-temporary-disk-space" class="nav-link" data-scroll-target="#temporary-disk-space"><span id="temporary"></span>Temporary disk space</a>
+  <li><a href="#manage-disk-space" id="toc-manage-disk-space" class="nav-link active" data-scroll-target="#manage-disk-space">Manage Disk Space</a>
+  <ul class="collapse">
+  <li><a href="#determining-usage" id="toc-determining-usage" class="nav-link" data-scroll-target="#determining-usage">Determining usage</a></li>
+  <li><a href="#temporary-disk-space" id="toc-temporary-disk-space" class="nav-link" data-scroll-target="#temporary-disk-space">Temporary disk space</a>
   <ul class="collapse">
   <li><a href="#tmp" id="toc-tmp" class="nav-link" data-scroll-target="#tmp">/tmp</a></li>
   <li><a href="#vartmp-usersshared" id="toc-vartmp-usersshared" class="nav-link" data-scroll-target="#vartmp-usersshared">/var/tmp, /Users/Shared</a></li>
   <li><a href="#vartmpscratch" id="toc-vartmpscratch" class="nav-link" data-scroll-target="#vartmpscratch">/var/tmp/scratch</a></li>
   <li><a href="#scratch" id="toc-scratch" class="nav-link" data-scroll-target="#scratch">/scratch</a></li>
   </ul></li>
-  <li><a href="#compression" id="toc-compression" class="nav-link" data-scroll-target="#compression"><span id="compression"></span>Compression</a></li>
-  <li><a href="#deleting-files" id="toc-deleting-files" class="nav-link" data-scroll-target="#deleting-files"><span id="deleting"></span>Deleting Files</a></li>
+  <li><a href="#compression" id="toc-compression" class="nav-link" data-scroll-target="#compression">Compression</a></li>
+  <li><a href="#deleting-files" id="toc-deleting-files" class="nav-link" data-scroll-target="#deleting-files">Deleting Files</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -607,20 +613,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="how-do-i-manage-disk-space" class="level2">
-<h2 class="anchored" data-anchor-id="how-do-i-manage-disk-space">How do I manage disk space?</h2>
-</section>
-<section id="table-of-contents" class="level2">
-<h2 class="anchored" data-anchor-id="table-of-contents">Table Of Contents</h2>
-<ul>
-<li><a href="#howmuch">Determining usage</a></li>
-<li><a href="#temporary">Temporary disk space</a></li>
-<li><a href="#compression">Compression</a></li>
-<li><a href="#deleting">Deleting files</a></li>
-</ul>
-</section>
+<section id="manage-disk-space" class="level1">
+<h1>Manage Disk Space</h1>
 <section id="determining-usage" class="level2">
-<h2 class="anchored" data-anchor-id="determining-usage"><span id="howmuch"></span>Determining usage</h2>
+<h2 class="anchored" data-anchor-id="determining-usage">Determining usage</h2>
 <p>Each user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs. If you need additional space, please submit your request to manager@econ.berkeley.edu.</p>
 <p>The commands below can show you how disk space you are consuming. For additional information, consult the respective man pages.</p>
 <table class="table">
@@ -669,7 +665,7 @@ Reports your disk quota and current disk use.
 </table>
 </section>
 <section id="temporary-disk-space" class="level2">
-<h2 class="anchored" data-anchor-id="temporary-disk-space"><span id="temporary"></span>Temporary disk space</h2>
+<h2 class="anchored" data-anchor-id="temporary-disk-space">Temporary disk space</h2>
 <p>There are several places where users can temporarily store data. These areas are often larger than home directories, but they are not backed up and may be removed without notice.</p>
 <section id="tmp" class="level3">
 <h3 class="anchored" data-anchor-id="tmp">/tmp</h3>
@@ -693,7 +689,7 @@ Reports your disk quota and current disk use.
 </section>
 </section>
 <section id="compression" class="level2">
-<h2 class="anchored" data-anchor-id="compression"><span id="compression"></span>Compression</h2>
+<h2 class="anchored" data-anchor-id="compression">Compression</h2>
 <p>Infrequently accessed files may be compressed to save disk space.</p>
 <pre><code>gunzip file.gz                         Uncompresses file.gz to file
 gzip file                              Compresses file to file.gz
@@ -707,7 +703,7 @@ zcat x.Z y.Z ...                       Prints the compressed file(s) to the term
 <p>See the UNIX manual pages for the above programs by using the ‘<strong>man</strong>’, for example ‘<strong>man gzip</strong>’.</p>
 </section>
 <section id="deleting-files" class="level2">
-<h2 class="anchored" data-anchor-id="deleting-files"><span id="deleting"></span>Deleting Files</h2>
+<h2 class="anchored" data-anchor-id="deleting-files">Deleting Files</h2>
 <p>To remove files and directories type:</p>
 <pre><code>rm file         Removes 'file' provided you have write permission on it. 
 rm -f file      Removes 'file' if you have write permission in the directory containing it. 
@@ -726,6 +722,7 @@ cc -s ...       Similarly for cc.</code></pre></li>
 </ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1140,13 +1137,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./disk-quota.html" class="pagination-link" aria-label="What is my disk quota?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">What is my disk quota?</span>
+      <a href="./disk-quota.html" class="pagination-link" aria-label="Disk Quota">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Disk Quota</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./eligibility.html" class="pagination-link" aria-label="Eligibility Policies">
-        <span class="nav-page-text">Eligibility Policies</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./file-permissions.html" class="pagination-link" aria-label="File Permissions">
+        <span class="nav-page-text">File Permissions</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

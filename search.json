@@ -144,360 +144,231 @@
     ]
   },
   {
-    "objectID": "tex.html",
-    "href": "tex.html",
-    "title": "TeX/LaTeX",
+    "objectID": "terminate-r.html",
+    "href": "terminate-r.html",
+    "title": "How do I correctly terminate an R session?",
     "section": "",
-    "text": "This is the local guide to using Tex or LaTeX and should not serve as a substitute for the appropriate User’s Guides, referenced below.\n\n\nThe basic command for running TeX or LaTeX is ‘tex filename’, ‘latex filename’, or ‘pdflatex filename’.\nThere should be a file in your current directory called filename.tex, containing the TeX or LaTeX commands. Upon successful completion of processing, a file called filename.dvi is created and filename.pdf if you used pdflatex. (LaTeX also produces a file called filename.aux with information for tables of content and indices; don’t be alarmed if it tells you it doesn’t exist. However, if you wish to produce a table of contents, index or document with references, you will need the .aux file. Since the .aux file is produced if it is not present, this simply means that you may have to run TeX or LaTeX twice in order to get these features.) It is the .dvi file which you will eventually print to get your final copy.\n\n\n\nYou can preview your file on the screen before you print it. Use the command ‘xdvi’, with the dvi file given as an argument, as in xdvi filename.dvi. If you make a change to your dvi file (by reinvoking tex or latex), xdvi will refresh itself as soon as the cursor is returned to it’s window – that is, it is not necessary to quit and restart xdvi every time you reprocess your input file.\n\n\n\nTo print a dvi file called filename.dvi use the command ‘dvips filename’. Dvips automatically routes the output to your default printer (as set by the PRINTER environment variable). You can override the destination printer by adding a -Pprinter to the dvips command line. For example, ‘dvips -Ppr1 filename’ will print filename.dvi on printer pr1.\nIf you wish to print only part of a .dvi file (or you are having trouble printing a large .dvi file), you can print part of the file using the command dviselect. Type man dviselect for information on using the dviselect command.\nIn order to view a LaTeX document which uses PostScript fonts (like Helvetica), you should first convert the document to PostScript, and use ghostview to view it.\nSuppose your document is called sem.tex, then the command ‘latex2e sem’ creates the file sem.dvi, and the command ‘dvips -f -t landscape sem.dvi &gt; sem.ps’ creates the PostScript file sem.ps. This file can be viewed with the command ‘ghostview sem.ps’ and can be printed with the command ‘lpr sem.ps’\n\n\n\nThe appropriate User’s Guides are:\n\nThe LaTeX WikiBook, http://en.wikibooks.org/wiki/LaTeX\nThe TeXbook, by Donald E. Knuth, Addison-Wesley, 1984\nLaTeX User’s Guide & Reference Manual, by Leslie Lamport, Addison-Wesley, 1986",
+    "text": "When you run an R job, you should properly quit the job when you’re done, by typing “q()” at the R prompt, and responding to the query about “Save workspace image?” appropriately. DO NOT log off without terminating your R job/session, and you should not kill a window with a running R process unless you follow one of the suggestions below.\n\n\n\nIf you want your R job to keep running after you log out, the best way to run R is through the BATCH command, i.e. run a command like this one at the UNIX prompt:\nR CMD BATCH cmds.r output.txt &\nwhere “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type “help(BATCH)” from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.\n\n\n\nIf you don’t want to worry about shutting down your interactive R session, you MUST use either the “-save” or the “-no-save” option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing “R” at the UNIX prompt, type\nR --save\nor\nR --no-save",
     "crumbs": [
       "Home",
       "Software",
-      "TeX/LaTeX"
+      "How do I correctly terminate an R session?"
     ]
   },
   {
-    "objectID": "tex.html#the-basics",
-    "href": "tex.html#the-basics",
-    "title": "TeX/LaTeX",
+    "objectID": "terminate-r.html#quit",
+    "href": "terminate-r.html#quit",
+    "title": "How do I correctly terminate an R session?",
     "section": "",
-    "text": "The basic command for running TeX or LaTeX is ‘tex filename’, ‘latex filename’, or ‘pdflatex filename’.\nThere should be a file in your current directory called filename.tex, containing the TeX or LaTeX commands. Upon successful completion of processing, a file called filename.dvi is created and filename.pdf if you used pdflatex. (LaTeX also produces a file called filename.aux with information for tables of content and indices; don’t be alarmed if it tells you it doesn’t exist. However, if you wish to produce a table of contents, index or document with references, you will need the .aux file. Since the .aux file is produced if it is not present, this simply means that you may have to run TeX or LaTeX twice in order to get these features.) It is the .dvi file which you will eventually print to get your final copy.",
+    "text": "When you run an R job, you should properly quit the job when you’re done, by typing “q()” at the R prompt, and responding to the query about “Save workspace image?” appropriately. DO NOT log off without terminating your R job/session, and you should not kill a window with a running R process unless you follow one of the suggestions below.",
     "crumbs": [
       "Home",
       "Software",
-      "TeX/LaTeX"
+      "How do I correctly terminate an R session?"
     ]
   },
   {
-    "objectID": "tex.html#previewing",
-    "href": "tex.html#previewing",
-    "title": "TeX/LaTeX",
+    "objectID": "terminate-r.html#batch",
+    "href": "terminate-r.html#batch",
+    "title": "How do I correctly terminate an R session?",
     "section": "",
-    "text": "You can preview your file on the screen before you print it. Use the command ‘xdvi’, with the dvi file given as an argument, as in xdvi filename.dvi. If you make a change to your dvi file (by reinvoking tex or latex), xdvi will refresh itself as soon as the cursor is returned to it’s window – that is, it is not necessary to quit and restart xdvi every time you reprocess your input file.",
+    "text": "If you want your R job to keep running after you log out, the best way to run R is through the BATCH command, i.e. run a command like this one at the UNIX prompt:\nR CMD BATCH cmds.r output.txt &\nwhere “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type “help(BATCH)” from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.",
     "crumbs": [
       "Home",
       "Software",
-      "TeX/LaTeX"
+      "How do I correctly terminate an R session?"
     ]
   },
   {
-    "objectID": "tex.html#printing",
-    "href": "tex.html#printing",
-    "title": "TeX/LaTeX",
+    "objectID": "terminate-r.html#explicit-invocation",
+    "href": "terminate-r.html#explicit-invocation",
+    "title": "How do I correctly terminate an R session?",
     "section": "",
-    "text": "To print a dvi file called filename.dvi use the command ‘dvips filename’. Dvips automatically routes the output to your default printer (as set by the PRINTER environment variable). You can override the destination printer by adding a -Pprinter to the dvips command line. For example, ‘dvips -Ppr1 filename’ will print filename.dvi on printer pr1.\nIf you wish to print only part of a .dvi file (or you are having trouble printing a large .dvi file), you can print part of the file using the command dviselect. Type man dviselect for information on using the dviselect command.\nIn order to view a LaTeX document which uses PostScript fonts (like Helvetica), you should first convert the document to PostScript, and use ghostview to view it.\nSuppose your document is called sem.tex, then the command ‘latex2e sem’ creates the file sem.dvi, and the command ‘dvips -f -t landscape sem.dvi &gt; sem.ps’ creates the PostScript file sem.ps. This file can be viewed with the command ‘ghostview sem.ps’ and can be printed with the command ‘lpr sem.ps’",
+    "text": "If you don’t want to worry about shutting down your interactive R session, you MUST use either the “-save” or the “-no-save” option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing “R” at the UNIX prompt, type\nR --save\nor\nR --no-save",
     "crumbs": [
       "Home",
       "Software",
-      "TeX/LaTeX"
+      "How do I correctly terminate an R session?"
     ]
   },
   {
-    "objectID": "tex.html#additional-documentation",
-    "href": "tex.html#additional-documentation",
-    "title": "TeX/LaTeX",
+    "objectID": "temp-space.html",
+    "href": "temp-space.html",
+    "title": "Temporary Disk Space",
     "section": "",
-    "text": "The appropriate User’s Guides are:\n\nThe LaTeX WikiBook, http://en.wikibooks.org/wiki/LaTeX\nThe TeXbook, by Donald E. Knuth, Addison-Wesley, 1984\nLaTeX User’s Guide & Reference Manual, by Leslie Lamport, Addison-Wesley, 1986",
+    "text": "There are several places where users can temporarily store data.\n\n\nTemporary storage locations are not backed up and may be removed without notice.\n\n\n\nFiles put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed.\n\n\n\nThe /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers.\n\n\n\nThe /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured.\n\n\n\nDirectories under /scratch/public can be used for projects requiring large files that are modified frequently. The scratch directories exist on the file server and not on the local workstations, however if space becomes limited we may automatically compress/gzip files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users needs. Files that are not actively being used and are compressible should be stored in a compressed format."
+  },
+  {
+    "objectID": "temp-space.html#tmp",
+    "href": "temp-space.html#tmp",
+    "title": "Temporary Disk Space",
+    "section": "",
+    "text": "Files put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed."
+  },
+  {
+    "objectID": "temp-space.html#vartmp-usersshared",
+    "href": "temp-space.html#vartmp-usersshared",
+    "title": "Temporary Disk Space",
+    "section": "",
+    "text": "The /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers."
+  },
+  {
+    "objectID": "temp-space.html#vartmpscratch",
+    "href": "temp-space.html#vartmpscratch",
+    "title": "Temporary Disk Space",
+    "section": "",
+    "text": "The /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured."
+  },
+  {
+    "objectID": "temp-space.html#scratchpublic",
+    "href": "temp-space.html#scratchpublic",
+    "title": "Temporary Disk Space",
+    "section": "",
+    "text": "Directories under /scratch/public can be used for projects requiring large files that are modified frequently. The scratch directories exist on the file server and not on the local workstations, however if space becomes limited we may automatically compress/gzip files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users needs. Files that are not actively being used and are compressible should be stored in a compressed format."
+  },
+  {
+    "objectID": "ssh.html",
+    "href": "ssh.html",
+    "title": "SSH",
+    "section": "",
+    "text": "SSH provides a secure means to access a UNIX command-line shell on a remote computer. It also provides a way of transfering files and securing otherwise unsafe protocols.\nThe term ‘SSH’ may be used to name the secure connection protocol and the name of the primary program that implements the protocol.\n\n\n\n\n\nNewer versions of Windows 10 come with a built-in SSH client. It must be enabled.\nThe most popular SSH program for Windows is putty. The putty executable is a single file, so it can be stored wherever you find it convenient.\n\n\n\nmacOS comes with OpenSSH preinstalled. Open Terminal.app (in /Applications/Utilities/) and use SSH as you would on UNIX.\n\n\n\nLinux comes with OpenSSH preinstalled. If not, you will need to use your distribution’s software management program to install SSH.\n\n\n\nYou can visit the EML’s JupyterHub in any browser. Once you start your server you can launch New &gt; Terminal. This isn’t SSH, but it does let you access the EML in a remote terminal.\n\n\n\n\nThe most common way of logging into a remote site is with ‘ssh username@remotehost’. An alternative is ‘ssh -l username remotehost’. If your local username is the same as your remote username, you needn’t specify it on the command line, e.g. ‘ssh remotehost’.\nHere is an example login:\n$ ssh eml_user@iia.berkeley.edu\nThe authenticity of host 'iia.berkeley.edu' can't be established.\nRSA key fingerprint is xx:yy...\nAre you sure you want to continue connecting (yes/no)? yes\nWarning: Permanently added 'iia.berkeley.edu' (RSA) to the list of known hosts.\neml_user@iia.berkeley.edu's password:  \nYou have mail.\n...\nWhenever SSH connects to another computer, it receives a digital fingerprint of that computer. If you are connecting to a computer for the first time, it asks whether you want to continue, and then saves the fingerprint for the next time you want to connect. If you have connected to that computer before, it checks to make sure that the fingerprint is the same as it was the first time you connected to that machine. If the fingerprints are different, it will warn you that someone might have installed nefarious ssh software on the remote host. This is useful because bad people to break into computer seldom know the passphrase that the remote administrator used to generate the fingerprint with.",
     "crumbs": [
       "Home",
-      "Software",
-      "TeX/LaTeX"
+      "Remote Access",
+      "Secure Shell",
+      "SSH"
     ]
   },
   {
-    "objectID": "tensorflow.html",
-    "href": "tensorflow.html",
-    "title": "Tensorflow",
+    "objectID": "ssh.html#introduction",
+    "href": "ssh.html#introduction",
+    "title": "SSH",
     "section": "",
-    "text": "Recent versions of Tensorflow by default make use of AVX instructions, a feature of newer chips. If Tensorflow is run on these older machines, the instruction is not available and the error occurs. To avoid this, when submitting your job via Slurm, include `-c avx`. If you are directly accessing a compute server, you can run `grep avx /proc/cpuinfo | wc - l`. If the result is `0`, the AVX instructions are not available and you should use a newer machine, such as klein, fargo, quesnay, or sargan.",
+    "text": "SSH provides a secure means to access a UNIX command-line shell on a remote computer. It also provides a way of transfering files and securing otherwise unsafe protocols.\nThe term ‘SSH’ may be used to name the secure connection protocol and the name of the primary program that implements the protocol.",
     "crumbs": [
       "Home",
-      "Software",
-      "Tensorflow"
+      "Remote Access",
+      "Secure Shell",
+      "SSH"
     ]
   },
   {
-    "objectID": "tensorflow.html#why-does-tensorflow-fail-with-an-illegal-instruction",
-    "href": "tensorflow.html#why-does-tensorflow-fail-with-an-illegal-instruction",
-    "title": "Tensorflow",
+    "objectID": "ssh.html#software",
+    "href": "ssh.html#software",
+    "title": "SSH",
     "section": "",
-    "text": "Recent versions of Tensorflow by default make use of AVX instructions, a feature of newer chips. If Tensorflow is run on these older machines, the instruction is not available and the error occurs. To avoid this, when submitting your job via Slurm, include `-c avx`. If you are directly accessing a compute server, you can run `grep avx /proc/cpuinfo | wc - l`. If the result is `0`, the AVX instructions are not available and you should use a newer machine, such as klein, fargo, quesnay, or sargan.",
+    "text": "Newer versions of Windows 10 come with a built-in SSH client. It must be enabled.\nThe most popular SSH program for Windows is putty. The putty executable is a single file, so it can be stored wherever you find it convenient.\n\n\n\nmacOS comes with OpenSSH preinstalled. Open Terminal.app (in /Applications/Utilities/) and use SSH as you would on UNIX.\n\n\n\nLinux comes with OpenSSH preinstalled. If not, you will need to use your distribution’s software management program to install SSH.\n\n\n\nYou can visit the EML’s JupyterHub in any browser. Once you start your server you can launch New &gt; Terminal. This isn’t SSH, but it does let you access the EML in a remote terminal.",
     "crumbs": [
       "Home",
-      "Software",
-      "Tensorflow"
+      "Remote Access",
+      "Secure Shell",
+      "SSH"
     ]
   },
   {
-    "objectID": "tape-backups.html",
-    "href": "tape-backups.html",
+    "objectID": "ssh.html#basic-usage",
+    "href": "ssh.html#basic-usage",
+    "title": "SSH",
+    "section": "",
+    "text": "The most common way of logging into a remote site is with ‘ssh username@remotehost’. An alternative is ‘ssh -l username remotehost’. If your local username is the same as your remote username, you needn’t specify it on the command line, e.g. ‘ssh remotehost’.\nHere is an example login:\n$ ssh eml_user@iia.berkeley.edu\nThe authenticity of host 'iia.berkeley.edu' can't be established.\nRSA key fingerprint is xx:yy...\nAre you sure you want to continue connecting (yes/no)? yes\nWarning: Permanently added 'iia.berkeley.edu' (RSA) to the list of known hosts.\neml_user@iia.berkeley.edu's password:  \nYou have mail.\n...\nWhenever SSH connects to another computer, it receives a digital fingerprint of that computer. If you are connecting to a computer for the first time, it asks whether you want to continue, and then saves the fingerprint for the next time you want to connect. If you have connected to that computer before, it checks to make sure that the fingerprint is the same as it was the first time you connected to that machine. If the fingerprints are different, it will warn you that someone might have installed nefarious ssh software on the remote host. This is useful because bad people to break into computer seldom know the passphrase that the remote administrator used to generate the fingerprint with.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "SSH"
+    ]
+  },
+  {
+    "objectID": "ssh-keys.html",
+    "href": "ssh-keys.html",
+    "title": "Manage SSH Keys",
+    "section": "",
+    "text": "It is possible to open an SSH connection without having to type your password everytime. Instead, you can use a passphrase in combination with SSH “key pairs”. On macOS or UNIX, you will be able to type in your passphrase once at login, and during that session, connect to different remote computers without typing in a password or passphrase each time. On Windows PCs, using the passphrase enables you to connect to different accounts or hosts in the same session seamlessly, without having to type in a password or passphrase every time.\nYou will need to create an SSH keypair to facilitate this process. One key, the private key, stays on the machine you will connect from. The other key, the public key, can be put in any account you connect to. Think of this process as leaving a real key (the public key) in a remote door. The door will only open if you have the associated private key as you approach. This is why you must keep the private key to yourself, otherwise people who have a copy of it can pass through all the doors in which you left your public key.\n\n\nNote: newer versions of Windows 10 may have native SSH clients. If you have the software already installed, see the UNIX and macOS instructions below. You can run the same commands in the Windows command prompt program.\n\n\n\n\nInstall PuTTY on your machine, and go to Start Menu &gt; PuTTY &gt; PuTTYgen.\nA new window will appear. At the bottom, for “Type of key”, choose RSA, ECDSA, or ED25519. Then click the the “Generate” button. You may need to move your mouse about in the small window area in order to generate randomness that the process requires.\nType in a unique passphrase in the Key and Confirm passphrase fields. The passphrase is used to protect your key and you will be asked for it when you connect via SSH using public key authentication.\nClick on the “Save Public Key” and “Save Private Key” buttons to save the keys.\n\n\n\n\nOnce you have generated the key pair, you will need to transfer the public key to the remote site. You can transfer the public key in any number of ways, such as by emailing it to the owner of the remote account or an administrator, or SCP or SFTP if you have access. The public key file is actually just a text file.\n\n\n\nSee the UNIX instructions for this step below as they are identical.\n\n\n\n\n\nYou can generate keys with the ‘ssh-keygen’ command:\n% ssh-keygen -t ed25519\nGenerating public/private ed25519 key pair.\nEnter file in which to save the key ($HOME/.ssh/id_ed25519):    \nEnter passphrase (empty for no passphrase): \nEnter same passphrase again:  Your identification has been saved in $HOME/.ssh/id_ed25519.\nour public key has been saved in $HOME/.ssh/id_ed25519.pub.\n \n\n\n\nOnce you have generated the key pair, you will need to transfer the public key, e.g. id_ed25519.pub, to the remote site. You can transfer the public key in any number of ways, such as FTP, SFTP, or even by email as an attachment. The public key file is actually just a text file. Upload the file to anyplace in the top-level of your home directory.\nTo transfer the file to the remote machine using SCP, execute:\nscp ~/.ssh/id_ed25519.pub username@remotehost:mynewkey.pub\n\n\n\nAppend the public key to ~/.ssh/authorized_keys on the remote machine. SSH to that computer and run:\n$ cat ~/mynewkey.pub &gt;&gt; ~/.ssh/authorized_keys\n$ rm ~/mynewkey.pub",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "Manage SSH Keys"
+    ]
+  },
+  {
+    "objectID": "ssh-keys.html#on-windows",
+    "href": "ssh-keys.html#on-windows",
+    "title": "Manage SSH Keys",
+    "section": "",
+    "text": "Note: newer versions of Windows 10 may have native SSH clients. If you have the software already installed, see the UNIX and macOS instructions below. You can run the same commands in the Windows command prompt program.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "Manage SSH Keys"
+    ]
+  },
+  {
+    "objectID": "ssh-keys.html#creating-the-key-pair",
+    "href": "ssh-keys.html#creating-the-key-pair",
+    "title": "Manage SSH Keys",
+    "section": "",
+    "text": "Install PuTTY on your machine, and go to Start Menu &gt; PuTTY &gt; PuTTYgen.\nA new window will appear. At the bottom, for “Type of key”, choose RSA, ECDSA, or ED25519. Then click the the “Generate” button. You may need to move your mouse about in the small window area in order to generate randomness that the process requires.\nType in a unique passphrase in the Key and Confirm passphrase fields. The passphrase is used to protect your key and you will be asked for it when you connect via SSH using public key authentication.\nClick on the “Save Public Key” and “Save Private Key” buttons to save the keys.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "Manage SSH Keys"
+    ]
+  },
+  {
+    "objectID": "ssh-keys.html#uploading-the-public-key",
+    "href": "ssh-keys.html#uploading-the-public-key",
+    "title": "Manage SSH Keys",
+    "section": "",
+    "text": "Once you have generated the key pair, you will need to transfer the public key to the remote site. You can transfer the public key in any number of ways, such as by emailing it to the owner of the remote account or an administrator, or SCP or SFTP if you have access. The public key file is actually just a text file.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "Manage SSH Keys"
+    ]
+  },
+  {
+    "objectID": "ssh-keys.html#installing-the-public-key",
+    "href": "ssh-keys.html#installing-the-public-key",
+    "title": "Manage SSH Keys",
+    "section": "",
+    "text": "See the UNIX instructions for this step below as they are identical.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "Manage SSH Keys"
+    ]
+  },
+  {
+    "objectID": "ssh-keys.html#on-unix-and-macos",
+    "href": "ssh-keys.html#on-unix-and-macos",
+    "title": "Manage SSH Keys",
+    "section": "",
+    "text": "You can generate keys with the ‘ssh-keygen’ command:\n% ssh-keygen -t ed25519\nGenerating public/private ed25519 key pair.\nEnter file in which to save the key ($HOME/.ssh/id_ed25519):    \nEnter passphrase (empty for no passphrase): \nEnter same passphrase again:  Your identification has been saved in $HOME/.ssh/id_ed25519.\nour public key has been saved in $HOME/.ssh/id_ed25519.pub.\n \n\n\n\nOnce you have generated the key pair, you will need to transfer the public key, e.g. id_ed25519.pub, to the remote site. You can transfer the public key in any number of ways, such as FTP, SFTP, or even by email as an attachment. The public key file is actually just a text file. Upload the file to anyplace in the top-level of your home directory.\nTo transfer the file to the remote machine using SCP, execute:\nscp ~/.ssh/id_ed25519.pub username@remotehost:mynewkey.pub\n\n\n\nAppend the public key to ~/.ssh/authorized_keys on the remote machine. SSH to that computer and run:\n$ cat ~/mynewkey.pub &gt;&gt; ~/.ssh/authorized_keys\n$ rm ~/mynewkey.pub",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "Manage SSH Keys"
+    ]
+  },
+  {
+    "objectID": "site.html",
+    "href": "site.html",
     "title": "Econometrics Laboratory",
     "section": "",
-    "text": "Weekly filesystem snapshots are performed on Sunday night at 10:00 pm. We keep about four weekly snapshots at a time. A weekly snapshot reflects the content of the files prior to the time of the creation of the previous monthly backup tape. Incremental changes to files can be recovered on a weekly basis from subsequent weekly backup tapes for up to five weeks.\nMonthly back-ups are performed on the first Sunday night of each month between the hours of 5:00pm and 12:00 midnight. Monthly backup tapes are retained for six months before being rotated on a new cycle. A monthly backup tape contains all user data.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Backup Schedule"
-    ]
+    "text": "Accounts Disk Space, Printing, Duration\nServices available at EML\nSoftware Archive (ELSA)\nSoftware\nHardware\nCopyright Information\nSecurity Policies\nEligibility Policy\nFacility Rules\nGeneral Rules\nHistory of EML\nAbout EML\nRemote Access to EML\nEML Data\nContact\nSetting up an Account\nAccount Rules"
   },
   {
-    "objectID": "tape-backups.html#backup-schedule",
-    "href": "tape-backups.html#backup-schedule",
+    "objectID": "site.html#site-index",
+    "href": "site.html#site-index",
     "title": "Econometrics Laboratory",
     "section": "",
-    "text": "Weekly filesystem snapshots are performed on Sunday night at 10:00 pm. We keep about four weekly snapshots at a time. A weekly snapshot reflects the content of the files prior to the time of the creation of the previous monthly backup tape. Incremental changes to files can be recovered on a weekly basis from subsequent weekly backup tapes for up to five weeks.\nMonthly back-ups are performed on the first Sunday night of each month between the hours of 5:00pm and 12:00 midnight. Monthly backup tapes are retained for six months before being rotated on a new cycle. A monthly backup tape contains all user data.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Backup Schedule"
-    ]
-  },
-  {
-    "objectID": "tape-backups.html#requesting-file-restoration",
-    "href": "tape-backups.html#requesting-file-restoration",
-    "title": "Econometrics Laboratory",
-    "section": "Requesting File Restoration",
-    "text": "Requesting File Restoration\nContact trouble@econ.berkeley.edu to request file restoration. You need to supply the following information:\n\nThe absolute pathnames of each file/directory you want restored, e.g. /accounts/projects/foobar, or just ~joe/pathname if you are user joe and the pathname is in your home directory.\nThe date and time they were deleted.\nThe date and time the files were last modified (very important).\n\nUsually the restorations can be done within 24 hours of the request. The files can usually be reconstructed to their state prior to the last backup which was done before they were destroyed. Since backups are done once every day, it is possible to lose whatever work was done during the previous 24 hours.\nThere is a $20 service fee (and if applicable, the cost of media) to recover files from any account that has been closed.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Backup Schedule"
-    ]
-  },
-  {
-    "objectID": "tape-backups.html#policy",
-    "href": "tape-backups.html#policy",
-    "title": "Econometrics Laboratory",
-    "section": "Policy",
-    "text": "Policy\nIn the event of a catastrophic disaster, for example, damage resulting from either an earthquake, fire, or bomb, access to the computing facilities and/or entry to Evans Hall may be prohibited on either a temporary or permanent basis. Users must be aware that the EML does not store information off-site. (outside of Evans Hall) If a user has a need for that level of protection, the user is responsible for maintaining their own backups.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Backup Schedule"
-    ]
-  },
-  {
-    "objectID": "ssh-tunnel.html",
-    "href": "ssh-tunnel.html",
-    "title": "SSH Tunneling",
-    "section": "",
-    "text": "An SSH tunnel establishes a connection between your local machine and the remote machine via a TCP port. When you configure your local application to use an SSH tunnel you tell it to connect to your local machine at a specified port, rather than the remote machine. The tunnel then carries your traffic securely to the remote machine.\n\n\nHere is a list of application-specific tunnel settings. Note that in order to bind to ports lower than 1024 on Linux and Mac, one must have administrative privileges.\nTable 1. Tunnel Settings\n\n\n\n\nApplication\n\n\nType\n\n\nListen Port\n\n\n\n\n\n\n\nSMB\n\n\n\nTCP\n\n\n139\n\n\n\n\n\nSMB\n\n\n\nTCP\n\n\n445\n\n\n\n\nPrinting\n\n\nTCP\n\n\n515\n\n\n\n\nRemote Desktop\n\n\nTCP\n\n\n3389\n\n\n\n\nMySQL\n\n\nTCP\n\n\n3306\n\n\n\n\nVNC\n\n\nTCP\n\n\n5901\n\n\n\n\nJSTOR\n\n\nTCP\n\n\n8000\n\n\n\n\n\n\n\n\nClick the plus sign by the SSH menu choice in the left pane of the main window.\nClick on Tunnels.\nSet Source port to the value of the listen port and Destination to DESTINATION_HOST:DESTINATION_PORT given your specific tunneling options. (see table above)\nOnce the information is in place, click the Add button to create the tunnel.\nClick on the Session menu choice at the top of the left hand pane and enter any valid EML host in the Host Name window. Click on Open, and log in with your EML username and password.\nIf you are using an Remote Desktop application, under computername, type localhost:53389\n\n\n\n\nType (on your local machine) in a terminal window:\nssh -l username -L LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME\nwhere LISTEN_PORT is the Listen Port, DESTINATION_PORT is the Destination Port, and EML_HOSTNAME is any EML computer. See our dashboards for a list of EML computers.\nYou may included more than one tunnel on the command-line, for example:\nssh -l username -L 25:DESTINATION_HOST:25 -L 110:DESTINATION_HOST:110 EML_HOSTNAME\n\n\nIf you receive a message that the port is in use or are denied permission, you will need to choose a different port number for the local port. For example you would specify port 5445 rather than 445 as in the example below.\n\n\n\n\n\n\nConnect to the EML file server from off campus:\nssh -L 5445:eml.berkeley.edu:445 username@EML_HOSTNAME\nand then connect your SMB client to smb://localhost:5445/homes (or \\\\localhost:5445\\homes on Windows).\n\n\n\nRead JSTOR from off campus:\nssh -L 8000:www.jstor.org:80 username@EML_HOSTNAME\nand then connect your web browser to http://localhost:8000.\n\n\n\nConnect to an EML server through the VPN:\nssh -L 53389:localhost:3389 username@EML_HOSTNAME\nand then connect your RDP client (e.g. Microsoft Remote Desktop) to localhost:53389.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH Tunneling"
-    ]
-  },
-  {
-    "objectID": "ssh-tunnel.html#typical-configurations",
-    "href": "ssh-tunnel.html#typical-configurations",
-    "title": "SSH Tunneling",
-    "section": "",
-    "text": "Here is a list of application-specific tunnel settings. Note that in order to bind to ports lower than 1024 on Linux and Mac, one must have administrative privileges.\nTable 1. Tunnel Settings\n\n\n\n\nApplication\n\n\nType\n\n\nListen Port\n\n\n\n\n\n\n\nSMB\n\n\n\nTCP\n\n\n139\n\n\n\n\n\nSMB\n\n\n\nTCP\n\n\n445\n\n\n\n\nPrinting\n\n\nTCP\n\n\n515\n\n\n\n\nRemote Desktop\n\n\nTCP\n\n\n3389\n\n\n\n\nMySQL\n\n\nTCP\n\n\n3306\n\n\n\n\nVNC\n\n\nTCP\n\n\n5901\n\n\n\n\nJSTOR\n\n\nTCP\n\n\n8000",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH Tunneling"
-    ]
-  },
-  {
-    "objectID": "ssh-tunnel.html#in-windows---putty",
-    "href": "ssh-tunnel.html#in-windows---putty",
-    "title": "SSH Tunneling",
-    "section": "",
-    "text": "Click the plus sign by the SSH menu choice in the left pane of the main window.\nClick on Tunnels.\nSet Source port to the value of the listen port and Destination to DESTINATION_HOST:DESTINATION_PORT given your specific tunneling options. (see table above)\nOnce the information is in place, click the Add button to create the tunnel.\nClick on the Session menu choice at the top of the left hand pane and enter any valid EML host in the Host Name window. Click on Open, and log in with your EML username and password.\nIf you are using an Remote Desktop application, under computername, type localhost:53389",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH Tunneling"
-    ]
-  },
-  {
-    "objectID": "ssh-tunnel.html#macos-and-linux",
-    "href": "ssh-tunnel.html#macos-and-linux",
-    "title": "SSH Tunneling",
-    "section": "",
-    "text": "Type (on your local machine) in a terminal window:\nssh -l username -L LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME\nwhere LISTEN_PORT is the Listen Port, DESTINATION_PORT is the Destination Port, and EML_HOSTNAME is any EML computer. See our dashboards for a list of EML computers.\nYou may included more than one tunnel on the command-line, for example:\nssh -l username -L 25:DESTINATION_HOST:25 -L 110:DESTINATION_HOST:110 EML_HOSTNAME\n\n\nIf you receive a message that the port is in use or are denied permission, you will need to choose a different port number for the local port. For example you would specify port 5445 rather than 445 as in the example below.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH Tunneling"
-    ]
-  },
-  {
-    "objectID": "ssh-tunnel.html#examples",
-    "href": "ssh-tunnel.html#examples",
-    "title": "SSH Tunneling",
-    "section": "",
-    "text": "Connect to the EML file server from off campus:\nssh -L 5445:eml.berkeley.edu:445 username@EML_HOSTNAME\nand then connect your SMB client to smb://localhost:5445/homes (or \\\\localhost:5445\\homes on Windows).\n\n\n\nRead JSTOR from off campus:\nssh -L 8000:www.jstor.org:80 username@EML_HOSTNAME\nand then connect your web browser to http://localhost:8000.\n\n\n\nConnect to an EML server through the VPN:\nssh -L 53389:localhost:3389 username@EML_HOSTNAME\nand then connect your RDP client (e.g. Microsoft Remote Desktop) to localhost:53389.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH Tunneling"
-    ]
-  },
-  {
-    "objectID": "software.html",
-    "href": "software.html",
-    "title": "Software Inventory",
-    "section": "",
-    "text": "Ubuntu Linux on all servers and workstations\n\n\n\nSAS\nStata and Stata MP (xstata/xstata-mp)\nGauss\nR\nPython\nTensorflow\nPytorch\nTSP (Available only for download)\n\n\n\nMATLAB\nMathematica\nOctave\nmatElike\nIpopt\nMaple\nOpenBLAS\nIBM CPLEX Solver for Matlab\n\n\n\nNAG (Numerical Algorithms Group Library)\nIMSL Fortran Numerical Library\nStatTransfer\nAdobe Acrobat (Available only on Macs)\n\n\n\nGNU: gc, g++, gfortran\nIntel: icc, ifort\n\n\n\nC\nC++\nPerl\nPython\nPHP\nFortran\nJulia\n\n\n\nvi\nEmacs\npico\nTeX, LaTeX, LaTeX2e\nkate\nTextMate (Available only on Macs)\nLyx\n\n\n\nMS Office (Available only on Macs)\nLibre Office\n\n\n\ndynare++\n7zip\nAspera Connect\nPdftk",
-    "crumbs": [
-      "Home",
-      "Software",
-      "Software Inventory"
-    ]
-  },
-  {
-    "objectID": "software.html#operating-systems-and-applications-software",
-    "href": "software.html#operating-systems-and-applications-software",
-    "title": "Software Inventory",
-    "section": "",
-    "text": "Ubuntu Linux on all servers and workstations",
-    "crumbs": [
-      "Home",
-      "Software",
-      "Software Inventory"
-    ]
-  },
-  {
-    "objectID": "software.html#statistics-econometrics-and-machine-learning",
-    "href": "software.html#statistics-econometrics-and-machine-learning",
-    "title": "Software Inventory",
-    "section": "",
-    "text": "SAS\nStata and Stata MP (xstata/xstata-mp)\nGauss\nR\nPython\nTensorflow\nPytorch\nTSP (Available only for download)",
-    "crumbs": [
-      "Home",
-      "Software",
-      "Software Inventory"
-    ]
-  },
-  {
-    "objectID": "software.html#mathematics",
-    "href": "software.html#mathematics",
-    "title": "Software Inventory",
-    "section": "",
-    "text": "MATLAB\nMathematica\nOctave\nmatElike\nIpopt\nMaple\nOpenBLAS\nIBM CPLEX Solver for Matlab",
-    "crumbs": [
-      "Home",
-      "Software",
-      "Software Inventory"
-    ]
-  },
-  {
-    "objectID": "software.html#tools-and-utilities",
-    "href": "software.html#tools-and-utilities",
-    "title": "Software Inventory",
-    "section": "",
-    "text": "NAG (Numerical Algorithms Group Library)\nIMSL Fortran Numerical Library\nStatTransfer\nAdobe Acrobat (Available only on Macs)",
-    "crumbs": [
-      "Home",
-      "Software",
-      "Software Inventory"
-    ]
-  },
-  {
-    "objectID": "software.html#compilers",
-    "href": "software.html#compilers",
-    "title": "Software Inventory",
-    "section": "",
-    "text": "GNU: gc, g++, gfortran\nIntel: icc, ifort",
-    "crumbs": [
-      "Home",
-      "Software",
-      "Software Inventory"
-    ]
-  },
-  {
-    "objectID": "software.html#programmingscripting",
-    "href": "software.html#programmingscripting",
-    "title": "Software Inventory",
-    "section": "",
-    "text": "C\nC++\nPerl\nPython\nPHP\nFortran\nJulia",
-    "crumbs": [
-      "Home",
-      "Software",
-      "Software Inventory"
-    ]
-  },
-  {
-    "objectID": "software.html#text-editing-and-document-preparation",
-    "href": "software.html#text-editing-and-document-preparation",
-    "title": "Software Inventory",
-    "section": "",
-    "text": "vi\nEmacs\npico\nTeX, LaTeX, LaTeX2e\nkate\nTextMate (Available only on Macs)\nLyx",
-    "crumbs": [
-      "Home",
-      "Software",
-      "Software Inventory"
-    ]
-  },
-  {
-    "objectID": "software.html#office-applications",
-    "href": "software.html#office-applications",
-    "title": "Software Inventory",
-    "section": "",
-    "text": "MS Office (Available only on Macs)\nLibre Office",
-    "crumbs": [
-      "Home",
-      "Software",
-      "Software Inventory"
-    ]
-  },
-  {
-    "objectID": "software.html#other-applications",
-    "href": "software.html#other-applications",
-    "title": "Software Inventory",
-    "section": "",
-    "text": "dynare++\n7zip\nAspera Connect\nPdftk",
-    "crumbs": [
-      "Home",
-      "Software",
-      "Software Inventory"
-    ]
-  },
-  {
-    "objectID": "sftp-scp.html",
-    "href": "sftp-scp.html",
-    "title": "Secure File Transfer",
-    "section": "",
-    "text": "You can start sftp in much the same way you start ssh, e.g. ‘sftp username@remotehost’. Once you are connected, the environment functions like traditional ftp:\n$ sftp eml_user@iia.berkeley.edu\nsftp&gt; cd /tmp\nsftp&gt; put Book1.gnumeric\nUploading Book1.gnumeric to /tmp/Book1.gnumeric\nsftp&gt; get asdf\nFetching /tmp/asdf to asdf\nsftp&gt; quit\n \n\n\n\nSCP is useful for non-interactive file copying. The following will copy file into the user’s home direcory on the remote side:\n$ scp file eml_user@iia.berkeley.edu:\neml_user@iia.berkeley.edu's password: \nfile                100% |*****************************|   595       00:00\n \nThe following will copy the remote directory dir/ to the local directory dir2/ via the ‘-r’ (recursive) command-line switch:\n$ scp -r eml_user@iia.berkeley.edu:dir dir2/\neml_user@iia.berkeley.edu's password: \n$ ls dir2/\ndir",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "File Transfer",
-      "Secure File Transfer"
-    ]
-  },
-  {
-    "objectID": "sftp-scp.html#sftp",
-    "href": "sftp-scp.html#sftp",
-    "title": "Secure File Transfer",
-    "section": "",
-    "text": "You can start sftp in much the same way you start ssh, e.g. ‘sftp username@remotehost’. Once you are connected, the environment functions like traditional ftp:\n$ sftp eml_user@iia.berkeley.edu\nsftp&gt; cd /tmp\nsftp&gt; put Book1.gnumeric\nUploading Book1.gnumeric to /tmp/Book1.gnumeric\nsftp&gt; get asdf\nFetching /tmp/asdf to asdf\nsftp&gt; quit",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "File Transfer",
-      "Secure File Transfer"
-    ]
-  },
-  {
-    "objectID": "sftp-scp.html#scp",
-    "href": "sftp-scp.html#scp",
-    "title": "Secure File Transfer",
-    "section": "",
-    "text": "SCP is useful for non-interactive file copying. The following will copy file into the user’s home direcory on the remote side:\n$ scp file eml_user@iia.berkeley.edu:\neml_user@iia.berkeley.edu's password: \nfile                100% |*****************************|   595       00:00\n \nThe following will copy the remote directory dir/ to the local directory dir2/ via the ‘-r’ (recursive) command-line switch:\n$ scp -r eml_user@iia.berkeley.edu:dir dir2/\neml_user@iia.berkeley.edu's password: \n$ ls dir2/\ndir",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "File Transfer",
-      "Secure File Transfer"
-    ]
+    "text": "Accounts Disk Space, Printing, Duration\nServices available at EML\nSoftware Archive (ELSA)\nSoftware\nHardware\nCopyright Information\nSecurity Policies\nEligibility Policy\nFacility Rules\nGeneral Rules\nHistory of EML\nAbout EML\nRemote Access to EML\nEML Data\nContact\nSetting up an Account\nAccount Rules"
   },
   {
     "objectID": "services.html",
@@ -643,6 +514,7 @@
     "crumbs": [
       "Home",
       "Accounts",
+      "Policies and Rules",
       "Account Rules"
     ]
   },
@@ -655,6 +527,7 @@
     "crumbs": [
       "Home",
       "Accounts",
+      "Policies and Rules",
       "Restrictions and Limitations"
     ]
   },
@@ -667,6 +540,7 @@
     "crumbs": [
       "Home",
       "Accounts",
+      "Policies and Rules",
       "Restrictions and Limitations"
     ]
   },
@@ -833,6 +707,7 @@
     "crumbs": [
       "Home",
       "Accounts",
+      "Policies and Rules",
       "Computer Lab Rules"
     ]
   },
@@ -1066,63 +941,63 @@
     ]
   },
   {
-    "objectID": "disk-space.html#table-of-contents",
-    "href": "disk-space.html#table-of-contents",
-    "title": "Econometrics Laboratory",
-    "section": "Table Of Contents",
-    "text": "Table Of Contents\n\nDetermining usage\nTemporary disk space\nCompression\nDeleting files",
+    "objectID": "disk-space.html",
+    "href": "disk-space.html",
+    "title": "Manage Disk Space",
+    "section": "",
+    "text": "Each user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs. If you need additional space, please submit your request to manager@econ.berkeley.edu.\nThe commands below can show you how disk space you are consuming. For additional information, consult the respective man pages.\n\n\n\n\nbigfiles\n\n\nRecursively searches a directory for big files.\n\n\n\n\ndu -h\n\n\nRecursive summary of disk use. Gives disk use for each directory and all its subdirectories.\n\n\n\n\nls -l\n\n\nLists size of all files in the current directory.\n\n\n\n\nfind ~ -ls\n\n\nMost information: lists size of all files in all directories and subdirectories.\n\n\n\n\nquota\n\n\nReports your disk quota and current disk use.\n\n\n\n\n\n\n\nThere are several places where users can temporarily store data. These areas are often larger than home directories, but they are not backed up and may be removed without notice.\n\n\nFiles put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed.\n\n\n\nThe /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers.\n\n\n\nThe /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured.\n\n\n\nDirectories under /scratch exist on the file server and can be accessed from every machine. Unlike users’ home directories, they are not backed up, but can usually accommodate larger data files. If space becomes limited we may automatically compress files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users. Files that are not actively being used should be compressed if possible.\nSend email to manager@econ.berkeley.edu to request space under /scratch.\n\n\n\n\nInfrequently accessed files may be compressed to save disk space.\ngunzip file.gz                         Uncompresses file.gz to file\ngzip file                              Compresses file to file.gz\ntar xzf file.tar.gz                    Uncompresses file.tar.gz to the contents of file.tar\ntar czf file.tar.gz file1 [file2...]   Compresses one or more files into file.tar.gz\nunzip file.zip                         Uncompresses file.zip\nzip file.zip file1 [file2...]          Compresses one or more files to file.zip\nuncompress x y ...                     Uncompresses x.Z, y.Z, ... to x, y, ...\ncompress x y file1 [file2...]          Compresses x, y, ... to x.Z, y.Z, ...\nzcat x.Z y.Z ...                       Prints the compressed file(s) to the terminal\\\nSee the UNIX manual pages for the above programs by using the ‘man’, for example ‘man gzip’.\n\n\n\nTo remove files and directories type:\nrm file         Removes 'file' provided you have write permission on it. \nrm -f file      Removes 'file' if you have write permission in the directory containing it. \nrmdir dir       Removes the empty directory 'dir'. \nrm -rf dir      Recursively remove dir including every file and subdirectory. Use with caution.\nSome applications leave behind files that may be removed without adversely affecting the program.\n\nWeb browser cache files can be removed. You can clear your browser disk cache, as well as instruct the browser to set aside less disk space to use for its cache, in the program’s Preference window, usually under ‘Advanced’.\nPostScript, .aux, and .log files produced by LaTeX can be recreated as necessary from the corresponding .tex file.\nCompiled object files, often with the suffix .o, produced by C, C++, or Fortran compilers, can usually be deleted. If need be, they can be recreated from the original programs that produced them.\nCompilers tend to create lots of big binary files such as ‘.o’ and ‘.out’ files. ‘.out’ files in particular can be quite large. If you have such files which have been unused for several days and which you don’t intend to use for several more days, they should be removed. (They can easily be recreated if you need them; see ‘help learn_fortran’ for more discussion.) The size of ‘.out’ files which you do need can be reduced somewhat by stripping them. Type:\nstrip a.out     Strips an already existing 'a.out'. \nf77 -s ...      Creates a pre-stripped '.out' file when using f77. \ncc -s ...       Similarly for cc.\nWhen programs crash, they sometimes report ‘Core dumped’ indicating that a large file called ‘core’ has been created in the program’s current working directory. A user may disable core dumps by adding “ulimit -c 0” to ~/.bashrc.",
     "crumbs": [
       "Home",
-      "Accounts",
-      "How do I manage disk space?"
+      "Data and Storage",
+      "Manage Disk Space"
     ]
   },
   {
     "objectID": "disk-space.html#determining-usage",
     "href": "disk-space.html#determining-usage",
-    "title": "Econometrics Laboratory",
-    "section": "Determining usage",
-    "text": "Determining usage\nEach user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs. If you need additional space, please submit your request to manager@econ.berkeley.edu.\nThe commands below can show you how disk space you are consuming. For additional information, consult the respective man pages.\n\n\n\n\nbigfiles\n\n\nRecursively searches a directory for big files.\n\n\n\n\ndu -h\n\n\nRecursive summary of disk use. Gives disk use for each directory and all its subdirectories.\n\n\n\n\nls -l\n\n\nLists size of all files in the current directory.\n\n\n\n\nfind ~ -ls\n\n\nMost information: lists size of all files in all directories and subdirectories.\n\n\n\n\nquota\n\n\nReports your disk quota and current disk use.",
+    "title": "Manage Disk Space",
+    "section": "",
+    "text": "Each user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs. If you need additional space, please submit your request to manager@econ.berkeley.edu.\nThe commands below can show you how disk space you are consuming. For additional information, consult the respective man pages.\n\n\n\n\nbigfiles\n\n\nRecursively searches a directory for big files.\n\n\n\n\ndu -h\n\n\nRecursive summary of disk use. Gives disk use for each directory and all its subdirectories.\n\n\n\n\nls -l\n\n\nLists size of all files in the current directory.\n\n\n\n\nfind ~ -ls\n\n\nMost information: lists size of all files in all directories and subdirectories.\n\n\n\n\nquota\n\n\nReports your disk quota and current disk use.",
     "crumbs": [
       "Home",
-      "Accounts",
-      "How do I manage disk space?"
+      "Data and Storage",
+      "Manage Disk Space"
     ]
   },
   {
     "objectID": "disk-space.html#temporary-disk-space",
     "href": "disk-space.html#temporary-disk-space",
-    "title": "Econometrics Laboratory",
-    "section": "Temporary disk space",
-    "text": "Temporary disk space\nThere are several places where users can temporarily store data. These areas are often larger than home directories, but they are not backed up and may be removed without notice.\n\n/tmp\nFiles put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed.\n\n\n/var/tmp, /Users/Shared\nThe /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers.\n\n\n/var/tmp/scratch\nThe /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured.\n\n\n/scratch\nDirectories under /scratch exist on the file server and can be accessed from every machine. Unlike users’ home directories, they are not backed up, but can usually accommodate larger data files. If space becomes limited we may automatically compress files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users. Files that are not actively being used should be compressed if possible.\nSend email to manager@econ.berkeley.edu to request space under /scratch.",
+    "title": "Manage Disk Space",
+    "section": "",
+    "text": "There are several places where users can temporarily store data. These areas are often larger than home directories, but they are not backed up and may be removed without notice.\n\n\nFiles put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed.\n\n\n\nThe /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers.\n\n\n\nThe /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured.\n\n\n\nDirectories under /scratch exist on the file server and can be accessed from every machine. Unlike users’ home directories, they are not backed up, but can usually accommodate larger data files. If space becomes limited we may automatically compress files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users. Files that are not actively being used should be compressed if possible.\nSend email to manager@econ.berkeley.edu to request space under /scratch.",
     "crumbs": [
       "Home",
-      "Accounts",
-      "How do I manage disk space?"
+      "Data and Storage",
+      "Manage Disk Space"
     ]
   },
   {
     "objectID": "disk-space.html#compression",
     "href": "disk-space.html#compression",
-    "title": "Econometrics Laboratory",
-    "section": "Compression",
-    "text": "Compression\nInfrequently accessed files may be compressed to save disk space.\ngunzip file.gz                         Uncompresses file.gz to file\ngzip file                              Compresses file to file.gz\ntar xzf file.tar.gz                    Uncompresses file.tar.gz to the contents of file.tar\ntar czf file.tar.gz file1 [file2...]   Compresses one or more files into file.tar.gz\nunzip file.zip                         Uncompresses file.zip\nzip file.zip file1 [file2...]          Compresses one or more files to file.zip\nuncompress x y ...                     Uncompresses x.Z, y.Z, ... to x, y, ...\ncompress x y file1 [file2...]          Compresses x, y, ... to x.Z, y.Z, ...\nzcat x.Z y.Z ...                       Prints the compressed file(s) to the terminal\\\nSee the UNIX manual pages for the above programs by using the ‘man’, for example ‘man gzip’.",
+    "title": "Manage Disk Space",
+    "section": "",
+    "text": "Infrequently accessed files may be compressed to save disk space.\ngunzip file.gz                         Uncompresses file.gz to file\ngzip file                              Compresses file to file.gz\ntar xzf file.tar.gz                    Uncompresses file.tar.gz to the contents of file.tar\ntar czf file.tar.gz file1 [file2...]   Compresses one or more files into file.tar.gz\nunzip file.zip                         Uncompresses file.zip\nzip file.zip file1 [file2...]          Compresses one or more files to file.zip\nuncompress x y ...                     Uncompresses x.Z, y.Z, ... to x, y, ...\ncompress x y file1 [file2...]          Compresses x, y, ... to x.Z, y.Z, ...\nzcat x.Z y.Z ...                       Prints the compressed file(s) to the terminal\\\nSee the UNIX manual pages for the above programs by using the ‘man’, for example ‘man gzip’.",
     "crumbs": [
       "Home",
-      "Accounts",
-      "How do I manage disk space?"
+      "Data and Storage",
+      "Manage Disk Space"
     ]
   },
   {
     "objectID": "disk-space.html#deleting-files",
     "href": "disk-space.html#deleting-files",
-    "title": "Econometrics Laboratory",
-    "section": "Deleting Files",
-    "text": "Deleting Files\nTo remove files and directories type:\nrm file         Removes 'file' provided you have write permission on it. \nrm -f file      Removes 'file' if you have write permission in the directory containing it. \nrmdir dir       Removes the empty directory 'dir'. \nrm -rf dir      Recursively remove dir including every file and subdirectory. Use with caution.\nSome applications leave behind files that may be removed without adversely affecting the program.\n\nWeb browser cache files can be removed. You can clear your browser disk cache, as well as instruct the browser to set aside less disk space to use for its cache, in the program’s Preference window, usually under ‘Advanced’.\nPostScript, .aux, and .log files produced by LaTeX can be recreated as necessary from the corresponding .tex file.\nCompiled object files, often with the suffix .o, produced by C, C++, or Fortran compilers, can usually be deleted. If need be, they can be recreated from the original programs that produced them.\nCompilers tend to create lots of big binary files such as ‘.o’ and ‘.out’ files. ‘.out’ files in particular can be quite large. If you have such files which have been unused for several days and which you don’t intend to use for several more days, they should be removed. (They can easily be recreated if you need them; see ‘help learn_fortran’ for more discussion.) The size of ‘.out’ files which you do need can be reduced somewhat by stripping them. Type:\nstrip a.out     Strips an already existing 'a.out'. \nf77 -s ...      Creates a pre-stripped '.out' file when using f77. \ncc -s ...       Similarly for cc.\nWhen programs crash, they sometimes report ‘Core dumped’ indicating that a large file called ‘core’ has been created in the program’s current working directory. A user may disable core dumps by adding “ulimit -c 0” to ~/.bashrc.",
+    "title": "Manage Disk Space",
+    "section": "",
+    "text": "To remove files and directories type:\nrm file         Removes 'file' provided you have write permission on it. \nrm -f file      Removes 'file' if you have write permission in the directory containing it. \nrmdir dir       Removes the empty directory 'dir'. \nrm -rf dir      Recursively remove dir including every file and subdirectory. Use with caution.\nSome applications leave behind files that may be removed without adversely affecting the program.\n\nWeb browser cache files can be removed. You can clear your browser disk cache, as well as instruct the browser to set aside less disk space to use for its cache, in the program’s Preference window, usually under ‘Advanced’.\nPostScript, .aux, and .log files produced by LaTeX can be recreated as necessary from the corresponding .tex file.\nCompiled object files, often with the suffix .o, produced by C, C++, or Fortran compilers, can usually be deleted. If need be, they can be recreated from the original programs that produced them.\nCompilers tend to create lots of big binary files such as ‘.o’ and ‘.out’ files. ‘.out’ files in particular can be quite large. If you have such files which have been unused for several days and which you don’t intend to use for several more days, they should be removed. (They can easily be recreated if you need them; see ‘help learn_fortran’ for more discussion.) The size of ‘.out’ files which you do need can be reduced somewhat by stripping them. Type:\nstrip a.out     Strips an already existing 'a.out'. \nf77 -s ...      Creates a pre-stripped '.out' file when using f77. \ncc -s ...       Similarly for cc.\nWhen programs crash, they sometimes report ‘Core dumped’ indicating that a large file called ‘core’ has been created in the program’s current working directory. A user may disable core dumps by adding “ulimit -c 0” to ~/.bashrc.",
     "crumbs": [
       "Home",
-      "Accounts",
-      "How do I manage disk space?"
+      "Data and Storage",
+      "Manage Disk Space"
     ]
   },
   {
@@ -1134,6 +1009,7 @@
     "crumbs": [
       "Home",
       "Accounts",
+      "Policies and Rules",
       "Copyright Compliance Agreement"
     ]
   },
@@ -1234,11 +1110,35 @@
     ]
   },
   {
+    "objectID": "account-types.html",
+    "href": "account-types.html",
+    "title": "Account Types",
+    "section": "",
+    "text": "Account Types\nComputer accounts are issued to individuals in the following categories:\n\nClass accounts: Economics courses which require computer access may obtain class accounts. Class accounts are assigned to individual students by the course instructor or TA. Course instructors should contact the EML Manager in room 643 Evans. Please allow 2 weeks for class accounts to be added to the system.\nDepartmental accounts: Currently registered students (undergraduates or graduates) and faculty in the Economics Departments, and employees of the Economics Department.\nCampus student accounts: Currently registered students (undergraduates or graduates) from other UC departments with a demonstrated need for specific EML services (such as statistical packages). This type of account cannot be used for work that is funded by either grants and/or outside funds. This type of account requires faculty approval and must be renewed each semester.\nCampus staff accounts: Currently active UC staff employees from other UC departments with a demonstrated need for specific EML services (such as statistical packages). This type of account cannot be used for work that is funded by either grants and/or outside funds and must be renewed annually.\nResearch accounts: Persons working within the UC system on specific research projects which are funded by grants and/or outside funds.\nOfficial guests (visiting faculty) and visitors (associate research fellows) in the Department, at the invitation (and with the approval) of faculty.\nAlumni accounts: Past students of the Economics Department. The alumni category also includes past employees of the Economics Department. This type of account is issued to individuals who have left the Department in good standing and is only valid for one year after separation from the Department. It may not be renewed. If one of the above relationships with the Department resumes, then a new account may be issued, but the alumni account is terminated after one year. The alumni account only provides for up to 5MB under the home directory. It will be necessary to obtain a contrator account if additional resources are required.\nContractor accounts: An individual may obtain an account on a recharge basis. The person will be billed monthly for the use of system resources (login time, cpu time, disk usage, and printing). Any person who does not fall into one of the above categories may apply for a contractor account. This type of account is valid indefinitely, as long as the account is in good standing.",
+    "crumbs": [
+      "Home",
+      "Accounts",
+      "Account Types"
+    ]
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "The Econometrics Laboratory",
     "section": "",
     "text": "The Econometrics Laboratory\nThe Econometrics Laboratory (EML) is a computing facility dedicated to instruction at the graduate level and research by graduate students and faculty in the Department of Economics. This work concentrates on new developments in computationally intensive econometrics.\nEML is a unit of the Institute of Business and Economic Research, located in space provided by the Department of Economics at the University of California, Berkeley.\nThe Laboratory’s Director is David Card. He is the Class of 1950 Professor of Economics and the Director for the Center for Labor Economics at the University of California, Berkeley. He is also the Director of the Labor Studies Program at the National Bureau of Economic Research."
+  },
+  {
+    "objectID": "account-apply.html",
+    "href": "account-apply.html",
+    "title": "Apply For an Account",
+    "section": "",
+    "text": "Apply For an Account\nFill in the EML application form\n\nThose with Calnet ID\nThose without Calnet ID\nResearch Project Account\n\nRead the EML rules, the UC Berkeley computer use policies, and all accompanying guidelines that accompany the application form.\nObtain a faculty signature (if you are a graduate student), or a principal investigator’s signature for research project accounts, and the EML manager’s signature (643 Evans Hall).\nSign the project account application form stating that you have read the rules, you understand them, and you will comply with them.\nTake the project account application form to 643 Evans to establish your login name and your password.\nYou will receive an e-mail confirming your account has been set up.",
+    "crumbs": [
+      "Home",
+      "Accounts",
+      "Apply For an Account"
+    ]
   },
   {
     "objectID": "account_rules.html",
@@ -1249,6 +1149,7 @@
     "crumbs": [
       "Home",
       "Accounts",
+      "Policies and Rules",
       "Account Policies"
     ]
   },
@@ -1353,25 +1254,13 @@
   {
     "objectID": "disk-quota.html",
     "href": "disk-quota.html",
-    "title": "Econometrics Laboratory",
+    "title": "Disk Quota",
     "section": "",
-    "text": "Each user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs.\nAt login, a message will be printed to alert you if you are approaching your quota. If you ignore this message past the time printed, any files that you attempt to create or append to may be truncated. Once you are over quota, programs may fail to run and you may also be prevented from logging in.\nThe best practice is to check your quota occasionally, and if it appears you are nearing your quota, you should see what files you may be able to remove from your account to provide yourself with more disk space.\nYou should never need to remove files that you need in order to meet your disk quota. If you anticipate a long-term need for an unusually large amount of disk space, please notify the EML staff before the need becomes acute, so that we can find a suitable location for your files without encroaching on the files of other users. Additional disk space may be requested by sending mail to manager@econ.berkeley.edu.\nThe disk quota consists of two limits: the soft limit, which you will be warned for exceeding, and the hard limit, which you will be prevented from exceeding. See also quota(1) in the UNIX manual.\nHere are the default quotas in megabytes (MB):\n\nTable 1. Default Quotas\n\n\n\n\nAccount Type\n\n\nSoft Limit\n\n\nHard Limit\n\n\n\n\n\n\nGraduate Students\n\n\n5 GB\n\n\n1.5 GB\n\n\n\n\nFaculty\n\n\n5 GB\n\n\n1.5 GB\n\n\n\n\nVisitor and Guest\n\n\n100 MB\n\n\n110 MB\n\n\n\n\nEach user is expected to monitor their own disk usage and to attempt to stay within their quota. To view your current usage, type ‘quota’ on the command line.",
+    "text": "Disk Quota\nEach user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs.\nAt login, a message will be printed to alert you if you are approaching your quota. If you ignore this message past the time printed, any files that you attempt to create or append to may be truncated. Once you are over quota, programs may fail to run and you may also be prevented from logging in.\nThe best practice is to check your quota occasionally, and if it appears you are nearing your quota, you should see what files you may be able to remove from your account to provide yourself with more disk space.\nYou should never need to remove files that you need in order to meet your disk quota. If you anticipate a long-term need for an unusually large amount of disk space, please notify the EML staff before the need becomes acute, so that we can find a suitable location for your files without encroaching on the files of other users. Additional disk space may be requested by sending mail to manager@econ.berkeley.edu.\nThe disk quota consists of two limits: the soft limit, which you will be warned for exceeding, and the hard limit, which you will be prevented from exceeding. See also quota(1) in the UNIX manual.\nHere are the default quotas in megabytes (MB):\nTable 1. Default Quotas\n\n\n\n\nAccount Type\n\n\nSoft Limit\n\n\nHard Limit\n\n\n\n\n\n\nGraduate Students\n\n\n5 GB\n\n\n1.5 GB\n\n\n\n\nFaculty\n\n\n5 GB\n\n\n1.5 GB\n\n\n\n\nVisitor and Guest\n\n\n100 MB\n\n\n110 MB\n\n\n\n\nEach user is expected to monitor their own disk usage and to attempt to stay within their quota. To view your current usage, type ‘quota’ on the command line.",
     "crumbs": [
       "Home",
-      "Accounts",
-      "What is my disk quota?"
-    ]
-  },
-  {
-    "objectID": "disk-quota.html#what-is-my-disk-quota",
-    "href": "disk-quota.html#what-is-my-disk-quota",
-    "title": "Econometrics Laboratory",
-    "section": "",
-    "text": "Each user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs.\nAt login, a message will be printed to alert you if you are approaching your quota. If you ignore this message past the time printed, any files that you attempt to create or append to may be truncated. Once you are over quota, programs may fail to run and you may also be prevented from logging in.\nThe best practice is to check your quota occasionally, and if it appears you are nearing your quota, you should see what files you may be able to remove from your account to provide yourself with more disk space.\nYou should never need to remove files that you need in order to meet your disk quota. If you anticipate a long-term need for an unusually large amount of disk space, please notify the EML staff before the need becomes acute, so that we can find a suitable location for your files without encroaching on the files of other users. Additional disk space may be requested by sending mail to manager@econ.berkeley.edu.\nThe disk quota consists of two limits: the soft limit, which you will be warned for exceeding, and the hard limit, which you will be prevented from exceeding. See also quota(1) in the UNIX manual.\nHere are the default quotas in megabytes (MB):\n\nTable 1. Default Quotas\n\n\n\n\nAccount Type\n\n\nSoft Limit\n\n\nHard Limit\n\n\n\n\n\n\nGraduate Students\n\n\n5 GB\n\n\n1.5 GB\n\n\n\n\nFaculty\n\n\n5 GB\n\n\n1.5 GB\n\n\n\n\nVisitor and Guest\n\n\n100 MB\n\n\n110 MB\n\n\n\n\nEach user is expected to monitor their own disk usage and to attempt to stay within their quota. To view your current usage, type ‘quota’ on the command line.",
-    "crumbs": [
-      "Home",
-      "Accounts",
-      "What is my disk quota?"
+      "Data and Storage",
+      "Disk Quota"
     ]
   },
   {
@@ -1383,6 +1272,7 @@
     "crumbs": [
       "Home",
       "Accounts",
+      "Policies and Rules",
       "Eligibility Policies"
     ]
   },
@@ -1712,6 +1602,7 @@
     "crumbs": [
       "Home",
       "Accounts",
+      "Policies and Rules",
       "Rules and Policies"
     ]
   },
@@ -1748,6 +1639,7 @@
     "crumbs": [
       "Home",
       "Accounts",
+      "Policies and Rules",
       "Compute Server Rules"
     ]
   },
@@ -1776,279 +1668,359 @@
     ]
   },
   {
-    "objectID": "setup.html",
-    "href": "setup.html",
-    "title": "Set Up an EML Account",
+    "objectID": "sftp-scp.html",
+    "href": "sftp-scp.html",
+    "title": "Secure File Transfer",
     "section": "",
-    "text": "Set Up an EML Account\nFill in the EML application form\n\nThose with Calnet ID\nThose without Calnet ID\nResearch Project Account\n\nRead the EML rules, the UC Berkeley computer use policies, and all accompanying guidelines that accompany the application form.\nObtain a faculty signature (if you are a graduate student), or a principal investigator’s signature for research project accounts, and the EML manager’s signature (643 Evans Hall).\nSign the project account application form stating that you have read the rules, you understand them, and you will comply with them.\nTake the project account application form to 643 Evans to establish your login name and your password.\nYou will receive an e-mail confirming your account has been set up.",
+    "text": "You can start sftp in much the same way you start ssh, e.g. ‘sftp username@remotehost’. Once you are connected, the environment functions like traditional ftp:\n$ sftp eml_user@iia.berkeley.edu\nsftp&gt; cd /tmp\nsftp&gt; put Book1.gnumeric\nUploading Book1.gnumeric to /tmp/Book1.gnumeric\nsftp&gt; get asdf\nFetching /tmp/asdf to asdf\nsftp&gt; quit\n \n\n\n\nSCP is useful for non-interactive file copying. The following will copy file into the user’s home direcory on the remote side:\n$ scp file eml_user@iia.berkeley.edu:\neml_user@iia.berkeley.edu's password: \nfile                100% |*****************************|   595       00:00\n \nThe following will copy the remote directory dir/ to the local directory dir2/ via the ‘-r’ (recursive) command-line switch:\n$ scp -r eml_user@iia.berkeley.edu:dir dir2/\neml_user@iia.berkeley.edu's password: \n$ ls dir2/\ndir",
     "crumbs": [
       "Home",
-      "Accounts",
-      "Set Up an EML Account"
+      "Remote Access",
+      "File Transfer",
+      "Secure File Transfer"
     ]
   },
   {
-    "objectID": "site.html",
-    "href": "site.html",
+    "objectID": "sftp-scp.html#sftp",
+    "href": "sftp-scp.html#sftp",
+    "title": "Secure File Transfer",
+    "section": "",
+    "text": "You can start sftp in much the same way you start ssh, e.g. ‘sftp username@remotehost’. Once you are connected, the environment functions like traditional ftp:\n$ sftp eml_user@iia.berkeley.edu\nsftp&gt; cd /tmp\nsftp&gt; put Book1.gnumeric\nUploading Book1.gnumeric to /tmp/Book1.gnumeric\nsftp&gt; get asdf\nFetching /tmp/asdf to asdf\nsftp&gt; quit",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "File Transfer",
+      "Secure File Transfer"
+    ]
+  },
+  {
+    "objectID": "sftp-scp.html#scp",
+    "href": "sftp-scp.html#scp",
+    "title": "Secure File Transfer",
+    "section": "",
+    "text": "SCP is useful for non-interactive file copying. The following will copy file into the user’s home direcory on the remote side:\n$ scp file eml_user@iia.berkeley.edu:\neml_user@iia.berkeley.edu's password: \nfile                100% |*****************************|   595       00:00\n \nThe following will copy the remote directory dir/ to the local directory dir2/ via the ‘-r’ (recursive) command-line switch:\n$ scp -r eml_user@iia.berkeley.edu:dir dir2/\neml_user@iia.berkeley.edu's password: \n$ ls dir2/\ndir",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "File Transfer",
+      "Secure File Transfer"
+    ]
+  },
+  {
+    "objectID": "software.html",
+    "href": "software.html",
+    "title": "Software Inventory",
+    "section": "",
+    "text": "Ubuntu Linux on all servers and workstations\n\n\n\nSAS\nStata and Stata MP (xstata/xstata-mp)\nGauss\nR\nPython\nTensorflow\nPytorch\nTSP (Available only for download)\n\n\n\nMATLAB\nMathematica\nOctave\nmatElike\nIpopt\nMaple\nOpenBLAS\nIBM CPLEX Solver for Matlab\n\n\n\nNAG (Numerical Algorithms Group Library)\nIMSL Fortran Numerical Library\nStatTransfer\nAdobe Acrobat (Available only on Macs)\n\n\n\nGNU: gc, g++, gfortran\nIntel: icc, ifort\n\n\n\nC\nC++\nPerl\nPython\nPHP\nFortran\nJulia\n\n\n\nvi\nEmacs\npico\nTeX, LaTeX, LaTeX2e\nkate\nTextMate (Available only on Macs)\nLyx\n\n\n\nMS Office (Available only on Macs)\nLibre Office\n\n\n\ndynare++\n7zip\nAspera Connect\nPdftk",
+    "crumbs": [
+      "Home",
+      "Software",
+      "Software Inventory"
+    ]
+  },
+  {
+    "objectID": "software.html#operating-systems-and-applications-software",
+    "href": "software.html#operating-systems-and-applications-software",
+    "title": "Software Inventory",
+    "section": "",
+    "text": "Ubuntu Linux on all servers and workstations",
+    "crumbs": [
+      "Home",
+      "Software",
+      "Software Inventory"
+    ]
+  },
+  {
+    "objectID": "software.html#statistics-econometrics-and-machine-learning",
+    "href": "software.html#statistics-econometrics-and-machine-learning",
+    "title": "Software Inventory",
+    "section": "",
+    "text": "SAS\nStata and Stata MP (xstata/xstata-mp)\nGauss\nR\nPython\nTensorflow\nPytorch\nTSP (Available only for download)",
+    "crumbs": [
+      "Home",
+      "Software",
+      "Software Inventory"
+    ]
+  },
+  {
+    "objectID": "software.html#mathematics",
+    "href": "software.html#mathematics",
+    "title": "Software Inventory",
+    "section": "",
+    "text": "MATLAB\nMathematica\nOctave\nmatElike\nIpopt\nMaple\nOpenBLAS\nIBM CPLEX Solver for Matlab",
+    "crumbs": [
+      "Home",
+      "Software",
+      "Software Inventory"
+    ]
+  },
+  {
+    "objectID": "software.html#tools-and-utilities",
+    "href": "software.html#tools-and-utilities",
+    "title": "Software Inventory",
+    "section": "",
+    "text": "NAG (Numerical Algorithms Group Library)\nIMSL Fortran Numerical Library\nStatTransfer\nAdobe Acrobat (Available only on Macs)",
+    "crumbs": [
+      "Home",
+      "Software",
+      "Software Inventory"
+    ]
+  },
+  {
+    "objectID": "software.html#compilers",
+    "href": "software.html#compilers",
+    "title": "Software Inventory",
+    "section": "",
+    "text": "GNU: gc, g++, gfortran\nIntel: icc, ifort",
+    "crumbs": [
+      "Home",
+      "Software",
+      "Software Inventory"
+    ]
+  },
+  {
+    "objectID": "software.html#programmingscripting",
+    "href": "software.html#programmingscripting",
+    "title": "Software Inventory",
+    "section": "",
+    "text": "C\nC++\nPerl\nPython\nPHP\nFortran\nJulia",
+    "crumbs": [
+      "Home",
+      "Software",
+      "Software Inventory"
+    ]
+  },
+  {
+    "objectID": "software.html#text-editing-and-document-preparation",
+    "href": "software.html#text-editing-and-document-preparation",
+    "title": "Software Inventory",
+    "section": "",
+    "text": "vi\nEmacs\npico\nTeX, LaTeX, LaTeX2e\nkate\nTextMate (Available only on Macs)\nLyx",
+    "crumbs": [
+      "Home",
+      "Software",
+      "Software Inventory"
+    ]
+  },
+  {
+    "objectID": "software.html#office-applications",
+    "href": "software.html#office-applications",
+    "title": "Software Inventory",
+    "section": "",
+    "text": "MS Office (Available only on Macs)\nLibre Office",
+    "crumbs": [
+      "Home",
+      "Software",
+      "Software Inventory"
+    ]
+  },
+  {
+    "objectID": "software.html#other-applications",
+    "href": "software.html#other-applications",
+    "title": "Software Inventory",
+    "section": "",
+    "text": "dynare++\n7zip\nAspera Connect\nPdftk",
+    "crumbs": [
+      "Home",
+      "Software",
+      "Software Inventory"
+    ]
+  },
+  {
+    "objectID": "ssh-tunnel.html",
+    "href": "ssh-tunnel.html",
+    "title": "SSH Tunneling",
+    "section": "",
+    "text": "An SSH tunnel establishes a connection between your local machine and the remote machine via a TCP port. When you configure your local application to use an SSH tunnel you tell it to connect to your local machine at a specified port, rather than the remote machine. The tunnel then carries your traffic securely to the remote machine.\n\n\nHere is a list of application-specific tunnel settings. Note that in order to bind to ports lower than 1024 on Linux and Mac, one must have administrative privileges.\nTable 1. Tunnel Settings\n\n\n\n\nApplication\n\n\nType\n\n\nListen Port\n\n\n\n\n\n\n\nSMB\n\n\n\nTCP\n\n\n139\n\n\n\n\n\nSMB\n\n\n\nTCP\n\n\n445\n\n\n\n\nPrinting\n\n\nTCP\n\n\n515\n\n\n\n\nRemote Desktop\n\n\nTCP\n\n\n3389\n\n\n\n\nMySQL\n\n\nTCP\n\n\n3306\n\n\n\n\nVNC\n\n\nTCP\n\n\n5901\n\n\n\n\nJSTOR\n\n\nTCP\n\n\n8000\n\n\n\n\n\n\n\n\nClick the plus sign by the SSH menu choice in the left pane of the main window.\nClick on Tunnels.\nSet Source port to the value of the listen port and Destination to DESTINATION_HOST:DESTINATION_PORT given your specific tunneling options. (see table above)\nOnce the information is in place, click the Add button to create the tunnel.\nClick on the Session menu choice at the top of the left hand pane and enter any valid EML host in the Host Name window. Click on Open, and log in with your EML username and password.\nIf you are using an Remote Desktop application, under computername, type localhost:53389\n\n\n\n\nType (on your local machine) in a terminal window:\nssh -l username -L LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME\nwhere LISTEN_PORT is the Listen Port, DESTINATION_PORT is the Destination Port, and EML_HOSTNAME is any EML computer. See our dashboards for a list of EML computers.\nYou may included more than one tunnel on the command-line, for example:\nssh -l username -L 25:DESTINATION_HOST:25 -L 110:DESTINATION_HOST:110 EML_HOSTNAME\n\n\nIf you receive a message that the port is in use or are denied permission, you will need to choose a different port number for the local port. For example you would specify port 5445 rather than 445 as in the example below.\n\n\n\n\n\n\nConnect to the EML file server from off campus:\nssh -L 5445:eml.berkeley.edu:445 username@EML_HOSTNAME\nand then connect your SMB client to smb://localhost:5445/homes (or \\\\localhost:5445\\homes on Windows).\n\n\n\nRead JSTOR from off campus:\nssh -L 8000:www.jstor.org:80 username@EML_HOSTNAME\nand then connect your web browser to http://localhost:8000.\n\n\n\nConnect to an EML server through the VPN:\nssh -L 53389:localhost:3389 username@EML_HOSTNAME\nand then connect your RDP client (e.g. Microsoft Remote Desktop) to localhost:53389.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "SSH Tunneling"
+    ]
+  },
+  {
+    "objectID": "ssh-tunnel.html#typical-configurations",
+    "href": "ssh-tunnel.html#typical-configurations",
+    "title": "SSH Tunneling",
+    "section": "",
+    "text": "Here is a list of application-specific tunnel settings. Note that in order to bind to ports lower than 1024 on Linux and Mac, one must have administrative privileges.\nTable 1. Tunnel Settings\n\n\n\n\nApplication\n\n\nType\n\n\nListen Port\n\n\n\n\n\n\n\nSMB\n\n\n\nTCP\n\n\n139\n\n\n\n\n\nSMB\n\n\n\nTCP\n\n\n445\n\n\n\n\nPrinting\n\n\nTCP\n\n\n515\n\n\n\n\nRemote Desktop\n\n\nTCP\n\n\n3389\n\n\n\n\nMySQL\n\n\nTCP\n\n\n3306\n\n\n\n\nVNC\n\n\nTCP\n\n\n5901\n\n\n\n\nJSTOR\n\n\nTCP\n\n\n8000",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "SSH Tunneling"
+    ]
+  },
+  {
+    "objectID": "ssh-tunnel.html#in-windows---putty",
+    "href": "ssh-tunnel.html#in-windows---putty",
+    "title": "SSH Tunneling",
+    "section": "",
+    "text": "Click the plus sign by the SSH menu choice in the left pane of the main window.\nClick on Tunnels.\nSet Source port to the value of the listen port and Destination to DESTINATION_HOST:DESTINATION_PORT given your specific tunneling options. (see table above)\nOnce the information is in place, click the Add button to create the tunnel.\nClick on the Session menu choice at the top of the left hand pane and enter any valid EML host in the Host Name window. Click on Open, and log in with your EML username and password.\nIf you are using an Remote Desktop application, under computername, type localhost:53389",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "SSH Tunneling"
+    ]
+  },
+  {
+    "objectID": "ssh-tunnel.html#macos-and-linux",
+    "href": "ssh-tunnel.html#macos-and-linux",
+    "title": "SSH Tunneling",
+    "section": "",
+    "text": "Type (on your local machine) in a terminal window:\nssh -l username -L LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME\nwhere LISTEN_PORT is the Listen Port, DESTINATION_PORT is the Destination Port, and EML_HOSTNAME is any EML computer. See our dashboards for a list of EML computers.\nYou may included more than one tunnel on the command-line, for example:\nssh -l username -L 25:DESTINATION_HOST:25 -L 110:DESTINATION_HOST:110 EML_HOSTNAME\n\n\nIf you receive a message that the port is in use or are denied permission, you will need to choose a different port number for the local port. For example you would specify port 5445 rather than 445 as in the example below.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "SSH Tunneling"
+    ]
+  },
+  {
+    "objectID": "ssh-tunnel.html#examples",
+    "href": "ssh-tunnel.html#examples",
+    "title": "SSH Tunneling",
+    "section": "",
+    "text": "Connect to the EML file server from off campus:\nssh -L 5445:eml.berkeley.edu:445 username@EML_HOSTNAME\nand then connect your SMB client to smb://localhost:5445/homes (or \\\\localhost:5445\\homes on Windows).\n\n\n\nRead JSTOR from off campus:\nssh -L 8000:www.jstor.org:80 username@EML_HOSTNAME\nand then connect your web browser to http://localhost:8000.\n\n\n\nConnect to an EML server through the VPN:\nssh -L 53389:localhost:3389 username@EML_HOSTNAME\nand then connect your RDP client (e.g. Microsoft Remote Desktop) to localhost:53389.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "SSH Tunneling"
+    ]
+  },
+  {
+    "objectID": "tape-backups.html",
+    "href": "tape-backups.html",
     "title": "Econometrics Laboratory",
     "section": "",
-    "text": "Accounts Disk Space, Printing, Duration\nServices available at EML\nSoftware Archive (ELSA)\nSoftware\nHardware\nCopyright Information\nSecurity Policies\nEligibility Policy\nFacility Rules\nGeneral Rules\nHistory of EML\nAbout EML\nRemote Access to EML\nEML Data\nContact\nSetting up an Account\nAccount Rules"
+    "text": "Weekly filesystem snapshots are performed on Sunday night at 10:00 pm. We keep about four weekly snapshots at a time. A weekly snapshot reflects the content of the files prior to the time of the creation of the previous monthly backup tape. Incremental changes to files can be recovered on a weekly basis from subsequent weekly backup tapes for up to five weeks.\nMonthly back-ups are performed on the first Sunday night of each month between the hours of 5:00pm and 12:00 midnight. Monthly backup tapes are retained for six months before being rotated on a new cycle. A monthly backup tape contains all user data.",
+    "crumbs": [
+      "Home",
+      "Data and Storage",
+      "Backup Schedule"
+    ]
   },
   {
-    "objectID": "site.html#site-index",
-    "href": "site.html#site-index",
+    "objectID": "tape-backups.html#backup-schedule",
+    "href": "tape-backups.html#backup-schedule",
     "title": "Econometrics Laboratory",
     "section": "",
-    "text": "Accounts Disk Space, Printing, Duration\nServices available at EML\nSoftware Archive (ELSA)\nSoftware\nHardware\nCopyright Information\nSecurity Policies\nEligibility Policy\nFacility Rules\nGeneral Rules\nHistory of EML\nAbout EML\nRemote Access to EML\nEML Data\nContact\nSetting up an Account\nAccount Rules"
-  },
-  {
-    "objectID": "ssh-keys.html",
-    "href": "ssh-keys.html",
-    "title": "Manage SSH Keys",
-    "section": "",
-    "text": "It is possible to open an SSH connection without having to type your password everytime. Instead, you can use a passphrase in combination with SSH “key pairs”. On macOS or UNIX, you will be able to type in your passphrase once at login, and during that session, connect to different remote computers without typing in a password or passphrase each time. On Windows PCs, using the passphrase enables you to connect to different accounts or hosts in the same session seamlessly, without having to type in a password or passphrase every time.\nYou will need to create an SSH keypair to facilitate this process. One key, the private key, stays on the machine you will connect from. The other key, the public key, can be put in any account you connect to. Think of this process as leaving a real key (the public key) in a remote door. The door will only open if you have the associated private key as you approach. This is why you must keep the private key to yourself, otherwise people who have a copy of it can pass through all the doors in which you left your public key.\n\n\nNote: newer versions of Windows 10 may have native SSH clients. If you have the software already installed, see the UNIX and macOS instructions below. You can run the same commands in the Windows command prompt program.\n\n\n\n\nInstall PuTTY on your machine, and go to Start Menu &gt; PuTTY &gt; PuTTYgen.\nA new window will appear. At the bottom, for “Type of key”, choose RSA, ECDSA, or ED25519. Then click the the “Generate” button. You may need to move your mouse about in the small window area in order to generate randomness that the process requires.\nType in a unique passphrase in the Key and Confirm passphrase fields. The passphrase is used to protect your key and you will be asked for it when you connect via SSH using public key authentication.\nClick on the “Save Public Key” and “Save Private Key” buttons to save the keys.\n\n\n\n\nOnce you have generated the key pair, you will need to transfer the public key to the remote site. You can transfer the public key in any number of ways, such as by emailing it to the owner of the remote account or an administrator, or SCP or SFTP if you have access. The public key file is actually just a text file.\n\n\n\nSee the UNIX instructions for this step below as they are identical.\n\n\n\n\n\nYou can generate keys with the ‘ssh-keygen’ command:\n% ssh-keygen -t ed25519\nGenerating public/private ed25519 key pair.\nEnter file in which to save the key ($HOME/.ssh/id_ed25519):    \nEnter passphrase (empty for no passphrase): \nEnter same passphrase again:  Your identification has been saved in $HOME/.ssh/id_ed25519.\nour public key has been saved in $HOME/.ssh/id_ed25519.pub.\n \n\n\n\nOnce you have generated the key pair, you will need to transfer the public key, e.g. id_ed25519.pub, to the remote site. You can transfer the public key in any number of ways, such as FTP, SFTP, or even by email as an attachment. The public key file is actually just a text file. Upload the file to anyplace in the top-level of your home directory.\nTo transfer the file to the remote machine using SCP, execute:\nscp ~/.ssh/id_ed25519.pub username@remotehost:mynewkey.pub\n\n\n\nAppend the public key to ~/.ssh/authorized_keys on the remote machine. SSH to that computer and run:\n$ cat ~/mynewkey.pub &gt;&gt; ~/.ssh/authorized_keys\n$ rm ~/mynewkey.pub",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "Manage SSH Keys"
-    ]
-  },
-  {
-    "objectID": "ssh-keys.html#on-windows",
-    "href": "ssh-keys.html#on-windows",
-    "title": "Manage SSH Keys",
-    "section": "",
-    "text": "Note: newer versions of Windows 10 may have native SSH clients. If you have the software already installed, see the UNIX and macOS instructions below. You can run the same commands in the Windows command prompt program.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "Manage SSH Keys"
-    ]
-  },
-  {
-    "objectID": "ssh-keys.html#creating-the-key-pair",
-    "href": "ssh-keys.html#creating-the-key-pair",
-    "title": "Manage SSH Keys",
-    "section": "",
-    "text": "Install PuTTY on your machine, and go to Start Menu &gt; PuTTY &gt; PuTTYgen.\nA new window will appear. At the bottom, for “Type of key”, choose RSA, ECDSA, or ED25519. Then click the the “Generate” button. You may need to move your mouse about in the small window area in order to generate randomness that the process requires.\nType in a unique passphrase in the Key and Confirm passphrase fields. The passphrase is used to protect your key and you will be asked for it when you connect via SSH using public key authentication.\nClick on the “Save Public Key” and “Save Private Key” buttons to save the keys.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "Manage SSH Keys"
-    ]
-  },
-  {
-    "objectID": "ssh-keys.html#uploading-the-public-key",
-    "href": "ssh-keys.html#uploading-the-public-key",
-    "title": "Manage SSH Keys",
-    "section": "",
-    "text": "Once you have generated the key pair, you will need to transfer the public key to the remote site. You can transfer the public key in any number of ways, such as by emailing it to the owner of the remote account or an administrator, or SCP or SFTP if you have access. The public key file is actually just a text file.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "Manage SSH Keys"
-    ]
-  },
-  {
-    "objectID": "ssh-keys.html#installing-the-public-key",
-    "href": "ssh-keys.html#installing-the-public-key",
-    "title": "Manage SSH Keys",
-    "section": "",
-    "text": "See the UNIX instructions for this step below as they are identical.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "Manage SSH Keys"
-    ]
-  },
-  {
-    "objectID": "ssh-keys.html#on-unix-and-macos",
-    "href": "ssh-keys.html#on-unix-and-macos",
-    "title": "Manage SSH Keys",
-    "section": "",
-    "text": "You can generate keys with the ‘ssh-keygen’ command:\n% ssh-keygen -t ed25519\nGenerating public/private ed25519 key pair.\nEnter file in which to save the key ($HOME/.ssh/id_ed25519):    \nEnter passphrase (empty for no passphrase): \nEnter same passphrase again:  Your identification has been saved in $HOME/.ssh/id_ed25519.\nour public key has been saved in $HOME/.ssh/id_ed25519.pub.\n \n\n\n\nOnce you have generated the key pair, you will need to transfer the public key, e.g. id_ed25519.pub, to the remote site. You can transfer the public key in any number of ways, such as FTP, SFTP, or even by email as an attachment. The public key file is actually just a text file. Upload the file to anyplace in the top-level of your home directory.\nTo transfer the file to the remote machine using SCP, execute:\nscp ~/.ssh/id_ed25519.pub username@remotehost:mynewkey.pub\n\n\n\nAppend the public key to ~/.ssh/authorized_keys on the remote machine. SSH to that computer and run:\n$ cat ~/mynewkey.pub &gt;&gt; ~/.ssh/authorized_keys\n$ rm ~/mynewkey.pub",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "Manage SSH Keys"
-    ]
-  },
-  {
-    "objectID": "ssh.html",
-    "href": "ssh.html",
-    "title": "SSH",
-    "section": "",
-    "text": "SSH provides a secure means to access a UNIX command-line shell on a remote computer. It also provides a way of transfering files and securing otherwise unsafe protocols.\nThe term ‘SSH’ may be used to name the secure connection protocol and the name of the primary program that implements the protocol.\n\n\n\n\n\nNewer versions of Windows 10 come with a built-in SSH client. It must be enabled.\nThe most popular SSH program for Windows is putty. The putty executable is a single file, so it can be stored wherever you find it convenient.\n\n\n\nmacOS comes with OpenSSH preinstalled. Open Terminal.app (in /Applications/Utilities/) and use SSH as you would on UNIX.\n\n\n\nLinux comes with OpenSSH preinstalled. If not, you will need to use your distribution’s software management program to install SSH.\n\n\n\nYou can visit the EML’s JupyterHub in any browser. Once you start your server you can launch New &gt; Terminal. This isn’t SSH, but it does let you access the EML in a remote terminal.\n\n\n\n\nThe most common way of logging into a remote site is with ‘ssh username@remotehost’. An alternative is ‘ssh -l username remotehost’. If your local username is the same as your remote username, you needn’t specify it on the command line, e.g. ‘ssh remotehost’.\nHere is an example login:\n$ ssh eml_user@iia.berkeley.edu\nThe authenticity of host 'iia.berkeley.edu' can't be established.\nRSA key fingerprint is xx:yy...\nAre you sure you want to continue connecting (yes/no)? yes\nWarning: Permanently added 'iia.berkeley.edu' (RSA) to the list of known hosts.\neml_user@iia.berkeley.edu's password:  \nYou have mail.\n...\nWhenever SSH connects to another computer, it receives a digital fingerprint of that computer. If you are connecting to a computer for the first time, it asks whether you want to continue, and then saves the fingerprint for the next time you want to connect. If you have connected to that computer before, it checks to make sure that the fingerprint is the same as it was the first time you connected to that machine. If the fingerprints are different, it will warn you that someone might have installed nefarious ssh software on the remote host. This is useful because bad people to break into computer seldom know the passphrase that the remote administrator used to generate the fingerprint with.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH"
-    ]
-  },
-  {
-    "objectID": "ssh.html#introduction",
-    "href": "ssh.html#introduction",
-    "title": "SSH",
-    "section": "",
-    "text": "SSH provides a secure means to access a UNIX command-line shell on a remote computer. It also provides a way of transfering files and securing otherwise unsafe protocols.\nThe term ‘SSH’ may be used to name the secure connection protocol and the name of the primary program that implements the protocol.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH"
-    ]
-  },
-  {
-    "objectID": "ssh.html#software",
-    "href": "ssh.html#software",
-    "title": "SSH",
-    "section": "",
-    "text": "Newer versions of Windows 10 come with a built-in SSH client. It must be enabled.\nThe most popular SSH program for Windows is putty. The putty executable is a single file, so it can be stored wherever you find it convenient.\n\n\n\nmacOS comes with OpenSSH preinstalled. Open Terminal.app (in /Applications/Utilities/) and use SSH as you would on UNIX.\n\n\n\nLinux comes with OpenSSH preinstalled. If not, you will need to use your distribution’s software management program to install SSH.\n\n\n\nYou can visit the EML’s JupyterHub in any browser. Once you start your server you can launch New &gt; Terminal. This isn’t SSH, but it does let you access the EML in a remote terminal.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH"
-    ]
-  },
-  {
-    "objectID": "ssh.html#basic-usage",
-    "href": "ssh.html#basic-usage",
-    "title": "SSH",
-    "section": "",
-    "text": "The most common way of logging into a remote site is with ‘ssh username@remotehost’. An alternative is ‘ssh -l username remotehost’. If your local username is the same as your remote username, you needn’t specify it on the command line, e.g. ‘ssh remotehost’.\nHere is an example login:\n$ ssh eml_user@iia.berkeley.edu\nThe authenticity of host 'iia.berkeley.edu' can't be established.\nRSA key fingerprint is xx:yy...\nAre you sure you want to continue connecting (yes/no)? yes\nWarning: Permanently added 'iia.berkeley.edu' (RSA) to the list of known hosts.\neml_user@iia.berkeley.edu's password:  \nYou have mail.\n...\nWhenever SSH connects to another computer, it receives a digital fingerprint of that computer. If you are connecting to a computer for the first time, it asks whether you want to continue, and then saves the fingerprint for the next time you want to connect. If you have connected to that computer before, it checks to make sure that the fingerprint is the same as it was the first time you connected to that machine. If the fingerprints are different, it will warn you that someone might have installed nefarious ssh software on the remote host. This is useful because bad people to break into computer seldom know the passphrase that the remote administrator used to generate the fingerprint with.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH"
-    ]
-  },
-  {
-    "objectID": "temp-space.html",
-    "href": "temp-space.html",
-    "title": "Temporary Disk Space",
-    "section": "",
-    "text": "There are several places where users can temporarily store data.\n\n\nTemporary storage locations are not backed up and may be removed without notice.\n\n\n\nFiles put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed.\n\n\n\nThe /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers.\n\n\n\nThe /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured.\n\n\n\nDirectories under /scratch/public can be used for projects requiring large files that are modified frequently. The scratch directories exist on the file server and not on the local workstations, however if space becomes limited we may automatically compress/gzip files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users needs. Files that are not actively being used and are compressible should be stored in a compressed format.",
+    "text": "Weekly filesystem snapshots are performed on Sunday night at 10:00 pm. We keep about four weekly snapshots at a time. A weekly snapshot reflects the content of the files prior to the time of the creation of the previous monthly backup tape. Incremental changes to files can be recovered on a weekly basis from subsequent weekly backup tapes for up to five weeks.\nMonthly back-ups are performed on the first Sunday night of each month between the hours of 5:00pm and 12:00 midnight. Monthly backup tapes are retained for six months before being rotated on a new cycle. A monthly backup tape contains all user data.",
     "crumbs": [
       "Home",
       "Data and Storage",
-      "Temporary Disk Space"
+      "Backup Schedule"
     ]
   },
   {
-    "objectID": "temp-space.html#tmp",
-    "href": "temp-space.html#tmp",
-    "title": "Temporary Disk Space",
-    "section": "",
-    "text": "Files put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed.",
+    "objectID": "tape-backups.html#requesting-file-restoration",
+    "href": "tape-backups.html#requesting-file-restoration",
+    "title": "Econometrics Laboratory",
+    "section": "Requesting File Restoration",
+    "text": "Requesting File Restoration\nContact trouble@econ.berkeley.edu to request file restoration. You need to supply the following information:\n\nThe absolute pathnames of each file/directory you want restored, e.g. /accounts/projects/foobar, or just ~joe/pathname if you are user joe and the pathname is in your home directory.\nThe date and time they were deleted.\nThe date and time the files were last modified (very important).\n\nUsually the restorations can be done within 24 hours of the request. The files can usually be reconstructed to their state prior to the last backup which was done before they were destroyed. Since backups are done once every day, it is possible to lose whatever work was done during the previous 24 hours.\nThere is a $20 service fee (and if applicable, the cost of media) to recover files from any account that has been closed.",
     "crumbs": [
       "Home",
       "Data and Storage",
-      "Temporary Disk Space"
+      "Backup Schedule"
     ]
   },
   {
-    "objectID": "temp-space.html#vartmp-usersshared",
-    "href": "temp-space.html#vartmp-usersshared",
-    "title": "Temporary Disk Space",
-    "section": "",
-    "text": "The /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers.",
+    "objectID": "tape-backups.html#policy",
+    "href": "tape-backups.html#policy",
+    "title": "Econometrics Laboratory",
+    "section": "Policy",
+    "text": "Policy\nIn the event of a catastrophic disaster, for example, damage resulting from either an earthquake, fire, or bomb, access to the computing facilities and/or entry to Evans Hall may be prohibited on either a temporary or permanent basis. Users must be aware that the EML does not store information off-site. (outside of Evans Hall) If a user has a need for that level of protection, the user is responsible for maintaining their own backups.",
     "crumbs": [
       "Home",
       "Data and Storage",
-      "Temporary Disk Space"
+      "Backup Schedule"
     ]
   },
   {
-    "objectID": "temp-space.html#vartmpscratch",
-    "href": "temp-space.html#vartmpscratch",
-    "title": "Temporary Disk Space",
+    "objectID": "tensorflow.html",
+    "href": "tensorflow.html",
+    "title": "Tensorflow",
     "section": "",
-    "text": "The /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Temporary Disk Space"
-    ]
-  },
-  {
-    "objectID": "temp-space.html#scratchpublic",
-    "href": "temp-space.html#scratchpublic",
-    "title": "Temporary Disk Space",
-    "section": "",
-    "text": "Directories under /scratch/public can be used for projects requiring large files that are modified frequently. The scratch directories exist on the file server and not on the local workstations, however if space becomes limited we may automatically compress/gzip files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users needs. Files that are not actively being used and are compressible should be stored in a compressed format.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Temporary Disk Space"
-    ]
-  },
-  {
-    "objectID": "terminate-r.html",
-    "href": "terminate-r.html",
-    "title": "How do I correctly terminate an R session?",
-    "section": "",
-    "text": "When you run an R job, you should properly quit the job when you’re done, by typing “q()” at the R prompt, and responding to the query about “Save workspace image?” appropriately. DO NOT log off without terminating your R job/session, and you should not kill a window with a running R process unless you follow one of the suggestions below.\n\n\n\nIf you want your R job to keep running after you log out, the best way to run R is through the BATCH command, i.e. run a command like this one at the UNIX prompt:\nR CMD BATCH cmds.r output.txt &\nwhere “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type “help(BATCH)” from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.\n\n\n\nIf you don’t want to worry about shutting down your interactive R session, you MUST use either the “-save” or the “-no-save” option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing “R” at the UNIX prompt, type\nR --save\nor\nR --no-save",
+    "text": "Recent versions of Tensorflow by default make use of AVX instructions, a feature of newer chips. If Tensorflow is run on these older machines, the instruction is not available and the error occurs. To avoid this, when submitting your job via Slurm, include `-c avx`. If you are directly accessing a compute server, you can run `grep avx /proc/cpuinfo | wc - l`. If the result is `0`, the AVX instructions are not available and you should use a newer machine, such as klein, fargo, quesnay, or sargan.",
     "crumbs": [
       "Home",
       "Software",
-      "How do I correctly terminate an R session?"
+      "Tensorflow"
     ]
   },
   {
-    "objectID": "terminate-r.html#quit",
-    "href": "terminate-r.html#quit",
-    "title": "How do I correctly terminate an R session?",
+    "objectID": "tensorflow.html#why-does-tensorflow-fail-with-an-illegal-instruction",
+    "href": "tensorflow.html#why-does-tensorflow-fail-with-an-illegal-instruction",
+    "title": "Tensorflow",
     "section": "",
-    "text": "When you run an R job, you should properly quit the job when you’re done, by typing “q()” at the R prompt, and responding to the query about “Save workspace image?” appropriately. DO NOT log off without terminating your R job/session, and you should not kill a window with a running R process unless you follow one of the suggestions below.",
+    "text": "Recent versions of Tensorflow by default make use of AVX instructions, a feature of newer chips. If Tensorflow is run on these older machines, the instruction is not available and the error occurs. To avoid this, when submitting your job via Slurm, include `-c avx`. If you are directly accessing a compute server, you can run `grep avx /proc/cpuinfo | wc - l`. If the result is `0`, the AVX instructions are not available and you should use a newer machine, such as klein, fargo, quesnay, or sargan.",
     "crumbs": [
       "Home",
       "Software",
-      "How do I correctly terminate an R session?"
+      "Tensorflow"
     ]
   },
   {
-    "objectID": "terminate-r.html#batch",
-    "href": "terminate-r.html#batch",
-    "title": "How do I correctly terminate an R session?",
+    "objectID": "tex.html",
+    "href": "tex.html",
+    "title": "TeX/LaTeX",
     "section": "",
-    "text": "If you want your R job to keep running after you log out, the best way to run R is through the BATCH command, i.e. run a command like this one at the UNIX prompt:\nR CMD BATCH cmds.r output.txt &\nwhere “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type “help(BATCH)” from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.",
+    "text": "This is the local guide to using Tex or LaTeX and should not serve as a substitute for the appropriate User’s Guides, referenced below.\n\n\nThe basic command for running TeX or LaTeX is ‘tex filename’, ‘latex filename’, or ‘pdflatex filename’.\nThere should be a file in your current directory called filename.tex, containing the TeX or LaTeX commands. Upon successful completion of processing, a file called filename.dvi is created and filename.pdf if you used pdflatex. (LaTeX also produces a file called filename.aux with information for tables of content and indices; don’t be alarmed if it tells you it doesn’t exist. However, if you wish to produce a table of contents, index or document with references, you will need the .aux file. Since the .aux file is produced if it is not present, this simply means that you may have to run TeX or LaTeX twice in order to get these features.) It is the .dvi file which you will eventually print to get your final copy.\n\n\n\nYou can preview your file on the screen before you print it. Use the command ‘xdvi’, with the dvi file given as an argument, as in xdvi filename.dvi. If you make a change to your dvi file (by reinvoking tex or latex), xdvi will refresh itself as soon as the cursor is returned to it’s window – that is, it is not necessary to quit and restart xdvi every time you reprocess your input file.\n\n\n\nTo print a dvi file called filename.dvi use the command ‘dvips filename’. Dvips automatically routes the output to your default printer (as set by the PRINTER environment variable). You can override the destination printer by adding a -Pprinter to the dvips command line. For example, ‘dvips -Ppr1 filename’ will print filename.dvi on printer pr1.\nIf you wish to print only part of a .dvi file (or you are having trouble printing a large .dvi file), you can print part of the file using the command dviselect. Type man dviselect for information on using the dviselect command.\nIn order to view a LaTeX document which uses PostScript fonts (like Helvetica), you should first convert the document to PostScript, and use ghostview to view it.\nSuppose your document is called sem.tex, then the command ‘latex2e sem’ creates the file sem.dvi, and the command ‘dvips -f -t landscape sem.dvi &gt; sem.ps’ creates the PostScript file sem.ps. This file can be viewed with the command ‘ghostview sem.ps’ and can be printed with the command ‘lpr sem.ps’\n\n\n\nThe appropriate User’s Guides are:\n\nThe LaTeX WikiBook, http://en.wikibooks.org/wiki/LaTeX\nThe TeXbook, by Donald E. Knuth, Addison-Wesley, 1984\nLaTeX User’s Guide & Reference Manual, by Leslie Lamport, Addison-Wesley, 1986",
     "crumbs": [
       "Home",
       "Software",
-      "How do I correctly terminate an R session?"
+      "TeX/LaTeX"
     ]
   },
   {
-    "objectID": "terminate-r.html#explicit-invocation",
-    "href": "terminate-r.html#explicit-invocation",
-    "title": "How do I correctly terminate an R session?",
+    "objectID": "tex.html#the-basics",
+    "href": "tex.html#the-basics",
+    "title": "TeX/LaTeX",
     "section": "",
-    "text": "If you don’t want to worry about shutting down your interactive R session, you MUST use either the “-save” or the “-no-save” option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing “R” at the UNIX prompt, type\nR --save\nor\nR --no-save",
+    "text": "The basic command for running TeX or LaTeX is ‘tex filename’, ‘latex filename’, or ‘pdflatex filename’.\nThere should be a file in your current directory called filename.tex, containing the TeX or LaTeX commands. Upon successful completion of processing, a file called filename.dvi is created and filename.pdf if you used pdflatex. (LaTeX also produces a file called filename.aux with information for tables of content and indices; don’t be alarmed if it tells you it doesn’t exist. However, if you wish to produce a table of contents, index or document with references, you will need the .aux file. Since the .aux file is produced if it is not present, this simply means that you may have to run TeX or LaTeX twice in order to get these features.) It is the .dvi file which you will eventually print to get your final copy.",
     "crumbs": [
       "Home",
       "Software",
-      "How do I correctly terminate an R session?"
+      "TeX/LaTeX"
     ]
   },
   {
-    "objectID": "types.html",
-    "href": "types.html",
-    "title": "Account Types",
+    "objectID": "tex.html#previewing",
+    "href": "tex.html#previewing",
+    "title": "TeX/LaTeX",
     "section": "",
-    "text": "Account Types\nComputer accounts are issued to individuals in the following categories:\n\nClass accounts: Economics courses which require computer access may obtain class accounts. Class accounts are assigned to individual students by the course instructor or TA. Course instructors should contact the EML Manager in room 643 Evans. Please allow 2 weeks for class accounts to be added to the system.\nDepartmental accounts: Currently registered students (undergraduates or graduates) and faculty in the Economics Departments, and employees of the Economics Department.\nCampus student accounts: Currently registered students (undergraduates or graduates) from other UC departments with a demonstrated need for specific EML services (such as statistical packages). This type of account cannot be used for work that is funded by either grants and/or outside funds. This type of account requires faculty approval and must be renewed each semester.\nCampus staff accounts: Currently active UC staff employees from other UC departments with a demonstrated need for specific EML services (such as statistical packages). This type of account cannot be used for work that is funded by either grants and/or outside funds and must be renewed annually.\nResearch accounts: Persons working within the UC system on specific research projects which are funded by grants and/or outside funds.\nOfficial guests (visiting faculty) and visitors (associate research fellows) in the Department, at the invitation (and with the approval) of faculty.\nAlumni accounts: Past students of the Economics Department. The alumni category also includes past employees of the Economics Department. This type of account is issued to individuals who have left the Department in good standing and is only valid for one year after separation from the Department. It may not be renewed. If one of the above relationships with the Department resumes, then a new account may be issued, but the alumni account is terminated after one year. The alumni account only provides for up to 5MB under the home directory. It will be necessary to obtain a contrator account if additional resources are required.\nContractor accounts: An individual may obtain an account on a recharge basis. The person will be billed monthly for the use of system resources (login time, cpu time, disk usage, and printing). Any person who does not fall into one of the above categories may apply for a contractor account. This type of account is valid indefinitely, as long as the account is in good standing.",
+    "text": "You can preview your file on the screen before you print it. Use the command ‘xdvi’, with the dvi file given as an argument, as in xdvi filename.dvi. If you make a change to your dvi file (by reinvoking tex or latex), xdvi will refresh itself as soon as the cursor is returned to it’s window – that is, it is not necessary to quit and restart xdvi every time you reprocess your input file.",
     "crumbs": [
       "Home",
-      "Accounts",
-      "Account Types"
+      "Software",
+      "TeX/LaTeX"
+    ]
+  },
+  {
+    "objectID": "tex.html#printing",
+    "href": "tex.html#printing",
+    "title": "TeX/LaTeX",
+    "section": "",
+    "text": "To print a dvi file called filename.dvi use the command ‘dvips filename’. Dvips automatically routes the output to your default printer (as set by the PRINTER environment variable). You can override the destination printer by adding a -Pprinter to the dvips command line. For example, ‘dvips -Ppr1 filename’ will print filename.dvi on printer pr1.\nIf you wish to print only part of a .dvi file (or you are having trouble printing a large .dvi file), you can print part of the file using the command dviselect. Type man dviselect for information on using the dviselect command.\nIn order to view a LaTeX document which uses PostScript fonts (like Helvetica), you should first convert the document to PostScript, and use ghostview to view it.\nSuppose your document is called sem.tex, then the command ‘latex2e sem’ creates the file sem.dvi, and the command ‘dvips -f -t landscape sem.dvi &gt; sem.ps’ creates the PostScript file sem.ps. This file can be viewed with the command ‘ghostview sem.ps’ and can be printed with the command ‘lpr sem.ps’",
+    "crumbs": [
+      "Home",
+      "Software",
+      "TeX/LaTeX"
+    ]
+  },
+  {
+    "objectID": "tex.html#additional-documentation",
+    "href": "tex.html#additional-documentation",
+    "title": "TeX/LaTeX",
+    "section": "",
+    "text": "The appropriate User’s Guides are:\n\nThe LaTeX WikiBook, http://en.wikibooks.org/wiki/LaTeX\nThe TeXbook, by Donald E. Knuth, Addison-Wesley, 1984\nLaTeX User’s Guide & Reference Manual, by Leslie Lamport, Addison-Wesley, 1986",
+    "crumbs": [
+      "Home",
+      "Software",
+      "TeX/LaTeX"
     ]
   },
   {
