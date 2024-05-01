@@ -46,7 +46,7 @@ remotehost**'.
 
 Here is an example login:
 
-```{bash}
+```bash
 $ ssh eml_user@iia.berkeley.edu
 The authenticity of host 'iia.berkeley.edu' can't be established.
 RSA key fingerprint is xx:yy...
