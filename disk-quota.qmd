@@ -1,7 +1,4 @@
-
-
-What is my disk quota?
-----------------------
+# Disk Quota
 
 Each user is assigned a disk space quota, or allotment, when their
 account is created to insure that there will be sufficient disk space
@@ -29,8 +26,6 @@ warned for exceeding, and the hard limit, which you will be prevented
 from exceeding. See also `quota(1)` in the UNIX manual.
 
 Here are the default quotas in megabytes (MB):
-
-<span id="id226882"></span>
 
 **Table 1. Default Quotas**
 
@@ -64,5 +59,3 @@ Here are the default quotas in megabytes (MB):
 Each user is expected to monitor their own disk usage and to attempt to
 stay within their quota. To view your current usage, type 'quota' on the
 command line.
-
-

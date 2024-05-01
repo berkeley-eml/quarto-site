@@ -1,18 +1,6 @@
+# Manage Disk Space
 
-
-How do I manage disk space?
----------------------------
-
-Table Of Contents
------------------
-
--   [Determining usage](#howmuch)
--   [Temporary disk space](#temporary)
--   [Compression](#compression)
--   [Deleting files](#deleting)
-
-<span id="howmuch"></span>Determining usage
--------------------------------------------
+## Determining usage
 
 Each user is assigned a disk space quota, or allotment, when their
 account is created to insure that there will be sufficient disk space
@@ -47,8 +35,7 @@ additional information, consult the respective man pages.
 </tbody>
 </table>
 
-<span id="temporary"></span>Temporary disk space
-------------------------------------------------
+## Temporary disk space
 
 There are several places where users can temporarily store data. These
 areas are often larger than home directories, but they are not backed up
@@ -109,8 +96,7 @@ actively being used should be compressed if possible.
 Send email to <manager@econ.berkeley.edu> to request space under
 `/scratch`.
 
-<span id="compression"></span>Compression
------------------------------------------
+## Compression
 
 Infrequently accessed files may be compressed to save disk space.
 
@@ -127,8 +113,7 @@ Infrequently accessed files may be compressed to save disk space.
 See the UNIX manual pages for the above programs by using the '**man**',
 for example '**man gzip**'.
 
-<span id="deleting"></span>Deleting Files
------------------------------------------
+## Deleting Files
 
 To remove files and directories type:
 

@@ -41,21 +41,21 @@ website:
           - service_status.qmd
       - section: "Accounts"
         contents:
-          - account_rules.qmd
+          - account-apply.qmd
+          - account-types.qmd
           - accounts.qmd
           - passwords.qmd
-          - disk-quota.qmd
-          - disk-space.qmd
-          - eligibility.qmd
-          - lab-rules.qmd
-          - restrictions.qmd
-          - rules-policies.qmd
-          - rules.qmd
-          - server_rules.qmd
+          - section: "Policies and Rules"
+            contents:
+              - eligibility.qmd
+              - account_rules.qmd
+              - lab-rules.qmd
+              - restrictions.qmd
+              - rules-policies.qmd
+              - rules.qmd
+              - server_rules.qmd
+              - copyright.qmd
           - homepage.qmd
-          - copyright.qmd
-          - types.qmd
-          - setup.qmd
           - ergonomics.qmd
       - section: "Remote Access"
         contents:
@@ -90,10 +90,11 @@ website:
           - savio.qmd
       - section: "Data and Storage"
         contents:
-          - tape-backups.qmd
+          - disk-quota.qmd
+          - disk-space.qmd
           - file-permissions.qmd
-          - temp-space.qmd
           - emldata.qmd
+          - tape-backups.qmd
           - elsa.qmd
       - section: "Software"
         contents:

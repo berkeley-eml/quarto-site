@@ -1,4 +1,4 @@
-# Set Up an EML Account
+# Apply For an Account
 
 Fill in the EML application form
 
@@ -6,7 +6,7 @@ Fill in the EML application form
 - [Those without Calnet ID](https://docs.google.com/a/berkeley.edu/forms/d/1loDJ_f7pX8ZefIDqDFZNXSqBWyCKQ1QjL10aUj3cJTs)
 - [Research Project Account](forms/projectapp.pdf)
 
-Read the [EML rules](rules), the [UC Berkeley computer use
+Read the [EML rules](rules.qmd), the [UC Berkeley computer use
 policies](http://cio.berkeley.edu/policies.html), and all accompanying
 guidelines that accompany the application form.
 
