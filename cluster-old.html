@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Econometrics Laboratory – cluster-old</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./EML_logo_small.png" alt="EML logo" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Econometrics Laboratory</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./services.html" rel="" target="">
+ <span class="menu-text">Services</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./help.html" rel="" target="">
+ <span class="menu-text">Help</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./contact.html" rel="" target="">
+ <span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-do-i-use-the-eml-linux-cluster" id="toc-how-do-i-use-the-eml-linux-cluster" class="nav-link active" data-scroll-target="#how-do-i-use-the-eml-linux-cluster">How do I use the EML Linux cluster?</a></li>
+  <li><a href="#access-and-job-restrictionstime-limits" id="toc-access-and-job-restrictionstime-limits" class="nav-link" data-scroll-target="#access-and-job-restrictionstime-limits">Access and Job Restrictions/Time Limits</a></li>
+  <li><a href="#basic-slurm-usage" id="toc-basic-slurm-usage" class="nav-link" data-scroll-target="#basic-slurm-usage">Basic SLURM Usage</a></li>
+  <li><a href="#submitting-parallel-jobs" id="toc-submitting-parallel-jobs" class="nav-link" data-scroll-target="#submitting-parallel-jobs">Submitting Parallel Jobs</a>
+  <ul class="collapse">
+  <li><a href="#submitting-multi-core-jobs" id="toc-submitting-multi-core-jobs" class="nav-link" data-scroll-target="#submitting-multi-core-jobs"><strong>Submitting Multi-core Jobs</strong></a></li>
+  </ul></li>
+  <li><a href="#automating-submission-of-multiple-jobs" id="toc-automating-submission-of-multiple-jobs" class="nav-link" data-scroll-target="#automating-submission-of-multiple-jobs">Automating Submission of Multiple Jobs</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="how-do-i-use-the-eml-linux-cluster" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-i-use-the-eml-linux-cluster">How do I use the EML Linux cluster?</h2>
+<p>The EML operates a high-performance Linux-based computing cluster that uses the SLURM queueing software to manage jobs. The cluster has two partitions, which are distinct sets of nodes, with different generations of CPUs.</p>
+<p>The regular priority partition has eight nodes, each with two 16-core CPUs available for compute jobs (i.e., 32 cores per node), for a total of 256 cores. Each node has 248GB dedicated RAM.</p>
+<p>The high priority partition provides faster cores than the regular priority partition (but with more restricted usage to ensure that the nodes are likely to be available when a user needs to run a job). This partition has four nodes, each with two 14-core CPUs available for compute jobs (i.e., 28 cores per node). Each core has two hyperthreads, for a total of 224 processing units. In the remainder of this document, we’ll refer to these processing units as ‘cores’. Each node has 132 GB dedicated RAM. As currently set up, this partition is limited to at most 56 cores per user at a single time, whether in a single job or spread across multiple jobs.</p>
+<p>Both partitions are managed by the SLURM queueing software. SLURM provides a standard batch queueing system through which users submit jobs to the cluster. Jobs are submitted to SLURM using a user-defined shell script that executes one’s application code. Interactive use is also an option. Users may also query the cluster to see job status. As currently set up, the cluster is designed for processing single-core and multi-core/threaded jobs, as well as distributed memory jobs that use MPI. All software running on EML Linux machines is available on the cluster. Users can also compile programs on any EML Linux machine and then run that program on the cluster.</p>
+<p>Below is more detailed information about how to use the cluster.</p>
+</section>
+<section id="access-and-job-restrictionstime-limits" class="level2">
+<h2 class="anchored" data-anchor-id="access-and-job-restrictionstime-limits">Access and Job Restrictions/Time Limits</h2>
+<p>The cluster is open to a restricted set of Department of Economics faculty, grad students, project account collaborators, and visitors using their EML logon.</p>
+<p>Currently users may submit jobs on the following submit hosts:</p>
+<pre><code>blundell, frisch, hicks, jorgensen, laffont, logit, marlowe, marshall, nerlove, radner, theil, durban</code></pre>
+<p>The cluster has two job queues (called partitions by SLURM) called ‘low’ and ‘high’. Interactive jobs can also be run in either queue.</p>
+<p>One important rule in using the cluster is that your code should not use any more cores than you have requested via SLURM when submitting your job. If your code uses more than one core, you must follow the instructions given in the section on Submitting Parallel Jobs.</p>
+<p>At the moment the default time limit on each job is five days run-time, but users can still request a longer limit (up to max of 28 days) with the -t flag. The scheduling software can better balance usage across multiple users when it has information about how long each job is expected to take, so if possible please indicate a time limit for your job even if it is less than five days. Feel free to be generous in this time limit to avoid having your job killed if it runs longer than expected. Also feel free to set a time limit as a round number, such as 1 hour, 4 hours, 1 day, 3 days, 10 days, and 28 days rather than trying to be more exact.</p>
+<p>This table outlines the job restrictions in each partition.</p>
+
+<table class="table">
+<thead>
+<tr class="header">
+<th>
+Partition
+</th>
+<th>
+Max. cores/user
+</th>
+<th>
+Time Limit
+</th>
+<th>
+Max. mem/job (GB)
+</th>
+<th>
+Max. cores/job
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>
+low (default)
+</td>
+<td>
+256
+</td>
+<td>
+28 days**
+</td>
+<td>
+264 GB
+</td>
+<td>
+32***
+</td>
+</tr>
+<tr class="even">
+<td>
+high*
+</td>
+<td>
+56
+</td>
+<td>
+28 days**
+</td>
+<td>
+128 GB
+</td>
+<td>
+56
+</td>
+</tr>
+</tbody>
+
+</table>
+<p>* See <a href="#high">How to Submit Jobs to the High Partition</a>.</p>
+<p>** See <a href="#long">Submitting Long Jobs</a> for jobs you expect to take more than three days.</p>
+<p>*** If you use MPI (including foreach with doMPI in R), you can run individual jobs on more than 32 cores. See <a href="#MPI">Submitting MPI Jobs</a> for such cases. You can also use up to 64 cores for a single Matlab job; see <a href="#parallel-server">Submitting MATLAB Parallel Server Jobs</a>.</p>
+<p>We have implemented a ‘fair share’ policy that governs the order in which jobs that are waiting in a given queue start when cores become available. In particular, if two users each have a job sitting in a queue, the job that will start first will be that of the user who has made less use of the cluster recently (measured in terms of CPU time). The measurement of CPU time downweights usage over time, with a half-life of one month, so a job that ran a month ago will count half as much as a job that ran yesterday. Apart from this prioritization based on recent use, all users are treated equally.</p>
+</section>
+<section id="basic-slurm-usage" class="level2">
+<h2 class="anchored" data-anchor-id="basic-slurm-usage">Basic SLURM Usage</h2>
+<section id="submitting-a-simple-single-core-job" class="level4">
+<h4 class="anchored" data-anchor-id="submitting-a-simple-single-core-job">Submitting a Simple Single-Core Job</h4>
+<p>Prepare a shell script containing the instructions you would like the system to execute. When submitted using the instructions in this section, your code should only use a single core at a time; it should not start any additional processes. In the later sections of this document, we describe how to submit jobs that use a variety of types of parallelization</p>
+<p>For example a simple script to run the Matlab code in the file ‘simulate.m’ would contain these lines:</p>
+<pre><code>#!/bin/bash
+matlab -nodisplay -nodesktop -singleCompThread &lt; simulate.m &gt; simulate.out</code></pre>
+<p>Note that the first line, indicating which UNIX shell to use, is required. You can specify tcsh or another shell if you prefer.</p>
+<p>Once logged onto a submit host, use the sbatch command with the name of the shell script (assumed to be job.sh here) to enter a job into the queue:</p>
+<pre><code>theil:~$ sbatch job.sh
+Submitted batch job 380</code></pre>
+<p>Here the job is assigned job ID 380. Results that would normally be printed to the screen via standard output and standard error will be written to a file called simulate.out per the invocation of Matlab in the job script.</p>
+<p><strong>Important: when submitting jobs in this fashion you must follow the instructions below to ensure your job uses only the single core requested.</strong></p>
+<p>Any Matlab jobs submitted in this fashion must start Matlab with the -singleCompThread flag in your job script.</p>
+<p>Similarly, any SAS jobs submitted in this fashion must start SAS with the following flags in your job script.</p>
+<pre><code>sas -nothreads -cpucount 1</code></pre>
+<p>For Stata, if you submit a job without requesting multiple cores, please make sure to use Stata/SE so that Stata only uses a single core.</p>
+<p>SLURM provides a number of additional flags (input options) to control what happens; you can see the man page for sbatch for help with these. Here are some examples, placed in the job script file, where we name the job, ask for email updates and name the output and error files:</p>
+<pre><code>#!/bin/bash
+#SBATCH --job-name=myAnalysisName
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=blah@berkeley.edu
+#SBATCH -o myAnalysisName.out #File to which standard out will be written
+#SBATCH -e myAnalysisName.err #File to which standard err will be written
+matlab -nodisplay -nodesktop -singleCompThread &lt; simulate.m &gt; simulate.out</code></pre>
+<p>For any of the sbatch flags you may choose to include them in the job script as just above, or to use the flags on the command line when you submit the job, just after you type ‘sbatch’ and before the name of the submission script, for example:</p>
+<pre><code>theil:~$ sbatch --job-name=foo --mail-user=blah@berkeley.edu job.sh</code></pre>
+</section>
+<section id="how-to-kill-a-job" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-kill-a-job">How to Kill a Job</h4>
+<p>First, find the job-id of the job, by typing ‘squeue’ at the command line of a submit host (see the section on ‘How to Monitor Jobs’ below.</p>
+<p>Then use scancel to delete the job (with id 380 in this case):</p>
+<pre><code>theil:~$ scancel 380</code></pre>
+</section>
+<section id="submitting-a-high-priority-job" class="level4">
+<h4 class="anchored" data-anchor-id="submitting-a-high-priority-job"><span id="high"></span>Submitting a High-Priority Job</h4>
+<p>To submit a job to the faster nodes in the high priority partition, you must include either the ‘–partition=high’ or ‘-p high’ flag. Without this flag, jobs will be run by default in the low partition. For example:</p>
+<pre><code>theil:~$ sbatch -p high job.sh
+Submitted batch job 380</code></pre>
+<p>You can also submit interactive jobs (see next section) to the high partition, by simply adding the flag for the high partition to the srun command.</p>
+</section>
+<section id="interactive-jobs" class="level4">
+<h4 class="anchored" data-anchor-id="interactive-jobs">Interactive Jobs</h4>
+<p>You can work interactively on a node from the Linux shell command line by starting an interactive job (in either the low or high priority partitions). Please do not forget to close your interactive sessions when you finish your work so the cores are available to other users.</p>
+<p>The syntax for requesting an interactive (bash) shell session is:</p>
+<pre><code>srun --pty /bin/bash</code></pre>
+<p>This will start a shell on one of the nodes. You can then act as you would on any EML Linux compute server. For example, you might use top to assess the status of one of your non-interactive (i.e., batch) cluster jobs. Or you might test some code before running it as a batch job. You can also transfer files to the local disk of the cluster node.</p>
+<p>If you want to run a program that involves a graphical interface (requiring an X11 window), you need to add –x11=first to your srun command. So you could directly run Matlab, e.g., on a cluster node as follows:</p>
+<pre><code>srun --pty --x11=first matlab</code></pre>
+<p>or you could add the -x11=first flag when requesting an interactive shell session and then subsequently start a program that has a graphical interface.</p>
+<p>Please note that you should only use one core in your interactive job unless you specifically request more cores. To run an interactive session in which you would like to use multiple cores, do the following (here we request 4 cores for our use):</p>
+<pre><code>srun --pty --cpus-per-task 4 /bin/bash</code></pre>
+<p>Note that “-c” is a shorthand for “–cpus-per-task”. More details on jobs that use more than one core can be found below in the section on Submitting Parallel Jobs.</p>
+<p>To transfer files to the local disk of a specific node, you need to request that your interactive session be started on the node of interest (in this case eml-sm10):</p>
+<pre><code>srun --pty -w eml-sm10 /bin/bash</code></pre>
+<p>Note that if that specific node does not have sufficient free cores to run your job, you will need to wait until cores become available on that node before your interactive session will start. The squeue command (see below in the section on How to Monitor Jobs) will tell you on which node a given job is running.</p>
+</section>
+<section id="submitting-long-jobs-and-setting-job-time-limits" class="level4">
+<h4 class="anchored" data-anchor-id="submitting-long-jobs-and-setting-job-time-limits"><span id="long"></span>Submitting Long Jobs and Setting Job Time Limits</h4>
+<p>As mentioned earlier, the default time limit on each job is five days run-time, but users can still request a longer limit (up to max of 28 days) with the -t flag, as illustrated here to request a 10-day job:</p>
+<pre><code>theil:~$ sbatch -t 10-00:00:00 job.sh</code></pre>
+<p>The scheduling software can better balance usage across multiple users when it has information about how long each job is expected to take, so if possible please indicate a time limit for your job even if it is less than three days. Feel free to be generous in this time limit to avoid having your job killed if it runs longer than expected. (For this reason, we suggest that if you expect your job to take more than three days that you may want to increase the limit relative to the five-day default.) Also feel free to set a time limit as a round number, such as 1 hour, 4 hours, 1 day, 3 days, 10 days, and 28 days rather than trying to be more exact.</p>
+<p>Here is an example of requesting three hours for a job:</p>
+<pre><code>theil:~$ sbatch -t 3:00:00 job.sh</code></pre>
+</section>
+<section id="how-to-monitor-jobs" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-monitor-jobs">How to Monitor Jobs</h4>
+<p>The SLURM command squeue provides info on job status:</p>
+<pre><code>theil:~$ squeue
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+               381      high   job.sh paciorek  R      25:28      1 eml-sm20
+               380      low    job.sh paciorek  R      25:37      1 eml-sm11</code></pre>
+<p>The following will tailor the output to include information on the number of cores (the CPUs column below) being used:</p>
+<pre><code>theil:~$ squeue -o "%.7i %.9P %.8j %.8u %.2t %.9M %.5C %.8r %.6D %R"
+   JOBID PARTITION     NAME     USER ST      TIME  CPUS   REASON  NODES NODELIST(REASON)
+     381      high   job.sh paciorek  R     28:00     4     None      1 eml-sm20
+     380      low    job.sh paciorek  R     28:09     4     None      1 eml-sm11 </code></pre>
+<p>The ‘ST’ field indicates whether a job is running (R), failed (F), or pending (PD). The latter occurs when there are not yet enough resources on the system for your job to run.</p>
+<p>If you would like to logon to the node on which your job is running in order to assess CPU or memory use, you can run an interactive job within the context of your existing job. First determine the job ID of your running job using squeue and insert that in place of _jobid_ in the following command:</p>
+<pre><code>theil:~/Desktop$ srun --pty --jobid=_jobid_ /bin/bash</code></pre>
+<p>You can then run top and other tools. Please do not do any intensive computation that would use additional cores in addition to those used by your running job.</p>
+</section>
+<section id="how-to-monitor-cluster-usage" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-monitor-cluster-usage">How to Monitor Cluster Usage</h4>
+<p>If you’d like to see how busy each node is (e.g., to choose what partition to submit a job to), you can run the following:</p>
+<pre><code>theil:~$ sinfo -N -o "%8P %15N %.5a %6t %C"
+PARTITIO NODELIST        AVAIL STATE  CPUS(A/I/O/T)
+low*     eml-sm00           up idle   0/32/0/32
+low*     eml-sm01           up idle   0/32/0/32
+low*     eml-sm02           up idle   0/32/0/32
+low*     eml-sm03           up idle   0/32/0/32
+low*     eml-sm10           up mix    29/3/0/32
+low*     eml-sm11           up mix    27/5/0/32
+low*     eml-sm12           up mix    9/23/0/32
+low*     eml-sm13           up idle   0/32/0/32
+high     eml-sm20           up idle   0/56/0/56
+high     eml-sm21           up mix    8/48/0/56
+high     eml-sm22           up idle   0/56/0/56
+high     eml-sm23           up idle   0/56/0/56 </code></pre>
+<p>Here the A column indicates the number of cores used (i.e., active), I indicates the number of inactive cores, and T the total number of cores on the node.</p>
+</section>
+</section>
+<section id="submitting-parallel-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-parallel-jobs">Submitting Parallel Jobs</h2>
+<p>One can use SLURM to submit a variety of types of parallel code. Here is a set of potentially useful templates that we expect will account for most user needs. If you have a situation that does not fall into these categories or have questions about parallel programming, submitting jobs to use more than one core, or are not sure how to follow these rules, please email <a href="mailto:consult@econ.berkeley.edu" class="email">consult@econ.berkeley.edu</a>.</p>
+<p>For additional details, please see the <a href="http://statistics.berkeley.edu/computing/parallel">notes from SCF workshops</a> on the basics of parallel programming in R, Python, Matlab and C, with some additional details on using the cluster. If you’re making use of the <a href="http://statistics.berkeley.edu/computing/blas">threaded BLAS</a>, it’s worth doing some testing to make sure that threading is giving an non-negligible speedup; see the notes above for more information.</p>
+<section id="submitting-threaded-jobs" class="level4">
+<h4 class="anchored" data-anchor-id="submitting-threaded-jobs"><strong>Submitting Threaded Jobs</strong></h4>
+<p>Here’s an example job script to use multiple threads (4 in this case) in R (or with your own openMP-based program):</p>
+<pre><code>#!/bin/bash
+#SBATCH --cpus-per-task 4
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+R CMD BATCH --no-save simulate.R simulate.Rout</code></pre>
+<p>This will allow your R code to use the system’s threaded BLAS and LAPACK routines. [Note that in R you can instead use the omp_set_num_threads() function in the RhpcBLASctl package, again making use of the SLURM_CPUS_PER_TASK environment variable.]</p>
+<p>The same syntax in your job script will work if you’ve compiled a C/C++/Fortran program that makes use of openMP for threading. Just replace the R CMD BATCH line with the line calling your program.</p>
+<p>Here’s an example job script to use multiple threads (4 in this case) in Matlab:</p>
+<pre><code>#!/bin/bash
+#SBATCH --cpus-per-task 4
+matlab -nodesktop -nodisplay &lt; simulate.m &gt; simulate.out</code></pre>
+<p>IMPORTANT: At the start of your Matlab code file you should include this line:</p>
+<pre><code>maxNumCompThreads(str2num(getenv('SLURM_CPUS_PER_TASK')));</code></pre>
+<p>Here’s an example job script to use multiple threads (4 in this case) in SAS:</p>
+<pre><code>#!/bin/bash
+#SBATCH --cpus-per-task 4
+sas -threads -cpucount $SLURM_CPUS_PER_TASK</code></pre>
+<p>A number of SAS procs are set to take advantage of threading, including SORT, SUMMARY, TABULATE, GLM, LOESS, and REG. SAS enables threading by default, with the default number of threads set to four. Starting SAS as above ensures that the number of threads is set to the number of cores you requested. You can check that threading is enabled from within SAS by running the following and looking for the cpucount and threads options in the printout.</p>
+<pre><code>Proc Options group=performance; run;</code></pre>
+<p>You can use up to eight cores with Stata/MP (limited by the EML license for Stata). If you request eight cores (–cpus-per-task=8), you are all set. If you request fewer than eight (i.e., 2-7), you need to set the number of processors in Stata to be the number you requested in your job submission. One way to do this is to hard-code the following line at the start of your Stata code (in this case assuming you requested four cores):</p>
+<pre><code>set processors 4</code></pre>
+<p>You can do this in an automated fashion by first invoking Stata in your job script as:</p>
+<pre><code>stata-mp -b do myStataCode.do ${SLURM_CPUS_PER_TASK}</code></pre>
+<p>and then at the start of your Stata code including these two lines:</p>
+<pre><code>args ncores
+set processors `ncores'</code></pre>
+</section>
+<section id="submitting-multi-core-jobs" class="level3">
+<h3 class="anchored" data-anchor-id="submitting-multi-core-jobs"><strong>Submitting Multi-core Jobs</strong></h3>
+<p>The following example job script files pertain to jobs that need to use multiple cores on a single node that do not fall under the threading/openMP context. This is relevant for parallel code in R that starts multiple R process (e.g., foreach, mclapply, parLapply), for parfor in Matlab, and for IPython parallel, Pool.map and pp.Server in Python.</p>
+<p>Here’s an example script that uses multiple cores (4 in this case):</p>
+<pre><code>#!/bin/bash
+#SBATCH --cpus-per-task 4
+R CMD BATCH --no-save simulate.R simulate.Rout</code></pre>
+<p>IMPORTANT: Your R, Python, or any other code should use no more than the number of total cores requested (4 in this case). You can use the SLURM_CPUS_PER_TASK environment variable to programmatically control this.</p>
+<p>The same syntax for your job script pertains to Matlab. IMPORTANT: when using parpool in Matlab, you should do the following:</p>
+<pre><code>parpool(str2num(getenv('SLURM_CPUS_PER_TASK')));</code></pre>
+<p>In the regular partition, the default maximum number of workers is 16 (28 in the high partition). To increase this (up to the maximum number of cores on a machine in the regular partition), run the following code before invoking parpool:</p>
+<pre><code>cl = parcluster();
+cl.NumWorkers = str2num(getenv('SLURM_CPUS_PER_TASK'));
+cl.parpool(str2num(getenv('SLURM_CPUS_PER_TASK')));</code></pre>
+<p>To use more than 32 workers (i.e., 32 cores or more) in the regular partition (or more than 56 in the high partition) in Matlab in a parpool context (or to use cores spread across multiple nodes, which can help start your job faster when the cluster is busy), you need to use MATLAB Parallel Server, discussed below.</p>
+<p>To use multiple threads per worker in MATLAB, here is an example script for four workers and two threads per worker:</p>
+<pre><code>#!/bin/bash
+#SBATCH --nodes 1
+#SBATCH --ntasks 4
+#SBATCH --cpus-per-task 2
+matlab -nodesktop -nodisplay &lt; simulate.m &gt; simulate.out</code></pre>
+<p>And here is how to start your parpool in your MATLAB code:</p>
+<pre><code>cl = parcluster();
+cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
+cl.parpool(str2num(getenv('SLURM_NTASKS')));</code></pre>
+<section id="submitting-mpi-jobs" class="level4">
+<h4 class="anchored" data-anchor-id="submitting-mpi-jobs"><span id="MPI"></span>Submitting MPI Jobs</h4>
+<p>You can use MPI to run jobs across multiple nodes. This modality allows you to use more cores than exist on a single node or to gather free cores that are scattered across the nodes when the cluster is heavily used. (Note that on the high priority partition, given the 28-core limit per user, this is primarily useful for when there are not sufficient free cores on a single node for your job.)</p>
+<p>Here’s an example script that uses multiple processors via MPI (28 in this case):</p>
+<pre><code>#!/bin/bash
+#SBATCH --ntasks 28
+mpirun -np $SLURM_NTASKS myMPIexecutable</code></pre>
+<p>Note that “-n” is a shorthand for “–ntasks”.</p>
+<p>“myMPIexecutable” could be C/C++/Fortran code you’ve written that uses MPI, or R or Python code that makes use of MPI. More details are available<a href="http://statistics.berkeley.edu/computing/parallel">here</a>. One simple way to use MPI is to use the doMPI back-end to foreach in R. In this case you invoke R via mpirun as:</p>
+<pre><code>mpirun -np $SLURM_NTASKS R CMD BATCH file.R file.out</code></pre>
+<p>Note that in this case, unlike some other invocations of R via mpirun, mpirun starts all of the R processes.</p>
+<p>Another use case for R in a distributed computing context is to use functions such as parSapply and parLapply after using the makeCluster command with a character vector indicating the nodes allocated by SLURM. If you run the following as part of your job script before the command invoking R, the file slurm.hosts will contain a list of the node names that you can read into R and pass to makeCluster.</p>
+<pre><code>srun hostname -s &gt; slurm.hosts</code></pre>
+<p>To run an MPI job with each process threaded, your job script would look like the following (here with 14 processes and two threads per process):</p>
+<pre><code>#!/bin/bash
+#SBATCH --ntasks 14 --cpus-per-task 2
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+mpirun -np $SLURM_NTASKS -x OMP_NUM_THREADS myMPIexecutable</code></pre>
+</section>
+<section id="submitting-matlab-parallel-server-multi-node-jobs" class="level4">
+<h4 class="anchored" data-anchor-id="submitting-matlab-parallel-server-multi-node-jobs">Submitting MATLAB Parallel Server (Multi-node) Jobs</h4>
+<p>MATLAB Parallel Server (formerly MATLAB DCS) allows you to run a parallel MATLAB job across multiple nodes. (Note that as of May 2019 with MATLAB R2019, there is no longer the 64-worker limit that was in place previously, although the number of physical cores available on the cluster and usage of cores by other users will still limit the number of workers you can use.)</p>
+<p>There are two primary advantages to using MATLAB Parallel Server rather than parallelizing your MATLAB code across the cores on a single node: (1) there is no limit on the number of workers (apart from the limit on the number of cores available on the cluster), and (2) Your job may not have to wait until the number of cores requested are all available on a single node, but rather than “scavenge” available cores across multiple nodes. (But note that all cores must be within one partition, either the regular or high partitions.</p>
+<p>By default each worker will use one core, but it’s possible to use more than one core per worker as discussed below.</p>
+<p>There are two ways to use MATLAB Parallel Server.</p>
+<section id="option-1---submit-a-slurm-job-via-sbatch-that-uses-matlab-parallel-server" class="level5">
+<h5 class="anchored" data-anchor-id="option-1---submit-a-slurm-job-via-sbatch-that-uses-matlab-parallel-server">Option 1 - submit a SLURM job via sbatch that uses MATLAB Parallel Server</h5>
+<p>To submit a MATLAB Parallel Server job, you’ll need to specify the number of MATLAB workers (by using the -n or –ntasks flag) and indicate that a Parallel Server job will be run (by using ‘-C dcs’). (Note that as of May 2019 with MATLAB R2019a you do not need to use the -L flag to request licenses.) This won’t work with srun, only with sbatch. Here’s an example job script that would use 40 cores for 40 workers:</p>
+<pre><code>#!/bin/bash
+#SBATCH -n 40 -C dcs 
+matlab -nodesktop -nodisplay &lt; code.m &gt; code.mout</code></pre>
+<p>Then in your MATLAB code, simply invoke parpool as:</p>
+<pre><code>pool = parpool(str2num(getenv('SLURM_NTASKS')));</code></pre>
+<p>Note that the workers will run as the user “matlabdcs”, so if you interactively log into a node with some of the workers on it, you will see MATLAB processes running as this user if you use ‘top’ or ‘ps’.</p>
+<p>If you’d like to use multiple threads per worker, please set –cpus-per-task equal to the number of threads per worker you desire and then use this appraoch in your MATLAB code:</p>
+<pre><code>cl = parcluster('dcs');
+cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
+pool = cl.parpool('dcs', 20);  % Start a 20-worker pool of multi-core workers on the EML cluster
+% execute code
+delete(pool);   % Make sure to delete the job so the cluster resources of the SLURM job are released</code></pre>
+</section>
+<section id="option-2---run-your-matlab-code-on-an-eml-linux-machine-and-offload-parallel-code-to-the-cluster-from-within-matlab" class="level5">
+<h5 class="anchored" data-anchor-id="option-2---run-your-matlab-code-on-an-eml-linux-machine-and-offload-parallel-code-to-the-cluster-from-within-matlab">Option 2 - run your MATLAB code on an EML Linux machine and offload parallel code to the cluster from within MATLAB</h5>
+<p>This option allows you to be running code within MATLAB running on a stand-alone Linux machine (not part of the EML cluster) and offload parallel execution of a portion of your code to the cluster without explicitly starting a cluster job via SLURM. Note that you simply login to an EML Linux machine and start MATLAB; you do NOT use sbatch or srun to start a cluster job under this approach.</p>
+<p>Under Option 2, you can either start a pool of workers using “parpool” or you can use the “batch” command to execute code across multiple workers.</p>
+<p>To start up a pool of workers (with the only limit on the number of workers being the number of cores in a given partition and the usage of cores by other users’ jobs), simply do the following (here for 40 workers):</p>
+<pre><code>pool = parpool('dcs', 40);  % Start a 40-worker pool on the EML cluster
+% execute code
+delete(pool);               % Make sure to delete the job so the cluster resources of the SLURM job are released</code></pre>
+<p>This starts a SLURM job (and prints out the job ID to the screen in case you want to monitor the SLURM job). Once the pool is ready, simply execute your parallel code (such as with a parfor loop). When you are done remember to delete the pool so the cluster job ends and the resources are available to others.</p>
+<p>For threaded workers, you can simply do this:</p>
+<pre><code>cl = parcluster('dcs');
+cl.NumThreads = 2;      % however many threads per worker you'd like to use
+pool = cl.parpool(20);  % Start a 20-worker pool of multi-core workers on the EML cluster
+% execute code
+delete(pool);           % Make sure to delete the job so the cluster resources of the SLURM job are released</code></pre>
+<p>If you’d like to modify the flags that are used when the underlying SLURM job is submitted (e.g., to use the ‘high’ partition and set a particular time limit as shown here), you would do it like this:</p>
+<pre><code>cl = parcluster('dcs');
+cl.AdditionalProperties.AdditionalSubmitArgs='-p high -t 30:00'
+% Start a 40-worker pool on EML cluster high partition, 30 min. time limit
+pool = cl.parpool(40);
+% execute code
+delete(pool);   % Make sure to delete the job so the cluster resources of the SLURM job are released</code></pre>
+<p>Alternatively you can use the “batch” command to execute a script or function across multiple workers. Here is one example usage but there are a variety of others discussed in MATLAB’s online documentation for the “batch” command. Suppose you have a file ‘code.m’ that executes a parfor. To run that code on 39 workers (an additional worker will be used to manage the work, for a total of 40 workers), you would do this:</p>
+<pre><code>c = parcluster('dcs');           % Sets things up to make use of MATLAB Parallel Server
+j = c.batch('code', 'Pool', 39); % Uses 40 workers total, starting a SLURM job on the EML cluster
+wait(j)                          % Wait for the job to finish
+diary(j)                         % Display logging output
+r = fetchOutputs(j);             % Get results into a cell array
+r{1}                             % Display results
+j.delete()                       % Make sure to delete the job so the cluster resources of the SLURM job are released</code></pre>
+</section>
+</section>
+</section>
+</section>
+<section id="automating-submission-of-multiple-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="automating-submission-of-multiple-jobs">Automating Submission of Multiple Jobs</h2>
+<section id="using-job-arrays-to-submit-multiple-jobs-at-once" class="level4">
+<h4 class="anchored" data-anchor-id="using-job-arrays-to-submit-multiple-jobs-at-once">Using Job Arrays to Submit Multiple jobs at Once</h4>
+<p>Job array submissions are a nice way to submit multiple jobs in which you vary a parameter across the different jobs.</p>
+<p>Here’s what your job script would look like, in this case to run a total of 5 jobs with parameter values of 0, 1, 2, 5, 7:</p>
+<pre><code>#!/bin/bash
+#SBATCH -a 0-2,5,7
+myExecutable</code></pre>
+<p>Your program should then make use of the SLURM_ARRAY_TASK_ID environment variable, which for a given job will contain one of the values from the set given with the -a flag (in this case from {0,1,2,5,7}). You could, for example, read SLURM_ARRAY_TASK_ID into your R, Python, Matlab, or C code.</p>
+<p>Here’s a concrete example where it’s sufficient to use SLURM_ARRAY_TASK_ID to distinguish different input files if you need to run the same command (the bioinformatics program tophat in this case) on multiple input files (in this case, trans0.fq, trans1.fq, …):</p>
+<pre><code>#!/bin/bash
+#SBATCH -a 0-2,5,7
+tophat BowtieIndex trans${SLURM_ARRAY_TASK_ID}.fq</code></pre>
+</section>
+<section id="submitting-data-parallel-spmd-code" class="level4">
+<h4 class="anchored" data-anchor-id="submitting-data-parallel-spmd-code">Submitting Data Parallel (SPMD) Code</h4>
+<p>Here’s how you would set up your job script if you want to run multiple instances (18 in this case) of the same code as part of a single job.</p>
+<pre><code>#!/bin/bash
+#SBATCH --ntasks 18 
+srun myExecutable</code></pre>
+<p>To have each instance behave differently, you can make use of the SLURM_PROCID environment variable, which will be distinct (and have values 0, 1, 2, …) between the different instances.</p>
+<p>To have each process be threaded, see the syntax under the MPI section above.</p>
+</section>
+<section id="manually-automating-job-submission" class="level4">
+<h4 class="anchored" data-anchor-id="manually-automating-job-submission">“Manually” Automating Job Submission</h4>
+<p>The above approaches are more elegant, but you can also use UNIX shell tools to submit multiple SLURM jobs. Here are some approaches and example syntax. We’ve tested these a bit but email <a href="mailto:consult@econ.berkeley.edu" class="email">consult@econ.berkeley.edu</a> if you have problems or find a better way to do this. (Of course you can also manually create lots of individual job submission scripts, each of which calls a different script.)</p>
+<p>First, remember that each individual job must be submitted through sbatch. I.e., no job submission script should execute jobs in parallel, except via the mechanisms discussed earlier in this document.</p>
+<p>Here is some example bash shell code (which could be placed in a shell script file) that loops over two variables (one numeric and the other a string):</p>
+<pre><code>for ((it = 1; it &lt;= 10; it++)); do
+  for mode in short long; do
+    sbatch job.sh $it $mode
+  done
+done</code></pre>
+<p>You now have a couple options in terms of how job.sh is specified. This illustrates things for Matlab jobs, but it shouldn’t be too hard to modify for other types of jobs.</p>
+<section id="option-1" class="level5">
+<h5 class="anchored" data-anchor-id="option-1">Option #1</h5>
+<pre><code># contents of job.sh
+echo "it = $1; mode = '$2'; myMatlabCode" &gt; tmp-$1-$2.m
+matlab -nodesktop -nodisplay -singleCompThread &lt; tmp-$1-$2.m &gt; tmp-$1-$2.out 2&gt; tmp-$1-$2.err</code></pre>
+<p>In this case myMatlabCode.m would use the variables ‘it’ and ‘mode’ but not define them.</p>
+</section>
+<section id="option-2" class="level5">
+<h5 class="anchored" data-anchor-id="option-2">Option #2</h5>
+<pre><code># contents of job.sh
+export it=$1; export mode=$2;
+matlab -nodesktop -nodisplay -singleCompThread &lt; myMatlabCode.m &gt; tmp-$1-$2.out 2&gt; tmp-$1-$2.err</code></pre>
+<p>In this case you need to insert the following Matlab code at the start of myMatlabCode.m so that Matlab correctly reads the values of ‘it’ and ‘mode’ from the UNIX environment variables:</p>
+<pre><code>it = str2num(getenv('it'));
+mode = getenv('mode');</code></pre>
+<p>For Stata jobs, there’s an easier mechanism for passing arguments into a batch job. Invoke Stata as follows in job.sh:</p>
+<pre><code>stata -b do myStataCode.do $1 $2</code></pre>
+<p>and then in the first line of your Stata code file, myStataCode.do above, assign the input values to variables (in this case I’ve named them id and mode to match the shell variables, but they can be named differently):</p>
+<pre><code>args id mode</code></pre>
+<p>Then the remainder of your code can make use of these variables.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
