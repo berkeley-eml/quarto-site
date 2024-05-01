@@ -26,13 +26,13 @@ website:
         href: about.qmd
       - text: Services
         href: services.qmd
-      - text: Help
-        href: help.qmd
       - text: Contact
         href: contact.qmd
   sidebar:
     style: "floating"
+    # disabled when navbar search is on
     search: true
+    collapse-level: 1
     contents:
       - section: "About"
         contents:
@@ -59,6 +59,7 @@ website:
           - ergonomics.qmd
       - section: "Remote Access"
         contents:
+          - monitoring.qmd
           - jupyterhub.qmd
           - section: "Secure Shell"
             contents:
