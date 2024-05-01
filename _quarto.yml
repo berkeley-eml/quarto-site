@@ -8,7 +8,7 @@ project:
 
 website:
   title: "Econometrics Laboratory"
-  image: EML_logo_small.png
+  image: images/EML_logo_small.png
   repo-url: https://github.com/berkeley-eml/quarto-site
   #repo-actions: [edit, issue]
   page-navigation: true
@@ -16,7 +16,7 @@ website:
   favicon: images/favicon.ico
   navbar:
     background: light
-    logo: EML_logo_small.png
+    logo: images/EML_logo_small.png
     logo-alt: "EML logo"
     search: true
     left:
