@@ -7,16 +7,16 @@ services, comprehensive user support, and is committed to provide the
 best possible computational hardware and wide selection of statistical,
 mathematical and econometric software for its users.
 
-The EML is a computing facility dedicated to instruction at the graduate level and research by graduate students and faculty in the Department of Economics. This work concentrates on new developments in computationally intensive econometrics.
-
-EML is a unit of the Institute of Business and Economic Research, located in space provided by the Department of Economics at the University of California, Berkeley.
-
 ::: {.column-margin}
 System Status
 
 There are no active incidents or planned maintenance events to report.
 :::
   
+The EML is a computing facility dedicated to instruction at the graduate level and research by graduate students and faculty in the Department of Economics. This work concentrates on new developments in computationally intensive econometrics.
+
+EML is a unit of the Institute of Business and Economic Research, located in space provided by the Department of Economics at the University of California, Berkeley.
+
 ## Getting Started
 
 -   [Getting an EML account](account-apply.qmd)
