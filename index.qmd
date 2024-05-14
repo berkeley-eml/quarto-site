@@ -29,5 +29,4 @@ mathematical and econometric software for its users.
 -   [Data Sources](emldata.qmd)
 -   [Computing
     Resources](https://www.econ.berkeley.edu/resources/computing)
--   [Econometrics
-    Seminar](http://events.berkeley.edu/index.php/calendar/sn/econ.html?view=summary&timeframe=range&startdate=2013-01-01&enddate=2013-05-31&filter=Secondary%20Event%20Type&filtersel=1062)
+-   [Econometrics Seminar](https://events.berkeley.edu/econ)
