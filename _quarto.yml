@@ -37,7 +37,7 @@ website:
       - section: "About"
         contents:
           - history.qmd
-          - downtimes.qmd
+          - availability.qmd
           #- system-status.qmd
       - section: "Accounts"
         contents:
