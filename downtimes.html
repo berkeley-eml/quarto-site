@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./account-apply.html" rel="next">
-<link href="./schedule.html" rel="prev">
+<link href="./history.html" rel="prev">
 <link href="./images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -98,10 +98,6 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./services.html"> 
 <span class="menu-text">Services</span></a>
   </li>  
@@ -120,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./history.html">About</a></li><li class="breadcrumb-item"><a href="./service_status.html">Service Status</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./history.html">About</a></li><li class="breadcrumb-item"><a href="./downtimes.html">Downtimes</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -157,14 +153,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./schedule.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Operating Schedule</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./service_status.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Service Status</span></a>
+  <a href="./downtimes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Downtimes</span></a>
   </div>
 </li>
       </ul>
@@ -591,7 +581,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#service-status" id="toc-service-status" class="nav-link active" data-scroll-target="#service-status">Service Status</a></li>
+  <li><a href="#downtimes" id="toc-downtimes" class="nav-link active" data-scroll-target="#downtimes">Downtimes</a>
+  <ul class="collapse">
+  <li><a href="#scheduled-downtimes" id="toc-scheduled-downtimes" class="nav-link" data-scroll-target="#scheduled-downtimes">Scheduled Downtimes</a></li>
+  <li><a href="#unscheduled-downtimes" id="toc-unscheduled-downtimes" class="nav-link" data-scroll-target="#unscheduled-downtimes">Unscheduled Downtimes</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -601,12 +595,24 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="service-status" class="level2">
-<h2 class="anchored" data-anchor-id="service-status">Service Status</h2>
-<p>Electrical Load Test 10/23 and 10/30<br>
-The EML server room will be brought offline on the mornings of 10/23 and 10/30 for an electrical load test. On 10/23, electricity to our server room will be turned off so that campus can install monitoring equipment. Power will be restored shortly after and we will then bring all equipment and services online. This will repeat on 10/30 when the monitoring equipment will be removed. We do not yet know the time or duration of each event, however we anticipate they will probably be in the early morning and last for a couple of hours.</p>
+<section id="downtimes" class="level1">
+<h1>Downtimes</h1>
+<section id="scheduled-downtimes" class="level2">
+<h2 class="anchored" data-anchor-id="scheduled-downtimes">Scheduled Downtimes</h2>
+<p>Every attempt will be made to schedule downtimes during off hours.</p>
+<p>Scheduled system downtime is posted in the ssh login message. An attempt will be made to post the message at least 24 hours in advance. The announcement will state the date(s) and time(s) of the downtime and every attempt will be made not to exceed the posted downtime hours. Whenever possible, 10 minutes warning will be given prior to shutting the system down.</p>
+</section>
+<section id="unscheduled-downtimes" class="level2">
+<h2 class="anchored" data-anchor-id="unscheduled-downtimes">Unscheduled Downtimes</h2>
+<p>All systems will be taken down under the following circumstances:</p>
+<ul>
+<li><p>Emergency hardware or software conditions may occur, including emergency filesystem repair, which may result in unscheduled system downtime. As much advance warning as possible will be given; but at times the system must be taken down rapidly to avoid further damage to hardware or other system resources.</p></li>
+<li><p>If it is transparent to all users (which in practice means that there are no users on the system and no user background jobs running) the system may be taken down (for no more than 30 minutes) without advance message of the day warning.</p></li>
+<li><p>The machines usually can reboot themselves from a crash, but occasionally the system will be unavailable until a qualified person can be reached.</p></li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1021,8 +1027,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./schedule.html" class="pagination-link" aria-label="Operating Schedule">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Operating Schedule</span>
+      <a href="./history.html" class="pagination-link" aria-label="A Brief History of the EML">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">A Brief History of the EML</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
