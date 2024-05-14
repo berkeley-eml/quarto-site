@@ -10,7 +10,7 @@ mathematical and econometric software for its users.
   
 ## Getting Started
 
--   [Getting an EML account](setup.qmd)
+-   [Getting an EML account](account-apply.qmd)
 -   [Remote Access](remote.qmd)
 -   [Compute Cluster](cluster.qmd)
 
