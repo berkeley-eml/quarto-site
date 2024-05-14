@@ -37,8 +37,8 @@ website:
       - section: "About"
         contents:
           - history.qmd
-          - schedule.qmd
-          - service_status.qmd
+          - downtimes.qmd
+          #- system-status.qmd
       - section: "Accounts"
         contents:
           - account-apply.qmd
