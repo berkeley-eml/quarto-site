@@ -22,8 +22,8 @@ website:
     left:
       - text: Home
         href: index.qmd
-      - text: About
-        href: about.qmd
+      #- text: About
+      #  href: about.qmd
       - text: Services
         href: services.qmd
       - text: Contact
