@@ -310,7 +310,7 @@
     "href": "software.html",
     "title": "Software Inventory",
     "section": "",
-    "text": "Ubuntu Linux on all servers and workstations\n\n\n\nSAS\nStata and Stata MP (xstata/xstata-mp)\nGauss\nR\nPython\nTensorflow\nPytorch\nTSP (Available only for download)\n\n\n\nMATLAB\nMathematica\nOctave\nmatElike\nIpopt\nMaple\nOpenBLAS\nIBM CPLEX Solver for Matlab\n\n\n\nNAG (Numerical Algorithms Group Library)\nIMSL Fortran Numerical Library\nStatTransfer\nAdobe Acrobat (Available only on Macs)\n\n\n\nGNU: gc, g++, gfortran\nIntel: icc, ifort\n\n\n\nC\nC++\nPerl\nPython\nPHP\nFortran\nJulia\n\n\n\nvi\nEmacs\npico\nTeX, LaTeX, LaTeX2e\nkate\nTextMate (Available only on Macs)\nLyx\n\n\n\nMS Office (Available only on Macs)\nLibre Office\n\n\n\ndynare++\n7zip\nAspera Connect\nPdftk",
+    "text": "Ubuntu Linux on all servers and workstations\n\n\n\n\nSAS\nStata and Stata MP (xstata/xstata-mp)\nGauss\nR\nPython\nTensorflow\nPytorch\nTSP (Available only for download)\n\n\n\n\n\nMATLAB\nMathematica\nOctave\nmatElike\nIpopt\nMaple\nOpenBLAS\nIBM CPLEX Solver for Matlab\n\n\n\n\n\nNAG (Numerical Algorithms Group Library)\nIMSL Fortran Numerical Library\nStatTransfer\n\n\n\n\n\nGNU: gcc, g++, gfortran\nIntel: icc, ifort\n\n\n\n\n\nC\nC++\nPython\nR\nFortran\nJulia\nPerl\n\n\n\n\n\nvi\nEmacs\npico\nTeX, LaTeX, LaTeX2e\nkate\nLyx\n\n\n\n\n\nMicrosoft Office (only on lab Macs)\nLibre Office\n\n\n\n\n\ndynare++\n7zip\nAspera Connect\nPdftk",
     "crumbs": [
       "Home",
       "Software",
@@ -358,7 +358,7 @@
     "href": "software.html#tools-and-utilities",
     "title": "Software Inventory",
     "section": "",
-    "text": "NAG (Numerical Algorithms Group Library)\nIMSL Fortran Numerical Library\nStatTransfer\nAdobe Acrobat (Available only on Macs)",
+    "text": "NAG (Numerical Algorithms Group Library)\nIMSL Fortran Numerical Library\nStatTransfer",
     "crumbs": [
       "Home",
       "Software",
@@ -370,7 +370,7 @@
     "href": "software.html#compilers",
     "title": "Software Inventory",
     "section": "",
-    "text": "GNU: gc, g++, gfortran\nIntel: icc, ifort",
+    "text": "GNU: gcc, g++, gfortran\nIntel: icc, ifort",
     "crumbs": [
       "Home",
       "Software",
@@ -382,7 +382,7 @@
     "href": "software.html#programmingscripting",
     "title": "Software Inventory",
     "section": "",
-    "text": "C\nC++\nPerl\nPython\nPHP\nFortran\nJulia",
+    "text": "C\nC++\nPython\nR\nFortran\nJulia\nPerl",
     "crumbs": [
       "Home",
       "Software",
@@ -394,7 +394,7 @@
     "href": "software.html#text-editing-and-document-preparation",
     "title": "Software Inventory",
     "section": "",
-    "text": "vi\nEmacs\npico\nTeX, LaTeX, LaTeX2e\nkate\nTextMate (Available only on Macs)\nLyx",
+    "text": "vi\nEmacs\npico\nTeX, LaTeX, LaTeX2e\nkate\nLyx",
     "crumbs": [
       "Home",
       "Software",
@@ -406,7 +406,7 @@
     "href": "software.html#office-applications",
     "title": "Software Inventory",
     "section": "",
-    "text": "MS Office (Available only on Macs)\nLibre Office",
+    "text": "Microsoft Office (only on lab Macs)\nLibre Office",
     "crumbs": [
       "Home",
       "Software",
