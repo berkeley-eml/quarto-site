@@ -55,7 +55,7 @@ servers (aka 'submit hosts'):
     blundell, frisch, hicks, jorgensen, laffont, logit, marlowe,
     marshall, nerlove, radner, theil
 
-Users can also start [JupyterHub sessions](jupyterhub) to get
+Users can also start [JupyterHub sessions](jupyterhub.qmd) to get
 browser-based access to the cluster nodes.
 
 The cluster has three job queues (called partitions by Slurm) called
@@ -320,7 +320,7 @@ theil:~$ sbatch -C mem768g job.sh
 You don't need to, and usually shouldn't, use the '--mem' flag for
 sbatch. In general, you'll have access to all the memory on a node. This
 is true for all users, so occasionally a job will fail as mentioned
-above and discussed [further here](memory).
+above and discussed [further here](memory.qmd).
 
 If you expect to need all the memory on a node or need to make sure your
 job does not die because of memory use by other user jobs on the node
