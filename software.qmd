@@ -6,102 +6,64 @@ Ubuntu Linux on all servers and workstations
 
 ## Statistics, Econometrics, and Machine Learning
 
-SAS
-
-Stata and Stata MP (xstata/xstata-mp)
-
-Gauss
-
-R
-
-Python
-
-Tensorflow
-
-Pytorch
-
-TSP (Available only for download)
+ - SAS
+ - Stata and Stata MP (xstata/xstata-mp)
+ - Gauss
+ - R
+ - Python
+ - Tensorflow
+ - Pytorch
+ - TSP (Available only for download)
 
 ## Mathematics
 
-MATLAB
-
-Mathematica
-
-Octave
-
-matElike
-
-Ipopt
-
-Maple
-
-OpenBLAS
-
-IBM CPLEX Solver for Matlab
+ - MATLAB
+ - Mathematica
+ - Octave
+ - matElike
+ - Ipopt
+ - Maple
+ - OpenBLAS
+ - IBM CPLEX Solver for Matlab
 
 ## Tools and Utilities
 
-NAG (Numerical Algorithms Group Library)
-
-IMSL Fortran Numerical Library
-
-StatTransfer
-
-Adobe Acrobat (Available only on Macs)
+ - NAG (Numerical Algorithms Group Library)
+ - IMSL Fortran Numerical Library
+ - StatTransfer
 
 ## Compilers
 
-GNU: gc, g++, gfortran
-
-Intel: icc, ifort
+ - GNU: gcc, g++, gfortran
+ - Intel: icc, ifort
 
 ## Programming/Scripting
 
-C
-
-C++
-
-Perl
-
-Python
-
-PHP
-
-Fortran
-
-Julia
+ - C
+ - C++
+ - Python
+ - R
+ - Fortran
+ - Julia
+ - Perl
 
 ## Text Editing and Document Preparation
 
-vi
-
-Emacs
-
-pico
-
-TeX, LaTeX, LaTeX2e
-
-kate
-
-TextMate (Available only on Macs)
-
-Lyx
+ - vi
+ - Emacs
+ - pico
+ - TeX, LaTeX, LaTeX2e
+ - kate
+ - Lyx
 
 ## Office Applications
 
-MS Office (Available only on Macs)
-
-Libre Office
+ - Microsoft Office (only on lab Macs)
+ - Libre Office
 
 ## Other Applications
 
-dynare++
-
-7zip
-
-Aspera Connect
-
-Pdftk
-
-
+ - dynare++
+ - 7zip
+ - Aspera Connect
+ - Pdftk
