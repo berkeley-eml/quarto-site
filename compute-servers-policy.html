@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./background.html" rel="next">
-<link href="./ccluster.html" rel="prev">
+<link href="./grafana.html" rel="next">
+<link href="./cluster.html" rel="prev">
 <link href="./images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -399,20 +399,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ccluster.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">EML Computing Cluster</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./compute-servers-policy.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Compute Servers Policy</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./background.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">How do I run my program in the background?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -436,13 +424,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./memory.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Why might my job run out of memory?</span></a>
+ <span class="menu-text">Memory Management</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./savio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">EML Condo Node at Savio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./background.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Background Processes</span></a>
   </div>
 </li>
       </ul>
@@ -591,16 +585,16 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="compute-servers-policy" class="level2">
-<h2 class="anchored" data-anchor-id="compute-servers-policy">Compute Servers Policy</h2>
+<section id="compute-servers-policy" class="level1">
+<h1>Compute Servers Policy</h1>
 <p>Access to the compute server nerlove is restricted to individuals who have obtained instructions regarding the use and limitations of running jobs on the compute servers. Please contact the EML staff to register as a compute server user or to schedule access to additional resources on the EML compute servers. Only individuals who have registered as a compute server are allowed to use the compute servers. When registering, users will need to identify the computational resources required for their work and their ability to monitor the status of those jobs. User names will be added to a mailing list to be used for announcements concerning scheduling of special projects and downtimes for maintenance and repairs.</p>
 <p>Please observe the following policies:</p>
 <ul>
 <li><p>Access to the compute servers is restricted to individuals who are familiar with running batch jobs in a UNIX/Linux environment. If you are not familiar with running jobs in this way, you can contact consult@econ.berkeley.edu.</p></li>
 <li><p>Jobs must be nice’d to a value of 19. Any job that is running on a compute server with a lower priority (without prior authorization) may be terminated.</p></li>
-<li><p>The maximum number of jobs can be running on a server at any one time is equal to the number of processors. The number of CPUs on a machine can be seen on our <a href="./monitoring">Grafana dashboards</a>. If you see (using top) that all CPUs are busy, do not run/start a job on that server until resources become available.</p></li>
+<li><p>The maximum number of jobs can be running on a server at any one time is equal to the number of processors. The number of CPUs on a machine can be seen on our <a href="./monitoring.html">Grafana dashboards</a>. If you see (using top) that all CPUs are busy, do not run/start a job on that server until resources become available.</p></li>
 <li><p>A user should not run so many simultaneous jobs on a compute server such that other users are prevented from starting jobs due to lack of resources. This policy is intended to ensure that CPU cycles and memory are used fairly and effectively.&nbsp;Accommodations will be made based on availability and the current needs of the user community. Please send mail to “manager” if you need temporary or long term access to additional computing resources.</p></li>
-<li><p>Use the command ‘<strong>sitehosts cserver</strong>’ for the list of computers whose use is restricted and covered by these rules.</p></li>
+<li><p>Use the command <code>sitehosts cserver</code> for the list of computers whose use is restricted and covered by these rules.</p></li>
 </ul>
 
 
@@ -1018,13 +1012,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ccluster.html" class="pagination-link" aria-label="EML Computing Cluster">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">EML Computing Cluster</span>
+      <a href="./cluster.html" class="pagination-link" aria-label="Using the SLURM cluster">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Using the SLURM cluster</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./background.html" class="pagination-link" aria-label="How do I run my program in the background?">
-        <span class="nav-page-text">How do I run my program in the background?</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./grafana.html" class="pagination-link" aria-label="Grafana Dashboards">
+        <span class="nav-page-text">Grafana Dashboards</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ccluster.html" rel="next">
+<link href="./compute-servers-policy.html" rel="next">
 <link href="./x-windows.html" rel="prev">
 <link href="./images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -433,20 +433,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ccluster.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">EML Computing Cluster</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./compute-servers-policy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Compute Servers Policy</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./background.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">How do I run my program in the background?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -470,13 +458,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./memory.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Why might my job run out of memory?</span></a>
+ <span class="menu-text">Memory Management</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./savio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">EML Condo Node at Savio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./background.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Background Processes</span></a>
   </div>
 </li>
       </ul>
@@ -635,7 +629,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#submitting-parallel-jobs" id="toc-submitting-parallel-jobs" class="nav-link" data-scroll-target="#submitting-parallel-jobs">Submitting Parallel Jobs</a>
   <ul class="collapse">
-  <li><a href="#submitting-threaded-jobs" id="toc-submitting-threaded-jobs" class="nav-link" data-scroll-target="#submitting-threaded-jobs"><strong>Submitting Threaded Jobs</strong></a></li>
+  <li><a href="#submitting-threaded-jobs" id="toc-submitting-threaded-jobs" class="nav-link" data-scroll-target="#submitting-threaded-jobs">Submitting Threaded Jobs</a></li>
   <li><a href="#submitting-multi-core-jobs" id="toc-submitting-multi-core-jobs" class="nav-link" data-scroll-target="#submitting-multi-core-jobs">Submitting Multi-core Jobs</a></li>
   <li><a href="#submitting-multi-node-jobs" id="toc-submitting-multi-node-jobs" class="nav-link" data-scroll-target="#submitting-multi-node-jobs">Submitting Multi-node Jobs</a></li>
   <li><a href="#submitting-mpi-jobs" id="toc-submitting-mpi-jobs" class="nav-link" data-scroll-target="#submitting-mpi-jobs">Submitting MPI Jobs</a></li>
@@ -660,14 +654,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="using-the-slurm-cluster" class="level1">
 <h1>Using the SLURM cluster</h1>
 <p>The EML operates a high-performance Linux-based computing cluster that uses the Slurm queueing software to manage jobs. The cluster has three partitions, which are distinct sets of nodes, with different generations of CPUs.</p>
-<p>The <strong>high</strong> priority (default) partition has eight nodes, divided into two sets of four nodes.</p>
+<p>The <code>high</code> priority (default) partition has eight nodes, divided into two sets of four nodes.</p>
 <ul>
 <li>eml-sm2 nodes: These nodes each have two 14-core CPUs, each core with two hyperthreads (i.e., 56 logical cores per node) available for compute jobs. Each node has 132 GB dedicated RAM</li>
 <li>eml-sm3 nodes: These nodes each have two 8-core CPUS, each core with two hyperthreads (i.e., 32 logical cores per node) available for compute jobs. Each node has 768 GB dedicated RAM.</li>
 </ul>
 <p>In the remainder of this document, we’ll refer to the processing units (the logical cores) as ‘cores’.</p>
-<p>The <strong>low</strong> priority partition has eight nodes, each with 32 physical cnores per node, for a total of 256 cores. Each node has 264 GB dedicated RAM. These nodes have slower cores than the high priority partition and are intended for use when the high priority partition is busy or users have jobs that are not time-critical, thereby freeing up the high partition for other jobs.</p>
-<p>The <strong>gpu</strong> partition has a single node (with 48 logical cores and 264 GB CPU RAM) that hosts an Nvidia A40 GPU.</p>
+<p>The <code>low</code> priority partition has eight nodes, each with 32 physical cnores per node, for a total of 256 cores. Each node has 264 GB dedicated RAM. These nodes have slower cores than the high priority partition and are intended for use when the high priority partition is busy or users have jobs that are not time-critical, thereby freeing up the high partition for other jobs.</p>
+<p>The <code>gpu</code> partition has a single node (with 48 logical cores and 264 GB CPU RAM) that hosts an Nvidia A40 GPU.</p>
 <p>The partitions are managed by the Slurm queueing software. Slurm provides a standard batch queueing system through which users submit jobs to the cluster. Jobs are submitted to Slurm using a user-defined shell script that executes one’s application code. Interactive use is also an option. Users may also query the cluster to see job status. As currently set up, the cluster is designed for processing single-core and multi-core/threaded jobs, as well as distributed memory jobs that use MPI. All software running on EML Linux machines is available on the cluster. Users can also compile programs on any EML Linux machine and then run that program on the cluster.</p>
 <p>Below is more detailed information about how to use the cluster.</p>
 <section id="access-and-job-restrictionstime-limits" class="level2">
@@ -812,15 +806,15 @@ marshall, nerlove, radner, theil</code></pre>
 <h3 class="anchored" data-anchor-id="how-to-monitor-jobs">How to Monitor Jobs</h3>
 <p>The Slurm command squeue provides info on job status:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> squeue</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>             <span class="ex">JOBID</span> PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="er">(</span><span class="ex">REASON</span><span class="kw">)</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>               <span class="ex">381</span>      high   job.sh paciorek  R      25:28      1 eml-sm20</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>               <span class="ex">380</span>      low    job.sh paciorek  R      25:37      1 eml-sm11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>   <span class="ex">JOBID</span> PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="er">(</span><span class="ex">REASON</span><span class="kw">)</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>     <span class="ex">381</span>      high   job.sh paciorek  R      25:28      1 eml-sm20</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>     <span class="ex">380</span>      low    job.sh paciorek  R      25:37      1 eml-sm11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The following will tailor the output to include information on the number of cores (the CPUs column below) being used:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> squeue <span class="at">-o</span> <span class="st">"%.7i %.9P %.8j %.8u %.2t %.9M %.5C %.8r %.6D %R"</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>   <span class="ex">JOBID</span> PARTITION     NAME     USER ST      TIME  CPUS   REASON  NODES NODELIST<span class="er">(</span><span class="ex">REASON</span><span class="kw">)</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>     <span class="ex">381</span>      high   job.sh paciorek  R     28:00     4     None      1 eml-sm20</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>     <span class="ex">380</span>      low    job.sh paciorek  R     28:09     4     None      1 eml-sm11 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The ‘ST’ field indicates whether a job is running (R), failed (F), or pending (PD). The latter occurs when there are not yet enough resources on the system for your job to run.</p>
+<p>The <code>ST</code> field indicates whether a job is running (R), failed (F), or pending (PD). The latter occurs when there are not yet enough resources on the system for your job to run.</p>
 <p>If you would like to logon to the node on which your job is running in order to assess CPU or memory use, you can run an interactive job within the context of your existing job. First determine the job ID of your running job using squeue (here job 380) and insert that in the following command:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--pty</span> <span class="at">--jobid</span><span class="op">=</span>380 /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can then run ‘top’ and other such tools.</p>
@@ -886,7 +880,7 @@ marshall, nerlove, radner, theil</code></pre>
 <p>One can use Slurm to submit a variety of types of parallel code. Here is a set of potentially useful templates that we expect will account for most user needs. If you have a situation that does not fall into these categories or have questions about parallel programming or submitting jobs to use more than one core, please email <a href="mailto:consult@econ.berkeley.edu" class="email">consult@econ.berkeley.edu</a>.</p>
 <p>For additional details, please see the <a href="https://berkeley-scf.github.io/tutorial-parallelization">SCF tutorial</a> on the basics of parallel programming in R, Python, MATLAB and C/C++, with some additional details on doing so in the context of a Slurm job. If you’re making use of the <a href="http://statistics.berkeley.edu/computing/blas">threaded BLAS</a>, it’s worth doing some testing to make sure that threading is giving an non-negligible speedup; see the notes above for more information.</p>
 <section id="submitting-threaded-jobs" class="level3">
-<h3 class="anchored" data-anchor-id="submitting-threaded-jobs"><strong>Submitting Threaded Jobs</strong></h3>
+<h3 class="anchored" data-anchor-id="submitting-threaded-jobs">Submitting Threaded Jobs</h3>
 <p>Here’s an example job script to use multiple threads (4 in this case) in R (or with your own openMP-based program):</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
@@ -905,15 +899,15 @@ marshall, nerlove, radner, theil</code></pre>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sas</span> <span class="at">-threads</span> <span class="at">-cpucount</span> <span class="va">$SLURM_CPUS_PER_TASK</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>A number of SAS procs are set to take advantage of threading, including SORT, SUMMARY, TABULATE, GLM, LOESS, and REG. SAS enables threading by default, with the default number of threads set to four. Starting SAS as above ensures that the number of threads is set to the number of cores you requested. You can check that threading is enabled from within SAS by running the following and looking for the cpucount and threads options in the printout.</p>
-<pre><code>Proc Options group=performance; run;</code></pre>
+<pre class="sas"><code>Proc Options group=performance; run;</code></pre>
 <p>You can use up to eight cores with Stata/MP (limited by the EML license for Stata). IMPORTANT: Do not request more than 8 cores for a Stata job. If you request eight cores (–cpus-per-task=8) or fewer, you are all set.</p>
 <p>It’s possible to explicitly set the number of processors in Stata to be the number you requested in your job submission, but that is unnecessary because Slurm will limit your job to the number of cores requested. That said, one way to do this is to hard-code the following line at the start of your Stata code (in this case assuming you requested four cores):</p>
-<pre><code>set processors 4</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> processors 4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can do this in an automated fashion by first invoking Stata in your job script as:</p>
-<pre><code>stata-mp -b do myStataCode.do ${SLURM_CPUS_PER_TASK}</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stata-mp</span> <span class="at">-b</span> do myStataCode.do <span class="va">${SLURM_CPUS_PER_TASK}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and then at the start of your Stata code including these two lines:</p>
-<pre><code>args ncores
-set processors `ncores'</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">args</span> ncores</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> processors <span class="kw">`</span><span class="ex">ncores</span><span class="st">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="submitting-multi-core-jobs" class="level3">
 <h3 class="anchored" data-anchor-id="submitting-multi-core-jobs">Submitting Multi-core Jobs</h3>
@@ -1514,8 +1508,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ccluster.html" class="pagination-link" aria-label="EML Computing Cluster">
-        <span class="nav-page-text">EML Computing Cluster</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./compute-servers-policy.html" class="pagination-link" aria-label="Compute Servers Policy">
+        <span class="nav-page-text">Compute Servers Policy</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./grafana.html" rel="next">
-<link href="./compute-servers-policy.html" rel="prev">
+<link href="./disk-quota.html" rel="next">
+<link href="./savio.html" rel="prev">
 <link href="./images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -116,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cluster.html">Cluster</a></li><li class="breadcrumb-item"><a href="./background.html">How do I run my program in the background?</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cluster.html">Cluster</a></li><li class="breadcrumb-item"><a href="./background.html">Background Processes</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -399,20 +433,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ccluster.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">EML Computing Cluster</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./compute-servers-policy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Compute Servers Policy</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./background.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">How do I run my program in the background?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -436,13 +458,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./memory.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Why might my job run out of memory?</span></a>
+ <span class="menu-text">Memory Management</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./savio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">EML Condo Node at Savio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./background.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Background Processes</span></a>
   </div>
 </li>
       </ul>
@@ -581,8 +609,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-do-i-run-my-program-in-the-background" id="toc-how-do-i-run-my-program-in-the-background" class="nav-link active" data-scroll-target="#how-do-i-run-my-program-in-the-background">How do I run my program in the background?</a>
+  <li><a href="#background-processes" id="toc-background-processes" class="nav-link active" data-scroll-target="#background-processes">Background Processes</a>
   <ul class="collapse">
+  <li><a href="#bash" id="toc-bash" class="nav-link" data-scroll-target="#bash">bash</a></li>
   <li><a href="#screen" id="toc-screen" class="nav-link" data-scroll-target="#screen">screen</a></li>
   </ul></li>
   </ul>
@@ -594,22 +623,25 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="how-do-i-run-my-program-in-the-background" class="level2">
-<h2 class="anchored" data-anchor-id="how-do-i-run-my-program-in-the-background">How do I run my program in the background?</h2>
-<p>Unix has the ability to run your program in the background. This means that instead of waiting for the program to finish execution, the UNIX shell prompts you again and you can run other commands at the same time that the background process is running. To run the program ‘<strong>myprog</strong>’ in background, type:</p>
-<pre><code>myprog &amp;</code></pre>
+<section id="background-processes" class="level1">
+<h1>Background Processes</h1>
+<section id="bash" class="level2">
+<h2 class="anchored" data-anchor-id="bash">bash</h2>
+<p>Unix has the ability to run your program in the background. This means that instead of waiting for the program to finish execution, the UNIX shell prompts you again and you can run other commands at the same time that the background process is running. To run the program <code>myprog</code> in background, type:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">myprog</span> <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The shell will respond with a number, its process identification number (or PID) and then return to the prompt.</p>
-<p>It is also possible to leave a big job running in the background even after you logout. To keep the program ‘<strong>myprog</strong>’ running in background, type:</p>
-<pre><code>nohup myprog &amp;</code></pre>
-<p>For example, to run your <strong>R</strong> job in the background from tcsh with a nice level of 19:</p>
-<pre><code>nohup nice +19 R --slave &lt; infile.R &amp;</code></pre>
+<p>It is also possible to leave a big job running in the background even after you logout. To keep the program <code>myprog</code> running in background, type:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nohup</span> myprog <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For example, to run your <code>R</code> job in the background from tcsh with a nice level of 19:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nohup</span> nice +19 R <span class="at">--slave</span> <span class="op">&lt;</span> infile.R <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Or from bash:</p>
-<pre><code>nohup nice -19 R --slave &lt; in.R &gt; R.out 2&gt;&amp;1 &amp;</code></pre>
-<p>Or <strong>MATLAB</strong> from tcsh, while running it with a nice level of 19:</p>
-<pre><code>nohup nice +19 matlab &lt; infile.m &gt; outfile &amp;</code></pre>
-<section id="screen" class="level3">
-<h3 class="anchored" data-anchor-id="screen">screen</h3>
-<p>You may alternatively choose to use <strong>GNU screen</strong> to run your jobs so that you can leave them running when you logout. Just invoke ‘<strong>screen</strong>’ from your shell, type a space or carriage return to dismiss the startup message, then start your job. When you want to detach, type Control-a followed by Control-d.&nbsp;You can then exit from your terminal session. When you want to access your job again, connect to the same machine your job is running on and type ‘<strong>screen -r</strong>’.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nohup</span> nice <span class="at">-19</span> R <span class="at">--slave</span> <span class="op">&lt;</span> in.R <span class="op">&gt;</span> R.out <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or <code>MATLAB</code> from tcsh, while running it with a nice level of 19:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nohup</span> nice +19 matlab <span class="op">&lt;</span> infile.m <span class="op">&gt;</span> outfile <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="screen" class="level2">
+<h2 class="anchored" data-anchor-id="screen">screen</h2>
+<p>You may alternatively choose to use <code>GNU screen</code> to run your jobs so that you can leave them running when you logout. Just invoke <code>screen</code> from your shell, type a space or carriage return to dismiss the startup message, then start your job. When you want to detach, type Control-a followed by Control-d.&nbsp;You can then exit from your terminal session. When you want to access your job again, connect to the same machine your job is running on and type <code>screen -r</code>.</p>
 
 
 </section>
@@ -1027,13 +1059,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./compute-servers-policy.html" class="pagination-link" aria-label="Compute Servers Policy">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Compute Servers Policy</span>
+      <a href="./savio.html" class="pagination-link" aria-label="EML Condo Node at Savio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">EML Condo Node at Savio</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./grafana.html" class="pagination-link" aria-label="Grafana Dashboards">
-        <span class="nav-page-text">Grafana Dashboards</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./disk-quota.html" class="pagination-link" aria-label="Disk Quota">
+        <span class="nav-page-text">Disk Quota</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
