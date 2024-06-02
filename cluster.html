@@ -625,9 +625,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#how-to-kill-a-job" id="toc-how-to-kill-a-job" class="nav-link" data-scroll-target="#how-to-kill-a-job">How to Kill a Job</a></li>
   <li><a href="#submitting-a-low-priority-job" id="toc-submitting-a-low-priority-job" class="nav-link" data-scroll-target="#submitting-a-low-priority-job"><span id="low"></span>Submitting a Low-Priority Job</a></li>
   <li><a href="#interactive-jobs" id="toc-interactive-jobs" class="nav-link" data-scroll-target="#interactive-jobs">Interactive Jobs</a></li>
-  <li><a href="#submitting-long-jobs-and-setting-job-time-limits" id="toc-submitting-long-jobs-and-setting-job-time-limits" class="nav-link" data-scroll-target="#submitting-long-jobs-and-setting-job-time-limits"><span id="long"></span>Submitting Long Jobs and Setting Job Time Limits</a></li>
-  <li><a href="#submitting-large-memory-jobs" id="toc-submitting-large-memory-jobs" class="nav-link" data-scroll-target="#submitting-large-memory-jobs"><span id="bigmem"></span>Submitting Large Memory Jobs</a></li>
-  <li><a href="#submitting-gpu-jobs" id="toc-submitting-gpu-jobs" class="nav-link" data-scroll-target="#submitting-gpu-jobs"><span id="gpu"></span>Submitting GPU Jobs</a></li>
+  <li><a href="#submitting-long-jobs-and-setting-job-time-limits" id="toc-submitting-long-jobs-and-setting-job-time-limits" class="nav-link" data-scroll-target="#submitting-long-jobs-and-setting-job-time-limits">Submitting Long Jobs and Setting Job Time Limits</a></li>
+  <li><a href="#submitting-large-memory-jobs" id="toc-submitting-large-memory-jobs" class="nav-link" data-scroll-target="#submitting-large-memory-jobs">Submitting Large Memory Jobs</a></li>
+  <li><a href="#submitting-gpu-jobs" id="toc-submitting-gpu-jobs" class="nav-link" data-scroll-target="#submitting-gpu-jobs">Submitting GPU Jobs</a></li>
   <li><a href="#how-to-monitor-jobs" id="toc-how-to-monitor-jobs" class="nav-link" data-scroll-target="#how-to-monitor-jobs">How to Monitor Jobs</a></li>
   <li><a href="#how-to-monitor-cluster-usage" id="toc-how-to-monitor-cluster-usage" class="nav-link" data-scroll-target="#how-to-monitor-cluster-usage">How to Monitor Cluster Usage</a></li>
   <li><a href="#when-will-my-job-run-or-why-is-it-not-starting" id="toc-when-will-my-job-run-or-why-is-it-not-starting" class="nav-link" data-scroll-target="#when-will-my-job-run-or-why-is-it-not-starting">When will my job run or why is it not starting?</a></li>
@@ -637,8 +637,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#submitting-threaded-jobs" id="toc-submitting-threaded-jobs" class="nav-link" data-scroll-target="#submitting-threaded-jobs"><strong>Submitting Threaded Jobs</strong></a></li>
   <li><a href="#submitting-multi-core-jobs" id="toc-submitting-multi-core-jobs" class="nav-link" data-scroll-target="#submitting-multi-core-jobs">Submitting Multi-core Jobs</a></li>
-  <li><a href="#submitting-multi-node-jobs" id="toc-submitting-multi-node-jobs" class="nav-link" data-scroll-target="#submitting-multi-node-jobs"><span id="multi-node"></span>Submitting Multi-node Jobs</a></li>
-  <li><a href="#submitting-mpi-jobs" id="toc-submitting-mpi-jobs" class="nav-link" data-scroll-target="#submitting-mpi-jobs"><span id="MPI"></span>Submitting MPI Jobs</a></li>
+  <li><a href="#submitting-multi-node-jobs" id="toc-submitting-multi-node-jobs" class="nav-link" data-scroll-target="#submitting-multi-node-jobs">Submitting Multi-node Jobs</a></li>
+  <li><a href="#submitting-mpi-jobs" id="toc-submitting-mpi-jobs" class="nav-link" data-scroll-target="#submitting-mpi-jobs">Submitting MPI Jobs</a></li>
   <li><a href="#submitting-matlab-parallel-server-multi-node-jobs" id="toc-submitting-matlab-parallel-server-multi-node-jobs" class="nav-link" data-scroll-target="#submitting-matlab-parallel-server-multi-node-jobs">Submitting MATLAB Parallel Server (Multi-node) Jobs</a></li>
   </ul></li>
   <li><a href="#automating-submission-of-multiple-jobs" id="toc-automating-submission-of-multiple-jobs" class="nav-link" data-scroll-target="#automating-submission-of-multiple-jobs">Automating Submission of Multiple Jobs</a>
@@ -683,76 +683,43 @@ marshall, nerlove, radner, theil</code></pre>
 <p>At the moment the default time limit on each job is five days run-time, but users can still request a longer limit (up to max of 28 days) with the -t flag. The scheduling software can better balance usage across multiple users when it has information about how long each job is expected to take, so if possible please indicate a time limit for your job even if it is less than five days. Feel free to be generous in this time limit to avoid having your job killed if it runs longer than expected. Also feel free to set a time limit as a round number, such as 1 hour, 4 hours, 1 day, 3 days, 10 days, and 28 days rather than trying to be more exact.</p>
 <p>This table outlines the job restrictions in each partition.</p>
 <table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 23%">
+<col style="width: 15%">
+<col style="width: 26%">
+<col style="width: 21%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>
-Partition
-</th>
-<th>
-Max. cores/user
-</th>
-<th>
-Time Limit
-</th>
-<th>
-Max. mem/job (GB)
-</th>
-<th>
-Max. cores/job
-</th>
+<th>Partition</th>
+<th>Max. cores/user</th>
+<th>Time Limit</th>
+<th>Max. mem/job (GB)</th>
+<th>Max. cores/job</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>
-high (default)
-</td>
-<td>
-352
-</td>
-<td>
-28 days<sup>2</sup>
-</td>
-<td>
-132 GB (eml-sm2 nodes) or 768 GB (eml-sm3 nodes, requested with “-C mem768g” [formerly “-C bigmem”] <sup>4</sup>)
-</td>
-<td>
-56 (eml-sm2 nodes) or 32 (eml-sm3 nodes)<sup>3</sup>
-</td>
+<td>high (default)</td>
+<td>352</td>
+<td>28 days2</td>
+<td>132 GB (eml-sm2 nodes) or 768 GB (eml-sm3 nodes, requested with “-C mem768g” [formerly “-C bigmem”] 4)</td>
+<td>56 (eml-sm2 nodes) or 32 (eml-sm3 nodes)3</td>
 </tr>
 <tr class="even">
-<td>
-low<sup>1</sup>
-</td>
-<td>
-256
-</td>
-<td>
-28 days<sup>2</sup>
-</td>
-<td>
-264 GB
-</td>
-<td>
-32<sup>3</sup>
-</td>
+<td>low1</td>
+<td>256</td>
+<td>28 days2</td>
+<td>264 GB</td>
+<td>323</td>
 </tr>
 <tr class="odd">
-<td>
-gpu<sup>5</sup>
-</td>
-<td>
-48
-</td>
-<td>
-28 days
-</td>
-<td>
-256 GB
-</td>
-<td>
-48
-</td>
+<td>gpu5</td>
+<td>48</td>
+<td>28 days</td>
+<td>256 GB</td>
+<td>48</td>
 </tr>
 </tbody>
 </table>
@@ -820,7 +787,7 @@ gpu<sup>5</sup>
 <p>Note that if that specific node does not have sufficient free cores to run your job, you will need to wait until cores become available on that node before your interactive session will start. The squeue command (see below in the section on How to Monitor Jobs) will tell you on which node a given job is running.</p>
 </section>
 <section id="submitting-long-jobs-and-setting-job-time-limits" class="level3">
-<h3 class="anchored" data-anchor-id="submitting-long-jobs-and-setting-job-time-limits"><span id="long"></span>Submitting Long Jobs and Setting Job Time Limits</h3>
+<h3 class="anchored" data-anchor-id="submitting-long-jobs-and-setting-job-time-limits">Submitting Long Jobs and Setting Job Time Limits</h3>
 <p>As mentioned earlier, the default time limit on each job is five days run-time, but users can still request a longer limit (up to max of 28 days) with the -t flag, as illustrated here to request a 10-day job:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> sbatch <span class="at">-t</span> 10-00:00:00 job.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The scheduling software can better balance usage across multiple users when it has information about how long each job is expected to take, so if possible please indicate a time limit for your job even if it is less than three days. Feel free to be generous in this time limit to avoid having your job killed if it runs longer than expected. (For this reason, we suggest that if you expect your job to take more than three days that you may want to increase the limit relative to the five-day default.) Also feel free to set a time limit as a round number, such as 1 hour, 4 hours, 1 day, 3 days, 10 days, and 28 days rather than trying to be more exact.</p>
@@ -828,18 +795,18 @@ gpu<sup>5</sup>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> sbatch <span class="at">-t</span> 3:00:00 job.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="submitting-large-memory-jobs" class="level3">
-<h3 class="anchored" data-anchor-id="submitting-large-memory-jobs"><span id="bigmem"></span>Submitting Large Memory Jobs</h3>
+<h3 class="anchored" data-anchor-id="submitting-large-memory-jobs">Submitting Large Memory Jobs</h3>
 <p>The default high priority partition has some nodes with 132 GB memory and some with 768 GB of memory. If you’re submitting a job that needs a lot of memory, you should add the ‘-C mem768g’ flag (formerly ‘bigmem’) to ensure your job runs on a node with 768 GB of memory. In particular, any jobs that use more than 100 GB memory should use this flag, and we recommend that jobs using more than 25 GB memory use this flag (because having multiple such jobs, potentially from different users, could cause the nodes with 132 GB of memory to run out of memory).</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> sbatch <span class="at">-C</span> mem768g job.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You don’t need to, and usually shouldn’t, use the ‘–mem’ flag for sbatch. In general, you’ll have access to all the memory on a node. This is true for all users, so occasionally a job will fail as mentioned above and discussed <a href="memory">further here</a>.</p>
 <p>If you expect to need all the memory on a node or need to make sure your job does not die because of memory use by other user jobs on the node your job is running on, you can request that your job have exclusive access to a node by adding the ‘–exclusive’ flag.</p>
 </section>
 <section id="submitting-gpu-jobs" class="level3">
-<h3 class="anchored" data-anchor-id="submitting-gpu-jobs"><span id="gpu"></span>Submitting GPU Jobs</h3>
+<h3 class="anchored" data-anchor-id="submitting-gpu-jobs">Submitting GPU Jobs</h3>
 <p>To submit a job to the GPU node, you must include either the ‘–partition=gpu’ or ‘-p gpu’ flag, as well as the “–gres=gpu:1” flag. For example:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> sbatch <span class="at">-p</span> gpu <span class="at">--gres</span><span class="op">=</span>gpu:1 job.sh</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Submitted</span> batch job 380</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To use CUDA or cuDNN, you’ll need to load the ‘cuda’ or ‘cudnn’ modules. To use Tensorflow with the GPU, you’ll need to load the ‘tensorflow’ module (without loading the `cuda` or `cudnn` modules, as CUDA and cuDNN will be available to Tensorflow via a different mechanism).</p>
+<p>To use CUDA or cuDNN, you’ll need to load the ‘cuda’ or ‘cudnn’ modules. To use Tensorflow with the GPU, you’ll need to load the ‘tensorflow’ module (without loading the <code>cuda</code> or <code>cudnn</code> modules, as CUDA and cuDNN will be available to Tensorflow via a different mechanism).</p>
 </section>
 <section id="how-to-monitor-jobs" class="level3">
 <h3 class="anchored" data-anchor-id="how-to-monitor-jobs">How to Monitor Jobs</h3>
@@ -855,10 +822,10 @@ gpu<sup>5</sup>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>     <span class="ex">380</span>      low    job.sh paciorek  R     28:09     4     None      1 eml-sm11 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The ‘ST’ field indicates whether a job is running (R), failed (F), or pending (PD). The latter occurs when there are not yet enough resources on the system for your job to run.</p>
 <p>If you would like to logon to the node on which your job is running in order to assess CPU or memory use, you can run an interactive job within the context of your existing job. First determine the job ID of your running job using squeue (here job 380) and insert that in the following command:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~/Desktop$</span> srun <span class="at">--pty</span> <span class="at">--jobid</span><span class="op">=</span>380 /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--pty</span> <span class="at">--jobid</span><span class="op">=</span>380 /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can then run ‘top’ and other such tools.</p>
 <p>To see a history of your jobs (within a time range), including reasons they might have failed:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~/Desktop$</span> sacct  <span class="at">--starttime</span><span class="op">=</span>2021-04-01 <span class="at">--endtime</span><span class="op">=</span>2021-04-30 <span class="dt">\</span></span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sacct</span>  <span class="at">--starttime</span><span class="op">=</span>2021-04-01 <span class="at">--endtime</span><span class="op">=</span>2021-04-30 <span class="dt">\</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--format</span> JobID,JobName,Partition,Account,AllocCPUS,State%30,ExitCode,Submit,Start,End,NodeList,MaxRSS</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="how-to-monitor-cluster-usage" class="level3">
@@ -898,15 +865,15 @@ gpu<sup>5</sup>
 </section>
 <section id="useful-slurm-commands" class="level3">
 <h3 class="anchored" data-anchor-id="useful-slurm-commands">Useful Slurm commands</h3>
-<p>We’ve prepared a set of shortcut commands that wrap around Slurm commands such `srun`, `squeue`, `sinfo`, and `sacct` with some commonly-used options:</p>
+<p>We’ve prepared a set of shortcut commands that wrap around Slurm commands such <code>srun</code>, <code>squeue</code>, <code>sinfo</code>, and <code>sacct</code> with some commonly-used options:</p>
 <ul>
-<li>`slogin`: starts an interactive shell on a cluster node</li>
-<li>`snodes`: prints the current usage of nodes on the cluster</li>
-<li>`sjobs`: lists running jobs on the cluster</li>
-<li>`shist`: provides information about completed (including failed) jobs</li>
-<li>`sassoc`: gives information about user access to cluster partitions</li>
+<li><code>slogin</code>: starts an interactive shell on a cluster node</li>
+<li><code>snodes</code>: prints the current usage of nodes on the cluster</li>
+<li><code>sjobs</code>: lists running jobs on the cluster</li>
+<li><code>shist</code>: provides information about completed (including failed) jobs</li>
+<li><code>sassoc</code>: gives information about user access to cluster partitions</li>
 </ul>
-<p>For each of these commands, you can add the `-h` flag to see how to use them. For example:</p>
+<p>For each of these commands, you can add the <code>-h</code> flag to see how to use them. For example:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> slogin <span class="at">-h</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Usages:</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="st">'slogin'</span> to start an interactive job</span>
@@ -925,18 +892,18 @@ gpu<sup>5</sup>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OMP_NUM_THREADS</span><span class="op">=</span><span class="va">$SLURM_CPUS_PER_TASK</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> simulate.R simulate.Rout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will allow your R code to use the system’s threaded BLAS and LAPACK routines. [Note that in R you can instead use the omp_set_num_threads() function in the RhpcBLASctl package, again making use of the SLURM_CPUS_PER_TASK environment variable.]</p>
+<p>This will allow your R code to use the system’s threaded BLAS and LAPACK routines. [Note that in R you can instead use the <code>omp_set_num_threads()</code> function in the RhpcBLASctl package, again making use of the SLURM_CPUS_PER_TASK environment variable.]</p>
 <p>The same syntax in your job script will work if you’ve compiled a C/C++/Fortran program that makes use of openMP for threading. Just replace the R CMD BATCH line with the line calling your program.</p>
 <p>Here’s an example job script to use multiple threads (4 in this case) in MATLAB:</p>
-<pre><code>#!/bin/bash
-#SBATCH --cpus-per-task 4
-matlab -nodesktop -nodisplay &lt; simulate.m &gt; simulate.out</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="op">&lt;</span> simulate.m <span class="op">&gt;</span> simulate.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>IMPORTANT: At the start of your MATLAB code file you should include this line:</p>
-<pre><code>maxNumCompThreads(str2num(getenv('SLURM_CPUS_PER_TASK')));</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="va">maxNumCompThreads</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here’s an example job script to use multiple threads (4 in this case) in SAS:</p>
-<pre><code>#!/bin/bash
-#SBATCH --cpus-per-task 4
-sas -threads -cpucount $SLURM_CPUS_PER_TASK</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sas</span> <span class="at">-threads</span> <span class="at">-cpucount</span> <span class="va">$SLURM_CPUS_PER_TASK</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>A number of SAS procs are set to take advantage of threading, including SORT, SUMMARY, TABULATE, GLM, LOESS, and REG. SAS enables threading by default, with the default number of threads set to four. Starting SAS as above ensures that the number of threads is set to the number of cores you requested. You can check that threading is enabled from within SAS by running the following and looking for the cpucount and threads options in the printout.</p>
 <pre><code>Proc Options group=performance; run;</code></pre>
 <p>You can use up to eight cores with Stata/MP (limited by the EML license for Stata). IMPORTANT: Do not request more than 8 cores for a Stata job. If you request eight cores (–cpus-per-task=8) or fewer, you are all set.</p>
@@ -952,47 +919,47 @@ set processors `ncores'</code></pre>
 <h3 class="anchored" data-anchor-id="submitting-multi-core-jobs">Submitting Multi-core Jobs</h3>
 <p>The following example job script files pertain to jobs that need to use multiple cores on a single node that do not fall under the threading/openMP context. This is relevant for parfor in MATLAB; for IPython parallel (ipyparallel), Dask, Ray, Pool.map and pp.Server in Python; and for parallel code in R that starts multiple R process (e.g., future’s future_lapply, foreach, mclapply, parLapply).</p>
 <p>Here’s an example script that uses multiple cores (4 in this case):</p>
-<pre><code>#!/bin/bash
-#SBATCH --cpus-per-task 4
-R CMD BATCH --no-save simulate.R simulate.Rout</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> simulate.R simulate.Rout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>IMPORTANT: Your R, Python, or any other code won’t be able to use more cores than the number of total cores requested (4 in this case). You can use the SLURM_CPUS_PER_TASK environment variable to programmatically control this, though your software will automatically detect the number of available cores in many cases.</p>
 <p>The same syntax for your job script pertains to MATLAB. When using parpool in MATLAB, you can do the following:</p>
-<pre><code>parpool(str2num(getenv('SLURM_CPUS_PER_TASK')));</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="va">parpool</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In the high (default) partition, the default maximum number of workers is 28 on the eml-sm2 nodes and 16 on the eml-sm3 nodes, while in the low partition it is also 16. To increase this (up to the maximum number of cores on a machine), run the following code before invoking parpool:</p>
-<pre><code>cl = parcluster();
-cl.NumWorkers = str2num(getenv('SLURM_CPUS_PER_TASK'));
-cl.parpool(str2num(getenv('SLURM_CPUS_PER_TASK')));</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>()<span class="op">;</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumWorkers</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>))<span class="op">;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">parpool</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To use more than 32 workers (i.e., 32 cores or more) (or more than 56 in the eml-sm2 nodes on the high (default) partition) in MATLAB in a parpool context (or to use cores spread across multiple nodes, which can help start your job faster when the cluster is busy), you need to use MATLAB Parallel Server, discussed below.</p>
 <p>To use multiple threads per worker in MATLAB, here is an example script for four workers and two threads per worker:</p>
-<pre><code>#!/bin/bash
-#SBATCH --nodes 1
-#SBATCH --ntasks 4
-#SBATCH --cpus-per-task 2
-matlab -nodesktop -nodisplay &lt; simulate.m &gt; simulate.out</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes 1</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 4</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 2</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="op">&lt;</span> simulate.m <span class="op">&gt;</span> simulate.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And here is how to start your parpool in your MATLAB code:</p>
-<pre><code>cl = parcluster();
-cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
-cl.parpool(str2num(getenv('SLURM_NTASKS')));</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>()<span class="op">;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumThreads</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>))<span class="op">;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">parpool</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_NTASKS'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Also note that as indicated above, the cores in the high and gpu partitions use hyperthreading, which could slow multi-core computations in some cases. If you’d like to run multi-core jobs without hyperthreading, please contact us for work-arounds.</p>
 </section>
 <section id="submitting-multi-node-jobs" class="level3">
-<h3 class="anchored" data-anchor-id="submitting-multi-node-jobs"><span id="multi-node"></span>Submitting Multi-node Jobs</h3>
+<h3 class="anchored" data-anchor-id="submitting-multi-node-jobs">Submitting Multi-node Jobs</h3>
 <p>You can run jobs that use cores across multiple nodes, but only if the software you are using is configured to execute across machines. Some examples include use of MATLAB Parallel server (discussed below); MPI-based jobs (discussed below); Python code that uses ipyparallel, Dask or Ray with workers running on multiple nodes; or R code using the future package or other multi-node-capable tools. This modality allows you to use more cores than exist on a single node or to gather free cores that are scattered across the nodes when the cluster is heavily used. To run across multiple nodes, you can simply request the total number of cores you want using the –ntasks flag. In cases where the number of cores is greater than the number available on a machine, your job will have access to multiple nodes. Depending on cluster usage, even if you request fewer cores than a machine has, your job may still access cores on multiple nodes.</p>
 </section>
 <section id="submitting-mpi-jobs" class="level3">
-<h3 class="anchored" data-anchor-id="submitting-mpi-jobs"><span id="MPI"></span>Submitting MPI Jobs</h3>
+<h3 class="anchored" data-anchor-id="submitting-mpi-jobs">Submitting MPI Jobs</h3>
 <p>You can use MPI to run jobs across multiple nodes. This modality allows you to use more cores than exist on a single node or to gather free cores that are scattered across the nodes when the cluster is heavily used.</p>
 <p>Here’s an example script that uses multiple processors via MPI (64 in this case):</p>
-<pre><code>#!/bin/bash
-#SBATCH --ntasks 64
-mpirun -np $SLURM_NTASKS myMPIexecutable</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 64</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mpirun</span> <span class="at">-np</span> <span class="va">$SLURM_NTASKS</span> myMPIexecutable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note that “-n” is a shorthand for “–ntasks”.</p>
 <p>“myMPIexecutable” could be C/C++/Fortran code you’ve written that uses MPI, or R or Python code that makes use of MPI. More details are available <a href="http://statistics.berkeley.edu/computing/parallel">here</a>.</p>
 <p>To run an MPI job with each process threaded, your job script would look like the following (here with 14 processes and two threads per process):</p>
-<pre><code>#!/bin/bash
-#SBATCH --ntasks 14 --cpus-per-task 2
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-mpirun -np $SLURM_NTASKS -x OMP_NUM_THREADS myMPIexecutable</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 14 --cpus-per-task 2</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OMP_NUM_THREADS</span><span class="op">=</span><span class="va">$SLURM_CPUS_PER_TASK</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="ex">mpirun</span> <span class="at">-np</span> <span class="va">$SLURM_NTASKS</span> <span class="at">-x</span> OMP_NUM_THREADS myMPIexecutable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="submitting-matlab-parallel-server-multi-node-jobs" class="level3">
 <h3 class="anchored" data-anchor-id="submitting-matlab-parallel-server-multi-node-jobs">Submitting MATLAB Parallel Server (Multi-node) Jobs</h3>
@@ -1002,7 +969,7 @@ mpirun -np $SLURM_NTASKS -x OMP_NUM_THREADS myMPIexecutable</code></pre>
 <p>There are two ways to use MATLAB Parallel Server.</p>
 <section id="option-1a---submit-a-slurm-job-via-sbatch-that-uses-matlab-parallel-server-new-approach-for-matlab-r2023a-as-well-as-r2022a" class="level4">
 <h4 class="anchored" data-anchor-id="option-1a---submit-a-slurm-job-via-sbatch-that-uses-matlab-parallel-server-new-approach-for-matlab-r2023a-as-well-as-r2022a">Option 1a - submit a Slurm job via sbatch that uses MATLAB Parallel Server (new approach for MATLAB R2023a, as well as R2022a)</h4>
-<p>As a one-time setup step (you only need to do this the first time you are using the approach), go to “Environment-&gt;Parallel-&gt;Create and Manage Cluster Profiles” in the MATLAB Desktop toolbar; this will open the Cluster Profile Manager. Then click on ‘Import’ and navigate to `/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings` (`dcsProfile.settings` in MATLAB R2022a) and click ‘Open’. Then exit out of the Cluster Profile Manager.</p>
+<p>As a one-time setup step (you only need to do this the first time you are using the approach), go to “Environment-&gt;Parallel-&gt;Create and Manage Cluster Profiles” in the MATLAB Desktop toolbar; this will open the Cluster Profile Manager. Then click on ‘Import’ and navigate to <code>/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings</code> (<code>dcsProfile.settings</code> in MATLAB R2022a) and click ‘Open’. Then exit out of the Cluster Profile Manager.</p>
 <p>To submit a MATLAB Parallel Server job, you’ll need to specify the number of MATLAB workers (by using the -n or –ntasks flag). Unlike in the past you should NOT use the ‘-C dcs’ flag. Here’s an example job script that would use 40 cores for 40 workers (making sure to use the ‘-n’ flag when requesting the number of cores):</p>
 <pre><code>#!/bin/bash
 #SBATCH -n 40
@@ -1038,7 +1005,7 @@ delete(pool);   % Make sure to delete the job so the cluster resources of the Sl
 <p>This option allows you to be running code within MATLAB running on a stand-alone Linux machine (not part of the EML cluster) and offload parallel execution of a portion of your code to the cluster without explicitly starting a cluster job via Slurm. Note that you simply login to an EML Linux machine and start MATLAB; you do NOT use sbatch or srun to start a cluster job under this approach.</p>
 <p>Under Option 2, you can either start a pool of workers using “parpool” or you can use the “batch” command to execute code across multiple workers.</p>
 <p>To start up a pool of workers (with the only limit on the number of workers being the number of cores in a given partition and the usage of cores by other users’ jobs), you’ll need to use the ‘dcs’ cluster profile.</p>
-<p>As a one-time setup step (you only need to do this the first time you are using the approach), go to “Environment-&gt;Parallel-&gt;Create and Manage Cluster Profiles” in the MATLAB Desktop toolbar; this will open the Cluster Profile Manager. Then click on ‘Import’ and navigate to `/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings` (`dcsProfile.settings` in R2022a and earlier versions) and click ‘Open’. Then exit out of the Cluster Profile Manager.</p>
+<p>As a one-time setup step (you only need to do this the first time you are using the approach), go to “Environment-&gt;Parallel-&gt;Create and Manage Cluster Profiles” in the MATLAB Desktop toolbar; this will open the Cluster Profile Manager. Then click on ‘Import’ and navigate to <code>/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings</code> (<code>dcsProfile.settings</code> in R2022a and earlier versions) and click ‘Open’. Then exit out of the Cluster Profile Manager.</p>
 <p>Now, whenever you want to start up a pool of workers, simply do the following (here for 40 workers):</p>
 <pre><code>pool = parpool('dcs', 40);  % Start a 40-worker pool on the EML cluster
 % execute code
@@ -1074,21 +1041,21 @@ j.delete()                       % Make sure to delete the job so the cluster re
 <h3 class="anchored" data-anchor-id="using-job-arrays-to-submit-multiple-jobs-at-once">Using Job Arrays to Submit Multiple jobs at Once</h3>
 <p>Job array submissions are a nice way to submit multiple jobs in which you vary a parameter across the different jobs.</p>
 <p>Here’s what your job script would look like, in this case to run a total of 5 jobs with parameter values of 0, 1, 2, 5, 7:</p>
-<pre><code>#!/bin/bash
-#SBATCH -a 0-2,5,7
-myExecutable</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -a 0-2,5,7</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="ex">myExecutable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Your program should then make use of the SLURM_ARRAY_TASK_ID environment variable, which for a given job will contain one of the values from the set given with the -a flag (in this case from {0,1,2,5,7}). You could, for example, read SLURM_ARRAY_TASK_ID into your R, Python, MATLAB, or C code.</p>
 <p>Here’s a concrete example where it’s sufficient to use SLURM_ARRAY_TASK_ID to distinguish different input files if you need to run the same command (the bioinformatics program tophat in this case) on multiple input files (in this case, trans0.fq, trans1.fq, …):</p>
-<pre><code>#!/bin/bash
-#SBATCH -a 0-2,5,7
-tophat BowtieIndex trans${SLURM_ARRAY_TASK_ID}.fq</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -a 0-2,5,7</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="ex">tophat</span> BowtieIndex trans<span class="va">${SLURM_ARRAY_TASK_ID}</span>.fq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="submitting-data-parallel-spmd-code" class="level3">
 <h3 class="anchored" data-anchor-id="submitting-data-parallel-spmd-code">Submitting Data Parallel (SPMD) Code</h3>
 <p>Here’s how you would set up your job script if you want to run multiple instances (18 in this case) of the same code as part of a single job.</p>
-<pre><code>#!/bin/bash
-#SBATCH --ntasks 18 
-srun myExecutable</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 18 </span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> myExecutable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To have each instance behave differently, you can make use of the SLURM_PROCID environment variable, which will be distinct (and have values 0, 1, 2, …) between the different instances.</p>
 <p>To have each process be threaded, see the syntax under the MPI section above.</p>
 </section>
@@ -1105,23 +1072,23 @@ done</code></pre>
 <p>You now have a couple options in terms of how job.sh is specified. This illustrates things for MATLAB jobs, but it shouldn’t be too hard to modify for other types of jobs.</p>
 <section id="option-1" class="level4">
 <h4 class="anchored" data-anchor-id="option-1">Option #1</h4>
-<pre><code># contents of job.sh
-echo "it = $1; mode = '$2'; myMatlabCode" &gt; tmp-$1-$2.m
-matlab -nodesktop -nodisplay -singleCompThread &lt; tmp-$1-$2.m &gt; tmp-$1-$2.out 2&gt; tmp-$1-$2.err</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># contents of job.sh</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"it = </span><span class="va">$1</span><span class="st">; mode = '</span><span class="va">$2</span><span class="st">'; myMatlabCode"</span> <span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.m</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="at">-singleCompThread</span> <span class="op">&lt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.m <span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.out <span class="dv">2</span><span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.err</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this case myMatlabCode.m would use the variables ‘it’ and ‘mode’ but not define them.</p>
 </section>
 <section id="option-2" class="level4">
 <h4 class="anchored" data-anchor-id="option-2">Option #2</h4>
-<pre><code># contents of job.sh
-export it=$1; export mode=$2;
-matlab -nodesktop -nodisplay -singleCompThread &lt; myMatlabCode.m &gt; tmp-$1-$2.out 2&gt; tmp-$1-$2.err</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># contents of job.sh</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">it</span><span class="op">=</span><span class="va">$1</span><span class="kw">;</span> <span class="bu">export</span> <span class="va">mode</span><span class="op">=</span><span class="va">$2</span><span class="kw">;</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="at">-singleCompThread</span> <span class="op">&lt;</span> myMatlabCode.m <span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.out <span class="dv">2</span><span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.err</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this case you need to insert the following MATLAB code at the start of myMatlabCode.m so that MATLAB correctly reads the values of ‘it’ and ‘mode’ from the UNIX environment variables:</p>
-<pre><code>it = str2num(getenv('it'));
-mode = getenv('mode');</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="va">it</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'it'</span>))<span class="op">;</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="va">mode</span> <span class="op">=</span> <span class="va">getenv</span>(<span class="ss">'mode'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For Stata jobs, there’s an easier mechanism for passing arguments into a batch job. Invoke Stata as follows in job.sh:</p>
-<pre><code>stata -b do myStataCode.do $1 $2</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stata</span> <span class="at">-b</span> do myStataCode.do <span class="va">$1</span> <span class="va">$2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and then in the first line of your Stata code file, myStataCode.do above, assign the input values to variables (in this case I’ve named them id and mode to match the shell variables, but they can be named differently):</p>
-<pre><code>args id mode</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="ex">args</span> id mode</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then the remainder of your code can make use of these variables.</p>
 
 
