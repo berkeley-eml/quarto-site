@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -601,42 +635,42 @@ ul.task-list li input[type="checkbox"] {
 <section id="python-packages" class="level1">
 <h1>Python Packages</h1>
 <p>We provide Python including a variety of packages (including numpy, scipy, pandas, scikit-learn, and other computational packages) through the Anaconda distribution.</p>
-<p>On our Linux servers Python 3.7 is the default as of January 2019. We also have Python 3.6 available. Python 3.5 may be usable but not all packages will work. Since switching to Ubuntu 18.04 we do not provide Python 2, but if you need it, please contact us and we will find a solution for you.</p>
+<p>On our Linux servers Python 3.12 is the default as of June 2024. We also have Python 3.11 available.</p>
 <section id="packages" class="level2">
 <h2 class="anchored" data-anchor-id="packages">Packages</h2>
 <p>To see what Python packages are available, invoke</p>
-<pre><code>conda list</code></pre>
-<p>To install packages locally in your home directory use the `–user` flag to `pip`:</p>
-<pre><code>pip install --user package_to_install</code></pre>
-<p>It is possible to install packages using `conda`, but we don’t recommend it as `conda` can cause confusing interference between dependencies.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To install packages locally in your home directory use the <code>--user</code> flag to <code>pip</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--user</span> package_to_install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It is possible to install packages using <code>conda</code>, but we don’t recommend it as <code>conda</code> can cause confusing interference between dependencies.</p>
 <section id="virtualenv-and-conda-environments" class="level3">
 <h3 class="anchored" data-anchor-id="virtualenv-and-conda-environments">virtualenv and Conda environments</h3>
 <p>If you would like to override system-installed libraries, for example if you want to use a newer or older version, try <a href="https://virtualenv.pypa.io/en/stable/">virtualenv</a>, “a tool to create isolated Python environments”.</p>
-<pre><code>virtualenv --system-site-packages ~/path/for/your/env
-source ~/path/for/your/env/bin/activate</code></pre>
-<p>At this point you can `pip install` your library or do something more involved:</p>
-<pre><code>git clone https://github.com/somerepo/somelibrary.git
-cd somelibrary
-python setup.py install
-# optionally, to delete source files
-cd .. &amp;&amp; rm -rf somelibrary</code></pre>
-<p>When you want to escape out of this environment, run `deactivate`. To re-enter, run the `source` line as above.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">virtualenv</span> <span class="at">--system-site-packages</span> ~/path/for/your/env</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/path/for/your/env/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>At this point you can <code>pip install</code> your library or do something more involved:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/somerepo/somelibrary.git</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> somelibrary</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> setup.py install</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># optionally, to delete source files</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> .. <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> somelibrary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When you want to escape out of this environment, run <code>deactivate</code>. To re-enter, run the <code>source</code> line as above.</p>
 <p>Alternatively you can use Conda to create environments:</p>
-<pre><code>conda create --name myenv
-source activate myenv</code></pre>
-<p>To escape out of this environment, run `source deactivate`.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> myenv</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> activate myenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To escape out of this environment, run <code>source deactivate</code>.</p>
 </section>
 </section>
 <section id="switch-versions" class="level2">
 <h2 class="anchored" data-anchor-id="switch-versions">Switch Versions</h2>
-<p>You can use Linux <a href="./node/5458">environment modules</a> to switch between different Python versions. This can be done on a one-time basis in a given terminal session or cluster submission script, or can be done in your .bashrc (after the stanza involving ~skel/std.bashrc) to set a default different than the system default. Note that the python/3 and python/3.5 modules are the same.</p>
-<p>To switch from Python 3.7 to Python 3.6:</p>
-<pre><code>module switch python/3.7 python/3.6</code></pre>
+<p>You can use Linux environment modules to switch between different Python versions. This can be done on a one-time basis in a given terminal session or cluster submission script, or can be done in your .bashrc (after the stanza involving ~skel/std.bashrc) to set a default different than the system default.</p>
+<p>To switch from Python 3.x to Python 3.y:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> switch python/3.x python/3.y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To see what Python is being used (if nothing is listed here then the default machine Python with very few packages will be used):</p>
-<pre><code>module list</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If no Python is listed you can use</p>
-<pre><code>module load python</code></pre>
-<p>in this case to load Python 3.7.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>in this case to load the default Python.</p>
 
 
 </section>
