@@ -80,14 +80,13 @@ website:
       - section: "Cluster"
         contents:
           - cluster.qmd
-          - ccluster.qmd
           - compute-servers-policy.qmd
-          - background.qmd
           - grafana.qmd
           - hardware.qmd
           - servers.qmd
           - memory.qmd
           - savio.qmd
+          - background.qmd
       - section: "Data and Storage"
         contents:
           - disk-quota.qmd
