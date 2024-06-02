@@ -5,7 +5,7 @@ uses the Slurm queueing software to manage jobs. The cluster has three
 partitions, which are distinct sets of nodes, with different generations
 of CPUs.
 
-The **high** priority (default) partition has eight nodes, divided into
+The `high` priority (default) partition has eight nodes, divided into
 two sets of four nodes.
 
 -   eml-sm2 nodes: These nodes each have two 14-core CPUs, each core
@@ -15,19 +15,17 @@ two sets of four nodes.
     two hyperthreads (i.e., 32 logical cores per node) available for
     compute jobs. Each node has 768 GB dedicated RAM.
 
-  
-
 In the remainder of this document, we'll refer to the processing units
 (the logical cores) as 'cores'.
 
-The **low** priority partition has eight nodes, each with 32 physical
+The `low` priority partition has eight nodes, each with 32 physical
 cnores per node, for a total of 256 cores. Each node has 264 GB
 dedicated RAM. These nodes have slower cores than the high priority
 partition and are intended for use when the high priority partition is
 busy or users have jobs that are not time-critical, thereby freeing up
 the high partition for other jobs.
 
-The **gpu** partition has a single node (with 48 logical cores and 264
+The `gpu` partition has a single node (with 48 logical cores and 264
 GB CPU RAM) that hosts an Nvidia A40 GPU.
 
 The partitions are managed by the Slurm queueing software. Slurm
@@ -349,9 +347,9 @@ The Slurm command squeue provides info on job status:
 
 ```bash
 theil:~$ squeue
-			 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-			   381      high   job.sh paciorek  R      25:28      1 eml-sm20
-			   380      low    job.sh paciorek  R      25:37      1 eml-sm11
+   JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+     381      high   job.sh paciorek  R      25:28      1 eml-sm20
+     380      low    job.sh paciorek  R      25:37      1 eml-sm11
 ```
 
 The following will tailor the output to include information on the
@@ -364,7 +362,7 @@ theil:~$ squeue -o "%.7i %.9P %.8j %.8u %.2t %.9M %.5C %.8r %.6D %R"
 	 380      low    job.sh paciorek  R     28:09     4     None      1 eml-sm11 
 ```
 
-The 'ST' field indicates whether a job is running (R), failed (F), or
+The `ST` field indicates whether a job is running (R), failed (F), or
 pending (PD). The latter occurs when there are not yet enough resources
 on the system for your job to run.
 
@@ -510,7 +508,7 @@ BLAS](http://statistics.berkeley.edu/computing/blas), it's worth doing
 some testing to make sure that threading is giving an non-negligible
 speedup; see the notes above for more information.
 
-### **Submitting Threaded Jobs**
+### Submitting Threaded Jobs
 
 Here's an example job script to use multiple threads (4 in this case) in
 R (or with your own openMP-based program):
@@ -564,7 +562,9 @@ you requested. You can check that threading is enabled from within SAS
 by running the following and looking for the cpucount and threads
 options in the printout.
 
-    Proc Options group=performance; run;
+```sas
+Proc Options group=performance; run;
+```
 
 You can use up to eight cores with Stata/MP (limited by the EML license
 for Stata). IMPORTANT: Do not request more than 8 cores for a Stata job.
@@ -577,17 +577,23 @@ because Slurm will limit your job to the number of cores requested. That
 said, one way to do this is to hard-code the following line at the start
 of your Stata code (in this case assuming you requested four cores):
 
-    set processors 4
+```stata
+set processors 4
+```
 
 You can do this in an automated fashion by first invoking Stata in your
 job script as:
 
-    stata-mp -b do myStataCode.do ${SLURM_CPUS_PER_TASK}
+```bash
+stata-mp -b do myStataCode.do ${SLURM_CPUS_PER_TASK}
+```
 
 and then at the start of your Stata code including these two lines:
 
-    args ncores
-    set processors `ncores'
+```bash
+args ncores
+set processors `ncores'
+```
 
 ### Submitting Multi-core Jobs
 

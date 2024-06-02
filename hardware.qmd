@@ -1,14 +1,5 @@
 # Hardware
 
-## Workstations
-
-The EML supports ten public workstations composed of Apple iMac
-machines. These permit one user at the console, and many simultaneous
-remote logins. The operating system for the Apple iMac is OSX and a
-multi-user, multi-tasking system. We do not limit the number of
-simultaneous logins, which can include one user at the console, and
-multiple concurrent remote logins and file transfers.
-
 ## Servers
 
 The EML supports ten linux [compute servers](servers.qmd). The compute
@@ -48,9 +39,6 @@ Savio cluster through a low priority QoS. More information is available
 at the [Savio
 website](http://research-it.berkeley.edu/services/high-performance-computing).
 
-## Printers
+## EML Lab (616 Evans)
 
-There are two network printers are available in the public lab (616
-Evans).
-
-
+The EML supports a lab with public Apple desktop computers and two network printers.

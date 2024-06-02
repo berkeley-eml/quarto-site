@@ -6,23 +6,21 @@ machines in parentheses). Some have access restrictions.
 You can also browse a list of EML computers on the General overview of
 our [dashboards](/monitoring).
 
--   fargo.berkeley.edu (376 GB)
--   griliches.berkeley.edu (6 GB)
--   iia.berkeley.edu (125 GB)
--   jorgenson.berkeley.edu (188 GB)
--   klein.berkeley.edu (754 GB)
--   laffont.berkeley.edu (94 GB)
--   logit.berkeley.edu (15 GB)
--   nerlove.berkeley.edu (125 GB) \*
--   quesnay.berkeley.edu (251 GB)
--   radner.berkeley.edu (31 GB)
--   theil.berkeley.edu (125 GB)
-
-  
+ - fargo.berkeley.edu (376 GB)
+ - griliches.berkeley.edu (6 GB)
+ - iia.berkeley.edu (125 GB)
+ - jorgenson.berkeley.edu (188 GB)
+ - klein.berkeley.edu (754 GB)
+ - laffont.berkeley.edu (94 GB)
+ - logit.berkeley.edu (15 GB)
+ - nerlove.berkeley.edu (125 GB) \*
+ - quesnay.berkeley.edu (251 GB)
+ - radner.berkeley.edu (31 GB)
+ - theil.berkeley.edu (125 GB)
 
 \* Access to nerlove is restricted to individuals who have obtained
 instructions regarding the use and limitations of running jobs on the
-compute servers. Please contact the [EML staff](contact) to register as
+compute servers. Please contact the [EML staff](contact.qmd) to register as
 a restricted compute server user or to schedule access to additional
 resources on the EML compute servers.
 

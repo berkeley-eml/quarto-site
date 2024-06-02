@@ -1,7 +1,4 @@
-
-
-Compute Servers Policy
-----------------------
+# Compute Servers Policy
 
 Access to the compute server nerlove is restricted to individuals who
 have obtained instructions regarding the use and limitations of running
@@ -28,7 +25,7 @@ Please observe the following policies:
 
 -   The maximum number of jobs can be running on a server at any one
     time is equal to the number of processors. The number of CPUs on a
-    machine can be seen on our [Grafana dashboards](/monitoring). If you
+    machine can be seen on our [Grafana dashboards](monitoring.qmd). If you
     see (using top) that all CPUs are busy, do not run/start a job on
     that server until resources become available.
 
@@ -40,7 +37,5 @@ Please observe the following policies:
     Please send mail to "manager" if you need temporary or long term
     access to additional computing resources.
 
--   Use the command '**sitehosts cserver**' for the list of computers
+-   Use the command `sitehosts cserver` for the list of computers
     whose use is restricted and covered by these rules.
-
-
