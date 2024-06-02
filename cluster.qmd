@@ -83,40 +83,11 @@ to be more exact.
 
 This table outlines the job restrictions in each partition.
 
-<table>
-<thead>
-<tr class="header">
-<th>Partition</th>
-<th>Max. cores/user</th>
-<th>Time Limit</th>
-<th>Max. mem/job (GB)</th>
-<th>Max. cores/job</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>high (default)</td>
-<td>352</td>
-<td>28 days<sup>2</sup></td>
-<td>132 GB (eml-sm2 nodes) or 768 GB (eml-sm3 nodes, requested with "-C mem768g" [formerly "-C bigmem"] <sup>4</sup>)</td>
-<td>56 (eml-sm2 nodes) or 32 (eml-sm3 nodes)<sup>3</sup></td>
-</tr>
-<tr class="even">
-<td>low<sup>1</sup></td>
-<td>256</td>
-<td>28 days<sup>2</sup></td>
-<td>264 GB</td>
-<td>32<sup>3</sup></td>
-</tr>
-<tr class="odd">
-<td>gpu<sup>5</sup></td>
-<td>48</td>
-<td>28 days</td>
-<td>256 GB</td>
-<td>48</td>
-</tr>
-</tbody>
-</table>
+|Partition|Max. cores/user|Time Limit|Max. mem/job (GB)|Max. cores/job|
+|-------- |-------------- |--------- |---------------- |------------- |
+|high (default)|352|28 days2|132 GB (eml-sm2 nodes) or 768 GB (eml-sm3 nodes, requested with "-C mem768g" [formerly "-C bigmem"] 4)|56 (eml-sm2 nodes) or 32 (eml-sm3 nodes)3|
+|low1|256|28 days2|264 GB|323|
+|gpu5|48|28 days|256 GB|48|
 
 \[1\] See [How to Submit Jobs to the Low Partition](#low).
 
@@ -137,9 +108,8 @@ than 25 GB memory.
 
 ### Quick Start Guide
 
-Our sister facility, the Statistical Computing Facility, has a [quick
-start
-guide](https://statistics.berkeley.edu/computing/servers/cluster#jump%5Baccordion%5D%5B1%5D%5B1%5D)
+Our sister facility, the Statistical Computing Facility, has a
+[quick start guide](https://statistics.berkeley.edu/computing/servers/cluster#jump%5Baccordion%5D%5B1%5D%5B1%5D)
 to submitting and monitoring jobs that is useful for EML users as well
 (but note that the machine names shown in the guide are the SCF
 machines, not EML machines; in particular make sure you ssh to an EML
@@ -305,7 +275,7 @@ node before your interactive session will start. The squeue command (see
 below in the section on How to Monitor Jobs) will tell you on which node
 a given job is running.
 
-### <span id="long"></span>Submitting Long Jobs and Setting Job Time Limits
+### Submitting Long Jobs and Setting Job Time Limits
 
 As mentioned earlier, the default time limit on each job is five days
 run-time, but users can still request a longer limit (up to max of 28
@@ -332,7 +302,7 @@ Here is an example of requesting three hours for a job:
 theil:~$ sbatch -t 3:00:00 job.sh
 ```
 
-### <span id="bigmem"></span>Submitting Large Memory Jobs
+### Submitting Large Memory Jobs
 
 The default high priority partition has some nodes with 132 GB memory
 and some with 768 GB of memory. If you're submitting a job that needs a
@@ -357,7 +327,7 @@ job does not die because of memory use by other user jobs on the node
 your job is running on, you can request that your job have exclusive
 access to a node by adding the '--exclusive' flag.
 
-### <span id="gpu"></span>Submitting GPU Jobs
+### Submitting GPU Jobs
 
 To submit a job to the GPU node, you must include either the
 '--partition=gpu' or '-p gpu' flag, as well as the "--gres=gpu:1" flag.
@@ -370,7 +340,7 @@ Submitted batch job 380
 
 To use CUDA or cuDNN, you'll need to load the 'cuda' or 'cudnn' modules.
 To use Tensorflow with the GPU, you'll need to load the 'tensorflow'
-module (without loading the \`cuda\` or \`cudnn\` modules, as CUDA and
+module (without loading the `cuda` or `cudnn` modules, as CUDA and
 cuDNN will be available to Tensorflow via a different mechanism).
 
 ### How to Monitor Jobs
@@ -405,7 +375,7 @@ running job using squeue (here job 380) and insert that in the following
 command:
 
 ```bash
-theil:~/Desktop$ srun --pty --jobid=380 /bin/bash
+srun --pty --jobid=380 /bin/bash
 ```
 
 You can then run 'top' and other such tools.
@@ -414,7 +384,7 @@ To see a history of your jobs (within a time range), including reasons
 they might have failed:
 
 ```bash
-theil:~/Desktop$ sacct  --starttime=2021-04-01 --endtime=2021-04-30 \
+sacct  --starttime=2021-04-01 --endtime=2021-04-30 \
   --format JobID,JobName,Partition,Account,AllocCPUS,State%30,ExitCode,Submit,Start,End,NodeList,MaxRSS
 ```
 
@@ -502,18 +472,16 @@ equally.
 ### Useful Slurm commands
 
 We've prepared a set of shortcut commands that wrap around Slurm
-commands such \`srun\`, \`squeue\`, \`sinfo\`, and \`sacct\` with some
+commands such `srun`, `squeue`, `sinfo`, and `sacct` with some
 commonly-used options:
 
--   \`slogin\`: starts an interactive shell on a cluster node
--   \`snodes\`: prints the current usage of nodes on the cluster
--   \`sjobs\`: lists running jobs on the cluster
--   \`shist\`: provides information about completed (including failed)
-    jobs
--   \`sassoc\`: gives information about user access to cluster
-    partitions
+-   `slogin`: starts an interactive shell on a cluster node
+-   `snodes`: prints the current usage of nodes on the cluster
+-   `sjobs`: lists running jobs on the cluster
+-   `shist`: provides information about completed (including failed) jobs
+-   `sassoc`: gives information about user access to cluster partitions
 
-For each of these commands, you can add the \`-h\` flag to see how to
+For each of these commands, you can add the `-h` flag to see how to
 use them. For example:
 
 ```bash
@@ -556,8 +524,8 @@ R CMD BATCH --no-save simulate.R simulate.Rout
 
 This will allow your R code to use the system's threaded BLAS and LAPACK
 routines. \[Note that in R you can instead use the
-omp\_set\_num\_threads() function in the RhpcBLASctl package, again
-making use of the SLURM\_CPUS\_PER\_TASK environment variable.\]
+`omp_set_num_threads()` function in the RhpcBLASctl package, again
+making use of the SLURM_CPUS_PER_TASK environment variable.\]
 
 The same syntax in your job script will work if you've compiled a
 C/C++/Fortran program that makes use of openMP for threading. Just
@@ -566,21 +534,27 @@ replace the R CMD BATCH line with the line calling your program.
 Here's an example job script to use multiple threads (4 in this case) in
 MATLAB:
 
-    #!/bin/bash
-    #SBATCH --cpus-per-task 4
-    matlab -nodesktop -nodisplay < simulate.m > simulate.out
+```bash
+#!/bin/bash
+#SBATCH --cpus-per-task 4
+matlab -nodesktop -nodisplay < simulate.m > simulate.out
+```
 
 IMPORTANT: At the start of your MATLAB code file you should include this
 line:
 
-    maxNumCompThreads(str2num(getenv('SLURM_CPUS_PER_TASK')));
+```matlab
+maxNumCompThreads(str2num(getenv('SLURM_CPUS_PER_TASK')));
+```
 
 Here's an example job script to use multiple threads (4 in this case) in
 SAS:
 
-    #!/bin/bash
-    #SBATCH --cpus-per-task 4
-    sas -threads -cpucount $SLURM_CPUS_PER_TASK
+```bash
+#!/bin/bash
+#SBATCH --cpus-per-task 4
+sas -threads -cpucount $SLURM_CPUS_PER_TASK
+```
 
 A number of SAS procs are set to take advantage of threading, including
 SORT, SUMMARY, TABULATE, GLM, LOESS, and REG. SAS enables threading by
@@ -622,33 +596,39 @@ multiple cores on a single node that do not fall under the
 threading/openMP context. This is relevant for parfor in MATLAB; for
 IPython parallel (ipyparallel), Dask, Ray, Pool.map and pp.Server in
 Python; and for parallel code in R that starts multiple R process (e.g.,
-future's future\_lapply, foreach, mclapply, parLapply).
+future's future_lapply, foreach, mclapply, parLapply).
 
 Here's an example script that uses multiple cores (4 in this case):
 
-    #!/bin/bash
-    #SBATCH --cpus-per-task 4
-    R CMD BATCH --no-save simulate.R simulate.Rout
+```bash
+#!/bin/bash
+#SBATCH --cpus-per-task 4
+R CMD BATCH --no-save simulate.R simulate.Rout
+```
 
 IMPORTANT: Your R, Python, or any other code won't be able to use more
 cores than the number of total cores requested (4 in this case). You can
-use the SLURM\_CPUS\_PER\_TASK environment variable to programmatically
+use the SLURM_CPUS_PER_TASK environment variable to programmatically
 control this, though your software will automatically detect the number
 of available cores in many cases.
 
 The same syntax for your job script pertains to MATLAB. When using
 parpool in MATLAB, you can do the following:
 
-    parpool(str2num(getenv('SLURM_CPUS_PER_TASK')));
+```matlab
+parpool(str2num(getenv('SLURM_CPUS_PER_TASK')));
+```
 
 In the high (default) partition, the default maximum number of workers
 is 28 on the eml-sm2 nodes and 16 on the eml-sm3 nodes, while in the low
 partition it is also 16. To increase this (up to the maximum number of
 cores on a machine), run the following code before invoking parpool:
 
-    cl = parcluster();
-    cl.NumWorkers = str2num(getenv('SLURM_CPUS_PER_TASK'));
-    cl.parpool(str2num(getenv('SLURM_CPUS_PER_TASK')));
+```matlab
+cl = parcluster();
+cl.NumWorkers = str2num(getenv('SLURM_CPUS_PER_TASK'));
+cl.parpool(str2num(getenv('SLURM_CPUS_PER_TASK')));
+```
 
 To use more than 32 workers (i.e., 32 cores or more) (or more than 56 in
 the eml-sm2 nodes on the high (default) partition) in MATLAB in a
@@ -659,24 +639,28 @@ MATLAB Parallel Server, discussed below.
 To use multiple threads per worker in MATLAB, here is an example script
 for four workers and two threads per worker:
 
-    #!/bin/bash
-    #SBATCH --nodes 1
-    #SBATCH --ntasks 4
-    #SBATCH --cpus-per-task 2
-    matlab -nodesktop -nodisplay < simulate.m > simulate.out
+```bash
+#!/bin/bash
+#SBATCH --nodes 1
+#SBATCH --ntasks 4
+#SBATCH --cpus-per-task 2
+matlab -nodesktop -nodisplay < simulate.m > simulate.out
+```
 
 And here is how to start your parpool in your MATLAB code:
 
-    cl = parcluster();
-    cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
-    cl.parpool(str2num(getenv('SLURM_NTASKS')));
+```matlab
+cl = parcluster();
+cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
+cl.parpool(str2num(getenv('SLURM_NTASKS')));
+```
 
 Also note that as indicated above, the cores in the high and gpu
 partitions use hyperthreading, which could slow multi-core computations
 in some cases. If you'd like to run multi-core jobs without
 hyperthreading, please contact us for work-arounds.
 
-### <span id="multi-node"></span>Submitting Multi-node Jobs
+### Submitting Multi-node Jobs
 
 You can run jobs that use cores across multiple nodes, but only if the
 software you are using is configured to execute across machines. Some
@@ -693,7 +677,7 @@ job will have access to multiple nodes. Depending on cluster usage, even
 if you request fewer cores than a machine has, your job may still access
 cores on multiple nodes.
 
-### <span id="MPI"></span>Submitting MPI Jobs
+### Submitting MPI Jobs
 
 You can use MPI to run jobs across multiple nodes. This modality allows
 you to use more cores than exist on a single node or to gather free
@@ -703,9 +687,11 @@ used.
 Here's an example script that uses multiple processors via MPI (64 in
 this case):
 
-    #!/bin/bash
-    #SBATCH --ntasks 64
-    mpirun -np $SLURM_NTASKS myMPIexecutable
+```bash
+#!/bin/bash
+#SBATCH --ntasks 64
+mpirun -np $SLURM_NTASKS myMPIexecutable
+```
 
 Note that "-n" is a shorthand for "--ntasks".
 
@@ -716,10 +702,12 @@ available [here](http://statistics.berkeley.edu/computing/parallel).
 To run an MPI job with each process threaded, your job script would look
 like the following (here with 14 processes and two threads per process):
 
-    #!/bin/bash
-    #SBATCH --ntasks 14 --cpus-per-task 2
-    export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-    mpirun -np $SLURM_NTASKS -x OMP_NUM_THREADS myMPIexecutable
+```bash
+#!/bin/bash
+#SBATCH --ntasks 14 --cpus-per-task 2
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+mpirun -np $SLURM_NTASKS -x OMP_NUM_THREADS myMPIexecutable
+```
 
 ### Submitting MATLAB Parallel Server (Multi-node) Jobs
 
@@ -745,8 +733,8 @@ As a one-time setup step (you only need to do this the first time you
 are using the approach), go to "Environment-&gt;Parallel-&gt;Create and
 Manage Cluster Profiles" in the MATLAB Desktop toolbar; this will open
 the Cluster Profile Manager. Then click on 'Import' and navigate to
-\`/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings\`
-(\`dcsProfile.settings\` in MATLAB R2022a) and click 'Open'. Then exit
+`/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings`
+(`dcsProfile.settings` in MATLAB R2022a) and click 'Open'. Then exit
 out of the Cluster Profile Manager.
 
 To submit a MATLAB Parallel Server job, you'll need to specify the
@@ -830,8 +818,8 @@ As a one-time setup step (you only need to do this the first time you
 are using the approach), go to "Environment-&gt;Parallel-&gt;Create and
 Manage Cluster Profiles" in the MATLAB Desktop toolbar; this will open
 the Cluster Profile Manager. Then click on 'Import' and navigate to
-\`/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings\`
-(\`dcsProfile.settings\` in R2022a and earlier versions) and click
+`/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings`
+(`dcsProfile.settings` in R2022a and earlier versions) and click
 'Open'. Then exit out of the Cluster Profile Manager.
 
 Now, whenever you want to start up a pool of workers, simply do the
@@ -891,36 +879,42 @@ you vary a parameter across the different jobs.
 Here's what your job script would look like, in this case to run a total
 of 5 jobs with parameter values of 0, 1, 2, 5, 7:
 
-    #!/bin/bash
-    #SBATCH -a 0-2,5,7
-    myExecutable
+```bash
+#!/bin/bash
+#SBATCH -a 0-2,5,7
+myExecutable
+```
 
-Your program should then make use of the SLURM\_ARRAY\_TASK\_ID
+Your program should then make use of the SLURM_ARRAY_TASK_ID
 environment variable, which for a given job will contain one of the
 values from the set given with the -a flag (in this case from
-{0,1,2,5,7}). You could, for example, read SLURM\_ARRAY\_TASK\_ID into
+{0,1,2,5,7}). You could, for example, read SLURM_ARRAY_TASK_ID into
 your R, Python, MATLAB, or C code.
 
 Here's a concrete example where it's sufficient to use
-SLURM\_ARRAY\_TASK\_ID to distinguish different input files if you need
+SLURM_ARRAY_TASK_ID to distinguish different input files if you need
 to run the same command (the bioinformatics program tophat in this case)
 on multiple input files (in this case, trans0.fq, trans1.fq, ...):
 
-    #!/bin/bash
-    #SBATCH -a 0-2,5,7
-    tophat BowtieIndex trans${SLURM_ARRAY_TASK_ID}.fq
+```bash
+#!/bin/bash
+#SBATCH -a 0-2,5,7
+tophat BowtieIndex trans${SLURM_ARRAY_TASK_ID}.fq
+```
 
 ### Submitting Data Parallel (SPMD) Code
 
 Here's how you would set up your job script if you want to run multiple
 instances (18 in this case) of the same code as part of a single job.
 
-    #!/bin/bash
-    #SBATCH --ntasks 18 
-    srun myExecutable
+```bash
+#!/bin/bash
+#SBATCH --ntasks 18 
+srun myExecutable
+```
 
 To have each instance behave differently, you can make use of the
-SLURM\_PROCID environment variable, which will be distinct (and have
+SLURM_PROCID environment variable, which will be distinct (and have
 values 0, 1, 2, ...) between the different instances.
 
 To have each process be threaded, see the syntax under the MPI section
@@ -954,38 +948,46 @@ modify for other types of jobs.
 
 #### Option \#1
 
-    # contents of job.sh
-    echo "it = $1; mode = '$2'; myMatlabCode" > tmp-$1-$2.m
-    matlab -nodesktop -nodisplay -singleCompThread < tmp-$1-$2.m > tmp-$1-$2.out 2> tmp-$1-$2.err
+```bash
+# contents of job.sh
+echo "it = $1; mode = '$2'; myMatlabCode" > tmp-$1-$2.m
+matlab -nodesktop -nodisplay -singleCompThread < tmp-$1-$2.m > tmp-$1-$2.out 2> tmp-$1-$2.err
+```
 
 In this case myMatlabCode.m would use the variables 'it' and 'mode' but
 not define them.
 
 #### Option \#2
 
-    # contents of job.sh
-    export it=$1; export mode=$2;
-    matlab -nodesktop -nodisplay -singleCompThread < myMatlabCode.m > tmp-$1-$2.out 2> tmp-$1-$2.err
+```bash
+# contents of job.sh
+export it=$1; export mode=$2;
+matlab -nodesktop -nodisplay -singleCompThread < myMatlabCode.m > tmp-$1-$2.out 2> tmp-$1-$2.err
+```
 
 In this case you need to insert the following MATLAB code at the start
 of myMatlabCode.m so that MATLAB correctly reads the values of 'it' and
 'mode' from the UNIX environment variables:
 
-    it = str2num(getenv('it'));
-    mode = getenv('mode');
+```matlab
+it = str2num(getenv('it'));
+mode = getenv('mode');
+```
 
 For Stata jobs, there's an easier mechanism for passing arguments into a
 batch job. Invoke Stata as follows in job.sh:
 
-    stata -b do myStataCode.do $1 $2
+```bash
+stata -b do myStataCode.do $1 $2
+```
 
 and then in the first line of your Stata code file, myStataCode.do
 above, assign the input values to variables (in this case I've named
 them id and mode to match the shell variables, but they can be named
 differently):
 
-    args id mode
+```bash
+args id mode
+```
 
 Then the remainder of your code can make use of these variables.
-
-
