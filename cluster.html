@@ -676,7 +676,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Currently users may submit jobs on the following standalone Linux servers (aka ‘submit hosts’):</p>
 <pre><code>blundell, frisch, hicks, jorgensen, laffont, logit, marlowe,
 marshall, nerlove, radner, theil</code></pre>
-<p>Users can also start <a href="jupyterhub">JupyterHub sessions</a> to get browser-based access to the cluster nodes.</p>
+<p>Users can also start <a href="./jupyterhub.html">JupyterHub sessions</a> to get browser-based access to the cluster nodes.</p>
 <p>The cluster has three job queues (called partitions by Slurm) called ‘high’ (the default), ‘low’, and ‘gpu’. Interactive jobs can also be run in any queue.</p>
 <p>One important note about using the cluster is that your code will not be able to use any more cores than you have requested via Slurm when submitting your job (this is enforced by a Linux tool called ‘cgroups’).</p>
 <p>Also note that as indicated above, the cores in the high and gpu partitions use hyperthreading. If you’d like to run multi-core jobs without hyperthreading, please contact us for work-arounds.</p>
@@ -798,7 +798,7 @@ marshall, nerlove, radner, theil</code></pre>
 <h3 class="anchored" data-anchor-id="submitting-large-memory-jobs">Submitting Large Memory Jobs</h3>
 <p>The default high priority partition has some nodes with 132 GB memory and some with 768 GB of memory. If you’re submitting a job that needs a lot of memory, you should add the ‘-C mem768g’ flag (formerly ‘bigmem’) to ensure your job runs on a node with 768 GB of memory. In particular, any jobs that use more than 100 GB memory should use this flag, and we recommend that jobs using more than 25 GB memory use this flag (because having multiple such jobs, potentially from different users, could cause the nodes with 132 GB of memory to run out of memory).</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> sbatch <span class="at">-C</span> mem768g job.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You don’t need to, and usually shouldn’t, use the ‘–mem’ flag for sbatch. In general, you’ll have access to all the memory on a node. This is true for all users, so occasionally a job will fail as mentioned above and discussed <a href="memory">further here</a>.</p>
+<p>You don’t need to, and usually shouldn’t, use the ‘–mem’ flag for sbatch. In general, you’ll have access to all the memory on a node. This is true for all users, so occasionally a job will fail as mentioned above and discussed <a href="./memory.html">further here</a>.</p>
 <p>If you expect to need all the memory on a node or need to make sure your job does not die because of memory use by other user jobs on the node your job is running on, you can request that your job have exclusive access to a node by adding the ‘–exclusive’ flag.</p>
 </section>
 <section id="submitting-gpu-jobs" class="level3">
