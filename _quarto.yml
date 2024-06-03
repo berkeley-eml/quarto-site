@@ -94,7 +94,6 @@ website:
           - file-permissions.qmd
           - emldata.qmd
           - tape-backups.qmd
-          - elsa.qmd
       - section: "Software"
         contents:
           - software.qmd

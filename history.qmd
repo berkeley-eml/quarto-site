@@ -27,8 +27,7 @@ In its second phase of equipment acquisition, completed in the Spring of
 twenty-seven gigabytes of disk storage. Its faculty cluster was expanded
 to two SPARC 2, two SPARC 10, and two SPARC 20 compute servers, while
 its graduate student cluster was expanded to fifteen SPARCstation IPXs.
-The original SPARC 2 fileserver became the
-[ELSA](http://emlab.Berkeley.EDU/elsa) web server. Peripheral devices
+The original SPARC 2 fileserver became the ELSA web server. Peripheral devices
 includes two additional CD ROMs, an additional laserprinter, a DAT
 autoloader, and an upgrade to the port selector to support PPP.
 

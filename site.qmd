@@ -5,7 +5,6 @@ Site Index
 
 -   [Accounts Disk Space, Printing, Duration](accounts)
 -   [Services available at EML](services)
--   [Software Archive (ELSA)](elsa)
 -   [Software](software)
 -   [Hardware](hardware)
 -   [Copyright Information](copyright)
