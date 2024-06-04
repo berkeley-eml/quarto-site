@@ -19,7 +19,7 @@ EML is a unit of the Institute of Business and Economic Research, located in spa
 
 ## Getting Started
 
--   [Getting an EML account](account-apply.qmd)
+-   [Getting an EML account](accounts.qmd)
 -   [Remote Access](remote.qmd)
 -   [Compute Cluster](cluster.qmd)
 
