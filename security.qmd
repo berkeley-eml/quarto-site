@@ -11,7 +11,7 @@ all its users.
 -   Pay attention to your directory and file permissions.
 -   Change your password frequently.
 -   If you suspect someone's been using your account, report it
-    immediately to "trouble" .
+    immediately to trouble@econ.berkeley.edu.
 
 Users should also be aware that electronic files stored on disk in an
 individual's account, a shared project account, or a system partition
@@ -29,24 +29,3 @@ electronic and network resources. Further, the EMLwill comply with
 prevailing University of California systemwide and Berkeley campus
 policies and guidelines governing use of electronic and network
 resources and an individual's right to privacy.
-
-Links to relevant policies and guidelines are listed here. The list is
-not comprehensive or exhaustive; users are encouraged to follow links to
-other documents contained in these more general sites.
-
-[UC Electronic Communications
-Policy](http://www.ucop.edu/ucophome/policies/ec/)  
-[UC Email
-Policy](http://www.ucop.edu/ucophome/policies/email/email.html)  
-[Berkeley Campus Electronic (E-Berkeley)
-Policy](http://socrates.berkeley.edu:7015/e-Berkeley.policy.html)  
-[Berkeley Campus Implementation of UC Electronic Mail
-Policy](http://socrates.Berkeley.EDU:7015/email/)  
-[Berkeley Campus Computer Use
-Policy](http://itpolicy.berkeley.edu:7015/usepolicy.html)  
-[Berkeley Guidelines for Appropriate Use of Campus Computing and Network
-Services](http://socrates.berkeley.edu:7015/approp.use.html)  
-[Berkeley Guide to Selected Privacy and Confidentiality
-Regulations](http://socrates.berkeley.edu:7015/privacy/guidelines.html)  
-[Berkeley Campus Privacy Statement for
-Websites](http://socrates.berkeley.edu:7015/privacy/statement.html)

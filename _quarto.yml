@@ -44,6 +44,7 @@ website:
           - accounts.qmd
           - account-types.qmd
           - passwords.qmd
+          - security.qmd
           - section: "Policies and Rules"
             contents:
               - eligibility.qmd
@@ -97,9 +98,8 @@ website:
           - software.qmd
           - python-packages.qmd
           - r-libraries.qmd
-          - julia-packages.qmd
-          - security.qmd
           - terminate-r.qmd
+          - julia-packages.qmd
           - tensorflow.qmd
           - ucthesis.qmd
           - unix-processes.qmd
