@@ -545,12 +545,12 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#remote-access-to-the-eml-systems" id="toc-remote-access-to-the-eml-systems" class="nav-link active" data-scroll-target="#remote-access-to-the-eml-systems">Remote Access to the EML Systems</a>
   <ul class="collapse">
-  <li><a href="#jupyter-notebooks-and-other-remote-applications-via-a-browser" id="toc-jupyter-notebooks-and-other-remote-applications-via-a-browser" class="nav-link" data-scroll-target="#jupyter-notebooks-and-other-remote-applications-via-a-browser">Jupyter notebooks and other remote applications via a browser</a></li>
-  <li><a href="#access-via-ssh-or-via-a-remote-desktop-application" id="toc-access-via-ssh-or-via-a-remote-desktop-application" class="nav-link" data-scroll-target="#access-via-ssh-or-via-a-remote-desktop-application">Access via SSH or via a Remote Desktop application</a>
+  <li><a href="#jupyterhub" id="toc-jupyterhub" class="nav-link" data-scroll-target="#jupyterhub">JupyterHub</a></li>
+  <li><a href="#ssh" id="toc-ssh" class="nav-link" data-scroll-target="#ssh">SSH</a>
   <ul class="collapse">
-  <li><a href="#connecting-remotely-from-a-windows-computer" id="toc-connecting-remotely-from-a-windows-computer" class="nav-link" data-scroll-target="#connecting-remotely-from-a-windows-computer"><span id="windows">Connecting remotely from a Windows Computer</span></a></li>
-  <li><a href="#connecting-remotely-from-a-macos-computer" id="toc-connecting-remotely-from-a-macos-computer" class="nav-link" data-scroll-target="#connecting-remotely-from-a-macos-computer"><span id="mac">Connecting remotely from a macOS Computer</span></a></li>
-  <li><a href="#connecting-remotely-from-linux" id="toc-connecting-remotely-from-linux" class="nav-link" data-scroll-target="#connecting-remotely-from-linux"><span id="linux">Connecting remotely from Linux</span></a></li>
+  <li><a href="#connecting-from-windows" id="toc-connecting-from-windows" class="nav-link" data-scroll-target="#connecting-from-windows">Connecting from Windows</a></li>
+  <li><a href="#connecting-from-macos" id="toc-connecting-from-macos" class="nav-link" data-scroll-target="#connecting-from-macos">Connecting from macOS</a></li>
+  <li><a href="#connecting-from-linux" id="toc-connecting-from-linux" class="nav-link" data-scroll-target="#connecting-from-linux">Connecting from Linux</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -564,17 +564,18 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="remote-access-to-the-eml-systems" class="level1">
 <h1>Remote Access to the EML Systems</h1>
-<p>The EML consist of multi-user, macOS and Linux systems that may be accessed remotely using either your browser (via the EML JupyterHub) or a program which uses the secure shell (SSH) protocol. This encrypts your data as it is transmitted over the network.</p>
-<section id="jupyter-notebooks-and-other-remote-applications-via-a-browser" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-notebooks-and-other-remote-applications-via-a-browser">Jupyter notebooks and other remote applications via a browser</h2>
+<p>You can securely connect to the EML using either your browser (via JupyterHub), or using secure shell (SSH).</p>
+<section id="jupyterhub" class="level2">
+<h2 class="anchored" data-anchor-id="jupyterhub">JupyterHub</h2>
 <p><a href="https://jupyter.econ.berkeley.edu">EML’s JupyterHub</a> is deployed for users to remotely run Jupyter notebooks (using Python, R, Julia, MATLAB and other languages), terminal sessions, RStudio, and even graphical Remote Desktop sessions on EML machinesthrough your web browser. See <a href="./jupyterhub.html">our JupyterHub documentation</a> for more information.</p>
 </section>
-<section id="access-via-ssh-or-via-a-remote-desktop-application" class="level2">
-<h2 class="anchored" data-anchor-id="access-via-ssh-or-via-a-remote-desktop-application">Access via SSH or via a Remote Desktop application</h2>
-<p>The list of hostnames users can access is listed on our <a href="./monitoring.html">dashboards</a>. Only Linux workstations and compute servers allow you to view graphics/images, use the graphical user interface of certain programs and provide desktop connections.</p>
-<section id="connecting-remotely-from-a-windows-computer" class="level3">
-<h3 class="anchored" data-anchor-id="connecting-remotely-from-a-windows-computer"><span id="windows">Connecting remotely from a Windows Computer</span></h3>
-<p>Command-line Access</p>
+<section id="ssh" class="level2">
+<h2 class="anchored" data-anchor-id="ssh">SSH</h2>
+<p>You can connect using SSH to a number of EML systems. The list of hostnames users can access is listed on our <a href="./monitoring.html">dashboards</a>.</p>
+<section id="connecting-from-windows" class="level3">
+<h3 class="anchored" data-anchor-id="connecting-from-windows">Connecting from Windows</h3>
+<section id="command-line-access" class="level4">
+<h4 class="anchored" data-anchor-id="command-line-access">Command-line Access</h4>
 <p><a href="http://www.putty.org">PuTTY</a> is a free SSH client for Windows. <img src="images/putty.png" alt="putty image" width="156" height="138"></p>
 <ol type="1">
 <li>Click on the session category</li>
@@ -582,7 +583,9 @@ ul.task-list li input[type="checkbox"] {
 <li>Click Open</li>
 <li>Type your username and password when prompted</li>
 </ol>
-<p>File Transfer using Drag and Drop</p>
+</section>
+<section id="file-transfer-using-drag-and-drop" class="level4">
+<h4 class="anchored" data-anchor-id="file-transfer-using-drag-and-drop">File Transfer using Drag and Drop</h4>
 <p><a href="http://winscp.net/eng/download.php">WinSCP</a> is a free graphical SFTP client that allows you to copy/transfer files between your windows computer and your EML account. <img src="images/winscp.jpg&quot;" class="img-fluid" alt="winscp image" width="200"></p>
 <ol type="1">
 <li>Click on the session category</li>
@@ -590,8 +593,22 @@ ul.task-list li input[type="checkbox"] {
 <li>Enter the username and password</li>
 <li>Click Login</li>
 </ol>
-<p><span class="small">Note: If it is the first time you connect to a particular EML system, the SSH program will ask you if you want to accept the new host key. Click ‘Yes’.</span></p>
-<p>Using Graphical User Interface of Unix Applications</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The first time you connect to a particular EML system, SSH will ask you if you want to accept a host key. Click ‘Yes’.</p>
+</div>
+</div>
+</section>
+<section id="using-graphical-user-interface-of-unix-applications" class="level4">
+<h4 class="anchored" data-anchor-id="using-graphical-user-interface-of-unix-applications">Using Graphical User Interface of Unix Applications</h4>
 <p><a href="http://sourceforge.net/projects/xming/">Xming</a> is X Windows Software from X.Org ported to Microsoft Windows. This requires the use of an SSH client such as PuTTY. <a href="images/x11.PNG"><img src="images/x11.PNG" alt="x11_image" width="200"></a></p>
 <ol type="1">
 <li>Install and open the Xming application.</li>
@@ -600,19 +617,22 @@ ul.task-list li input[type="checkbox"] {
 <li>Log-on to one of the Linux servers (not an emily) following instructions on logging in using PuTTY</li>
 <li>Type in the commands of the GUI program such as xstata, nautilus (file explorer), etc on PuTTY’s command-line window.</li>
 </ol>
-<p>Remote (Graphical) Desktop Environment Access</p>
+</section>
+<section id="remote-graphical-desktop-environment-access" class="level4">
+<h4 class="anchored" data-anchor-id="remote-graphical-desktop-environment-access">Remote (Graphical) Desktop Environment Access</h4>
 <p><a href="./rdp.html">Windows Remote Desktop</a> allows remote desktop connections to the EML Linux systems. <a href="./x2go.html">X2Go</a> is a remote desktop solution that provides fast and secure graphical access to an EML desktop with support for copy and paste between local and remote computers.</p>
 </section>
-<section id="connecting-remotely-from-a-macos-computer" class="level3">
-<h3 class="anchored" data-anchor-id="connecting-remotely-from-a-macos-computer"><span id="mac">Connecting remotely from a macOS Computer</span></h3>
+</section>
+<section id="connecting-from-macos" class="level3">
+<h3 class="anchored" data-anchor-id="connecting-from-macos">Connecting from macOS</h3>
 <ol type="1">
 <li>Command line access and using graphical user interface applications</li>
 <li>File Transfer</li>
 <li>Remote Desktop Access</li>
 </ol>
 </section>
-<section id="connecting-remotely-from-linux" class="level3">
-<h3 class="anchored" data-anchor-id="connecting-remotely-from-linux"><span id="linux">Connecting remotely from Linux</span></h3>
+<section id="connecting-from-linux" class="level3">
+<h3 class="anchored" data-anchor-id="connecting-from-linux">Connecting from Linux</h3>
 <ol type="1">
 <li>Command line access and using graphical user interface applications</li>
 <li>File Transfer</li>
