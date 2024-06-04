@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -587,102 +621,50 @@ ul.task-list li input[type="checkbox"] {
 <section id="typical-configurations" class="level2">
 <h2 class="anchored" data-anchor-id="typical-configurations">Typical Configurations</h2>
 <p>Here is a list of application-specific tunnel settings. Note that in order to bind to ports lower than 1024 on Linux and Mac, one must have administrative privileges.</p>
-<p><strong>Table 1. Tunnel Settings</strong></p>
-<table class="table">
+<table class="caption-top table">
+<caption>Tunnel Settings</caption>
 <thead>
 <tr class="header">
-<th>
-Application
-</th>
-<th>
-Type
-</th>
-<th>
-Listen Port
-</th>
+<th>Application</th>
+<th>Type</th>
+<th>Listen Port</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>
-<p>
-SMB
-</p>
-</td>
-<td>
-TCP
-</td>
-<td>
-139
-</td>
+<td>SMB</td>
+<td>TCP</td>
+<td>139</td>
 </tr>
 <tr class="even">
-<td>
-<p>
-SMB
-</p>
-</td>
-<td>
-TCP
-</td>
-<td>
-445
-</td>
+<td>SMB</td>
+<td>TCP</td>
+<td>445</td>
 </tr>
 <tr class="odd">
-<td>
-Printing
-</td>
-<td>
-TCP
-</td>
-<td>
-515
-</td>
+<td>Printing</td>
+<td>TCP</td>
+<td>515</td>
 </tr>
 <tr class="even">
-<td>
-Remote Desktop
-</td>
-<td>
-TCP
-</td>
-<td>
-3389
-</td>
+<td>Remote Desktop</td>
+<td>TCP</td>
+<td>3389</td>
 </tr>
 <tr class="odd">
-<td>
-MySQL
-</td>
-<td>
-TCP
-</td>
-<td>
-3306
-</td>
+<td>MySQL</td>
+<td>TCP</td>
+<td>3306</td>
 </tr>
 <tr class="even">
-<td>
-VNC
-</td>
-<td>
-TCP
-</td>
-<td>
-5901
-</td>
+<td>VNC</td>
+<td>TCP</td>
+<td>5901</td>
 </tr>
 <tr class="odd">
-<td>
-JSTOR
-</td>
-<td>
-TCP
-</td>
-<td>
-8000
-</td>
+<td>JSTOR</td>
+<td>TCP</td>
+<td>8000</td>
 </tr>
 </tbody>
 </table>
@@ -701,10 +683,10 @@ TCP
 <section id="macos-and-linux" class="level2">
 <h2 class="anchored" data-anchor-id="macos-and-linux">macOS and Linux</h2>
 <p>Type (on your local machine) in a terminal window:</p>
-<pre><code>ssh -l username -L LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-l</span> username <span class="at">-L</span> LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>where LISTEN_PORT is the Listen Port, DESTINATION_PORT is the Destination Port, and EML_HOSTNAME is any EML computer. See our <a href="./monitoring">dashboards</a> for a list of EML computers.</p>
 <p>You may included more than one tunnel on the command-line, for example:</p>
-<pre><code>ssh -l username -L 25:DESTINATION_HOST:25 -L 110:DESTINATION_HOST:110 EML_HOSTNAME</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-l</span> username <span class="at">-L</span> 25:DESTINATION_HOST:25 <span class="at">-L</span> 110:DESTINATION_HOST:110 EML_HOSTNAME</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="alternative-ports" class="level3">
 <h3 class="anchored" data-anchor-id="alternative-ports">Alternative Ports</h3>
 <p>If you receive a message that the port is in use or are denied permission, you will need to choose a different port number for the local port. For example you would specify port 5445 rather than 445 as in the example below.</p>
@@ -715,19 +697,19 @@ TCP
 <section id="smb" class="level3">
 <h3 class="anchored" data-anchor-id="smb">SMB</h3>
 <p>Connect to the EML file server from off campus:</p>
-<pre><code>ssh -L 5445:eml.berkeley.edu:445 username@EML_HOSTNAME</code></pre>
-<p>and then connect your SMB client to smb://localhost:5445/homes (or \\localhost:5445\homes on Windows).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span> 5445:eml.berkeley.edu:445 username@EML_HOSTNAME</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and then connect your SMB client to smb://localhost:5445/homes (or \localhost:5445on Windows).</p>
 </section>
 <section id="jstor" class="level3">
 <h3 class="anchored" data-anchor-id="jstor">JSTOR</h3>
 <p>Read JSTOR from off campus:</p>
-<pre><code>ssh -L 8000:www.jstor.org:80 username@EML_HOSTNAME</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span> 8000:www.jstor.org:80 username@EML_HOSTNAME</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and then connect your web browser to http://localhost:8000.</p>
 </section>
 <section id="remote-desktop" class="level3">
 <h3 class="anchored" data-anchor-id="remote-desktop">Remote Desktop</h3>
 <p>Connect to an EML server through the VPN:</p>
-<pre><code>ssh -L 53389:localhost:3389 username@EML_HOSTNAME</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span> 53389:localhost:3389 username@EML_HOSTNAME</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and then connect your RDP client (e.g.&nbsp;Microsoft Remote Desktop) to localhost:53389.</p>
 
 
