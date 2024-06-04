@@ -1,11 +1,9 @@
 # Remote Access to the EML Systems
 
-The EML consist of multi-user, macOS and Linux systems that may be
-accessed remotely using either your browser (via the EML JupyterHub) or
-a program which uses the secure shell (SSH) protocol. This encrypts your
-data as it is transmitted over the network.
+You can securely connect to the EML using either your browser (via JupyterHub),
+or using secure shell (SSH).
 
-## Jupyter notebooks and other remote applications via a browser
+## JupyterHub
 
 [EML's JupyterHub](https://jupyter.econ.berkeley.edu) is deployed for
 users to remotely run Jupyter notebooks (using Python, R, Julia, MATLAB
@@ -13,16 +11,14 @@ and other languages), terminal sessions, RStudio, and even graphical
 Remote Desktop sessions on EML machinesthrough your web browser. See
 [our JupyterHub documentation](jupyterhub.qmd) for more information.
 
-## Access via SSH or via a Remote Desktop application
+## SSH
 
-The list of hostnames users can access is listed on our
-[dashboards](monitoring.qmd). Only Linux workstations and compute servers
-allow you to view graphics/images, use the graphical user interface of
-certain programs and provide desktop connections.
+You can connect using SSH to a number of EML systems. The list of hostnames
+users can access is listed on our [dashboards](monitoring.qmd).
 
-### <span id="windows">Connecting remotely from a Windows Computer</span>
+### Connecting from Windows
 
-Command-line Access
+#### Command-line Access
 
 [PuTTY](http://www.putty.org) is a free SSH client for Windows.
 ![](images/putty.png){fig-alt="putty image" width="156" height="138"}
@@ -32,7 +28,7 @@ Command-line Access
 3.  Click Open
 4.  Type your username and password when prompted
 
-File Transfer using Drag and Drop
+#### File Transfer using Drag and Drop
 
 [WinSCP](http://winscp.net/eng/download.php) is a free graphical SFTP
 client that allows you to copy/transfer files between your windows
@@ -44,11 +40,11 @@ computer and your EML account.
 3.  Enter the username and password
 4.  Click Login
 
-<span class="small">Note: If it is the first time you connect to a
-particular EML system, the SSH program will ask you if you want to
-accept the new host key. Click 'Yes'.</span>
+:::{.callout-note}
+The first time you connect to a particular EML system, SSH will ask you if you want to accept a host key. Click 'Yes'.
+:::
 
-Using Graphical User Interface of Unix Applications
+#### Using Graphical User Interface of Unix Applications
 
 [Xming](http://sourceforge.net/projects/xming/) is X Windows Software
 from X.Org ported to Microsoft Windows. This requires the use of an SSH
@@ -66,20 +62,20 @@ client such as PuTTY.
 5.  Type in the commands of the GUI program such as xstata, nautilus
     (file explorer), etc on PuTTY's command-line window.
 
-Remote (Graphical) Desktop Environment Access
+#### Remote (Graphical) Desktop Environment Access
 
 [Windows Remote Desktop](rdp.qmd) allows remote desktop connections to the
 EML Linux systems. [X2Go](x2go.qmd) is a remote desktop solution that
 provides fast and secure graphical access to an EML desktop with support
 for copy and paste between local and remote computers.
 
-### <span id="mac">Connecting remotely from a macOS Computer</span>
+### Connecting from macOS
 
 1.  Command line access and using graphical user interface applications
 2.  File Transfer
 3.  Remote Desktop Access
 
-### <span id="linux">Connecting remotely from Linux</span>
+### Connecting from Linux
 
 1.  Command line access and using graphical user interface applications
 2.  File Transfer
