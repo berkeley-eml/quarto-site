@@ -1,4 +1,4 @@
-# How do I correctly terminate an R session?
+# Terminate R sessions
 
 ## Quit
 
@@ -14,28 +14,34 @@ If you want your R job to keep running after you log out, the best way
 to run R is through the BATCH command, i.e. run a command like this one
 at the UNIX prompt:
 
-    R CMD BATCH cmds.r output.txt &
+```bash
+R CMD BATCH cmds.r output.txt &
+```
 
 where "cmds.r" is a file containing the R commands that you wish to run,
 and output.txt is the file where R will write its output. Type
-"help(BATCH)" from inside of R for more information. You can use this
+`help(BATCH)` from inside of R for more information. You can use this
 technique even if you don't think you'll be logging off before your job
 is done to make sure that R will terminate properly.
 
 ## Explicit Invocation
 
 If you don't want to worry about shutting down your interactive R
-session, you MUST use either the "-save" or the "-no-save" option. The
+session, you MUST use either the `-save` or the `-no-save` option. The
 reason that this is important is that if you log off or close a window
 while an interactive job is running, R will fall into an infinite loop
 at the end of your program, trying to ask you whether or not to save the
 data space. Using one of the options mentioned above will prevent this
 problem, as R will know the disposition of your data space before the
-program is completed. In other words, instead of just typing "R" at the
+program is completed. In other words, instead of just typing `R` at the
 UNIX prompt, type
 
-    R --save
+```bash
+R --save
+```
 
 or
 
-    R --no-save
+```bash
+R --no-save
+```
