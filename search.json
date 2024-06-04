@@ -1547,10 +1547,10 @@
     "href": "security.html",
     "title": "Security Issues and Policies",
     "section": "",
-    "text": "Security Issues and Policies\nThe Econometrics Laboratory is a shared resource, and is subject to strict security procedures to protect the integrity of the system for all its users.\n\nDo not give your password to anyone.\nDo not write your password down where it can be seen.\nDo not let anyone look over your shoulder when you log in.\nAlways logout properly when you leave a workstation.\nPay attention to your directory and file permissions.\nChange your password frequently.\nIf you suspect someone’s been using your account, report it immediately to “trouble” .\n\nUsers should also be aware that electronic files stored on disk in an individual’s account, a shared project account, or a system partition are not personal property, regardless of content, intended use at the time of creation, or purpose. Appropriate use of University of California facilities and infrastructure is defined in policies and guidelines posted on University of California web sites.\nAs such the Econometrics Laboratory (EML) reserve the right to review, modify, or delete any file or terminate any activity that may interfere with the operations of the EML’s computing facility. The EML will comply with prevailing University of California systemwide and Berkeley campus policies and guidelines governing the security and appropriate use of electronic and network resources. Further, the EMLwill comply with prevailing University of California systemwide and Berkeley campus policies and guidelines governing use of electronic and network resources and an individual’s right to privacy.\nLinks to relevant policies and guidelines are listed here. The list is not comprehensive or exhaustive; users are encouraged to follow links to other documents contained in these more general sites.\nUC Electronic Communications Policy\nUC Email Policy\nBerkeley Campus Electronic (E-Berkeley) Policy\nBerkeley Campus Implementation of UC Electronic Mail Policy\nBerkeley Campus Computer Use Policy\nBerkeley Guidelines for Appropriate Use of Campus Computing and Network Services\nBerkeley Guide to Selected Privacy and Confidentiality Regulations\nBerkeley Campus Privacy Statement for Websites",
+    "text": "Security Issues and Policies\nThe Econometrics Laboratory is a shared resource, and is subject to strict security procedures to protect the integrity of the system for all its users.\n\nDo not give your password to anyone.\nDo not write your password down where it can be seen.\nDo not let anyone look over your shoulder when you log in.\nAlways logout properly when you leave a workstation.\nPay attention to your directory and file permissions.\nChange your password frequently.\nIf you suspect someone’s been using your account, report it immediately to trouble@econ.berkeley.edu.\n\nUsers should also be aware that electronic files stored on disk in an individual’s account, a shared project account, or a system partition are not personal property, regardless of content, intended use at the time of creation, or purpose. Appropriate use of University of California facilities and infrastructure is defined in policies and guidelines posted on University of California web sites.\nAs such the Econometrics Laboratory (EML) reserve the right to review, modify, or delete any file or terminate any activity that may interfere with the operations of the EML’s computing facility. The EML will comply with prevailing University of California systemwide and Berkeley campus policies and guidelines governing the security and appropriate use of electronic and network resources. Further, the EMLwill comply with prevailing University of California systemwide and Berkeley campus policies and guidelines governing use of electronic and network resources and an individual’s right to privacy.",
     "crumbs": [
       "Home",
-      "Software",
+      "Accounts",
       "Security Issues and Policies"
     ]
   },
@@ -1842,49 +1842,49 @@
   {
     "objectID": "terminate-r.html",
     "href": "terminate-r.html",
-    "title": "How do I correctly terminate an R session?",
+    "title": "Terminate R sessions",
     "section": "",
-    "text": "When you run an R job, you should properly quit the job when you’re done, by typing “q()” at the R prompt, and responding to the query about “Save workspace image?” appropriately. DO NOT log off without terminating your R job/session, and you should not kill a window with a running R process unless you follow one of the suggestions below.\n\n\n\nIf you want your R job to keep running after you log out, the best way to run R is through the BATCH command, i.e. run a command like this one at the UNIX prompt:\nR CMD BATCH cmds.r output.txt &\nwhere “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type “help(BATCH)” from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.\n\n\n\nIf you don’t want to worry about shutting down your interactive R session, you MUST use either the “-save” or the “-no-save” option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing “R” at the UNIX prompt, type\nR --save\nor\nR --no-save",
+    "text": "When you run an R job, you should properly quit the job when you’re done, by typing “q()” at the R prompt, and responding to the query about “Save workspace image?” appropriately. DO NOT log off without terminating your R job/session, and you should not kill a window with a running R process unless you follow one of the suggestions below.\n\n\n\nIf you want your R job to keep running after you log out, the best way to run R is through the BATCH command, i.e. run a command like this one at the UNIX prompt:\nR CMD BATCH cmds.r output.txt &\nwhere “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type help(BATCH) from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.\n\n\n\nIf you don’t want to worry about shutting down your interactive R session, you MUST use either the -save or the -no-save option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing R at the UNIX prompt, type\nR --save\nor\nR --no-save",
     "crumbs": [
       "Home",
       "Software",
-      "How do I correctly terminate an R session?"
+      "Terminate R sessions"
     ]
   },
   {
     "objectID": "terminate-r.html#quit",
     "href": "terminate-r.html#quit",
-    "title": "How do I correctly terminate an R session?",
+    "title": "Terminate R sessions",
     "section": "",
     "text": "When you run an R job, you should properly quit the job when you’re done, by typing “q()” at the R prompt, and responding to the query about “Save workspace image?” appropriately. DO NOT log off without terminating your R job/session, and you should not kill a window with a running R process unless you follow one of the suggestions below.",
     "crumbs": [
       "Home",
       "Software",
-      "How do I correctly terminate an R session?"
+      "Terminate R sessions"
     ]
   },
   {
     "objectID": "terminate-r.html#batch",
     "href": "terminate-r.html#batch",
-    "title": "How do I correctly terminate an R session?",
+    "title": "Terminate R sessions",
     "section": "",
-    "text": "If you want your R job to keep running after you log out, the best way to run R is through the BATCH command, i.e. run a command like this one at the UNIX prompt:\nR CMD BATCH cmds.r output.txt &\nwhere “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type “help(BATCH)” from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.",
+    "text": "If you want your R job to keep running after you log out, the best way to run R is through the BATCH command, i.e. run a command like this one at the UNIX prompt:\nR CMD BATCH cmds.r output.txt &\nwhere “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type help(BATCH) from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.",
     "crumbs": [
       "Home",
       "Software",
-      "How do I correctly terminate an R session?"
+      "Terminate R sessions"
     ]
   },
   {
     "objectID": "terminate-r.html#explicit-invocation",
     "href": "terminate-r.html#explicit-invocation",
-    "title": "How do I correctly terminate an R session?",
+    "title": "Terminate R sessions",
     "section": "",
-    "text": "If you don’t want to worry about shutting down your interactive R session, you MUST use either the “-save” or the “-no-save” option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing “R” at the UNIX prompt, type\nR --save\nor\nR --no-save",
+    "text": "If you don’t want to worry about shutting down your interactive R session, you MUST use either the -save or the -no-save option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing R at the UNIX prompt, type\nR --save\nor\nR --no-save",
     "crumbs": [
       "Home",
       "Software",
-      "How do I correctly terminate an R session?"
+      "Terminate R sessions"
     ]
   },
   {

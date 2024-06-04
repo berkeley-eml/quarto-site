@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./tensorflow.html" rel="next">
-<link href="./security.html" rel="prev">
+<link href="./julia-packages.html" rel="next">
+<link href="./r-libraries.html" rel="prev">
 <link href="./images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -116,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./software.html">Software</a></li><li class="breadcrumb-item"><a href="./terminate-r.html">How do I correctly terminate an R session?</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./software.html">Software</a></li><li class="breadcrumb-item"><a href="./terminate-r.html">Terminate R sessions</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -184,6 +218,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./passwords.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Managing Passwords</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./security.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Security Issues and Policies</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
@@ -499,20 +539,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./terminate-r.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Terminate R sessions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./julia-packages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia Packages</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./security.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Security Issues and Policies</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./terminate-r.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">How do I correctly terminate an R session?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -545,7 +579,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-do-i-correctly-terminate-an-r-session" id="toc-how-do-i-correctly-terminate-an-r-session" class="nav-link active" data-scroll-target="#how-do-i-correctly-terminate-an-r-session">How do I correctly terminate an R session?</a>
+  <li><a href="#terminate-r-sessions" id="toc-terminate-r-sessions" class="nav-link active" data-scroll-target="#terminate-r-sessions">Terminate R sessions</a>
   <ul class="collapse">
   <li><a href="#quit" id="toc-quit" class="nav-link" data-scroll-target="#quit">Quit</a></li>
   <li><a href="#batch" id="toc-batch" class="nav-link" data-scroll-target="#batch">Batch</a></li>
@@ -560,8 +594,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="how-do-i-correctly-terminate-an-r-session" class="level1">
-<h1>How do I correctly terminate an R session?</h1>
+<section id="terminate-r-sessions" class="level1">
+<h1>Terminate R sessions</h1>
 <section id="quit" class="level2">
 <h2 class="anchored" data-anchor-id="quit">Quit</h2>
 <p>When you run an R job, you should properly quit the job when you’re done, by typing “q()” at the R prompt, and responding to the query about “Save workspace image?” appropriately. DO NOT log off without terminating your R job/session, and you should not kill a window with a running R process unless you follow one of the suggestions below.</p>
@@ -569,15 +603,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="batch" class="level2">
 <h2 class="anchored" data-anchor-id="batch">Batch</h2>
 <p>If you want your R job to keep running after you log out, the best way to run R is through the BATCH command, i.e.&nbsp;run a command like this one at the UNIX prompt:</p>
-<pre><code>R CMD BATCH cmds.r output.txt &amp;</code></pre>
-<p>where “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type “help(BATCH)” from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH cmds.r output.txt <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>where “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type <code>help(BATCH)</code> from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.</p>
 </section>
 <section id="explicit-invocation" class="level2">
 <h2 class="anchored" data-anchor-id="explicit-invocation">Explicit Invocation</h2>
-<p>If you don’t want to worry about shutting down your interactive R session, you MUST use either the “-save” or the “-no-save” option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing “R” at the UNIX prompt, type</p>
-<pre><code>R --save</code></pre>
+<p>If you don’t want to worry about shutting down your interactive R session, you MUST use either the <code>-save</code> or the <code>-no-save</code> option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing <code>R</code> at the UNIX prompt, type</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> <span class="at">--save</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>or</p>
-<pre><code>R --no-save</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> <span class="at">--no-save</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -995,13 +1029,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./security.html" class="pagination-link" aria-label="Security Issues and Policies">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Security Issues and Policies</span>
+      <a href="./r-libraries.html" class="pagination-link" aria-label="R packages">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">R packages</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tensorflow.html" class="pagination-link" aria-label="Tensorflow">
-        <span class="nav-page-text">Tensorflow</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./julia-packages.html" class="pagination-link" aria-label="Julia Packages">
+        <span class="nav-page-text">Julia Packages</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
