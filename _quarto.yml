@@ -100,7 +100,6 @@ website:
           - julia-packages.qmd
           - security.qmd
           - terminate-r.qmd
-          - tex.qmd
           - tensorflow.qmd
           - ucthesis.qmd
           - unix-processes.qmd
