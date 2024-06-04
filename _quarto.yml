@@ -41,9 +41,8 @@ website:
           #- system-status.qmd
       - section: "Accounts"
         contents:
-          - account-apply.qmd
-          - account-types.qmd
           - accounts.qmd
+          - account-types.qmd
           - passwords.qmd
           - section: "Policies and Rules"
             contents:

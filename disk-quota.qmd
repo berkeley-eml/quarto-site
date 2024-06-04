@@ -4,14 +4,15 @@ Each user is assigned a disk space quota, or allotment, when their
 account is created to insure that there will be sufficient disk space
 for all our users' needs.
 
-At login, a message will be printed to alert you if you are approaching
-your quota. If you ignore this message past the time printed, any files
-that you attempt to create or append to may be truncated. Once you are
-over quota, programs may fail to run and you may also be prevented from
-logging in.
+Once you are over quota, programs may fail to run and you may also be prevented
+from logging in.
+
+Each user is expected to monitor their own disk usage and to attempt to
+stay within their quota. To view your current usage, type `quota` on the
+command line.
 
 The best practice is to check your quota occasionally, and if it appears
-you are nearing your quota, you should see what files you may be able to
+you are nearing your limit, you should see what files you may be able to
 remove from your account to provide yourself with more disk space.
 
 You should never need to remove files that you need in order to meet
@@ -19,43 +20,4 @@ your disk quota. If you anticipate a long-term need for an unusually
 large amount of disk space, please notify the EML staff before the need
 becomes acute, so that we can find a suitable location for your files
 without encroaching on the files of other users. Additional disk space
-may be requested by sending mail to <manager@econ.berkeley.edu>.
-
-The disk quota consists of two limits: the soft limit, which you will be
-warned for exceeding, and the hard limit, which you will be prevented
-from exceeding. See also `quota(1)` in the UNIX manual.
-
-Here are the default quotas in megabytes (MB):
-
-**Table 1. Default Quotas**
-
-<table>
-<thead>
-<tr class="header">
-<th>Account Type</th>
-<th>Soft Limit</th>
-<th>Hard Limit</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Graduate Students</td>
-<td>5 GB</td>
-<td>1.5 GB</td>
-</tr>
-<tr class="even">
-<td>Faculty</td>
-<td>5 GB</td>
-<td>1.5 GB</td>
-</tr>
-<tr class="odd">
-<td>Visitor and Guest</td>
-<td>100 MB</td>
-<td>110 MB</td>
-</tr>
-</tbody>
-</table>
-
-Each user is expected to monitor their own disk usage and to attempt to
-stay within their quota. To view your current usage, type 'quota' on the
-command line.
+may be requested by sending mail to manager@econ.berkeley.edu.
