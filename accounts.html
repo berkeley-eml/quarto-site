@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./passwords.html" rel="next">
-<link href="./account-types.html" rel="prev">
+<link href="./account-types.html" rel="next">
+<link href="./availability.html" rel="prev">
 <link href="./images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -116,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./account-apply.html">Accounts</a></li><li class="breadcrumb-item"><a href="./accounts.html">Accounts</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./accounts.html">Accounts</a></li><li class="breadcrumb-item"><a href="./accounts.html">Accounts</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -170,20 +170,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./account-apply.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Apply For an Account</span></a>
+  <a href="./accounts.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Accounts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./account-types.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Account Types</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./accounts.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Accounts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -571,10 +565,9 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#accounts" id="toc-accounts" class="nav-link active" data-scroll-target="#accounts">Accounts</a>
   <ul class="collapse">
-  <li><a href="#disk-space" id="toc-disk-space" class="nav-link" data-scroll-target="#disk-space">Disk Space</a></li>
-  <li><a href="#printing" id="toc-printing" class="nav-link" data-scroll-target="#printing">Printing</a></li>
-  <li><a href="#account-duration" id="toc-account-duration" class="nav-link" data-scroll-target="#account-duration">Account Duration</a></li>
   <li><a href="#get-an-account" id="toc-get-an-account" class="nav-link" data-scroll-target="#get-an-account">Get an Account</a></li>
+  <li><a href="#initial-disk-space" id="toc-initial-disk-space" class="nav-link" data-scroll-target="#initial-disk-space">Initial Disk Space</a></li>
+  <li><a href="#account-duration" id="toc-account-duration" class="nav-link" data-scroll-target="#account-duration">Account Duration</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -587,29 +580,34 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="accounts" class="level1">
 <h1>Accounts</h1>
-<section id="disk-space" class="level2">
-<h2 class="anchored" data-anchor-id="disk-space">Disk Space</h2>
-<p>The allocation of disk space on all accounts is controlled by disk quotas. Below are the default allocations for home directories:</p>
-<pre><code>  Graduate students: 5 GB
-  Faculty: 5 GB
-  Staff: 1 GB
-  Visiting Faculty: 1 GB
-  Guest Accounts: 1 GB</code></pre>
-<p>To check quota limits, please run the command “quota” on a terminal.</p>
-<p>If more disk space is required, users can request additional space by providing written justification to the EML manager. It is expected that requests for increased disk allocation come after basic account maintenance: deletion of files in trash, removal of obsolete data, archiving or compressing of no longer used files, and so forth.</p>
-<p>All users have access to <span id="otherspace">additional disk areas</span> on the EML system. These include:</p>
-<blockquote class="blockquote">
-<p><strong>/tmp or /var/tmp</strong> is local to every workstation, i.e., to emily1,…,emily10, and compute servers we support. /tmp is volatile, and is never backed up. Depending on the machine, this space could be quite large. Files can be erased at any time if the workstation is rebooted. Files may be automatically deleted after 24 hours. This is truly “temporary” storage. Users should remove their files as soon as their work has been completed.</p>
-<p>Public directories in the scratch partition <strong>(/scratch/public)</strong> is a cen/common area on the main server. Anyone can write files to this area. Users can make a subdirectory under your login name, and store files there. By default, this area is not private, so don’t put anything in public scratch that is sensitive in nature. Files are not backed up, but they do not disappear when the server is rebooted. Files are removed by age (oldest first) and by size, as the area fills up.</p>
-</blockquote>
-<p>Users are recommended to store critical files and confidential files safely in personal accounts, and use the unix file permissions to make these files secure and private (see ‘man chmod’). Delete any old files that are no longer needed or that can be easily re-created. Compress large files. The command ‘bigfiles’ will show you your biggest files when invoked in your current working directory.</p>
-</section>
-<section id="printing" class="level2">
-<h2 class="anchored" data-anchor-id="printing">Printing</h2>
+<section id="get-an-account" class="level2">
+<h2 class="anchored" data-anchor-id="get-an-account">Get an Account</h2>
+<p>Fill in the EML application form</p>
 <ul>
-<li>Printing: Student and faculty accounts are charged $0.05/page for any printing above their quota established according to the following categories:</li>
-<li>Contractor and non-economics UC staff accounts are charged for all printing at the rate of $0.05/page. Research projects are charges for all printing at the rate of $0.10/page.</li>
+<li><a href="https://eml.berkeley.edu/account">Those with Calnet ID</a></li>
+<li><a href="https://docs.google.com/a/berkeley.edu/forms/d/1loDJ_f7pX8ZefIDqDFZNXSqBWyCKQ1QjL10aUj3cJTs">Those without Calnet ID</a></li>
+<li><a href="forms/projectapp.pdf">Research Project Account</a></li>
 </ul>
+<p>Read the <a href="./rules.html">EML rules</a>, the <a href="http://cio.berkeley.edu/policies.html">UC Berkeley computer use policies</a>, and all accompanying guidelines that accompany the application form.</p>
+<p>Obtain a faculty signature (if you are a graduate student), or a principal investigator’s signature for research project accounts, and the EML manager’s signature (643 Evans Hall).</p>
+<p>Sign the project account application form stating that you have read the rules, you understand them, and you will comply with them.</p>
+<p>Take the project account application form to 643 Evans to establish your login name and your password.</p>
+<p>You will receive an e-mail confirming your account has been set up.</p>
+</section>
+<section id="initial-disk-space" class="level2">
+<h2 class="anchored" data-anchor-id="initial-disk-space">Initial Disk Space</h2>
+<p>The allocation of disk space on all accounts is controlled by disk quotas. Below are the default allocations for home directories:</p>
+<ul>
+<li>Graduate students: 5 GB</li>
+<li>Faculty: 5 GB</li>
+<li>Staff: 1 GB</li>
+<li>Visiting Faculty: 1 GB</li>
+<li>Guest Accounts: 1 GB</li>
+</ul>
+<p>Monitor your <a href="./disk-quota.html">disk quota</a> to ensure proper functioning of your account.</p>
+<p>If more disk space is required, users can request additional space by providing written justification to the EML manager. It is expected that requests for increased disk allocation come after basic account maintenance: deletion of files in trash, removal of obsolete data, archiving or compressing of no longer used files, and so forth.</p>
+<p>All users have access to additional <a href="./temp-space.html">temporary disk space</a> on the EML system.</p>
+<p>Users are recommended to store critical files and confidential files safely in personal accounts, and use the unix file permissions to make these files secure and private (see <code>man chmod</code>). Delete any old files that are no longer needed or that can be easily re-created. Compress large files. The command <code>bigfiles</code> will show you your biggest files when invoked in your current working directory.</p>
 </section>
 <section id="account-duration" class="level2">
 <h2 class="anchored" data-anchor-id="account-duration">Account Duration</h2>
@@ -624,21 +622,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Contractor accounts are valid indefinitely, as long as the account is in good standing.</li>
 <li>All other accounts expire on July 1 of each year and must be renewed.</li>
 </ul>
-<p>Requests for extension of an account must be received within 5 days of the account expiration date (send electronic mail to rowilma <span class="citation" data-cites="econ.berkeley.edu">@econ.berkeley.edu</span>).</p>
-</section>
-<section id="get-an-account" class="level2">
-<h2 class="anchored" data-anchor-id="get-an-account">Get an Account</h2>
-<p>Fill in the EML application form</p>
-<ul>
-<li><a href="./account">Those with Calnet ID</a></li>
-<li><a href="https://docs.google.com/a/berkeley.edu/forms/d/1loDJ_f7pX8ZefIDqDFZNXSqBWyCKQ1QjL10aUj3cJTs">Those without Calnet ID</a></li>
-<li><a href="forms/projectapp.pdf">Research Project Account</a></li>
-</ul>
-<p>Read the <a href="rules">EML rules</a>, the <a href="http://cio.berkeley.edu/policies.html">UC Berkeley computer use policies</a>, and all accompanying guidelines that accompany the application form.</p>
-<p>Obtain a faculty signature (if you are a graduate student), or a principal investigator’s signature for research project accounts, and the EML manager’s signature (643 Evans Hall).</p>
-<p>Sign the project account application form stating that you have read the rules, you understand them, and you will comply with them.</p>
-<p>Take the project account application form to 643 Evans to establish your login name and your password.</p>
-<p>You will receive an e-mail confirming your account has been set up.</p>
+<p>Requests for extension of an account must be received within 5 days of the account expiration date. Contact manager@econ.berkeley.edu.</p>
 
 
 </section>
@@ -1056,13 +1040,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./account-types.html" class="pagination-link" aria-label="Account Types">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Account Types</span>
+      <a href="./availability.html" class="pagination-link" aria-label="Availability">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Availability</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./passwords.html" class="pagination-link" aria-label="Managing Passwords">
-        <span class="nav-page-text">Managing Passwords</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./account-types.html" class="pagination-link" aria-label="Account Types">
+        <span class="nav-page-text">Account Types</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

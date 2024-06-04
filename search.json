@@ -1020,18 +1020,6 @@
     ]
   },
   {
-    "objectID": "account-apply.html",
-    "href": "account-apply.html",
-    "title": "Apply For an Account",
-    "section": "",
-    "text": "Apply For an Account\nFill in the EML application form\n\nThose with Calnet ID\nThose without Calnet ID\nResearch Project Account\n\nRead the EML rules, the UC Berkeley computer use policies, and all accompanying guidelines that accompany the application form.\nObtain a faculty signature (if you are a graduate student), or a principal investigator’s signature for research project accounts, and the EML manager’s signature (643 Evans Hall).\nSign the project account application form stating that you have read the rules, you understand them, and you will comply with them.\nTake the project account application form to 643 Evans to establish your login name and your password.\nYou will receive an e-mail confirming your account has been set up.",
-    "crumbs": [
-      "Home",
-      "Accounts",
-      "Apply For an Account"
-    ]
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "The Econometrics Laboratory",
@@ -1055,43 +1043,7 @@
     "href": "accounts.html",
     "title": "Accounts",
     "section": "",
-    "text": "The allocation of disk space on all accounts is controlled by disk quotas. Below are the default allocations for home directories:\n  Graduate students: 5 GB\n  Faculty: 5 GB\n  Staff: 1 GB\n  Visiting Faculty: 1 GB\n  Guest Accounts: 1 GB\nTo check quota limits, please run the command “quota” on a terminal.\nIf more disk space is required, users can request additional space by providing written justification to the EML manager. It is expected that requests for increased disk allocation come after basic account maintenance: deletion of files in trash, removal of obsolete data, archiving or compressing of no longer used files, and so forth.\nAll users have access to additional disk areas on the EML system. These include:\n\n/tmp or /var/tmp is local to every workstation, i.e., to emily1,…,emily10, and compute servers we support. /tmp is volatile, and is never backed up. Depending on the machine, this space could be quite large. Files can be erased at any time if the workstation is rebooted. Files may be automatically deleted after 24 hours. This is truly “temporary” storage. Users should remove their files as soon as their work has been completed.\nPublic directories in the scratch partition (/scratch/public) is a cen/common area on the main server. Anyone can write files to this area. Users can make a subdirectory under your login name, and store files there. By default, this area is not private, so don’t put anything in public scratch that is sensitive in nature. Files are not backed up, but they do not disappear when the server is rebooted. Files are removed by age (oldest first) and by size, as the area fills up.\n\nUsers are recommended to store critical files and confidential files safely in personal accounts, and use the unix file permissions to make these files secure and private (see ‘man chmod’). Delete any old files that are no longer needed or that can be easily re-created. Compress large files. The command ‘bigfiles’ will show you your biggest files when invoked in your current working directory.\n\n\n\n\nPrinting: Student and faculty accounts are charged $0.05/page for any printing above their quota established according to the following categories:\nContractor and non-economics UC staff accounts are charged for all printing at the rate of $0.05/page. Research projects are charges for all printing at the rate of $0.10/page.\n\n\n\n\nAccounts must be renewed according to the following schedule:\n\nClass accounts expire at the end of each semester and cannot be renewed.\nGraduate accounts for Economics students are valid as long as the individual is currently enrolled (registered)\nAlumni accounts are issued upon request to individuals who have left the Department in good standing and are valid for up to two months after separation from the Department if reasonable cause can be demonstrated. Alumni accounts cannot be renewed.\nAll other student accounts expire on January 1 and July 1 of each year and must be renewed.\nGuest accounts must be renewed each year by July 1 and require approval of the sponsoring faculty member.\nFaculty and visitor (associate research fellows) accounts expire upon termination of their appointments.\nContractor accounts are valid indefinitely, as long as the account is in good standing.\nAll other accounts expire on July 1 of each year and must be renewed.\n\nRequests for extension of an account must be received within 5 days of the account expiration date (send electronic mail to rowilma @econ.berkeley.edu).\n\n\n\nFill in the EML application form\n\nThose with Calnet ID\nThose without Calnet ID\nResearch Project Account\n\nRead the EML rules, the UC Berkeley computer use policies, and all accompanying guidelines that accompany the application form.\nObtain a faculty signature (if you are a graduate student), or a principal investigator’s signature for research project accounts, and the EML manager’s signature (643 Evans Hall).\nSign the project account application form stating that you have read the rules, you understand them, and you will comply with them.\nTake the project account application form to 643 Evans to establish your login name and your password.\nYou will receive an e-mail confirming your account has been set up.",
-    "crumbs": [
-      "Home",
-      "Accounts",
-      "Accounts"
-    ]
-  },
-  {
-    "objectID": "accounts.html#disk-space",
-    "href": "accounts.html#disk-space",
-    "title": "Accounts",
-    "section": "",
-    "text": "The allocation of disk space on all accounts is controlled by disk quotas. Below are the default allocations for home directories:\n  Graduate students: 5 GB\n  Faculty: 5 GB\n  Staff: 1 GB\n  Visiting Faculty: 1 GB\n  Guest Accounts: 1 GB\nTo check quota limits, please run the command “quota” on a terminal.\nIf more disk space is required, users can request additional space by providing written justification to the EML manager. It is expected that requests for increased disk allocation come after basic account maintenance: deletion of files in trash, removal of obsolete data, archiving or compressing of no longer used files, and so forth.\nAll users have access to additional disk areas on the EML system. These include:\n\n/tmp or /var/tmp is local to every workstation, i.e., to emily1,…,emily10, and compute servers we support. /tmp is volatile, and is never backed up. Depending on the machine, this space could be quite large. Files can be erased at any time if the workstation is rebooted. Files may be automatically deleted after 24 hours. This is truly “temporary” storage. Users should remove their files as soon as their work has been completed.\nPublic directories in the scratch partition (/scratch/public) is a cen/common area on the main server. Anyone can write files to this area. Users can make a subdirectory under your login name, and store files there. By default, this area is not private, so don’t put anything in public scratch that is sensitive in nature. Files are not backed up, but they do not disappear when the server is rebooted. Files are removed by age (oldest first) and by size, as the area fills up.\n\nUsers are recommended to store critical files and confidential files safely in personal accounts, and use the unix file permissions to make these files secure and private (see ‘man chmod’). Delete any old files that are no longer needed or that can be easily re-created. Compress large files. The command ‘bigfiles’ will show you your biggest files when invoked in your current working directory.",
-    "crumbs": [
-      "Home",
-      "Accounts",
-      "Accounts"
-    ]
-  },
-  {
-    "objectID": "accounts.html#printing",
-    "href": "accounts.html#printing",
-    "title": "Accounts",
-    "section": "",
-    "text": "Printing: Student and faculty accounts are charged $0.05/page for any printing above their quota established according to the following categories:\nContractor and non-economics UC staff accounts are charged for all printing at the rate of $0.05/page. Research projects are charges for all printing at the rate of $0.10/page.",
-    "crumbs": [
-      "Home",
-      "Accounts",
-      "Accounts"
-    ]
-  },
-  {
-    "objectID": "accounts.html#account-duration",
-    "href": "accounts.html#account-duration",
-    "title": "Accounts",
-    "section": "",
-    "text": "Accounts must be renewed according to the following schedule:\n\nClass accounts expire at the end of each semester and cannot be renewed.\nGraduate accounts for Economics students are valid as long as the individual is currently enrolled (registered)\nAlumni accounts are issued upon request to individuals who have left the Department in good standing and are valid for up to two months after separation from the Department if reasonable cause can be demonstrated. Alumni accounts cannot be renewed.\nAll other student accounts expire on January 1 and July 1 of each year and must be renewed.\nGuest accounts must be renewed each year by July 1 and require approval of the sponsoring faculty member.\nFaculty and visitor (associate research fellows) accounts expire upon termination of their appointments.\nContractor accounts are valid indefinitely, as long as the account is in good standing.\nAll other accounts expire on July 1 of each year and must be renewed.\n\nRequests for extension of an account must be received within 5 days of the account expiration date (send electronic mail to rowilma @econ.berkeley.edu).",
+    "text": "Fill in the EML application form\n\nThose with Calnet ID\nThose without Calnet ID\nResearch Project Account\n\nRead the EML rules, the UC Berkeley computer use policies, and all accompanying guidelines that accompany the application form.\nObtain a faculty signature (if you are a graduate student), or a principal investigator’s signature for research project accounts, and the EML manager’s signature (643 Evans Hall).\nSign the project account application form stating that you have read the rules, you understand them, and you will comply with them.\nTake the project account application form to 643 Evans to establish your login name and your password.\nYou will receive an e-mail confirming your account has been set up.\n\n\n\nThe allocation of disk space on all accounts is controlled by disk quotas. Below are the default allocations for home directories:\n\nGraduate students: 5 GB\nFaculty: 5 GB\nStaff: 1 GB\nVisiting Faculty: 1 GB\nGuest Accounts: 1 GB\n\nMonitor your disk quota to ensure proper functioning of your account.\nIf more disk space is required, users can request additional space by providing written justification to the EML manager. It is expected that requests for increased disk allocation come after basic account maintenance: deletion of files in trash, removal of obsolete data, archiving or compressing of no longer used files, and so forth.\nAll users have access to additional temporary disk space on the EML system.\nUsers are recommended to store critical files and confidential files safely in personal accounts, and use the unix file permissions to make these files secure and private (see man chmod). Delete any old files that are no longer needed or that can be easily re-created. Compress large files. The command bigfiles will show you your biggest files when invoked in your current working directory.\n\n\n\nAccounts must be renewed according to the following schedule:\n\nClass accounts expire at the end of each semester and cannot be renewed.\nGraduate accounts for Economics students are valid as long as the individual is currently enrolled (registered)\nAlumni accounts are issued upon request to individuals who have left the Department in good standing and are valid for up to two months after separation from the Department if reasonable cause can be demonstrated. Alumni accounts cannot be renewed.\nAll other student accounts expire on January 1 and July 1 of each year and must be renewed.\nGuest accounts must be renewed each year by July 1 and require approval of the sponsoring faculty member.\nFaculty and visitor (associate research fellows) accounts expire upon termination of their appointments.\nContractor accounts are valid indefinitely, as long as the account is in good standing.\nAll other accounts expire on July 1 of each year and must be renewed.\n\nRequests for extension of an account must be received within 5 days of the account expiration date. Contact manager@econ.berkeley.edu.",
     "crumbs": [
       "Home",
       "Accounts",
@@ -1104,6 +1056,30 @@
     "title": "Accounts",
     "section": "",
     "text": "Fill in the EML application form\n\nThose with Calnet ID\nThose without Calnet ID\nResearch Project Account\n\nRead the EML rules, the UC Berkeley computer use policies, and all accompanying guidelines that accompany the application form.\nObtain a faculty signature (if you are a graduate student), or a principal investigator’s signature for research project accounts, and the EML manager’s signature (643 Evans Hall).\nSign the project account application form stating that you have read the rules, you understand them, and you will comply with them.\nTake the project account application form to 643 Evans to establish your login name and your password.\nYou will receive an e-mail confirming your account has been set up.",
+    "crumbs": [
+      "Home",
+      "Accounts",
+      "Accounts"
+    ]
+  },
+  {
+    "objectID": "accounts.html#initial-disk-space",
+    "href": "accounts.html#initial-disk-space",
+    "title": "Accounts",
+    "section": "",
+    "text": "The allocation of disk space on all accounts is controlled by disk quotas. Below are the default allocations for home directories:\n\nGraduate students: 5 GB\nFaculty: 5 GB\nStaff: 1 GB\nVisiting Faculty: 1 GB\nGuest Accounts: 1 GB\n\nMonitor your disk quota to ensure proper functioning of your account.\nIf more disk space is required, users can request additional space by providing written justification to the EML manager. It is expected that requests for increased disk allocation come after basic account maintenance: deletion of files in trash, removal of obsolete data, archiving or compressing of no longer used files, and so forth.\nAll users have access to additional temporary disk space on the EML system.\nUsers are recommended to store critical files and confidential files safely in personal accounts, and use the unix file permissions to make these files secure and private (see man chmod). Delete any old files that are no longer needed or that can be easily re-created. Compress large files. The command bigfiles will show you your biggest files when invoked in your current working directory.",
+    "crumbs": [
+      "Home",
+      "Accounts",
+      "Accounts"
+    ]
+  },
+  {
+    "objectID": "accounts.html#account-duration",
+    "href": "accounts.html#account-duration",
+    "title": "Accounts",
+    "section": "",
+    "text": "Accounts must be renewed according to the following schedule:\n\nClass accounts expire at the end of each semester and cannot be renewed.\nGraduate accounts for Economics students are valid as long as the individual is currently enrolled (registered)\nAlumni accounts are issued upon request to individuals who have left the Department in good standing and are valid for up to two months after separation from the Department if reasonable cause can be demonstrated. Alumni accounts cannot be renewed.\nAll other student accounts expire on January 1 and July 1 of each year and must be renewed.\nGuest accounts must be renewed each year by July 1 and require approval of the sponsoring faculty member.\nFaculty and visitor (associate research fellows) accounts expire upon termination of their appointments.\nContractor accounts are valid indefinitely, as long as the account is in good standing.\nAll other accounts expire on July 1 of each year and must be renewed.\n\nRequests for extension of an account must be received within 5 days of the account expiration date. Contact manager@econ.berkeley.edu.",
     "crumbs": [
       "Home",
       "Accounts",
@@ -1225,7 +1201,7 @@
     "href": "disk-quota.html",
     "title": "Disk Quota",
     "section": "",
-    "text": "Disk Quota\nEach user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs.\nAt login, a message will be printed to alert you if you are approaching your quota. If you ignore this message past the time printed, any files that you attempt to create or append to may be truncated. Once you are over quota, programs may fail to run and you may also be prevented from logging in.\nThe best practice is to check your quota occasionally, and if it appears you are nearing your quota, you should see what files you may be able to remove from your account to provide yourself with more disk space.\nYou should never need to remove files that you need in order to meet your disk quota. If you anticipate a long-term need for an unusually large amount of disk space, please notify the EML staff before the need becomes acute, so that we can find a suitable location for your files without encroaching on the files of other users. Additional disk space may be requested by sending mail to manager@econ.berkeley.edu.\nThe disk quota consists of two limits: the soft limit, which you will be warned for exceeding, and the hard limit, which you will be prevented from exceeding. See also quota(1) in the UNIX manual.\nHere are the default quotas in megabytes (MB):\nTable 1. Default Quotas\n\n\n\n\nAccount Type\n\n\nSoft Limit\n\n\nHard Limit\n\n\n\n\n\n\nGraduate Students\n\n\n5 GB\n\n\n1.5 GB\n\n\n\n\nFaculty\n\n\n5 GB\n\n\n1.5 GB\n\n\n\n\nVisitor and Guest\n\n\n100 MB\n\n\n110 MB\n\n\n\n\nEach user is expected to monitor their own disk usage and to attempt to stay within their quota. To view your current usage, type ‘quota’ on the command line.",
+    "text": "Disk Quota\nEach user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs.\nOnce you are over quota, programs may fail to run and you may also be prevented from logging in.\nEach user is expected to monitor their own disk usage and to attempt to stay within their quota. To view your current usage, type quota on the command line.\nThe best practice is to check your quota occasionally, and if it appears you are nearing your limit, you should see what files you may be able to remove from your account to provide yourself with more disk space.\nYou should never need to remove files that you need in order to meet your disk quota. If you anticipate a long-term need for an unusually large amount of disk space, please notify the EML staff before the need becomes acute, so that we can find a suitable location for your files without encroaching on the files of other users. Additional disk space may be requested by sending mail to manager@econ.berkeley.edu.",
     "crumbs": [
       "Home",
       "Data and Storage",
