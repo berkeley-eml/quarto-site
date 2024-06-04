@@ -47,7 +47,6 @@ website:
           - section: "Policies and Rules"
             contents:
               - eligibility.qmd
-              - account_rules.qmd
               - lab-rules.qmd
               - restrictions.qmd
               - rules-policies.qmd
