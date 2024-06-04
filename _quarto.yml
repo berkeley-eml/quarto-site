@@ -99,7 +99,6 @@ website:
           - r-libraries.qmd
           - julia-packages.qmd
           - security.qmd
-          - self-maintained.qmd
           - terminate-r.qmd
           - tex.qmd
           - tensorflow.qmd
