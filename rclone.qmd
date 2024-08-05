@@ -12,35 +12,43 @@ Connecting to Dropbox
 ### Initial Configuration
 
 You only need to configure rclone for Dropbox once. These instructions
-assume you've logged in to an EML computer. In a terminal window:
+assume you've logged in to an EML computer.
 
->     eml:~$ rclone config
->     n) New remote
->     s) Set configuration password
->     q) Quit config
->     n/s/q> n
->     name> dropbox
->     Type of storage to configure.
->     Choose a number from below, or type in your own value
->     ...
->      7 / Dropbox
->        \ "dropbox"
->     ...
->     Storage> 7
->     Dropbox App Client Id - leave blank normally.
->     client_id>
->     Dropbox App Client Secret - leave blank normally.
->     client_secret>
->     Remote config
->     Use auto config?
->      * Say Y if not sure
->      * Say N if you are working on a remote or headless machine
->     y) Yes
->     n) No
->     y/n> n
->     For this to work, you will need rclone available on a machine that has a web browser available.
->     Execute the following on your machine:
->         rclone authorize "dropbox"
+:::{.callout-note}
+In this listing, Dropbox is #13, however that may change as `rclone` adds or removes support for various integrations.
+:::
+
+In a terminal window:
+
+```bash
+   eml:~$ rclone config
+   n) New remote
+   s) Set configuration password
+   q) Quit config
+   n/s/q> n
+   name> dropbox
+   Type of storage to configure.
+   Choose a number from below, or type in your own value
+   ...
+    13 / Dropbox
+      \ "dropbox"
+   ...
+   Storage> 13
+   Dropbox App Client Id - leave blank normally.
+   client_id>
+   Dropbox App Client Secret - leave blank normally.
+   client_secret>
+   Remote config
+   Use auto config?
+    * Say Y if not sure
+    * Say N if you are working on a remote or headless machine
+   y) Yes
+   n) No
+   y/n> n
+   For this to work, you will need rclone available on a machine that has a web browser available.
+   Execute the following on your machine:
+       rclone authorize "dropbox"
+```
 
 At this point you would run \`rclone authorize dropbox\` on a machine
 with rclone installed and which can display a web browser. For example
@@ -51,42 +59,47 @@ you log into your dropbox account and permit rclone to access files.
 rclone will then print a long string. Copy that string and pasted it
 into the first terminal.
 
->     result> {"access_token":"abc1234...","token_type":"bearer","expiry":"0001-01-01T00:00:00Z"}
->     --------------------
->     [dropbox]
->     type = dropbox
->     client_id =
->     client_secret =
->     token = {"access_token":"abc1234...","token_type":"bearer","expiry":"0001-01-01T00:00:00Z"}
->     --------------------
->     y) Yes this is OK
->     e) Edit this remote
->     d) Delete this remote
->     y/e/d> y
->     Current remotes:
->     Name                 Type
->     ====                 ====
->     dropbox              dropbox
->     e) Edit existing remote
->     n) New remote
->     d) Delete remote
->     r) Rename remote
->     c) Copy remote
->     s) Set configuration password
->     q) Quit config
->     e/n/d/r/c/s/q> q
+```bash
+   result> {"access_token":"abc1234...","token_type":"bearer","expiry":"0001-01-01T00:00:00Z"}
+   --------------------
+   [dropbox]
+   type = dropbox
+   client_id =
+   client_secret =
+   token = {"access_token":"abc1234...","token_type":"bearer","expiry":"0001-01-01T00:00:00Z"}
+   --------------------
+   y) Yes this is OK
+   e) Edit this remote
+   d) Delete this remote
+   y/e/d> y
+   Current remotes:
+   Name                 Type
+   ====                 ====
+   dropbox              dropbox
+   e) Edit existing remote
+   n) New remote
+   d) Delete remote
+   r) Rename remote
+   c) Copy remote
+   s) Set configuration password
+   q) Quit config
+   e/n/d/r/c/s/q> q
+```
 
 ### Using rclone
 
 Test your configuration by listing the files in your Dropbox:
 
-    eml:~$ rclone ls dropbox:
-    ... lists your dropbox files...
+```bash
+eml:~$ rclone ls dropbox:
+```
 
 Sync a file/directory to/from dropbox:
 
-    eml:~$ rclone sync dropbox:path-to-file-or-folder ~/place/i/want/to/sync/to/
-    eml:~$ rclone sync some/dir/on/eml dropbox:
+```bash
+eml:~$ rclone sync dropbox:path-to-file-or-folder ~/place/i/want/to/sync/to/
+eml:~$ rclone sync some/dir/on/eml dropbox:
+```
 
 Since *rclone sync* can drastically change the contents of the
 destination location, you may want to append the --dry-run option to
@@ -105,5 +118,3 @@ There are some limitations mentioned on <https://rclone.org/dropbox/>:
 > will return the error Failed to purge: There are too many files
 > involved in this operation. As a work-around do an rclone delete
 > dropbox:dir followed by an rclone rmdir dropbox:dir.
-
-
