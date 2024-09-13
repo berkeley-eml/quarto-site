@@ -808,43 +808,247 @@
     ]
   },
   {
-    "objectID": "eligibility.html",
-    "href": "eligibility.html",
-    "title": "Eligibility Policies",
+    "objectID": "disk-space.html",
+    "href": "disk-space.html",
+    "title": "Manage Disk Space",
     "section": "",
-    "text": "Eligibility Policies\nWho Can Use the EML:\n\nRegistered graduate students in the Economics Ph.D. program; continuing but unregistered graduate students in the Economics Ph.D. program who are writing dissertations; faculty in the Economics department; visiting scholars who are sponsored by the Economics department; Economics department staff and research support personnel.\nRegistered students who are currently enrolled in a graduate course that is using the EML. Class accounts are handed out by the instructor in class, and any registered student, graduate or undergraduate, who is currently enrolled in the course may have an EML account for that semester.\nOthers by exception, such as alumni up to two months out from the Ph.D. degree; courtesy accounts for software vendors; system administrators at related facilities; non-departmental research project teams. The EML has specific guidelines governing non-departmental research project accounts that can be obtained on request from the EML manager in 643 Evans Hall.\n\nAny graduate, staff, or faculty user may use the workstations in 616 Evans Hall on a twenty-four hour basis, provided you have a security card key to let you into the building during non-working hours.",
+    "text": "Each user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs. If you need additional space, please submit your request to manager@econ.berkeley.edu.\nThe commands below can show you how disk space you are consuming. For additional information, consult the respective man pages.\n\n\n\n\nbigfiles\n\n\nRecursively searches a directory for big files.\n\n\n\n\ndu -h\n\n\nRecursive summary of disk use. Gives disk use for each directory and all its subdirectories.\n\n\n\n\nls -l\n\n\nLists size of all files in the current directory.\n\n\n\n\nfind ~ -ls\n\n\nMost information: lists size of all files in all directories and subdirectories.\n\n\n\n\nquota\n\n\nReports your disk quota and current disk use.\n\n\n\n\n\n\n\nThere are several places where users can temporarily store data. These areas are often larger than home directories, but they are not backed up and may be removed without notice.\n\n\nFiles put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed.\n\n\n\nThe /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers.\n\n\n\nThe /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured.\n\n\n\nDirectories under /scratch exist on the file server and can be accessed from every machine. Unlike users’ home directories, they are not backed up, but can usually accommodate larger data files. If space becomes limited we may automatically compress files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users. Files that are not actively being used should be compressed if possible.\nSend email to manager@econ.berkeley.edu to request space under /scratch.\n\n\n\n\nInfrequently accessed files may be compressed to save disk space.\ngunzip file.gz                         Uncompresses file.gz to file\ngzip file                              Compresses file to file.gz\ntar xzf file.tar.gz                    Uncompresses file.tar.gz to the contents of file.tar\ntar czf file.tar.gz file1 [file2...]   Compresses one or more files into file.tar.gz\nunzip file.zip                         Uncompresses file.zip\nzip file.zip file1 [file2...]          Compresses one or more files to file.zip\nuncompress x y ...                     Uncompresses x.Z, y.Z, ... to x, y, ...\ncompress x y file1 [file2...]          Compresses x, y, ... to x.Z, y.Z, ...\nzcat x.Z y.Z ...                       Prints the compressed file(s) to the terminal\\\nSee the UNIX manual pages for the above programs by using the ‘man’, for example ‘man gzip’.\n\n\n\nTo remove files and directories type:\nrm file         Removes 'file' provided you have write permission on it. \nrm -f file      Removes 'file' if you have write permission in the directory containing it. \nrmdir dir       Removes the empty directory 'dir'. \nrm -rf dir      Recursively remove dir including every file and subdirectory. Use with caution.\nSome applications leave behind files that may be removed without adversely affecting the program.\n\nWeb browser cache files can be removed. You can clear your browser disk cache, as well as instruct the browser to set aside less disk space to use for its cache, in the program’s Preference window, usually under ‘Advanced’.\nPostScript, .aux, and .log files produced by LaTeX can be recreated as necessary from the corresponding .tex file.\nCompiled object files, often with the suffix .o, produced by C, C++, or Fortran compilers, can usually be deleted. If need be, they can be recreated from the original programs that produced them.\nCompilers tend to create lots of big binary files such as ‘.o’ and ‘.out’ files. ‘.out’ files in particular can be quite large. If you have such files which have been unused for several days and which you don’t intend to use for several more days, they should be removed. (They can easily be recreated if you need them; see ‘help learn_fortran’ for more discussion.) The size of ‘.out’ files which you do need can be reduced somewhat by stripping them. Type:\nstrip a.out     Strips an already existing 'a.out'. \nf77 -s ...      Creates a pre-stripped '.out' file when using f77. \ncc -s ...       Similarly for cc.\nWhen programs crash, they sometimes report ‘Core dumped’ indicating that a large file called ‘core’ has been created in the program’s current working directory. A user may disable core dumps by adding “ulimit -c 0” to ~/.bashrc.",
+    "crumbs": [
+      "Home",
+      "Data and Storage",
+      "Manage Disk Space"
+    ]
+  },
+  {
+    "objectID": "disk-space.html#determining-usage",
+    "href": "disk-space.html#determining-usage",
+    "title": "Manage Disk Space",
+    "section": "",
+    "text": "Each user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs. If you need additional space, please submit your request to manager@econ.berkeley.edu.\nThe commands below can show you how disk space you are consuming. For additional information, consult the respective man pages.\n\n\n\n\nbigfiles\n\n\nRecursively searches a directory for big files.\n\n\n\n\ndu -h\n\n\nRecursive summary of disk use. Gives disk use for each directory and all its subdirectories.\n\n\n\n\nls -l\n\n\nLists size of all files in the current directory.\n\n\n\n\nfind ~ -ls\n\n\nMost information: lists size of all files in all directories and subdirectories.\n\n\n\n\nquota\n\n\nReports your disk quota and current disk use.",
+    "crumbs": [
+      "Home",
+      "Data and Storage",
+      "Manage Disk Space"
+    ]
+  },
+  {
+    "objectID": "disk-space.html#temporary-disk-space",
+    "href": "disk-space.html#temporary-disk-space",
+    "title": "Manage Disk Space",
+    "section": "",
+    "text": "There are several places where users can temporarily store data. These areas are often larger than home directories, but they are not backed up and may be removed without notice.\n\n\nFiles put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed.\n\n\n\nThe /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers.\n\n\n\nThe /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured.\n\n\n\nDirectories under /scratch exist on the file server and can be accessed from every machine. Unlike users’ home directories, they are not backed up, but can usually accommodate larger data files. If space becomes limited we may automatically compress files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users. Files that are not actively being used should be compressed if possible.\nSend email to manager@econ.berkeley.edu to request space under /scratch.",
+    "crumbs": [
+      "Home",
+      "Data and Storage",
+      "Manage Disk Space"
+    ]
+  },
+  {
+    "objectID": "disk-space.html#compression",
+    "href": "disk-space.html#compression",
+    "title": "Manage Disk Space",
+    "section": "",
+    "text": "Infrequently accessed files may be compressed to save disk space.\ngunzip file.gz                         Uncompresses file.gz to file\ngzip file                              Compresses file to file.gz\ntar xzf file.tar.gz                    Uncompresses file.tar.gz to the contents of file.tar\ntar czf file.tar.gz file1 [file2...]   Compresses one or more files into file.tar.gz\nunzip file.zip                         Uncompresses file.zip\nzip file.zip file1 [file2...]          Compresses one or more files to file.zip\nuncompress x y ...                     Uncompresses x.Z, y.Z, ... to x, y, ...\ncompress x y file1 [file2...]          Compresses x, y, ... to x.Z, y.Z, ...\nzcat x.Z y.Z ...                       Prints the compressed file(s) to the terminal\\\nSee the UNIX manual pages for the above programs by using the ‘man’, for example ‘man gzip’.",
+    "crumbs": [
+      "Home",
+      "Data and Storage",
+      "Manage Disk Space"
+    ]
+  },
+  {
+    "objectID": "disk-space.html#deleting-files",
+    "href": "disk-space.html#deleting-files",
+    "title": "Manage Disk Space",
+    "section": "",
+    "text": "To remove files and directories type:\nrm file         Removes 'file' provided you have write permission on it. \nrm -f file      Removes 'file' if you have write permission in the directory containing it. \nrmdir dir       Removes the empty directory 'dir'. \nrm -rf dir      Recursively remove dir including every file and subdirectory. Use with caution.\nSome applications leave behind files that may be removed without adversely affecting the program.\n\nWeb browser cache files can be removed. You can clear your browser disk cache, as well as instruct the browser to set aside less disk space to use for its cache, in the program’s Preference window, usually under ‘Advanced’.\nPostScript, .aux, and .log files produced by LaTeX can be recreated as necessary from the corresponding .tex file.\nCompiled object files, often with the suffix .o, produced by C, C++, or Fortran compilers, can usually be deleted. If need be, they can be recreated from the original programs that produced them.\nCompilers tend to create lots of big binary files such as ‘.o’ and ‘.out’ files. ‘.out’ files in particular can be quite large. If you have such files which have been unused for several days and which you don’t intend to use for several more days, they should be removed. (They can easily be recreated if you need them; see ‘help learn_fortran’ for more discussion.) The size of ‘.out’ files which you do need can be reduced somewhat by stripping them. Type:\nstrip a.out     Strips an already existing 'a.out'. \nf77 -s ...      Creates a pre-stripped '.out' file when using f77. \ncc -s ...       Similarly for cc.\nWhen programs crash, they sometimes report ‘Core dumped’ indicating that a large file called ‘core’ has been created in the program’s current working directory. A user may disable core dumps by adding “ulimit -c 0” to ~/.bashrc.",
+    "crumbs": [
+      "Home",
+      "Data and Storage",
+      "Manage Disk Space"
+    ]
+  },
+  {
+    "objectID": "copyright.html",
+    "href": "copyright.html",
+    "title": "Copyright Compliance Agreement",
+    "section": "",
+    "text": "Copyright Compliance Agreement\nAll Econometrics Laboratory (EML) users must comply with copyright law. The contents of all accounts (including all files that are owned or created by the user regardless of location) administred by the EML are subject to copyright law.\nThe copyright law (Title 17, United States Code) governs the circumstances under which computer files may be copied. All “original works of authorship” that are produced or distributed are covered by copyright law. An individual cannot store or distribute (make available), in part or in whole, any item that is protected by copyright law without the written permission of the copyright owner. Certain exceptions are permitted under the Fair Use Doctrine (Section 107 of the copyright law).\nWhen you acquire an EML user account or submit contributions to the ELSA software archive, you are agreeing to operate the EML account and to utilize the archive in compliance with all copyright laws, and in addition, you are agreeing to assume full financial responsibility for any infringement that may result from your failure to do so.",
     "crumbs": [
       "Home",
       "Accounts",
       "Policies and Rules",
-      "Eligibility Policies"
+      "Copyright Compliance Agreement"
     ]
   },
   {
-    "objectID": "disk-quota.html",
-    "href": "disk-quota.html",
-    "title": "Disk Quota",
+    "objectID": "compute-servers-policy.html",
+    "href": "compute-servers-policy.html",
+    "title": "Compute Servers Policy",
     "section": "",
-    "text": "Disk Quota\nEach user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs.\nOnce you are over quota, programs may fail to run and you may also be prevented from logging in.\nEach user is expected to monitor their own disk usage and to attempt to stay within their quota. To view your current usage, type quota on the command line.\nThe best practice is to check your quota occasionally, and if it appears you are nearing your limit, you should see what files you may be able to remove from your account to provide yourself with more disk space.\nYou should never need to remove files that you need in order to meet your disk quota. If you anticipate a long-term need for an unusually large amount of disk space, please notify the EML staff before the need becomes acute, so that we can find a suitable location for your files without encroaching on the files of other users. Additional disk space may be requested by sending mail to manager@econ.berkeley.edu.",
+    "text": "Compute Servers Policy\nAccess to the compute server nerlove is restricted to individuals who have obtained instructions regarding the use and limitations of running jobs on the compute servers. Please contact the EML staff to register as a compute server user or to schedule access to additional resources on the EML compute servers. Only individuals who have registered as a compute server are allowed to use the compute servers. When registering, users will need to identify the computational resources required for their work and their ability to monitor the status of those jobs. User names will be added to a mailing list to be used for announcements concerning scheduling of special projects and downtimes for maintenance and repairs.\nPlease observe the following policies:\n\nAccess to the compute servers is restricted to individuals who are familiar with running batch jobs in a UNIX/Linux environment. If you are not familiar with running jobs in this way, you can contact consult@econ.berkeley.edu.\nJobs must be nice’d to a value of 19. Any job that is running on a compute server with a lower priority (without prior authorization) may be terminated.\nThe maximum number of jobs can be running on a server at any one time is equal to the number of processors. The number of CPUs on a machine can be seen on our Grafana dashboards. If you see (using top) that all CPUs are busy, do not run/start a job on that server until resources become available.\nA user should not run so many simultaneous jobs on a compute server such that other users are prevented from starting jobs due to lack of resources. This policy is intended to ensure that CPU cycles and memory are used fairly and effectively. Accommodations will be made based on availability and the current needs of the user community. Please send mail to “manager” if you need temporary or long term access to additional computing resources.\nUse the command sitehosts cserver for the list of computers whose use is restricted and covered by these rules.",
     "crumbs": [
       "Home",
-      "Data and Storage",
-      "Disk Quota"
+      "Cluster",
+      "Compute Servers Policy"
     ]
   },
   {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact Us",
+    "objectID": "ccluster.html",
+    "href": "ccluster.html",
+    "title": "EML Computing Cluster",
     "section": "",
-    "text": "Phone: (510) 642-0619\nIn Person: 643 Evans Hall\n\n\n\ntrouble@econ - for problems with EML hardware, networking or printing\nconsult@econ - for questions about our software and for submitting requests for software installation\nmanager@econ - for problems that have to do with your account, for quota increase requests, and other administrative questions"
+    "text": "EML Computing Cluster\nThe Econometrics Laboratory (EML) has a high-performance computing cluster that consists of low priority partition and a high priority partition. This system allow users to work with massive data sets and easily manage long-running jobs. All software running on EML Linux machines is available on the cluster. Users can also compile programs on any EML Linux machine and then run that program on the cluster. It is managed by the SLURM queuing software. SLURM provides a standard batch queuing system through which users submit jobs to the cluster. Jobs are typically submitted to SLURM using a user-defined shell script that executes one’s application code. Interactive use is also an option. Users may also query the cluster to see job status.\nThe high priority partition has has eight nodes, divided into two sets of four nodes each. The first set has four nodes each with two 8-core CPUs. Each core has two hyperthreads, for a total of 128 processing units. Each node has 768 GB dedicated RAM. The second set has four nodes each with two 14-core CPUs. Each core has two hyperthreads, for a total of 224 processing units. Each node has 132 GB dedicated RAM. The lower priority partition has has eight nodes, each with two 16-core CPUs available for compute jobs (i.e., 32 cores per node), for a total of 256 cores. Each node has 248 GB dedicated RAM.\nWe provide documentation on how to use the EML compute cluster."
   },
   {
-    "objectID": "contact.html#email",
-    "href": "contact.html#email",
-    "title": "Contact Us",
+    "objectID": "availability.html",
+    "href": "availability.html",
+    "title": "Availability",
     "section": "",
-    "text": "trouble@econ - for problems with EML hardware, networking or printing\nconsult@econ - for questions about our software and for submitting requests for software installation\nmanager@econ - for problems that have to do with your account, for quota increase requests, and other administrative questions"
+    "text": "The EML is normally available 24/7. Our systems are remotely accessible during all hours.\nWe periodically perform maintenance activities which requires taking some systems offline. We also need to respond to campus Facilities events – such as power or cooling activities. In those cases we may need to take all systems down.\n\n\n\nEvery attempt will be made to schedule downtimes during off hours.\nScheduled system downtime is posted on this website and in the ssh login message. We will attempt to post the message at least 24 hours in advance. The announcement will state the date(s) and time(s) of the downtime and every attempt will be made not to exceed the posted downtime hours. Whenever possible, 10 minutes warning will be given prior to shutting the system down.\n\n\n\nAll systems will be taken down under the following circumstances:\n\nEmergency hardware or software conditions may occur, including emergency filesystem repair, which may result in unscheduled system downtime. As much advance warning as possible will be given; but at times the system must be taken down rapidly to avoid further damage to hardware or other system resources.\nIf it is transparent to all users (which in practice means that there are no users on the system and no user background jobs running) the system may be taken down (for no more than 30 minutes) without advance message of the day warning.\nThe machines usually can reboot themselves from a crash, but occasionally the system will be unavailable until a qualified person can be reached.",
+    "crumbs": [
+      "Home",
+      "About",
+      "Availability"
+    ]
+  },
+  {
+    "objectID": "availability.html#normal-hours",
+    "href": "availability.html#normal-hours",
+    "title": "Availability",
+    "section": "",
+    "text": "The EML is normally available 24/7. Our systems are remotely accessible during all hours.\nWe periodically perform maintenance activities which requires taking some systems offline. We also need to respond to campus Facilities events – such as power or cooling activities. In those cases we may need to take all systems down.",
+    "crumbs": [
+      "Home",
+      "About",
+      "Availability"
+    ]
+  },
+  {
+    "objectID": "availability.html#scheduled-downtimes",
+    "href": "availability.html#scheduled-downtimes",
+    "title": "Availability",
+    "section": "",
+    "text": "Every attempt will be made to schedule downtimes during off hours.\nScheduled system downtime is posted on this website and in the ssh login message. We will attempt to post the message at least 24 hours in advance. The announcement will state the date(s) and time(s) of the downtime and every attempt will be made not to exceed the posted downtime hours. Whenever possible, 10 minutes warning will be given prior to shutting the system down.",
+    "crumbs": [
+      "Home",
+      "About",
+      "Availability"
+    ]
+  },
+  {
+    "objectID": "availability.html#unscheduled-downtimes",
+    "href": "availability.html#unscheduled-downtimes",
+    "title": "Availability",
+    "section": "",
+    "text": "All systems will be taken down under the following circumstances:\n\nEmergency hardware or software conditions may occur, including emergency filesystem repair, which may result in unscheduled system downtime. As much advance warning as possible will be given; but at times the system must be taken down rapidly to avoid further damage to hardware or other system resources.\nIf it is transparent to all users (which in practice means that there are no users on the system and no user background jobs running) the system may be taken down (for no more than 30 minutes) without advance message of the day warning.\nThe machines usually can reboot themselves from a crash, but occasionally the system will be unavailable until a qualified person can be reached.",
+    "crumbs": [
+      "Home",
+      "About",
+      "Availability"
+    ]
+  },
+  {
+    "objectID": "account-types.html",
+    "href": "account-types.html",
+    "title": "Account Types",
+    "section": "",
+    "text": "Account Types\nComputer accounts are issued to individuals in the following categories:\n\nClass accounts: Economics courses which require computer access may obtain class accounts. Class accounts are assigned to individual students by the course instructor or TA. Course instructors should contact the EML Manager in room 643 Evans. Please allow 2 weeks for class accounts to be added to the system.\nDepartmental accounts: Currently registered students (undergraduates or graduates) and faculty in the Economics Departments, and employees of the Economics Department.\nCampus student accounts: Currently registered students (undergraduates or graduates) from other UC departments with a demonstrated need for specific EML services (such as statistical packages). This type of account cannot be used for work that is funded by either grants and/or outside funds. This type of account requires faculty approval and must be renewed each semester.\nCampus staff accounts: Currently active UC staff employees from other UC departments with a demonstrated need for specific EML services (such as statistical packages). This type of account cannot be used for work that is funded by either grants and/or outside funds and must be renewed annually.\nResearch accounts: Persons working within the UC system on specific research projects which are funded by grants and/or outside funds.\nOfficial guests (visiting faculty) and visitors (associate research fellows) in the Department, at the invitation (and with the approval) of faculty.\nAlumni accounts: Past students of the Economics Department. The alumni category also includes past employees of the Economics Department. This type of account is issued to individuals who have left the Department in good standing and is only valid for one year after separation from the Department. It may not be renewed. If one of the above relationships with the Department resumes, then a new account may be issued, but the alumni account is terminated after one year. The alumni account only provides for up to 5MB under the home directory. It will be necessary to obtain a contrator account if additional resources are required.\nContractor accounts: An individual may obtain an account on a recharge basis. The person will be billed monthly for the use of system resources (login time, cpu time, disk usage, and printing). Any person who does not fall into one of the above categories may apply for a contractor account. This type of account is valid indefinitely, as long as the account is in good standing.",
+    "crumbs": [
+      "Home",
+      "Accounts",
+      "Account Types"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "The Econometrics Laboratory",
+    "section": "",
+    "text": "The Econometrics Laboratory\nThe Econometrics Laboratory (EML) is a computing facility dedicated to instruction at the graduate level and research by graduate students and faculty in the Department of Economics. This work concentrates on new developments in computationally intensive econometrics.\nEML is a unit of the Institute of Business and Economic Research, located in space provided by the Department of Economics at the University of California, Berkeley.\nThe Laboratory’s Director is David Card. He is the Class of 1950 Professor of Economics and the Director for the Center for Labor Economics at the University of California, Berkeley. He is also the Director of the Labor Studies Program at the National Bureau of Economic Research."
+  },
+  {
+    "objectID": "accounts.html",
+    "href": "accounts.html",
+    "title": "Accounts",
+    "section": "",
+    "text": "Fill in the EML application form\n\nThose with Calnet ID\nThose without Calnet ID\nResearch Project Account\n\nRead the EML rules, the UC Berkeley computer use policies, and all accompanying guidelines that accompany the application form.\nObtain a faculty signature (if you are a graduate student), or a principal investigator’s signature for research project accounts, and the EML manager’s signature (643 Evans Hall).\nSign the project account application form stating that you have read the rules, you understand them, and you will comply with them.\nTake the project account application form to 643 Evans to establish your login name and your password.\nYou will receive an e-mail confirming your account has been set up.\n\n\n\nThe allocation of disk space on all accounts is controlled by disk quotas. Below are the default allocations for home directories:\n\nGraduate students: 5 GB\nFaculty: 5 GB\nStaff: 1 GB\nVisiting Faculty: 1 GB\nGuest Accounts: 1 GB\n\nMonitor your disk quota to ensure proper functioning of your account.\nIf more disk space is required, users can request additional space by providing written justification to the EML manager. It is expected that requests for increased disk allocation come after basic account maintenance: deletion of files in trash, removal of obsolete data, archiving or compressing of no longer used files, and so forth.\nAll users have access to additional temporary disk space on the EML system.\nUsers are recommended to store critical files and confidential files safely in personal accounts, and use the unix file permissions to make these files secure and private (see man chmod). Delete any old files that are no longer needed or that can be easily re-created. Compress large files. The command bigfiles will show you your biggest files when invoked in your current working directory.\n\n\n\nAccounts must be renewed according to the following schedule:\n\nClass accounts expire at the end of each semester and cannot be renewed.\nGraduate accounts for Economics students are valid as long as the individual is currently enrolled (registered)\nAlumni accounts are issued upon request to individuals who have left the Department in good standing and are valid for up to two months after separation from the Department if reasonable cause can be demonstrated. Alumni accounts cannot be renewed.\nAll other student accounts expire on January 1 and July 1 of each year and must be renewed.\nGuest accounts must be renewed each year by July 1 and require approval of the sponsoring faculty member.\nFaculty and visitor (associate research fellows) accounts expire upon termination of their appointments.\nContractor accounts are valid indefinitely, as long as the account is in good standing.\nAll other accounts expire on July 1 of each year and must be renewed.\n\nRequests for extension of an account must be received within 5 days of the account expiration date. Contact manager@econ.berkeley.edu.",
+    "crumbs": [
+      "Home",
+      "Accounts",
+      "Accounts"
+    ]
+  },
+  {
+    "objectID": "accounts.html#get-an-account",
+    "href": "accounts.html#get-an-account",
+    "title": "Accounts",
+    "section": "",
+    "text": "Fill in the EML application form\n\nThose with Calnet ID\nThose without Calnet ID\nResearch Project Account\n\nRead the EML rules, the UC Berkeley computer use policies, and all accompanying guidelines that accompany the application form.\nObtain a faculty signature (if you are a graduate student), or a principal investigator’s signature for research project accounts, and the EML manager’s signature (643 Evans Hall).\nSign the project account application form stating that you have read the rules, you understand them, and you will comply with them.\nTake the project account application form to 643 Evans to establish your login name and your password.\nYou will receive an e-mail confirming your account has been set up.",
+    "crumbs": [
+      "Home",
+      "Accounts",
+      "Accounts"
+    ]
+  },
+  {
+    "objectID": "accounts.html#initial-disk-space",
+    "href": "accounts.html#initial-disk-space",
+    "title": "Accounts",
+    "section": "",
+    "text": "The allocation of disk space on all accounts is controlled by disk quotas. Below are the default allocations for home directories:\n\nGraduate students: 5 GB\nFaculty: 5 GB\nStaff: 1 GB\nVisiting Faculty: 1 GB\nGuest Accounts: 1 GB\n\nMonitor your disk quota to ensure proper functioning of your account.\nIf more disk space is required, users can request additional space by providing written justification to the EML manager. It is expected that requests for increased disk allocation come after basic account maintenance: deletion of files in trash, removal of obsolete data, archiving or compressing of no longer used files, and so forth.\nAll users have access to additional temporary disk space on the EML system.\nUsers are recommended to store critical files and confidential files safely in personal accounts, and use the unix file permissions to make these files secure and private (see man chmod). Delete any old files that are no longer needed or that can be easily re-created. Compress large files. The command bigfiles will show you your biggest files when invoked in your current working directory.",
+    "crumbs": [
+      "Home",
+      "Accounts",
+      "Accounts"
+    ]
+  },
+  {
+    "objectID": "accounts.html#account-duration",
+    "href": "accounts.html#account-duration",
+    "title": "Accounts",
+    "section": "",
+    "text": "Accounts must be renewed according to the following schedule:\n\nClass accounts expire at the end of each semester and cannot be renewed.\nGraduate accounts for Economics students are valid as long as the individual is currently enrolled (registered)\nAlumni accounts are issued upon request to individuals who have left the Department in good standing and are valid for up to two months after separation from the Department if reasonable cause can be demonstrated. Alumni accounts cannot be renewed.\nAll other student accounts expire on January 1 and July 1 of each year and must be renewed.\nGuest accounts must be renewed each year by July 1 and require approval of the sponsoring faculty member.\nFaculty and visitor (associate research fellows) accounts expire upon termination of their appointments.\nContractor accounts are valid indefinitely, as long as the account is in good standing.\nAll other accounts expire on July 1 of each year and must be renewed.\n\nRequests for extension of an account must be received within 5 days of the account expiration date. Contact manager@econ.berkeley.edu.",
+    "crumbs": [
+      "Home",
+      "Accounts",
+      "Accounts"
+    ]
+  },
+  {
+    "objectID": "background.html",
+    "href": "background.html",
+    "title": "Background Processes",
+    "section": "",
+    "text": "Unix has the ability to run your program in the background. This means that instead of waiting for the program to finish execution, the UNIX shell prompts you again and you can run other commands at the same time that the background process is running. To run the program myprog in background, type:\nmyprog &\nThe shell will respond with a number, its process identification number (or PID) and then return to the prompt.\nIt is also possible to leave a big job running in the background even after you logout. To keep the program myprog running in background, type:\nnohup myprog &\nFor example, to run your R job in the background from tcsh with a nice level of 19:\nnohup nice +19 R --slave &lt; infile.R &\nOr from bash:\nnohup nice -19 R --slave &lt; in.R &gt; R.out 2&gt;&1 &\nOr MATLAB from tcsh, while running it with a nice level of 19:\nnohup nice +19 matlab &lt; infile.m &gt; outfile &\n\n\n\nYou may alternatively choose to use GNU screen to run your jobs so that you can leave them running when you logout. Just invoke screen from your shell, type a space or carriage return to dismiss the startup message, then start your job. When you want to detach, type Control-a followed by Control-d. You can then exit from your terminal session. When you want to access your job again, connect to the same machine your job is running on and type screen -r.",
+    "crumbs": [
+      "Home",
+      "Cluster",
+      "Background Processes"
+    ]
+  },
+  {
+    "objectID": "background.html#bash",
+    "href": "background.html#bash",
+    "title": "Background Processes",
+    "section": "",
+    "text": "Unix has the ability to run your program in the background. This means that instead of waiting for the program to finish execution, the UNIX shell prompts you again and you can run other commands at the same time that the background process is running. To run the program myprog in background, type:\nmyprog &\nThe shell will respond with a number, its process identification number (or PID) and then return to the prompt.\nIt is also possible to leave a big job running in the background even after you logout. To keep the program myprog running in background, type:\nnohup myprog &\nFor example, to run your R job in the background from tcsh with a nice level of 19:\nnohup nice +19 R --slave &lt; infile.R &\nOr from bash:\nnohup nice -19 R --slave &lt; in.R &gt; R.out 2&gt;&1 &\nOr MATLAB from tcsh, while running it with a nice level of 19:\nnohup nice +19 matlab &lt; infile.m &gt; outfile &",
+    "crumbs": [
+      "Home",
+      "Cluster",
+      "Background Processes"
+    ]
+  },
+  {
+    "objectID": "background.html#screen",
+    "href": "background.html#screen",
+    "title": "Background Processes",
+    "section": "",
+    "text": "You may alternatively choose to use GNU screen to run your jobs so that you can leave them running when you logout. Just invoke screen from your shell, type a space or carriage return to dismiss the startup message, then start your job. When you want to detach, type Control-a followed by Control-d. You can then exit from your terminal session. When you want to access your job again, connect to the same machine your job is running on and type screen -r.",
+    "crumbs": [
+      "Home",
+      "Cluster",
+      "Background Processes"
+    ]
   },
   {
     "objectID": "cluster.html",
@@ -907,270 +1111,42 @@
     ]
   },
   {
-    "objectID": "background.html",
-    "href": "background.html",
-    "title": "Background Processes",
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact Us",
     "section": "",
-    "text": "Unix has the ability to run your program in the background. This means that instead of waiting for the program to finish execution, the UNIX shell prompts you again and you can run other commands at the same time that the background process is running. To run the program myprog in background, type:\nmyprog &\nThe shell will respond with a number, its process identification number (or PID) and then return to the prompt.\nIt is also possible to leave a big job running in the background even after you logout. To keep the program myprog running in background, type:\nnohup myprog &\nFor example, to run your R job in the background from tcsh with a nice level of 19:\nnohup nice +19 R --slave &lt; infile.R &\nOr from bash:\nnohup nice -19 R --slave &lt; in.R &gt; R.out 2&gt;&1 &\nOr MATLAB from tcsh, while running it with a nice level of 19:\nnohup nice +19 matlab &lt; infile.m &gt; outfile &\n\n\n\nYou may alternatively choose to use GNU screen to run your jobs so that you can leave them running when you logout. Just invoke screen from your shell, type a space or carriage return to dismiss the startup message, then start your job. When you want to detach, type Control-a followed by Control-d. You can then exit from your terminal session. When you want to access your job again, connect to the same machine your job is running on and type screen -r.",
+    "text": "Phone: (510) 642-0619\nIn Person: 643 Evans Hall\n\n\n\ntrouble@econ - for problems with EML hardware, networking or printing\nconsult@econ - for questions about our software and for submitting requests for software installation\nmanager@econ - for problems that have to do with your account, for quota increase requests, and other administrative questions"
+  },
+  {
+    "objectID": "contact.html#email",
+    "href": "contact.html#email",
+    "title": "Contact Us",
+    "section": "",
+    "text": "trouble@econ - for problems with EML hardware, networking or printing\nconsult@econ - for questions about our software and for submitting requests for software installation\nmanager@econ - for problems that have to do with your account, for quota increase requests, and other administrative questions"
+  },
+  {
+    "objectID": "disk-quota.html",
+    "href": "disk-quota.html",
+    "title": "Disk Quota",
+    "section": "",
+    "text": "Disk Quota\nEach user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs.\nOnce you are over quota, programs may fail to run and you may also be prevented from logging in.\nEach user is expected to monitor their own disk usage and to attempt to stay within their quota. To view your current usage, type quota on the command line.\nThe best practice is to check your quota occasionally, and if it appears you are nearing your limit, you should see what files you may be able to remove from your account to provide yourself with more disk space.\nYou should never need to remove files that you need in order to meet your disk quota. If you anticipate a long-term need for an unusually large amount of disk space, please notify the EML staff before the need becomes acute, so that we can find a suitable location for your files without encroaching on the files of other users. Additional disk space may be requested by sending mail to manager@econ.berkeley.edu.",
     "crumbs": [
       "Home",
-      "Cluster",
-      "Background Processes"
+      "Data and Storage",
+      "Disk Quota"
     ]
   },
   {
-    "objectID": "background.html#bash",
-    "href": "background.html#bash",
-    "title": "Background Processes",
+    "objectID": "eligibility.html",
+    "href": "eligibility.html",
+    "title": "Eligibility Policies",
     "section": "",
-    "text": "Unix has the ability to run your program in the background. This means that instead of waiting for the program to finish execution, the UNIX shell prompts you again and you can run other commands at the same time that the background process is running. To run the program myprog in background, type:\nmyprog &\nThe shell will respond with a number, its process identification number (or PID) and then return to the prompt.\nIt is also possible to leave a big job running in the background even after you logout. To keep the program myprog running in background, type:\nnohup myprog &\nFor example, to run your R job in the background from tcsh with a nice level of 19:\nnohup nice +19 R --slave &lt; infile.R &\nOr from bash:\nnohup nice -19 R --slave &lt; in.R &gt; R.out 2&gt;&1 &\nOr MATLAB from tcsh, while running it with a nice level of 19:\nnohup nice +19 matlab &lt; infile.m &gt; outfile &",
-    "crumbs": [
-      "Home",
-      "Cluster",
-      "Background Processes"
-    ]
-  },
-  {
-    "objectID": "background.html#screen",
-    "href": "background.html#screen",
-    "title": "Background Processes",
-    "section": "",
-    "text": "You may alternatively choose to use GNU screen to run your jobs so that you can leave them running when you logout. Just invoke screen from your shell, type a space or carriage return to dismiss the startup message, then start your job. When you want to detach, type Control-a followed by Control-d. You can then exit from your terminal session. When you want to access your job again, connect to the same machine your job is running on and type screen -r.",
-    "crumbs": [
-      "Home",
-      "Cluster",
-      "Background Processes"
-    ]
-  },
-  {
-    "objectID": "accounts.html",
-    "href": "accounts.html",
-    "title": "Accounts",
-    "section": "",
-    "text": "Fill in the EML application form\n\nThose with Calnet ID\nThose without Calnet ID\nResearch Project Account\n\nRead the EML rules, the UC Berkeley computer use policies, and all accompanying guidelines that accompany the application form.\nObtain a faculty signature (if you are a graduate student), or a principal investigator’s signature for research project accounts, and the EML manager’s signature (643 Evans Hall).\nSign the project account application form stating that you have read the rules, you understand them, and you will comply with them.\nTake the project account application form to 643 Evans to establish your login name and your password.\nYou will receive an e-mail confirming your account has been set up.\n\n\n\nThe allocation of disk space on all accounts is controlled by disk quotas. Below are the default allocations for home directories:\n\nGraduate students: 5 GB\nFaculty: 5 GB\nStaff: 1 GB\nVisiting Faculty: 1 GB\nGuest Accounts: 1 GB\n\nMonitor your disk quota to ensure proper functioning of your account.\nIf more disk space is required, users can request additional space by providing written justification to the EML manager. It is expected that requests for increased disk allocation come after basic account maintenance: deletion of files in trash, removal of obsolete data, archiving or compressing of no longer used files, and so forth.\nAll users have access to additional temporary disk space on the EML system.\nUsers are recommended to store critical files and confidential files safely in personal accounts, and use the unix file permissions to make these files secure and private (see man chmod). Delete any old files that are no longer needed or that can be easily re-created. Compress large files. The command bigfiles will show you your biggest files when invoked in your current working directory.\n\n\n\nAccounts must be renewed according to the following schedule:\n\nClass accounts expire at the end of each semester and cannot be renewed.\nGraduate accounts for Economics students are valid as long as the individual is currently enrolled (registered)\nAlumni accounts are issued upon request to individuals who have left the Department in good standing and are valid for up to two months after separation from the Department if reasonable cause can be demonstrated. Alumni accounts cannot be renewed.\nAll other student accounts expire on January 1 and July 1 of each year and must be renewed.\nGuest accounts must be renewed each year by July 1 and require approval of the sponsoring faculty member.\nFaculty and visitor (associate research fellows) accounts expire upon termination of their appointments.\nContractor accounts are valid indefinitely, as long as the account is in good standing.\nAll other accounts expire on July 1 of each year and must be renewed.\n\nRequests for extension of an account must be received within 5 days of the account expiration date. Contact manager@econ.berkeley.edu.",
-    "crumbs": [
-      "Home",
-      "Accounts",
-      "Accounts"
-    ]
-  },
-  {
-    "objectID": "accounts.html#get-an-account",
-    "href": "accounts.html#get-an-account",
-    "title": "Accounts",
-    "section": "",
-    "text": "Fill in the EML application form\n\nThose with Calnet ID\nThose without Calnet ID\nResearch Project Account\n\nRead the EML rules, the UC Berkeley computer use policies, and all accompanying guidelines that accompany the application form.\nObtain a faculty signature (if you are a graduate student), or a principal investigator’s signature for research project accounts, and the EML manager’s signature (643 Evans Hall).\nSign the project account application form stating that you have read the rules, you understand them, and you will comply with them.\nTake the project account application form to 643 Evans to establish your login name and your password.\nYou will receive an e-mail confirming your account has been set up.",
-    "crumbs": [
-      "Home",
-      "Accounts",
-      "Accounts"
-    ]
-  },
-  {
-    "objectID": "accounts.html#initial-disk-space",
-    "href": "accounts.html#initial-disk-space",
-    "title": "Accounts",
-    "section": "",
-    "text": "The allocation of disk space on all accounts is controlled by disk quotas. Below are the default allocations for home directories:\n\nGraduate students: 5 GB\nFaculty: 5 GB\nStaff: 1 GB\nVisiting Faculty: 1 GB\nGuest Accounts: 1 GB\n\nMonitor your disk quota to ensure proper functioning of your account.\nIf more disk space is required, users can request additional space by providing written justification to the EML manager. It is expected that requests for increased disk allocation come after basic account maintenance: deletion of files in trash, removal of obsolete data, archiving or compressing of no longer used files, and so forth.\nAll users have access to additional temporary disk space on the EML system.\nUsers are recommended to store critical files and confidential files safely in personal accounts, and use the unix file permissions to make these files secure and private (see man chmod). Delete any old files that are no longer needed or that can be easily re-created. Compress large files. The command bigfiles will show you your biggest files when invoked in your current working directory.",
-    "crumbs": [
-      "Home",
-      "Accounts",
-      "Accounts"
-    ]
-  },
-  {
-    "objectID": "accounts.html#account-duration",
-    "href": "accounts.html#account-duration",
-    "title": "Accounts",
-    "section": "",
-    "text": "Accounts must be renewed according to the following schedule:\n\nClass accounts expire at the end of each semester and cannot be renewed.\nGraduate accounts for Economics students are valid as long as the individual is currently enrolled (registered)\nAlumni accounts are issued upon request to individuals who have left the Department in good standing and are valid for up to two months after separation from the Department if reasonable cause can be demonstrated. Alumni accounts cannot be renewed.\nAll other student accounts expire on January 1 and July 1 of each year and must be renewed.\nGuest accounts must be renewed each year by July 1 and require approval of the sponsoring faculty member.\nFaculty and visitor (associate research fellows) accounts expire upon termination of their appointments.\nContractor accounts are valid indefinitely, as long as the account is in good standing.\nAll other accounts expire on July 1 of each year and must be renewed.\n\nRequests for extension of an account must be received within 5 days of the account expiration date. Contact manager@econ.berkeley.edu.",
-    "crumbs": [
-      "Home",
-      "Accounts",
-      "Accounts"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "The Econometrics Laboratory",
-    "section": "",
-    "text": "The Econometrics Laboratory\nThe Econometrics Laboratory (EML) is a computing facility dedicated to instruction at the graduate level and research by graduate students and faculty in the Department of Economics. This work concentrates on new developments in computationally intensive econometrics.\nEML is a unit of the Institute of Business and Economic Research, located in space provided by the Department of Economics at the University of California, Berkeley.\nThe Laboratory’s Director is David Card. He is the Class of 1950 Professor of Economics and the Director for the Center for Labor Economics at the University of California, Berkeley. He is also the Director of the Labor Studies Program at the National Bureau of Economic Research."
-  },
-  {
-    "objectID": "account-types.html",
-    "href": "account-types.html",
-    "title": "Account Types",
-    "section": "",
-    "text": "Account Types\nComputer accounts are issued to individuals in the following categories:\n\nClass accounts: Economics courses which require computer access may obtain class accounts. Class accounts are assigned to individual students by the course instructor or TA. Course instructors should contact the EML Manager in room 643 Evans. Please allow 2 weeks for class accounts to be added to the system.\nDepartmental accounts: Currently registered students (undergraduates or graduates) and faculty in the Economics Departments, and employees of the Economics Department.\nCampus student accounts: Currently registered students (undergraduates or graduates) from other UC departments with a demonstrated need for specific EML services (such as statistical packages). This type of account cannot be used for work that is funded by either grants and/or outside funds. This type of account requires faculty approval and must be renewed each semester.\nCampus staff accounts: Currently active UC staff employees from other UC departments with a demonstrated need for specific EML services (such as statistical packages). This type of account cannot be used for work that is funded by either grants and/or outside funds and must be renewed annually.\nResearch accounts: Persons working within the UC system on specific research projects which are funded by grants and/or outside funds.\nOfficial guests (visiting faculty) and visitors (associate research fellows) in the Department, at the invitation (and with the approval) of faculty.\nAlumni accounts: Past students of the Economics Department. The alumni category also includes past employees of the Economics Department. This type of account is issued to individuals who have left the Department in good standing and is only valid for one year after separation from the Department. It may not be renewed. If one of the above relationships with the Department resumes, then a new account may be issued, but the alumni account is terminated after one year. The alumni account only provides for up to 5MB under the home directory. It will be necessary to obtain a contrator account if additional resources are required.\nContractor accounts: An individual may obtain an account on a recharge basis. The person will be billed monthly for the use of system resources (login time, cpu time, disk usage, and printing). Any person who does not fall into one of the above categories may apply for a contractor account. This type of account is valid indefinitely, as long as the account is in good standing.",
-    "crumbs": [
-      "Home",
-      "Accounts",
-      "Account Types"
-    ]
-  },
-  {
-    "objectID": "availability.html",
-    "href": "availability.html",
-    "title": "Availability",
-    "section": "",
-    "text": "The EML is normally available 24/7. Our systems are remotely accessible during all hours.\nWe periodically perform maintenance activities which requires taking some systems offline. We also need to respond to campus Facilities events – such as power or cooling activities. In those cases we may need to take all systems down.\n\n\n\nEvery attempt will be made to schedule downtimes during off hours.\nScheduled system downtime is posted on this website and in the ssh login message. We will attempt to post the message at least 24 hours in advance. The announcement will state the date(s) and time(s) of the downtime and every attempt will be made not to exceed the posted downtime hours. Whenever possible, 10 minutes warning will be given prior to shutting the system down.\n\n\n\nAll systems will be taken down under the following circumstances:\n\nEmergency hardware or software conditions may occur, including emergency filesystem repair, which may result in unscheduled system downtime. As much advance warning as possible will be given; but at times the system must be taken down rapidly to avoid further damage to hardware or other system resources.\nIf it is transparent to all users (which in practice means that there are no users on the system and no user background jobs running) the system may be taken down (for no more than 30 minutes) without advance message of the day warning.\nThe machines usually can reboot themselves from a crash, but occasionally the system will be unavailable until a qualified person can be reached.",
-    "crumbs": [
-      "Home",
-      "About",
-      "Availability"
-    ]
-  },
-  {
-    "objectID": "availability.html#normal-hours",
-    "href": "availability.html#normal-hours",
-    "title": "Availability",
-    "section": "",
-    "text": "The EML is normally available 24/7. Our systems are remotely accessible during all hours.\nWe periodically perform maintenance activities which requires taking some systems offline. We also need to respond to campus Facilities events – such as power or cooling activities. In those cases we may need to take all systems down.",
-    "crumbs": [
-      "Home",
-      "About",
-      "Availability"
-    ]
-  },
-  {
-    "objectID": "availability.html#scheduled-downtimes",
-    "href": "availability.html#scheduled-downtimes",
-    "title": "Availability",
-    "section": "",
-    "text": "Every attempt will be made to schedule downtimes during off hours.\nScheduled system downtime is posted on this website and in the ssh login message. We will attempt to post the message at least 24 hours in advance. The announcement will state the date(s) and time(s) of the downtime and every attempt will be made not to exceed the posted downtime hours. Whenever possible, 10 minutes warning will be given prior to shutting the system down.",
-    "crumbs": [
-      "Home",
-      "About",
-      "Availability"
-    ]
-  },
-  {
-    "objectID": "availability.html#unscheduled-downtimes",
-    "href": "availability.html#unscheduled-downtimes",
-    "title": "Availability",
-    "section": "",
-    "text": "All systems will be taken down under the following circumstances:\n\nEmergency hardware or software conditions may occur, including emergency filesystem repair, which may result in unscheduled system downtime. As much advance warning as possible will be given; but at times the system must be taken down rapidly to avoid further damage to hardware or other system resources.\nIf it is transparent to all users (which in practice means that there are no users on the system and no user background jobs running) the system may be taken down (for no more than 30 minutes) without advance message of the day warning.\nThe machines usually can reboot themselves from a crash, but occasionally the system will be unavailable until a qualified person can be reached.",
-    "crumbs": [
-      "Home",
-      "About",
-      "Availability"
-    ]
-  },
-  {
-    "objectID": "ccluster.html",
-    "href": "ccluster.html",
-    "title": "EML Computing Cluster",
-    "section": "",
-    "text": "EML Computing Cluster\nThe Econometrics Laboratory (EML) has a high-performance computing cluster that consists of low priority partition and a high priority partition. This system allow users to work with massive data sets and easily manage long-running jobs. All software running on EML Linux machines is available on the cluster. Users can also compile programs on any EML Linux machine and then run that program on the cluster. It is managed by the SLURM queuing software. SLURM provides a standard batch queuing system through which users submit jobs to the cluster. Jobs are typically submitted to SLURM using a user-defined shell script that executes one’s application code. Interactive use is also an option. Users may also query the cluster to see job status.\nThe high priority partition has has eight nodes, divided into two sets of four nodes each. The first set has four nodes each with two 8-core CPUs. Each core has two hyperthreads, for a total of 128 processing units. Each node has 768 GB dedicated RAM. The second set has four nodes each with two 14-core CPUs. Each core has two hyperthreads, for a total of 224 processing units. Each node has 132 GB dedicated RAM. The lower priority partition has has eight nodes, each with two 16-core CPUs available for compute jobs (i.e., 32 cores per node), for a total of 256 cores. Each node has 248 GB dedicated RAM.\nWe provide documentation on how to use the EML compute cluster."
-  },
-  {
-    "objectID": "compute-servers-policy.html",
-    "href": "compute-servers-policy.html",
-    "title": "Compute Servers Policy",
-    "section": "",
-    "text": "Compute Servers Policy\nAccess to the compute server nerlove is restricted to individuals who have obtained instructions regarding the use and limitations of running jobs on the compute servers. Please contact the EML staff to register as a compute server user or to schedule access to additional resources on the EML compute servers. Only individuals who have registered as a compute server are allowed to use the compute servers. When registering, users will need to identify the computational resources required for their work and their ability to monitor the status of those jobs. User names will be added to a mailing list to be used for announcements concerning scheduling of special projects and downtimes for maintenance and repairs.\nPlease observe the following policies:\n\nAccess to the compute servers is restricted to individuals who are familiar with running batch jobs in a UNIX/Linux environment. If you are not familiar with running jobs in this way, you can contact consult@econ.berkeley.edu.\nJobs must be nice’d to a value of 19. Any job that is running on a compute server with a lower priority (without prior authorization) may be terminated.\nThe maximum number of jobs can be running on a server at any one time is equal to the number of processors. The number of CPUs on a machine can be seen on our Grafana dashboards. If you see (using top) that all CPUs are busy, do not run/start a job on that server until resources become available.\nA user should not run so many simultaneous jobs on a compute server such that other users are prevented from starting jobs due to lack of resources. This policy is intended to ensure that CPU cycles and memory are used fairly and effectively. Accommodations will be made based on availability and the current needs of the user community. Please send mail to “manager” if you need temporary or long term access to additional computing resources.\nUse the command sitehosts cserver for the list of computers whose use is restricted and covered by these rules.",
-    "crumbs": [
-      "Home",
-      "Cluster",
-      "Compute Servers Policy"
-    ]
-  },
-  {
-    "objectID": "copyright.html",
-    "href": "copyright.html",
-    "title": "Copyright Compliance Agreement",
-    "section": "",
-    "text": "Copyright Compliance Agreement\nAll Econometrics Laboratory (EML) users must comply with copyright law. The contents of all accounts (including all files that are owned or created by the user regardless of location) administred by the EML are subject to copyright law.\nThe copyright law (Title 17, United States Code) governs the circumstances under which computer files may be copied. All “original works of authorship” that are produced or distributed are covered by copyright law. An individual cannot store or distribute (make available), in part or in whole, any item that is protected by copyright law without the written permission of the copyright owner. Certain exceptions are permitted under the Fair Use Doctrine (Section 107 of the copyright law).\nWhen you acquire an EML user account or submit contributions to the ELSA software archive, you are agreeing to operate the EML account and to utilize the archive in compliance with all copyright laws, and in addition, you are agreeing to assume full financial responsibility for any infringement that may result from your failure to do so.",
+    "text": "Eligibility Policies\nWho Can Use the EML:\n\nRegistered graduate students in the Economics Ph.D. program; continuing but unregistered graduate students in the Economics Ph.D. program who are writing dissertations; faculty in the Economics department; visiting scholars who are sponsored by the Economics department; Economics department staff and research support personnel.\nRegistered students who are currently enrolled in a graduate course that is using the EML. Class accounts are handed out by the instructor in class, and any registered student, graduate or undergraduate, who is currently enrolled in the course may have an EML account for that semester.\nOthers by exception, such as alumni up to two months out from the Ph.D. degree; courtesy accounts for software vendors; system administrators at related facilities; non-departmental research project teams. The EML has specific guidelines governing non-departmental research project accounts that can be obtained on request from the EML manager in 643 Evans Hall.\n\nAny graduate, staff, or faculty user may use the workstations in 616 Evans Hall on a twenty-four hour basis, provided you have a security card key to let you into the building during non-working hours.",
     "crumbs": [
       "Home",
       "Accounts",
       "Policies and Rules",
-      "Copyright Compliance Agreement"
-    ]
-  },
-  {
-    "objectID": "disk-space.html",
-    "href": "disk-space.html",
-    "title": "Manage Disk Space",
-    "section": "",
-    "text": "Each user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs. If you need additional space, please submit your request to manager@econ.berkeley.edu.\nThe commands below can show you how disk space you are consuming. For additional information, consult the respective man pages.\n\n\n\n\nbigfiles\n\n\nRecursively searches a directory for big files.\n\n\n\n\ndu -h\n\n\nRecursive summary of disk use. Gives disk use for each directory and all its subdirectories.\n\n\n\n\nls -l\n\n\nLists size of all files in the current directory.\n\n\n\n\nfind ~ -ls\n\n\nMost information: lists size of all files in all directories and subdirectories.\n\n\n\n\nquota\n\n\nReports your disk quota and current disk use.\n\n\n\n\n\n\n\nThere are several places where users can temporarily store data. These areas are often larger than home directories, but they are not backed up and may be removed without notice.\n\n\nFiles put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed.\n\n\n\nThe /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers.\n\n\n\nThe /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured.\n\n\n\nDirectories under /scratch exist on the file server and can be accessed from every machine. Unlike users’ home directories, they are not backed up, but can usually accommodate larger data files. If space becomes limited we may automatically compress files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users. Files that are not actively being used should be compressed if possible.\nSend email to manager@econ.berkeley.edu to request space under /scratch.\n\n\n\n\nInfrequently accessed files may be compressed to save disk space.\ngunzip file.gz                         Uncompresses file.gz to file\ngzip file                              Compresses file to file.gz\ntar xzf file.tar.gz                    Uncompresses file.tar.gz to the contents of file.tar\ntar czf file.tar.gz file1 [file2...]   Compresses one or more files into file.tar.gz\nunzip file.zip                         Uncompresses file.zip\nzip file.zip file1 [file2...]          Compresses one or more files to file.zip\nuncompress x y ...                     Uncompresses x.Z, y.Z, ... to x, y, ...\ncompress x y file1 [file2...]          Compresses x, y, ... to x.Z, y.Z, ...\nzcat x.Z y.Z ...                       Prints the compressed file(s) to the terminal\\\nSee the UNIX manual pages for the above programs by using the ‘man’, for example ‘man gzip’.\n\n\n\nTo remove files and directories type:\nrm file         Removes 'file' provided you have write permission on it. \nrm -f file      Removes 'file' if you have write permission in the directory containing it. \nrmdir dir       Removes the empty directory 'dir'. \nrm -rf dir      Recursively remove dir including every file and subdirectory. Use with caution.\nSome applications leave behind files that may be removed without adversely affecting the program.\n\nWeb browser cache files can be removed. You can clear your browser disk cache, as well as instruct the browser to set aside less disk space to use for its cache, in the program’s Preference window, usually under ‘Advanced’.\nPostScript, .aux, and .log files produced by LaTeX can be recreated as necessary from the corresponding .tex file.\nCompiled object files, often with the suffix .o, produced by C, C++, or Fortran compilers, can usually be deleted. If need be, they can be recreated from the original programs that produced them.\nCompilers tend to create lots of big binary files such as ‘.o’ and ‘.out’ files. ‘.out’ files in particular can be quite large. If you have such files which have been unused for several days and which you don’t intend to use for several more days, they should be removed. (They can easily be recreated if you need them; see ‘help learn_fortran’ for more discussion.) The size of ‘.out’ files which you do need can be reduced somewhat by stripping them. Type:\nstrip a.out     Strips an already existing 'a.out'. \nf77 -s ...      Creates a pre-stripped '.out' file when using f77. \ncc -s ...       Similarly for cc.\nWhen programs crash, they sometimes report ‘Core dumped’ indicating that a large file called ‘core’ has been created in the program’s current working directory. A user may disable core dumps by adding “ulimit -c 0” to ~/.bashrc.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Manage Disk Space"
-    ]
-  },
-  {
-    "objectID": "disk-space.html#determining-usage",
-    "href": "disk-space.html#determining-usage",
-    "title": "Manage Disk Space",
-    "section": "",
-    "text": "Each user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs. If you need additional space, please submit your request to manager@econ.berkeley.edu.\nThe commands below can show you how disk space you are consuming. For additional information, consult the respective man pages.\n\n\n\n\nbigfiles\n\n\nRecursively searches a directory for big files.\n\n\n\n\ndu -h\n\n\nRecursive summary of disk use. Gives disk use for each directory and all its subdirectories.\n\n\n\n\nls -l\n\n\nLists size of all files in the current directory.\n\n\n\n\nfind ~ -ls\n\n\nMost information: lists size of all files in all directories and subdirectories.\n\n\n\n\nquota\n\n\nReports your disk quota and current disk use.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Manage Disk Space"
-    ]
-  },
-  {
-    "objectID": "disk-space.html#temporary-disk-space",
-    "href": "disk-space.html#temporary-disk-space",
-    "title": "Manage Disk Space",
-    "section": "",
-    "text": "There are several places where users can temporarily store data. These areas are often larger than home directories, but they are not backed up and may be removed without notice.\n\n\nFiles put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed.\n\n\n\nThe /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers.\n\n\n\nThe /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured.\n\n\n\nDirectories under /scratch exist on the file server and can be accessed from every machine. Unlike users’ home directories, they are not backed up, but can usually accommodate larger data files. If space becomes limited we may automatically compress files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users. Files that are not actively being used should be compressed if possible.\nSend email to manager@econ.berkeley.edu to request space under /scratch.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Manage Disk Space"
-    ]
-  },
-  {
-    "objectID": "disk-space.html#compression",
-    "href": "disk-space.html#compression",
-    "title": "Manage Disk Space",
-    "section": "",
-    "text": "Infrequently accessed files may be compressed to save disk space.\ngunzip file.gz                         Uncompresses file.gz to file\ngzip file                              Compresses file to file.gz\ntar xzf file.tar.gz                    Uncompresses file.tar.gz to the contents of file.tar\ntar czf file.tar.gz file1 [file2...]   Compresses one or more files into file.tar.gz\nunzip file.zip                         Uncompresses file.zip\nzip file.zip file1 [file2...]          Compresses one or more files to file.zip\nuncompress x y ...                     Uncompresses x.Z, y.Z, ... to x, y, ...\ncompress x y file1 [file2...]          Compresses x, y, ... to x.Z, y.Z, ...\nzcat x.Z y.Z ...                       Prints the compressed file(s) to the terminal\\\nSee the UNIX manual pages for the above programs by using the ‘man’, for example ‘man gzip’.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Manage Disk Space"
-    ]
-  },
-  {
-    "objectID": "disk-space.html#deleting-files",
-    "href": "disk-space.html#deleting-files",
-    "title": "Manage Disk Space",
-    "section": "",
-    "text": "To remove files and directories type:\nrm file         Removes 'file' provided you have write permission on it. \nrm -f file      Removes 'file' if you have write permission in the directory containing it. \nrmdir dir       Removes the empty directory 'dir'. \nrm -rf dir      Recursively remove dir including every file and subdirectory. Use with caution.\nSome applications leave behind files that may be removed without adversely affecting the program.\n\nWeb browser cache files can be removed. You can clear your browser disk cache, as well as instruct the browser to set aside less disk space to use for its cache, in the program’s Preference window, usually under ‘Advanced’.\nPostScript, .aux, and .log files produced by LaTeX can be recreated as necessary from the corresponding .tex file.\nCompiled object files, often with the suffix .o, produced by C, C++, or Fortran compilers, can usually be deleted. If need be, they can be recreated from the original programs that produced them.\nCompilers tend to create lots of big binary files such as ‘.o’ and ‘.out’ files. ‘.out’ files in particular can be quite large. If you have such files which have been unused for several days and which you don’t intend to use for several more days, they should be removed. (They can easily be recreated if you need them; see ‘help learn_fortran’ for more discussion.) The size of ‘.out’ files which you do need can be reduced somewhat by stripping them. Type:\nstrip a.out     Strips an already existing 'a.out'. \nf77 -s ...      Creates a pre-stripped '.out' file when using f77. \ncc -s ...       Similarly for cc.\nWhen programs crash, they sometimes report ‘Core dumped’ indicating that a large file called ‘core’ has been created in the program’s current working directory. A user may disable core dumps by adding “ulimit -c 0” to ~/.bashrc.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Manage Disk Space"
-    ]
-  },
-  {
-    "objectID": "emldata.html",
-    "href": "emldata.html",
-    "title": "Econometrics Laboratory",
-    "section": "",
-    "text": "GENERAL REFERENCES\nCalifornia Digital Library\nAmerican Economic Review (UCB only; via Ingenta Select)\nJournal of Economic Literature (UCB only’ via Ingenta Select)\nJournal of Economic Perspectives (UCB only; via Ingenta Select)\nBerkeley Electronic Press, including journals in theoretical economics, macroeconomics, and economic analysis and policy.\neScholarship Working Paper Repository (You can join the Repository and contribute your working paper series!)\nEBSCO Online\nElsevier E-Journals (UCB only; can also be accessed via the CDL)\nSpringer E-Journals (UCB only; can also be accessed via the CDL)\nWiley E-Journals (UCB only; can also be accessed via the CDL)\nEncyclopedia Britannica (UCB only)\nEncyclopedia Americana (UCB only)\nFirstSearch (UCB only; can also be accessed via the CDL)\nJSTOR (UCB only)\nUC DATA Archives\nProquest Direct (UCB only; use link on Long Library’s homepage\nScience Direct (UCB only; can also be accessed via the CDL)\nNESSTAR\nEconDoc (German libraries)\nRAND California\nCENSUS\nCensus Bureau Home Page\nCalifornia Census Research Data Center\nGovernment and Social Science Data Library\nCIESIN/SEDAC Census Archive\nICPSR\nICPSR Home Page\nPSID (web)\nAHEAD and HRS\nLABOR STATISTICS\nNLSY97 Bureau of Labor Statistics Home Page\nMost Requested Series:\nNATIONAL BUREAU OF ECONOMIC RESEARCH\nSurvey of Income and Program Participation (SIPP), including sample SAS, Stata, and SPSS programs NBER Home Page\nPenn-World Tables\nMacro History Database\nOfficial Business Cycle Dates\nManufacturing Industry Productivity\nOTHER FEDERAL GOVERNMENT SOURCES NSF’s Industrial Research and Development Information System (IRIS)\nU.S. Federal Government Statistics\n- Bureau of Economic Analysis\n- Bureau of Labor Statistics\n- Bureau of Justice Statistics\n- Bureau of Transportation Statistics\n- Bureau of the Census\n- Energy Information and Administration\n- Economic Research Service\n- Environmental Protection Agency\n- IRS Statistics of Income Division\n… and much, much more!\nFedWorld Information Network (NTIS)\nFederal Reserve Bank Data from FRED\nFederal Reserve Board’s Survey of Consumer Finances\nFederal Reserve Board’s Survey of Consumer Finances from Ohio State University\nOTHER MISCELLANEOUS SOURCES\nNielsen Scanner Data (UCB only)\nABI/Inform (UCB only; via Proquest)\nCIESIN\nDigital Dissertations (UCB only)\nEconomic Growth Resources\nIMF’s International Financial Statistics\nISI Emerging Markets\nWharton Research Data Service (WRDS; UCB only - WRDS use is restricted to UCB faculty and graduate students. Reguires a password issued by WRDS. Click on the link, choose “account request,” and if you qualify, a password will be sent by email.)\nZillow’s Assessor and Real Estate Database (ZTRAX) (UCB only)",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "EML Data Links"
-    ]
-  },
-  {
-    "objectID": "emldata.html#eml-data-links",
-    "href": "emldata.html#eml-data-links",
-    "title": "Econometrics Laboratory",
-    "section": "",
-    "text": "GENERAL REFERENCES\nCalifornia Digital Library\nAmerican Economic Review (UCB only; via Ingenta Select)\nJournal of Economic Literature (UCB only’ via Ingenta Select)\nJournal of Economic Perspectives (UCB only; via Ingenta Select)\nBerkeley Electronic Press, including journals in theoretical economics, macroeconomics, and economic analysis and policy.\neScholarship Working Paper Repository (You can join the Repository and contribute your working paper series!)\nEBSCO Online\nElsevier E-Journals (UCB only; can also be accessed via the CDL)\nSpringer E-Journals (UCB only; can also be accessed via the CDL)\nWiley E-Journals (UCB only; can also be accessed via the CDL)\nEncyclopedia Britannica (UCB only)\nEncyclopedia Americana (UCB only)\nFirstSearch (UCB only; can also be accessed via the CDL)\nJSTOR (UCB only)\nUC DATA Archives\nProquest Direct (UCB only; use link on Long Library’s homepage\nScience Direct (UCB only; can also be accessed via the CDL)\nNESSTAR\nEconDoc (German libraries)\nRAND California\nCENSUS\nCensus Bureau Home Page\nCalifornia Census Research Data Center\nGovernment and Social Science Data Library\nCIESIN/SEDAC Census Archive\nICPSR\nICPSR Home Page\nPSID (web)\nAHEAD and HRS\nLABOR STATISTICS\nNLSY97 Bureau of Labor Statistics Home Page\nMost Requested Series:\nNATIONAL BUREAU OF ECONOMIC RESEARCH\nSurvey of Income and Program Participation (SIPP), including sample SAS, Stata, and SPSS programs NBER Home Page\nPenn-World Tables\nMacro History Database\nOfficial Business Cycle Dates\nManufacturing Industry Productivity\nOTHER FEDERAL GOVERNMENT SOURCES NSF’s Industrial Research and Development Information System (IRIS)\nU.S. Federal Government Statistics\n- Bureau of Economic Analysis\n- Bureau of Labor Statistics\n- Bureau of Justice Statistics\n- Bureau of Transportation Statistics\n- Bureau of the Census\n- Energy Information and Administration\n- Economic Research Service\n- Environmental Protection Agency\n- IRS Statistics of Income Division\n… and much, much more!\nFedWorld Information Network (NTIS)\nFederal Reserve Bank Data from FRED\nFederal Reserve Board’s Survey of Consumer Finances\nFederal Reserve Board’s Survey of Consumer Finances from Ohio State University\nOTHER MISCELLANEOUS SOURCES\nNielsen Scanner Data (UCB only)\nABI/Inform (UCB only; via Proquest)\nCIESIN\nDigital Dissertations (UCB only)\nEconomic Growth Resources\nIMF’s International Financial Statistics\nISI Emerging Markets\nWharton Research Data Service (WRDS; UCB only - WRDS use is restricted to UCB faculty and graduate students. Reguires a password issued by WRDS. Click on the link, choose “account request,” and if you qualify, a password will be sent by email.)\nZillow’s Assessor and Real Estate Database (ZTRAX) (UCB only)",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "EML Data Links"
+      "Eligibility Policies"
     ]
   },
   {
@@ -1259,7 +1235,7 @@
     "href": "index.html#related-resources",
     "title": "Econometrics Laboratory",
     "section": "Related Resources",
-    "text": "Related Resources\n\nData Sources\nComputing Resources\nEconometrics Seminar"
+    "text": "Related Resources\n\nComputing Resources\nEconometrics Seminar"
   },
   {
     "objectID": "jupyterhub.html",
