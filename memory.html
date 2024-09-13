@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -567,7 +567,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="how-can-i-get-my-large-memory-job-to-run" class="level2">
 <h2 class="anchored" data-anchor-id="how-can-i-get-my-large-memory-job-to-run">How can I get my large-memory job to run?</h2>
-<p>Users whose jobs die because memory is not available have a few options. First they can wait until the large-memory jobs on a machine end or they can start their job again on a different machine (see <a href="servers">here for a list of standalone servers with their memory</a> and <a href="cluster">here for the memory available on the cluster nodes</a>. (Note that to avoid a particular problematic node in the cluster, you can exclude it from the nodes that your job is allowed to run on using the -x flag. For example “-x eml-sm20” to avoid the eml-sm20 node.) Second, particularly for larger memory jobs, you can request access to an entire node when submitting a cluster job by adding the flag “–exclusive” to your sbatch or srun invocation. This will prevent any other jobs from running on that node and ensure your job has access to all the memory on the node.</p>
+<p>Users whose jobs die because memory is not available have a few options. First they can wait until the large-memory jobs on a machine end or they can start their job again on a different machine. We maintain a <a href="./servers.html">list of standalone servers with their memory</a> and also document the memory available on the <a href="./cluster.html">cluster nodes</a>. (Note that to avoid a particular problematic node in the cluster, you can exclude it from the nodes that your job is allowed to run on using the -x flag. For example “-x eml-sm20” to avoid the eml-sm20 node.) Second, particularly for larger memory jobs, you can request access to an entire node when submitting a cluster job by adding the flag “–exclusive” to your sbatch or srun invocation. This will prevent any other jobs from running on that node and ensure your job has access to all the memory on the node.</p>
 
 
 </section>
