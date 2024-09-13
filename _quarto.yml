@@ -92,7 +92,6 @@ website:
           - disk-quota.qmd
           - disk-space.qmd
           - file-permissions.qmd
-          - emldata.qmd
           - tape-backups.qmd
       - section: "Software"
         contents:
