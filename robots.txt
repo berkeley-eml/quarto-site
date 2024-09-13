@@ -1,1 +1,1 @@
-Sitemap: https://berkeley-eml.github.io/quarto-site/sitemap.xml
+Sitemap: https://eml.berkeley.edu/sitemap.xml
