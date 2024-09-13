@@ -17,9 +17,9 @@ because of the memory use by other jobs on the same machine.
 
 Users whose jobs die because memory is not available have a few options.
 First they can wait until the large-memory jobs on a machine end or they
-can start their job again on a different machine (see [here for a list
-of standalone servers with their memory](servers) and [here for the
-memory available on the cluster nodes](cluster). (Note that to avoid a
+can start their job again on a different machine. We maintain a [list
+of standalone servers with their memory](servers.qmd) and also document the
+memory available on the [cluster nodes](cluster.qmd). (Note that to avoid a
 particular problematic node in the cluster, you can exclude it from the
 nodes that your job is allowed to run on using the -x flag. For example
 "-x eml-sm20" to avoid the eml-sm20 node.) Second, particularly for
@@ -27,5 +27,3 @@ larger memory jobs, you can request access to an entire node when
 submitting a cluster job by adding the flag "--exclusive" to your sbatch
 or srun invocation. This will prevent any other jobs from running on
 that node and ensure your job has access to all the memory on the node.
-
-
