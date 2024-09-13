@@ -10,6 +10,7 @@ website:
   title: "Econometrics Laboratory"
   image: images/EML_logo_small.png
   repo-url: https://github.com/berkeley-eml/quarto-site
+  site-url: https://eml.berkeley.edu
   #repo-actions: [edit, issue]
   page-navigation: true
   #bread-crumbs: true
