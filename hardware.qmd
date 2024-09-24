@@ -10,11 +10,11 @@ operating system for the compute servers is Ubuntu.
 
 ## Computing Cluster
 
-The EML also has a high performance computing cluster, containing twelve
+The EML also has a [high performance computing cluster](cluster.qmd), containing twelve
 nodes (eight nodes containing 32 CPU cores, four nodes containing 56 CPU
 cores each, and four nodes containing ) available for compute jobs. Four
 nodes have 264 GB dedicated RAM, four nodes have 132 GB dedicated RAM,
-and four nodes have 768 GB dedicated RAM. It is managed by the SLURM
+and four nodes have 768 GB dedicated RAM. It is managed by the Slurm
 queueing software. Slurm provides a standard batch queueing system
 through which users submit jobs to the cluster. Jobs are typically
 submitted to Slurm via a user's shell script which executes one's
