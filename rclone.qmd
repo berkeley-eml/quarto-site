@@ -118,3 +118,8 @@ There are some limitations mentioned on <https://rclone.org/dropbox/>:
 > will return the error Failed to purge: There are too many files
 > involved in this operation. As a work-around do an rclone delete
 > dropbox:dir followed by an rclone rmdir dropbox:dir.
+
+Connecting to other locations
+---------------------
+
+[This Berkeley Research IT documentation](https://docs-research-it.berkeley.edu/services/research-data/data-transfer/#rclone) has information on transferring data to and from other resources, such as Box, bDrive, AWS, Wasabi, and Google Cloud Storage.
