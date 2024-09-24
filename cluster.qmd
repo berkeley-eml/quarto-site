@@ -83,24 +83,24 @@ This table outlines the job restrictions in each partition.
 
 |Partition|Max. cores/user|Time Limit|Max. mem/job (GB)|Max. cores/job|
 |-------- |-------------- |--------- |---------------- |------------- |
-|high (default)|352|28 days2|132 GB (eml-sm2 nodes) or 768 GB (eml-sm3 nodes, requested with "-C mem768g" [formerly "-C bigmem"] 4)|56 (eml-sm2 nodes) or 32 (eml-sm3 nodes)3|
-|low1|256|28 days2|264 GB|323|
-|gpu5|48|28 days|256 GB|48|
+|high (default)|352|28 days2|132 GB (eml-sm2 nodes) or 768 GB (eml-sm3 nodes, requested with "-C mem768g" [formerly "-C bigmem"] 4)|56 (eml-sm2 nodes) or 32 (eml-sm3 nodes)^3^|
+|low^1^|256|28 days^2^|264 GB|32^3^|
+|gpu^5^|48|28 days|256 GB|48|
 
-\[1\] See [How to Submit Jobs to the Low Partition](#low).
+\[1\] See [How to Submit Jobs to the Low Partition](#submitting-a-low-priority-job).
 
-\[2\] See [Submitting Long Jobs](#long) for jobs you expect to take more
+\[2\] See [Submitting Long Jobs](#submitting-long-jobs-and-setting-job-time-limits) for jobs you expect to take more
 than three days.
 
 \[3\] If you use software set up to use multiple nodes, you can run
 individual jobs on more than 56 (or 32 on the low partition) cores. See
-[Submitting Multi-node Jobs](#multi-node) or [Submitting MPI Jobs](#MPI)
-or [Submitting MATLAB Parallel Server Jobs](#parallel-server).
+[Submitting Multi-node Jobs](#submitting-multi-node-jobs) or [Submitting MPI Jobs](#submitting-mpi-jobs)
+or [Submitting MATLAB Parallel Server Jobs](#submitting-matlab-parallel-server-multi-node-jobs).
 
-\[4\] See [Submitting Large Memory Jobs](#bigmem) for jobs needing more
+\[4\] See [Submitting Large Memory Jobs](#submitting-large-memory-jobs) for jobs needing more
 than 25 GB memory.
 
-\[5\] See [Submitting GPU Jobs](#gpu) for jobs using the GPU.
+\[5\] See [Submitting GPU Jobs](#submitting-gpu-jobs) for jobs using the GPU.
 
 ## Basic Slurm Usage
 
