@@ -20,6 +20,8 @@ The most popular SSH program for Windows is [putty](https://www.putty.org). The 
 executable is a single file, so it can be stored wherever you find it
 convenient.
 
+[MobaXterm](https://mobaxterm.mobatek.net) is a newer alternative that is also popular.
+
 ### macOS
 
 macOS comes with OpenSSH preinstalled. Open Terminal.app (in
