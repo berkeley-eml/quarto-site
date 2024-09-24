@@ -663,17 +663,17 @@ marshall, nerlove, radner, theil</code></pre>
 <td>352</td>
 <td>28 days2</td>
 <td>132 GB (eml-sm2 nodes) or 768 GB (eml-sm3 nodes, requested with “-C mem768g” [formerly “-C bigmem”] 4)</td>
-<td>56 (eml-sm2 nodes) or 32 (eml-sm3 nodes)3</td>
+<td>56 (eml-sm2 nodes) or 32 (eml-sm3 nodes)<sup>3</sup></td>
 </tr>
 <tr class="even">
-<td>low1</td>
+<td>low<sup>1</sup></td>
 <td>256</td>
-<td>28 days2</td>
+<td>28 days<sup>2</sup></td>
 <td>264 GB</td>
-<td>323</td>
+<td>32<sup>3</sup></td>
 </tr>
 <tr class="odd">
-<td>gpu5</td>
+<td>gpu<sup>5</sup></td>
 <td>48</td>
 <td>28 days</td>
 <td>256 GB</td>
@@ -681,11 +681,11 @@ marshall, nerlove, radner, theil</code></pre>
 </tr>
 </tbody>
 </table>
-<p>[1] See <a href="#low">How to Submit Jobs to the Low Partition</a>.</p>
-<p>[2] See <a href="#long">Submitting Long Jobs</a> for jobs you expect to take more than three days.</p>
-<p>[3] If you use software set up to use multiple nodes, you can run individual jobs on more than 56 (or 32 on the low partition) cores. See <a href="#multi-node">Submitting Multi-node Jobs</a> or <a href="#MPI">Submitting MPI Jobs</a> or <a href="#parallel-server">Submitting MATLAB Parallel Server Jobs</a>.</p>
-<p>[4] See <a href="#bigmem">Submitting Large Memory Jobs</a> for jobs needing more than 25 GB memory.</p>
-<p>[5] See <a href="#gpu">Submitting GPU Jobs</a> for jobs using the GPU.</p>
+<p>[1] See <a href="#submitting-a-low-priority-job">How to Submit Jobs to the Low Partition</a>.</p>
+<p>[2] See <a href="#submitting-long-jobs-and-setting-job-time-limits">Submitting Long Jobs</a> for jobs you expect to take more than three days.</p>
+<p>[3] If you use software set up to use multiple nodes, you can run individual jobs on more than 56 (or 32 on the low partition) cores. See <a href="#submitting-multi-node-jobs">Submitting Multi-node Jobs</a> or <a href="#submitting-mpi-jobs">Submitting MPI Jobs</a> or <a href="#submitting-matlab-parallel-server-multi-node-jobs">Submitting MATLAB Parallel Server Jobs</a>.</p>
+<p>[4] See <a href="#submitting-large-memory-jobs">Submitting Large Memory Jobs</a> for jobs needing more than 25 GB memory.</p>
+<p>[5] See <a href="#submitting-gpu-jobs">Submitting GPU Jobs</a> for jobs using the GPU.</p>
 </section>
 <section id="basic-slurm-usage" class="level2">
 <h2 class="anchored" data-anchor-id="basic-slurm-usage">Basic Slurm Usage</h2>

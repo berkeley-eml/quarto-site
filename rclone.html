@@ -579,6 +579,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#initial-configuration" id="toc-initial-configuration" class="nav-link" data-scroll-target="#initial-configuration">Initial Configuration</a></li>
   <li><a href="#using-rclone-1" id="toc-using-rclone-1" class="nav-link" data-scroll-target="#using-rclone-1">Using rclone</a></li>
   </ul></li>
+  <li><a href="#connecting-to-other-locations" id="toc-connecting-to-other-locations" class="nav-link" data-scroll-target="#connecting-to-other-locations">Connecting to other locations</a></li>
   </ul>
 </nav>
     </div>
@@ -676,9 +677,13 @@ Note
 <blockquote class="blockquote">
 <p>Note that Dropbox is case insensitive so you can’t have a file called “Hello.doc” and one called “hello.doc”. There are some file names such as thumbs.db which Dropbox can’t store. There is a full list of them in the “Ignored Files” section of this document. Rclone will issue an error message File name disallowed - not uploading if it attempts to upload one of those file names, but the sync won’t fail. If you have more than 10,000 files in a directory then rclone purge dropbox:dir will return the error Failed to purge: There are too many files involved in this operation. As a work-around do an rclone delete dropbox:dir followed by an rclone rmdir dropbox:dir.</p>
 </blockquote>
-
-
 </section>
+</section>
+<section id="connecting-to-other-locations" class="level2">
+<h2 class="anchored" data-anchor-id="connecting-to-other-locations">Connecting to other locations</h2>
+<p><a href="https://docs-research-it.berkeley.edu/services/research-data/data-transfer/#rclone">This Berkeley Research IT documentation</a> has information on transferring data to and from other resources, such as Box, bDrive, AWS, Wasabi, and Google Cloud Storage.</p>
+
+
 </section>
 
 </main> <!-- /main -->
