@@ -33,8 +33,8 @@ Research Computing's Savio campus cluster and NERSC:
 <td>UC Berkeley Savio campus Linux cluster</td>
 </tr>
 <tr class="even">
-<td>nersc#cori</td>
-<td><a href="http://www.nersc.gov/users/computational-systems/cori/">NERSC Cori</a></td>
+<td>nersc#perlmutter</td>
+<td><a href="http://www.nersc.gov/users/computational-systems/cori/">NERSC Perlmutter</a></td>
 </tr>
 <tr class="odd">
 <td>nersc#hpss</td>
