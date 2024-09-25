@@ -31,10 +31,10 @@ through the 'gpu' partition on the [cluster](cluster.qmd).
 
 ## Condo Node at Savio
 
-EML users may access the condo node at Savio, the high-performance
+EML users may access the EML condo, the high-performance
 computational cluster managed by the Berkeley Research Computing (BRC)
-program. This allows EML users to run jobs with priority access to 2
-nodes. They are also entitled to use the extra resource available on the
+program. This allows EML users to run jobs with priority access to two
+nodes. These nodes are quite old and won't have high performance, but they are available, and in addition, because of the condo, users are entitled to use the extra resource available on the
 Savio cluster through a low priority QoS. More information is available
 at the [Savio
 website](http://research-it.berkeley.edu/services/high-performance-computing).
