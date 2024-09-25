@@ -867,15 +867,40 @@ marlowe, marshall, nerlove, radner, theil</code></pre>
 <div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="op">&lt;</span> simulate.m <span class="op">&gt;</span> simulate.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>IMPORTANT: At the start of your MATLAB code file you should include this line:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Required Matlab Code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At the start of your MATLAB code file you should include this line:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="va">maxNumCompThreads</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 <p>Here’s an example job script to use multiple threads (4 in this case) in SAS:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sas</span> <span class="at">-threads</span> <span class="at">-cpucount</span> <span class="va">$SLURM_CPUS_PER_TASK</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>A number of SAS procs are set to take advantage of threading, including SORT, SUMMARY, TABULATE, GLM, LOESS, and REG. SAS enables threading by default, with the default number of threads set to four. Starting SAS as above ensures that the number of threads is set to the number of cores you requested. You can check that threading is enabled from within SAS by running the following and looking for the cpucount and threads options in the printout.</p>
 <pre class="sas"><code>Proc Options group=performance; run;</code></pre>
-<p>You can use up to eight cores with Stata/MP (limited by the EML license for Stata). IMPORTANT: Do not request more than 8 cores for a Stata job. If you request eight cores (–cpus-per-task=8) or fewer, you are all set.</p>
+<p>You can use up to eight cores with Stata/MP (limited by the EML license for Stata).</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Do not request more than 8 cores for a Stata job. If you request eight cores (<code>--cpus-per-task=8</code>) or fewer, you are all set.</p>
+</div>
+</div>
 <p>It’s possible to explicitly set the number of processors in Stata to be the number you requested in your job submission, but that is unnecessary because Slurm will limit your job to the number of cores requested. That said, one way to do this is to hard-code the following line at the start of your Stata code (in this case assuming you requested four cores):</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> processors 4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can do this in an automated fashion by first invoking Stata in your job script as:</p>
@@ -891,7 +916,19 @@ marlowe, marshall, nerlove, radner, theil</code></pre>
 <div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> simulate.R simulate.Rout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>IMPORTANT: Your R, Python, or any other code won’t be able to use more cores than the number of total cores requested (4 in this case). You can use the SLURM_CPUS_PER_TASK environment variable to programmatically control this, though your software will automatically detect the number of available cores in many cases.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your R, Python, or any other code won’t be able to use more cores than the number of total cores requested (4 in this case). You can use the <code>SLURM_CPUS_PER_TASK</code> environment variable to programmatically control this, though your software will automatically detect the number of available cores in many cases.</p>
+</div>
+</div>
 <p>The same syntax for your job script pertains to MATLAB. When using parpool in MATLAB, you can do the following:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="va">parpool</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In the high (default) partition, the default maximum number of workers is 28 on the eml-sm2 nodes and 16 on the eml-sm3 nodes, while in the low partition it is also 16. To increase this (up to the maximum number of cores on a machine), run the following code before invoking parpool:</p>
