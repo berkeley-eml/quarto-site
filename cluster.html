@@ -992,7 +992,7 @@ Important
 <span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
 <span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
 <span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Make sure to delete the job so the cluster resources of the Slurm job are released</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
 <span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You should also be able to use the “batch” command to execute a script or function across multiple workers as described under Option 2 below. Other uses of MATLAB parallel server functionality may also be possible.</p>
 </section>
@@ -1015,7 +1015,7 @@ Important
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
 <span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
 <span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Make sure to delete the job so the cluster resources of the Slurm job are released</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
 <span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="option-2---run-your-matlab-code-on-an-eml-linux-machine-and-offload-parallel-code-to-the-cluster-from-within-matlab" class="level4">
@@ -1031,7 +1031,7 @@ Important
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
 <span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">% Make sure to delete the job so the cluster resources of the Slurm job are released</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
 <span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This starts a Slurm job (and prints out the job ID to the screen in case you want to monitor the Slurm job). Once the pool is ready, simply execute your parallel code (such as with a parfor loop). When you are done remember to delete the pool so the cluster job ends and the resources are available to others.</p>
 <p>For threaded workers, you can simply do this:</p>
@@ -1044,7 +1044,7 @@ Important
 <span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
 <span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
 <span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Make sure to delete the job so the cluster resources of the Slurm job are released</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
 <span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you’d like to modify the flags that are used when the underlying Slurm job is submitted (e.g., to use the ‘low’ partition and set a particular time limit as shown here), you would do it like this:</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
@@ -1056,7 +1056,7 @@ Important
 <span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
 <span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
 <span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Make sure to delete the job so the cluster resources of the Slurm job are released</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
 <span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Alternatively you can use the “batch” command to execute a script or function across multiple workers. Here is one example usage but there are a variety of others discussed in MATLAB’s online documentation for the “batch” command. Suppose you have a file ‘code.m’ that executes a parfor. To run that code on 39 workers (an additional worker will be used to manage the work, for a total of 40 workers), you would do this:</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">% Sets things up to make use of MATLAB Parallel Server</span></span>
@@ -1070,7 +1070,7 @@ Important
 <span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="va">r</span> <span class="op">=</span> <span class="va">fetchOutputs</span>(<span class="va">j</span>)<span class="op">;</span>             <span class="co">% Get results into a cell array</span></span>
 <span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="va">r</span>{<span class="fl">1</span>}                             <span class="co">% Display results</span></span>
 <span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co">% Make sure to delete the job so the cluster resources of the Slurm job are released</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
 <span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="va">j</span>.<span class="va">delete</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
