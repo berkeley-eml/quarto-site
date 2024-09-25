@@ -776,9 +776,15 @@ then use this approach in your MATLAB code:
 ```matlab
 cl = parcluster('dcs');
 cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
-pool = cl.parpool('dcs', str2num(getenv('SLURM_NTASKS'));  % Start a pool of multi-core workers on the EML cluster
+
+% Start a pool of multi-core workers on the EML cluster
+pool = cl.parpool('dcs', str2num(getenv('SLURM_NTASKS'));
+
 % execute code
-delete(pool);   % Make sure to delete the job so the cluster resources of the Slurm job are released
+% ...
+
+% Make sure to delete the job so the cluster resources of the Slurm job are released
+delete(pool);
 ```
 
 You should also be able to use the "batch" command to execute a script
@@ -817,9 +823,15 @@ then use this appraoch in your MATLAB code:
 ```matlab
 cl = parcluster('dcs');
 cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
-pool = cl.parpool('dcs', 20);  % Start a 20-worker pool of multi-core workers on the EML cluster
+
+% Start a 20-worker pool of multi-core workers on the EML cluster
+pool = cl.parpool('dcs', 20);
+
 % execute code
-delete(pool);   % Make sure to delete the job so the cluster resources of the Slurm job are released
+% ...
+
+% Make sure to delete the job so the cluster resources of the Slurm job are released
+delete(pool);
 ```
 
 #### Option 2 - run your MATLAB code on an EML Linux machine and offload parallel code to the cluster from within MATLAB
@@ -852,9 +864,14 @@ Now, whenever you want to start up a pool of workers, simply do the
 following (here for 40 workers):
 
 ```matlab
-pool = parpool('dcs', 40);  % Start a 40-worker pool on the EML cluster
+% Start a 40-worker pool on the EML cluster
+pool = parpool('dcs', 40);
+
 % execute code
-delete(pool);               % Make sure to delete the job so the cluster resources of the Slurm job are released
+% ...
+
+% Make sure to delete the job so the cluster resources of the Slurm job are released
+delete(pool);
 ```
 
 This starts a Slurm job (and prints out the job ID to the screen in case
@@ -867,10 +884,16 @@ For threaded workers, you can simply do this:
 
 ```matlab
 cl = parcluster('dcs');
-cl.NumThreads = 2;      % however many threads per worker you'd like to use
-pool = cl.parpool(20);  % Start a 20-worker pool of multi-core workers on the EML cluster
+cl.NumThreads = 2; % however many threads per worker you'd like to use
+
+% Start a 20-worker pool of multi-core workers on the EML cluster
+pool = cl.parpool(20);
+
 % execute code
-delete(pool);           % Make sure to delete the job so the cluster resources of the Slurm job are released
+% ...
+
+% Make sure to delete the job so the cluster resources of the Slurm job are released
+delete(pool);
 ```
 
 If you'd like to modify the flags that are used when the underlying
@@ -880,10 +903,15 @@ particular time limit as shown here), you would do it like this:
 ```matlab
 cl = parcluster('dcs');
 cl.AdditionalProperties.AdditionalSubmitArgs='-p low -t 30:00'
+
 % Start a 40-worker pool on EML cluster low partition, 30 min. time limit
 pool = cl.parpool(40);
+
 % execute code
-delete(pool);   % Make sure to delete the job so the cluster resources of the Slurm job are released
+% ...
+
+% Make sure to delete the job so the cluster resources of the Slurm job are released
+delete(pool);
 ```
 
 Alternatively you can use the "batch" command to execute a script or
@@ -894,13 +922,19 @@ parfor. To run that code on 39 workers (an additional worker will be
 used to manage the work, for a total of 40 workers), you would do this:
 
 ```matlab
-c = parcluster('dcs');           % Sets things up to make use of MATLAB Parallel Server
-j = c.batch('code', 'Pool', 39); % Uses 40 workers total, starting a Slurm job on the EML cluster
+% Sets things up to make use of MATLAB Parallel Server
+c = parcluster('dcs');
+
+% Uses 40 workers total, starting a Slurm job on the EML cluster
+j = c.batch('code', 'Pool', 39);
+
 wait(j)                          % Wait for the job to finish
 diary(j)                         % Display logging output
 r = fetchOutputs(j);             % Get results into a cell array
 r{1}                             % Display results
-j.delete()                       % Make sure to delete the job so the cluster resources of the Slurm job are released
+
+% Make sure to delete the job so the cluster resources of the Slurm job are released
+j.delete()
 ```
 
 ## Automating Submission of Multiple Jobs
