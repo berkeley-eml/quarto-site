@@ -538,12 +538,15 @@ MATLAB:
 matlab -nodesktop -nodisplay < simulate.m > simulate.out
 ```
 
-IMPORTANT: At the start of your MATLAB code file you should include this
-line:
+::: {.callout-important}
+## Required Matlab Code
+
+At the start of your MATLAB code file you should include this line:
 
 ```matlab
 maxNumCompThreads(str2num(getenv('SLURM_CPUS_PER_TASK')));
 ```
+:::
 
 Here's an example job script to use multiple threads (4 in this case) in
 SAS:
@@ -567,9 +570,12 @@ Proc Options group=performance; run;
 ```
 
 You can use up to eight cores with Stata/MP (limited by the EML license
-for Stata). IMPORTANT: Do not request more than 8 cores for a Stata job.
-If you request eight cores (--cpus-per-task=8) or fewer, you are all
-set.
+for Stata).
+
+::: {.callout-important}
+Do not request more than 8 cores for a Stata job. If you request eight cores
+(`--cpus-per-task=8`) or fewer, you are all set.
+:::
 
 It's possible to explicitly set the number of processors in Stata to be
 the number you requested in your job submission, but that is unnecessary
@@ -612,11 +618,13 @@ Here's an example script that uses multiple cores (4 in this case):
 R CMD BATCH --no-save simulate.R simulate.Rout
 ```
 
-IMPORTANT: Your R, Python, or any other code won't be able to use more
+::: {.callout-important}
+Your R, Python, or any other code won't be able to use more
 cores than the number of total cores requested (4 in this case). You can
-use the SLURM_CPUS_PER_TASK environment variable to programmatically
+use the `SLURM_CPUS_PER_TASK` environment variable to programmatically
 control this, though your software will automatically detect the number
 of available cores in many cases.
+:::
 
 The same syntax for your job script pertains to MATLAB. When using
 parpool in MATLAB, you can do the following:
