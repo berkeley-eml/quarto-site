@@ -783,7 +783,7 @@ pool = cl.parpool('dcs', str2num(getenv('SLURM_NTASKS'));
 % execute code
 % ...
 
-% Make sure to delete the job so the cluster resources of the Slurm job are released
+% Delete the job to release its cluster resources
 delete(pool);
 ```
 
@@ -830,7 +830,7 @@ pool = cl.parpool('dcs', 20);
 % execute code
 % ...
 
-% Make sure to delete the job so the cluster resources of the Slurm job are released
+% Delete the job to release its cluster resources
 delete(pool);
 ```
 
@@ -870,7 +870,7 @@ pool = parpool('dcs', 40);
 % execute code
 % ...
 
-% Make sure to delete the job so the cluster resources of the Slurm job are released
+% Delete the job to release its cluster resources
 delete(pool);
 ```
 
@@ -892,7 +892,7 @@ pool = cl.parpool(20);
 % execute code
 % ...
 
-% Make sure to delete the job so the cluster resources of the Slurm job are released
+% Delete the job to release its cluster resources
 delete(pool);
 ```
 
@@ -910,7 +910,7 @@ pool = cl.parpool(40);
 % execute code
 % ...
 
-% Make sure to delete the job so the cluster resources of the Slurm job are released
+% Delete the job to release its cluster resources
 delete(pool);
 ```
 
@@ -933,7 +933,7 @@ diary(j)                         % Display logging output
 r = fetchOutputs(j);             % Get results into a cell array
 r{1}                             % Display results
 
-% Make sure to delete the job so the cluster resources of the Slurm job are released
+% Delete the job to release its cluster resources
 j.delete()
 ```
 
