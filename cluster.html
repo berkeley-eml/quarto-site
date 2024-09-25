@@ -643,8 +643,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="access-and-job-restrictionstime-limits">Access and Job Restrictions/Time Limits</h2>
 <p>The cluster is open to a restricted set of Department of Economics faculty, grad students, project account collaborators, and visitors using their EML logon.</p>
 <p>Currently users may submit jobs on the following standalone Linux servers (aka ‘submit hosts’):</p>
-<pre><code>blundell, frisch, hicks, jorgensen, laffont, logit, marlowe,
-marshall, nerlove, radner, theil</code></pre>
+<pre><code>blundell, frisch, hicks, jorgensen, laffont, logit,
+marlowe, marshall, nerlove, radner, theil</code></pre>
 <p>Users can also start <a href="./jupyterhub.html">JupyterHub sessions</a> to get browser-based access to the cluster nodes.</p>
 <p>The cluster has three job queues (called partitions by Slurm) called ‘high’ (the default), ‘low’, and ‘gpu’. Interactive jobs can also be run in any queue.</p>
 <p>One important note about using the cluster is that your code will not be able to use any more cores than you have requested via Slurm when submitting your job (this is enforced by a Linux tool called ‘cgroups’).</p>
@@ -788,7 +788,7 @@ marshall, nerlove, radner, theil</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> squeue <span class="at">-o</span> <span class="st">"%.7i %.9P %.8j %.8u %.2t %.9M %.5C %.8r %.6D %R"</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>   <span class="ex">JOBID</span> PARTITION     NAME     USER ST      TIME  CPUS   REASON  NODES NODELIST<span class="er">(</span><span class="ex">REASON</span><span class="kw">)</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>     <span class="ex">381</span>      high   job.sh paciorek  R     28:00     4     None      1 eml-sm20</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>     <span class="ex">380</span>      low    job.sh paciorek  R     28:09     4     None      1 eml-sm11 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>     <span class="ex">380</span>      low    job.sh paciorek  R     28:09     4     None      1 eml-sm11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>ST</code> field indicates whether a job is running (R), failed (F), or pending (PD). The latter occurs when there are not yet enough resources on the system for your job to run.</p>
 <p>If you would like to logon to the node on which your job is running in order to assess CPU or memory use, you can run an interactive job within the context of your existing job. First determine the job ID of your running job using squeue (here job 380) and insert that in the following command:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--pty</span> <span class="at">--jobid</span><span class="op">=</span>380 /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -813,7 +813,7 @@ marshall, nerlove, radner, theil</code></pre>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm20           up idle   0/56/0/56</span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm21           up mix    8/48/0/56</span>
 <span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm22           up idle   0/56/0/56</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm23           up idle   0/56/0/56 </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm23           up idle   0/56/0/56</span>
 <span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm30           up mix    28/4/0/32</span>
 <span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm31           up mix    28/4/0/32</span>
 <span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm32           up idle   0/32/0/32</span>
@@ -940,34 +940,34 @@ marshall, nerlove, radner, theil</code></pre>
 <h4 class="anchored" data-anchor-id="option-1a---submit-a-slurm-job-via-sbatch-that-uses-matlab-parallel-server-new-approach-for-matlab-r2023a-as-well-as-r2022a">Option 1a - submit a Slurm job via sbatch that uses MATLAB Parallel Server (new approach for MATLAB R2023a, as well as R2022a)</h4>
 <p>As a one-time setup step (you only need to do this the first time you are using the approach), go to “Environment-&gt;Parallel-&gt;Create and Manage Cluster Profiles” in the MATLAB Desktop toolbar; this will open the Cluster Profile Manager. Then click on ‘Import’ and navigate to <code>/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings</code> (<code>dcsProfile.settings</code> in MATLAB R2022a) and click ‘Open’. Then exit out of the Cluster Profile Manager.</p>
 <p>To submit a MATLAB Parallel Server job, you’ll need to specify the number of MATLAB workers (by using the -n or –ntasks flag). Unlike in the past you should NOT use the ‘-C dcs’ flag. Here’s an example job script that would use 40 cores for 40 workers (making sure to use the ‘-n’ flag when requesting the number of cores):</p>
-<pre><code>#!/bin/bash
-#SBATCH -n 40
-matlab -nodesktop -nodisplay &lt; code.m &gt; code.mout</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 40</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="op">&lt;</span> code.m <span class="op">&gt;</span> code.mout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then in your MATLAB code, simply invoke parpool as:</p>
-<pre><code>pool = parpool('dcs', str2num(getenv('SLURM_NTASKS')));</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">parpool</span>(<span class="ss">'dcs'</span><span class="op">,</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_NTASKS'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you’d like to use multiple threads per worker, please set –cpus-per-task equal to the number of threads per worker you desire and then use this approach in your MATLAB code:</p>
-<pre><code>cl = parcluster('dcs');
-cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
-pool = cl.parpool('dcs', str2num(getenv('SLURM_NTASKS'));  % Start a pool of multi-core workers on the EML cluster
-% execute code
-delete(pool);   % Make sure to delete the job so the cluster resources of the Slurm job are released</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumThreads</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>))<span class="op">;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">cl</span>.<span class="va">parpool</span>(<span class="ss">'dcs'</span><span class="op">,</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_NTASKS'</span>))<span class="op">;</span>  <span class="co">% Start a pool of multi-core workers on the EML cluster</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span>   <span class="co">% Make sure to delete the job so the cluster resources of the Slurm job are released</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You should also be able to use the “batch” command to execute a script or function across multiple workers as described under Option 2 below. Other uses of MATLAB parallel server functionality may also be possible.</p>
 </section>
 <section id="option-1b---submit-a-slurm-job-via-sbatch-that-uses-matlab-parallel-server-deprecated-approach-for-matlab-r2022a-and-earlier" class="level4">
 <h4 class="anchored" data-anchor-id="option-1b---submit-a-slurm-job-via-sbatch-that-uses-matlab-parallel-server-deprecated-approach-for-matlab-r2022a-and-earlier">Option 1b - submit a Slurm job via sbatch that uses MATLAB Parallel Server (deprecated approach for MATLAB R2022a and earlier)</h4>
 <p>To submit a MATLAB Parallel Server job, you’ll need to specify the number of MATLAB workers (by using the -n or –ntasks flag) and indicate that a Parallel Server job will be run (by using ‘-C dcs’). This won’t work with srun, only with sbatch. Here’s an example job script that would use 40 cores for 40 workers (making sure to use the ‘-n’ flag when requesting the number of cores):</p>
-<pre><code>#!/bin/bash
-#SBATCH -n 40 -C dcs 
-matlab -nodesktop -nodisplay &lt; code.m &gt; code.mout</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 40 -C dcs</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="op">&lt;</span> code.m <span class="op">&gt;</span> code.mout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then in your MATLAB code, simply invoke parpool as:</p>
-<pre><code>pool = parpool(str2num(getenv('SLURM_NTASKS')));</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">parpool</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_NTASKS'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note that the workers will run as the user “matlabdcs”, so if you interactively log into a node with some of the workers on it, you will see MATLAB processes running as this user if you use ‘top’ or ‘ps’.</p>
 <p>If you’d like to use multiple threads per worker, please set –cpus-per-task equal to the number of threads per worker you desire and then use this appraoch in your MATLAB code:</p>
-<pre><code>cl = parcluster('dcs');
-cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
-pool = cl.parpool('dcs', 20);  % Start a 20-worker pool of multi-core workers on the EML cluster
-% execute code
-delete(pool);   % Make sure to delete the job so the cluster resources of the Slurm job are released</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumThreads</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>))<span class="op">;</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">cl</span>.<span class="va">parpool</span>(<span class="ss">'dcs'</span><span class="op">,</span> <span class="fl">20</span>)<span class="op">;</span>  <span class="co">% Start a 20-worker pool of multi-core workers on the EML cluster</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span>   <span class="co">% Make sure to delete the job so the cluster resources of the Slurm job are released</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="option-2---run-your-matlab-code-on-an-eml-linux-machine-and-offload-parallel-code-to-the-cluster-from-within-matlab" class="level4">
 <h4 class="anchored" data-anchor-id="option-2---run-your-matlab-code-on-an-eml-linux-machine-and-offload-parallel-code-to-the-cluster-from-within-matlab">Option 2 - run your MATLAB code on an EML Linux machine and offload parallel code to the cluster from within MATLAB</h4>
@@ -976,31 +976,31 @@ delete(pool);   % Make sure to delete the job so the cluster resources of the Sl
 <p>To start up a pool of workers (with the only limit on the number of workers being the number of cores in a given partition and the usage of cores by other users’ jobs), you’ll need to use the ‘dcs’ cluster profile.</p>
 <p>As a one-time setup step (you only need to do this the first time you are using the approach), go to “Environment-&gt;Parallel-&gt;Create and Manage Cluster Profiles” in the MATLAB Desktop toolbar; this will open the Cluster Profile Manager. Then click on ‘Import’ and navigate to <code>/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings</code> (<code>dcsProfile.settings</code> in R2022a and earlier versions) and click ‘Open’. Then exit out of the Cluster Profile Manager.</p>
 <p>Now, whenever you want to start up a pool of workers, simply do the following (here for 40 workers):</p>
-<pre><code>pool = parpool('dcs', 40);  % Start a 40-worker pool on the EML cluster
-% execute code
-delete(pool);               % Make sure to delete the job so the cluster resources of the Slurm job are released</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">parpool</span>(<span class="ss">'dcs'</span><span class="op">,</span> <span class="fl">40</span>)<span class="op">;</span>  <span class="co">% Start a 40-worker pool on the EML cluster</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span>               <span class="co">% Make sure to delete the job so the cluster resources of the Slurm job are released</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This starts a Slurm job (and prints out the job ID to the screen in case you want to monitor the Slurm job). Once the pool is ready, simply execute your parallel code (such as with a parfor loop). When you are done remember to delete the pool so the cluster job ends and the resources are available to others.</p>
 <p>For threaded workers, you can simply do this:</p>
-<pre><code>cl = parcluster('dcs');
-cl.NumThreads = 2;      % however many threads per worker you'd like to use
-pool = cl.parpool(20);  % Start a 20-worker pool of multi-core workers on the EML cluster
-% execute code
-delete(pool);           % Make sure to delete the job so the cluster resources of the Slurm job are released</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumThreads</span> <span class="op">=</span> <span class="fl">2</span><span class="op">;</span>      <span class="co">% however many threads per worker you'd like to use</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">cl</span>.<span class="va">parpool</span>(<span class="fl">20</span>)<span class="op">;</span>  <span class="co">% Start a 20-worker pool of multi-core workers on the EML cluster</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span>           <span class="co">% Make sure to delete the job so the cluster resources of the Slurm job are released</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you’d like to modify the flags that are used when the underlying Slurm job is submitted (e.g., to use the ‘low’ partition and set a particular time limit as shown here), you would do it like this:</p>
-<pre><code>cl = parcluster('dcs');
-cl.AdditionalProperties.AdditionalSubmitArgs='-p low -t 30:00'
-% Start a 40-worker pool on EML cluster low partition, 30 min. time limit
-pool = cl.parpool(40);
-% execute code
-delete(pool);   % Make sure to delete the job so the cluster resources of the Slurm job are released</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">AdditionalProperties</span>.<span class="va">AdditionalSubmitArgs</span><span class="op">=</span><span class="ss">'-p low -t 30:00'</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">% Start a 40-worker pool on EML cluster low partition, 30 min. time limit</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">cl</span>.<span class="va">parpool</span>(<span class="fl">40</span>)<span class="op">;</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span>   <span class="co">% Make sure to delete the job so the cluster resources of the Slurm job are released</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Alternatively you can use the “batch” command to execute a script or function across multiple workers. Here is one example usage but there are a variety of others discussed in MATLAB’s online documentation for the “batch” command. Suppose you have a file ‘code.m’ that executes a parfor. To run that code on 39 workers (an additional worker will be used to manage the work, for a total of 40 workers), you would do this:</p>
-<pre><code>c = parcluster('dcs');           % Sets things up to make use of MATLAB Parallel Server
-j = c.batch('code', 'Pool', 39); % Uses 40 workers total, starting a Slurm job on the EML cluster
-wait(j)                          % Wait for the job to finish
-diary(j)                         % Display logging output
-r = fetchOutputs(j);             % Get results into a cell array
-r{1}                             % Display results
-j.delete()                       % Make sure to delete the job so the cluster resources of the Slurm job are released</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="va">c</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span>           <span class="co">% Sets things up to make use of MATLAB Parallel Server</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="va">j</span> <span class="op">=</span> <span class="va">c</span>.<span class="va">batch</span>(<span class="ss">'code'</span><span class="op">,</span> <span class="ss">'Pool'</span><span class="op">,</span> <span class="fl">39</span>)<span class="op">;</span> <span class="co">% Uses 40 workers total, starting a Slurm job on the EML cluster</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="va">wait</span>(<span class="va">j</span>)                          <span class="co">% Wait for the job to finish</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="va">diary</span>(<span class="va">j</span>)                         <span class="co">% Display logging output</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="va">r</span> <span class="op">=</span> <span class="va">fetchOutputs</span>(<span class="va">j</span>)<span class="op">;</span>             <span class="co">% Get results into a cell array</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="va">r</span>{<span class="fl">1</span>}                             <span class="co">% Display results</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="va">j</span>.<span class="va">delete</span>()                       <span class="co">% Make sure to delete the job so the cluster resources of the Slurm job are released</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 </section>
@@ -1023,7 +1023,7 @@ j.delete()                       % Make sure to delete the job so the cluster re
 <h3 class="anchored" data-anchor-id="submitting-data-parallel-spmd-code">Submitting Data Parallel (SPMD) Code</h3>
 <p>Here’s how you would set up your job script if you want to run multiple instances (18 in this case) of the same code as part of a single job.</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 18 </span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 18</span></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> myExecutable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To have each instance behave differently, you can make use of the SLURM_PROCID environment variable, which will be distinct (and have values 0, 1, 2, …) between the different instances.</p>
 <p>To have each process be threaded, see the syntax under the MPI section above.</p>
@@ -1033,11 +1033,11 @@ j.delete()                       % Make sure to delete the job so the cluster re
 <p>The above approaches are more elegant, but you can also use UNIX shell tools to submit multiple Slurm jobs. Here are some approaches and example syntax. We’ve tested these a bit but email <a href="mailto:consult@econ.berkeley.edu" class="email">consult@econ.berkeley.edu</a> if you have problems or find a better way to do this. (Of course you can also manually create lots of individual job submission scripts, each of which calls a different script.)</p>
 <p>First, remember that each individual job should be submitted through sbatch.</p>
 <p>Here is some example bash shell code (which could be placed in a shell script file) that loops over two variables (one numeric and the other a string):</p>
-<pre><code>for ((it = 1; it &lt;= 10; it++)); do
-  for mode in short long; do
-    sbatch job.sh $it $mode
-  done
-done</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="kw">((</span><span class="va">it</span> <span class="op">=</span> <span class="dv">1</span><span class="kw">;</span> <span class="va">it</span> <span class="op">&lt;=</span> <span class="dv">10</span><span class="kw">;</span> <span class="va">it</span><span class="op">++</span><span class="kw">));</span> <span class="cf">do</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> mode <span class="kw">in</span> short long<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">sbatch</span> job.sh <span class="va">$it</span> <span class="va">$mode</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">done</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You now have a couple options in terms of how job.sh is specified. This illustrates things for MATLAB jobs, but it shouldn’t be too hard to modify for other types of jobs.</p>
 <section id="option-1" class="level4">
 <h4 class="anchored" data-anchor-id="option-1">Option #1</h4>
