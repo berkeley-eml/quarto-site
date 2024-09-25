@@ -749,23 +749,29 @@ the past you should NOT use the '-C dcs' flag. Here's an example job
 script that would use 40 cores for 40 workers (making sure to use the
 '-n' flag when requesting the number of cores):
 
-    #!/bin/bash
-    #SBATCH -n 40
-    matlab -nodesktop -nodisplay < code.m > code.mout
+```bash
+#!/bin/bash
+#SBATCH -n 40
+matlab -nodesktop -nodisplay < code.m > code.mout
+```
 
 Then in your MATLAB code, simply invoke parpool as:
 
-    pool = parpool('dcs', str2num(getenv('SLURM_NTASKS')));
+```matlab
+pool = parpool('dcs', str2num(getenv('SLURM_NTASKS')));
+```
 
 If you'd like to use multiple threads per worker, please set
 --cpus-per-task equal to the number of threads per worker you desire and
 then use this approach in your MATLAB code:
 
-    cl = parcluster('dcs');
-    cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
-    pool = cl.parpool('dcs', str2num(getenv('SLURM_NTASKS'));  % Start a pool of multi-core workers on the EML cluster
-    % execute code
-    delete(pool);   % Make sure to delete the job so the cluster resources of the Slurm job are released
+```matlab
+cl = parcluster('dcs');
+cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
+pool = cl.parpool('dcs', str2num(getenv('SLURM_NTASKS'));  % Start a pool of multi-core workers on the EML cluster
+% execute code
+delete(pool);   % Make sure to delete the job so the cluster resources of the Slurm job are released
+```
 
 You should also be able to use the "batch" command to execute a script
 or function across multiple workers as described under Option 2 below.
@@ -780,13 +786,17 @@ work with srun, only with sbatch. Here's an example job script that
 would use 40 cores for 40 workers (making sure to use the '-n' flag when
 requesting the number of cores):
 
-    #!/bin/bash
-    #SBATCH -n 40 -C dcs 
-    matlab -nodesktop -nodisplay < code.m > code.mout
+```bash
+#!/bin/bash
+#SBATCH -n 40 -C dcs
+matlab -nodesktop -nodisplay < code.m > code.mout
+```
 
 Then in your MATLAB code, simply invoke parpool as:
 
-    pool = parpool(str2num(getenv('SLURM_NTASKS')));
+```matlab
+pool = parpool(str2num(getenv('SLURM_NTASKS')));
+```
 
 Note that the workers will run as the user "matlabdcs", so if you
 interactively log into a node with some of the workers on it, you will
@@ -796,11 +806,13 @@ If you'd like to use multiple threads per worker, please set
 --cpus-per-task equal to the number of threads per worker you desire and
 then use this appraoch in your MATLAB code:
 
-    cl = parcluster('dcs');
-    cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
-    pool = cl.parpool('dcs', 20);  % Start a 20-worker pool of multi-core workers on the EML cluster
-    % execute code
-    delete(pool);   % Make sure to delete the job so the cluster resources of the Slurm job are released
+```matlab
+cl = parcluster('dcs');
+cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
+pool = cl.parpool('dcs', 20);  % Start a 20-worker pool of multi-core workers on the EML cluster
+% execute code
+delete(pool);   % Make sure to delete the job so the cluster resources of the Slurm job are released
+```
 
 #### Option 2 - run your MATLAB code on an EML Linux machine and offload parallel code to the cluster from within MATLAB
 
@@ -831,9 +843,11 @@ the Cluster Profile Manager. Then click on 'Import' and navigate to
 Now, whenever you want to start up a pool of workers, simply do the
 following (here for 40 workers):
 
-    pool = parpool('dcs', 40);  % Start a 40-worker pool on the EML cluster
-    % execute code
-    delete(pool);               % Make sure to delete the job so the cluster resources of the Slurm job are released
+```matlab
+pool = parpool('dcs', 40);  % Start a 40-worker pool on the EML cluster
+% execute code
+delete(pool);               % Make sure to delete the job so the cluster resources of the Slurm job are released
+```
 
 This starts a Slurm job (and prints out the job ID to the screen in case
 you want to monitor the Slurm job). Once the pool is ready, simply
@@ -843,22 +857,26 @@ resources are available to others.
 
 For threaded workers, you can simply do this:
 
-    cl = parcluster('dcs');
-    cl.NumThreads = 2;      % however many threads per worker you'd like to use
-    pool = cl.parpool(20);  % Start a 20-worker pool of multi-core workers on the EML cluster
-    % execute code
-    delete(pool);           % Make sure to delete the job so the cluster resources of the Slurm job are released
+```matlab
+cl = parcluster('dcs');
+cl.NumThreads = 2;      % however many threads per worker you'd like to use
+pool = cl.parpool(20);  % Start a 20-worker pool of multi-core workers on the EML cluster
+% execute code
+delete(pool);           % Make sure to delete the job so the cluster resources of the Slurm job are released
+```
 
 If you'd like to modify the flags that are used when the underlying
 Slurm job is submitted (e.g., to use the 'low' partition and set a
 particular time limit as shown here), you would do it like this:
 
-    cl = parcluster('dcs');
-    cl.AdditionalProperties.AdditionalSubmitArgs='-p low -t 30:00'
-    % Start a 40-worker pool on EML cluster low partition, 30 min. time limit
-    pool = cl.parpool(40);
-    % execute code
-    delete(pool);   % Make sure to delete the job so the cluster resources of the Slurm job are released
+```matlab
+cl = parcluster('dcs');
+cl.AdditionalProperties.AdditionalSubmitArgs='-p low -t 30:00'
+% Start a 40-worker pool on EML cluster low partition, 30 min. time limit
+pool = cl.parpool(40);
+% execute code
+delete(pool);   % Make sure to delete the job so the cluster resources of the Slurm job are released
+```
 
 Alternatively you can use the "batch" command to execute a script or
 function across multiple workers. Here is one example usage but there
@@ -867,13 +885,15 @@ the "batch" command. Suppose you have a file 'code.m' that executes a
 parfor. To run that code on 39 workers (an additional worker will be
 used to manage the work, for a total of 40 workers), you would do this:
 
-    c = parcluster('dcs');           % Sets things up to make use of MATLAB Parallel Server
-    j = c.batch('code', 'Pool', 39); % Uses 40 workers total, starting a Slurm job on the EML cluster
-    wait(j)                          % Wait for the job to finish
-    diary(j)                         % Display logging output
-    r = fetchOutputs(j);             % Get results into a cell array
-    r{1}                             % Display results
-    j.delete()                       % Make sure to delete the job so the cluster resources of the Slurm job are released
+```matlab
+c = parcluster('dcs');           % Sets things up to make use of MATLAB Parallel Server
+j = c.batch('code', 'Pool', 39); % Uses 40 workers total, starting a Slurm job on the EML cluster
+wait(j)                          % Wait for the job to finish
+diary(j)                         % Display logging output
+r = fetchOutputs(j);             % Get results into a cell array
+r{1}                             % Display results
+j.delete()                       % Make sure to delete the job so the cluster resources of the Slurm job are released
+```
 
 ## Automating Submission of Multiple Jobs
 
@@ -942,11 +962,13 @@ Here is some example bash shell code (which could be placed in a shell
 script file) that loops over two variables (one numeric and the other a
 string):
 
-    for ((it = 1; it <= 10; it++)); do
-      for mode in short long; do
-        sbatch job.sh $it $mode
-      done
-    done
+```bash
+for ((it = 1; it <= 10; it++)); do
+  for mode in short long; do
+	sbatch job.sh $it $mode
+  done
+done
+```
 
 You now have a couple options in terms of how job.sh is specified. This
 illustrates things for MATLAB jobs, but it shouldn't be too hard to
