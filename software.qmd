@@ -6,13 +6,14 @@ Ubuntu Linux on all servers and workstations
 
 ## Statistics, Econometrics, and Machine Learning
 
- - SAS
  - Stata and Stata MP (xstata/xstata-mp)
- - Gauss
  - R
  - Python
+ - Julia
+ - SAS
  - Tensorflow
- - Pytorch
+ - PyTorch
+ - Gauss
  - TSP (Available only for download)
 
 ## Mathematics
