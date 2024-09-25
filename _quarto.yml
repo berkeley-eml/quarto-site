@@ -79,14 +79,17 @@ website:
           - x-windows.qmd
       - section: "Cluster"
         contents:
-          - cluster.qmd
-          - compute-servers-policy.qmd
-          - grafana.qmd
           - hardware.qmd
-          - servers.qmd
+          - cluster.qmd
+          - section: "Login/Standalone Servers"
+            contents:
+              - servers.qmd
+              - compute-servers-policy.qmd
+              - background.qmd
+              - unix-processes.qmd
+          - grafana.qmd
           - memory.qmd
           - savio.qmd
-          - background.qmd
       - section: "Data and Storage"
         contents:
           - disk-quota.qmd
@@ -102,7 +105,7 @@ website:
           - julia-packages.qmd
           - tensorflow.qmd
           - ucthesis.qmd
-          - unix-processes.qmd
+
 format:
   html:
     theme: cosmo
