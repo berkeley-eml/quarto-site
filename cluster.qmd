@@ -50,8 +50,8 @@ using their EML logon.
 Currently users may submit jobs on the following standalone Linux
 servers (aka 'submit hosts'):
 
-    blundell, frisch, hicks, jorgensen, laffont, logit, marlowe,
-    marshall, nerlove, radner, theil
+    blundell, frisch, hicks, jorgensen, laffont, logit,
+    marlowe, marshall, nerlove, radner, theil
 
 Users can also start [JupyterHub sessions](jupyterhub.qmd) to get
 browser-based access to the cluster nodes.
@@ -359,7 +359,7 @@ number of cores (the CPUs column below) being used:
 theil:~$ squeue -o "%.7i %.9P %.8j %.8u %.2t %.9M %.5C %.8r %.6D %R"
    JOBID PARTITION     NAME     USER ST      TIME  CPUS   REASON  NODES NODELIST(REASON)
 	 381      high   job.sh paciorek  R     28:00     4     None      1 eml-sm20
-	 380      low    job.sh paciorek  R     28:09     4     None      1 eml-sm11 
+	 380      low    job.sh paciorek  R     28:09     4     None      1 eml-sm11
 ```
 
 The `ST` field indicates whether a job is running (R), failed (F), or
@@ -405,7 +405,7 @@ low*     eml-sm13           up idle   0/32/0/32
 high     eml-sm20           up idle   0/56/0/56
 high     eml-sm21           up mix    8/48/0/56
 high     eml-sm22           up idle   0/56/0/56
-high     eml-sm23           up idle   0/56/0/56 
+high     eml-sm23           up idle   0/56/0/56
 high     eml-sm30           up mix    28/4/0/32
 high     eml-sm31           up mix    28/4/0/32
 high     eml-sm32           up idle   0/32/0/32
@@ -935,7 +935,7 @@ instances (18 in this case) of the same code as part of a single job.
 
 ```bash
 #!/bin/bash
-#SBATCH --ntasks 18 
+#SBATCH --ntasks 18
 srun myExecutable
 ```
 
