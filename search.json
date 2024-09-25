@@ -993,78 +993,43 @@
     ]
   },
   {
-    "objectID": "ccluster.html",
-    "href": "ccluster.html",
-    "title": "EML Computing Cluster",
+    "objectID": "background.html",
+    "href": "background.html",
+    "title": "Background Processes",
     "section": "",
-    "text": "EML Computing Cluster\nThe Econometrics Laboratory (EML) has a high-performance computing cluster that consists of low priority partition and a high priority partition. This system allow users to work with massive data sets and easily manage long-running jobs. All software running on EML Linux machines is available on the cluster. Users can also compile programs on any EML Linux machine and then run that program on the cluster. It is managed by the SLURM queuing software. SLURM provides a standard batch queuing system through which users submit jobs to the cluster. Jobs are typically submitted to SLURM using a user-defined shell script that executes one’s application code. Interactive use is also an option. Users may also query the cluster to see job status.\nThe high priority partition has has eight nodes, divided into two sets of four nodes each. The first set has four nodes each with two 8-core CPUs. Each core has two hyperthreads, for a total of 128 processing units. Each node has 768 GB dedicated RAM. The second set has four nodes each with two 14-core CPUs. Each core has two hyperthreads, for a total of 224 processing units. Each node has 132 GB dedicated RAM. The lower priority partition has has eight nodes, each with two 16-core CPUs available for compute jobs (i.e., 32 cores per node), for a total of 256 cores. Each node has 248 GB dedicated RAM.\nWe provide documentation on how to use the EML compute cluster."
-  },
-  {
-    "objectID": "availability.html",
-    "href": "availability.html",
-    "title": "Availability",
-    "section": "",
-    "text": "The EML is normally available 24/7. Our systems are remotely accessible during all hours.\nWe periodically perform maintenance activities which requires taking some systems offline. We also need to respond to campus Facilities events – such as power or cooling activities. In those cases we may need to take all systems down.\n\n\n\nEvery attempt will be made to schedule downtimes during off hours.\nScheduled system downtime is posted on this website and in the ssh login message. We will attempt to post the message at least 24 hours in advance. The announcement will state the date(s) and time(s) of the downtime and every attempt will be made not to exceed the posted downtime hours. Whenever possible, 10 minutes warning will be given prior to shutting the system down.\n\n\n\nAll systems will be taken down under the following circumstances:\n\nEmergency hardware or software conditions may occur, including emergency filesystem repair, which may result in unscheduled system downtime. As much advance warning as possible will be given; but at times the system must be taken down rapidly to avoid further damage to hardware or other system resources.\nIf it is transparent to all users (which in practice means that there are no users on the system and no user background jobs running) the system may be taken down (for no more than 30 minutes) without advance message of the day warning.\nThe machines usually can reboot themselves from a crash, but occasionally the system will be unavailable until a qualified person can be reached.",
+    "text": "Unix has the ability to run your program in the background. This means that instead of waiting for the program to finish execution, the UNIX shell prompts you again and you can run other commands at the same time that the background process is running. To run the program myprog in background, type:\nmyprog &\nThe shell will respond with a number, its process identification number (or PID) and then return to the prompt.\nIt is also possible to leave a big job running in the background even after you logout. To keep the program myprog running in background, type:\nnohup myprog &\nFor example, to run your R job in the background from tcsh with a nice level of 19:\nnohup nice +19 R --slave &lt; infile.R &\nOr from bash:\nnohup nice -19 R --slave &lt; in.R &gt; R.out 2&gt;&1 &\nOr MATLAB from tcsh, while running it with a nice level of 19:\nnohup nice +19 matlab &lt; infile.m &gt; outfile &\n\n\n\nYou may alternatively choose to use GNU screen to run your jobs so that you can leave them running when you logout. Just invoke screen from your shell, type a space or carriage return to dismiss the startup message, then start your job. When you want to detach, type Control-a followed by Control-d. You can then exit from your terminal session. When you want to access your job again, connect to the same machine your job is running on and type screen -r.",
     "crumbs": [
       "Home",
-      "About",
-      "Availability"
+      "Cluster",
+      "Login/Standalone Servers",
+      "Background Processes"
     ]
   },
   {
-    "objectID": "availability.html#normal-hours",
-    "href": "availability.html#normal-hours",
-    "title": "Availability",
+    "objectID": "background.html#bash",
+    "href": "background.html#bash",
+    "title": "Background Processes",
     "section": "",
-    "text": "The EML is normally available 24/7. Our systems are remotely accessible during all hours.\nWe periodically perform maintenance activities which requires taking some systems offline. We also need to respond to campus Facilities events – such as power or cooling activities. In those cases we may need to take all systems down.",
+    "text": "Unix has the ability to run your program in the background. This means that instead of waiting for the program to finish execution, the UNIX shell prompts you again and you can run other commands at the same time that the background process is running. To run the program myprog in background, type:\nmyprog &\nThe shell will respond with a number, its process identification number (or PID) and then return to the prompt.\nIt is also possible to leave a big job running in the background even after you logout. To keep the program myprog running in background, type:\nnohup myprog &\nFor example, to run your R job in the background from tcsh with a nice level of 19:\nnohup nice +19 R --slave &lt; infile.R &\nOr from bash:\nnohup nice -19 R --slave &lt; in.R &gt; R.out 2&gt;&1 &\nOr MATLAB from tcsh, while running it with a nice level of 19:\nnohup nice +19 matlab &lt; infile.m &gt; outfile &",
     "crumbs": [
       "Home",
-      "About",
-      "Availability"
+      "Cluster",
+      "Login/Standalone Servers",
+      "Background Processes"
     ]
   },
   {
-    "objectID": "availability.html#scheduled-downtimes",
-    "href": "availability.html#scheduled-downtimes",
-    "title": "Availability",
+    "objectID": "background.html#screen",
+    "href": "background.html#screen",
+    "title": "Background Processes",
     "section": "",
-    "text": "Every attempt will be made to schedule downtimes during off hours.\nScheduled system downtime is posted on this website and in the ssh login message. We will attempt to post the message at least 24 hours in advance. The announcement will state the date(s) and time(s) of the downtime and every attempt will be made not to exceed the posted downtime hours. Whenever possible, 10 minutes warning will be given prior to shutting the system down.",
+    "text": "You may alternatively choose to use GNU screen to run your jobs so that you can leave them running when you logout. Just invoke screen from your shell, type a space or carriage return to dismiss the startup message, then start your job. When you want to detach, type Control-a followed by Control-d. You can then exit from your terminal session. When you want to access your job again, connect to the same machine your job is running on and type screen -r.",
     "crumbs": [
       "Home",
-      "About",
-      "Availability"
+      "Cluster",
+      "Login/Standalone Servers",
+      "Background Processes"
     ]
-  },
-  {
-    "objectID": "availability.html#unscheduled-downtimes",
-    "href": "availability.html#unscheduled-downtimes",
-    "title": "Availability",
-    "section": "",
-    "text": "All systems will be taken down under the following circumstances:\n\nEmergency hardware or software conditions may occur, including emergency filesystem repair, which may result in unscheduled system downtime. As much advance warning as possible will be given; but at times the system must be taken down rapidly to avoid further damage to hardware or other system resources.\nIf it is transparent to all users (which in practice means that there are no users on the system and no user background jobs running) the system may be taken down (for no more than 30 minutes) without advance message of the day warning.\nThe machines usually can reboot themselves from a crash, but occasionally the system will be unavailable until a qualified person can be reached.",
-    "crumbs": [
-      "Home",
-      "About",
-      "Availability"
-    ]
-  },
-  {
-    "objectID": "account-types.html",
-    "href": "account-types.html",
-    "title": "Account Types",
-    "section": "",
-    "text": "Account Types\nComputer accounts are issued to individuals in the following categories:\n\nClass accounts: Economics courses which require computer access may obtain class accounts. Class accounts are assigned to individual students by the course instructor or TA. Course instructors should contact the EML Manager in room 643 Evans. Please allow 2 weeks for class accounts to be added to the system.\nDepartmental accounts: Currently registered students (undergraduates or graduates) and faculty in the Economics Departments, and employees of the Economics Department.\nCampus student accounts: Currently registered students (undergraduates or graduates) from other UC departments with a demonstrated need for specific EML services (such as statistical packages). This type of account cannot be used for work that is funded by either grants and/or outside funds. This type of account requires faculty approval and must be renewed each semester.\nCampus staff accounts: Currently active UC staff employees from other UC departments with a demonstrated need for specific EML services (such as statistical packages). This type of account cannot be used for work that is funded by either grants and/or outside funds and must be renewed annually.\nResearch accounts: Persons working within the UC system on specific research projects which are funded by grants and/or outside funds.\nOfficial guests (visiting faculty) and visitors (associate research fellows) in the Department, at the invitation (and with the approval) of faculty.\nAlumni accounts: Past students of the Economics Department. The alumni category also includes past employees of the Economics Department. This type of account is issued to individuals who have left the Department in good standing and is only valid for one year after separation from the Department. It may not be renewed. If one of the above relationships with the Department resumes, then a new account may be issued, but the alumni account is terminated after one year. The alumni account only provides for up to 5MB under the home directory. It will be necessary to obtain a contrator account if additional resources are required.\nContractor accounts: An individual may obtain an account on a recharge basis. The person will be billed monthly for the use of system resources (login time, cpu time, disk usage, and printing). Any person who does not fall into one of the above categories may apply for a contractor account. This type of account is valid indefinitely, as long as the account is in good standing.",
-    "crumbs": [
-      "Home",
-      "Accounts",
-      "Account Types"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "The Econometrics Laboratory",
-    "section": "",
-    "text": "The Econometrics Laboratory\nThe Econometrics Laboratory (EML) is a computing facility dedicated to instruction at the graduate level and research by graduate students and faculty in the Department of Economics. This work concentrates on new developments in computationally intensive econometrics.\nEML is a unit of the Institute of Business and Economic Research, located in space provided by the Department of Economics at the University of California, Berkeley.\nThe Laboratory’s Director is David Card. He is the Class of 1950 Professor of Economics and the Director for the Center for Labor Economics at the University of California, Berkeley. He is also the Director of the Labor Studies Program at the National Bureau of Economic Research."
   },
   {
     "objectID": "accounts.html",
@@ -1115,42 +1080,70 @@
     ]
   },
   {
-    "objectID": "background.html",
-    "href": "background.html",
-    "title": "Background Processes",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "The Econometrics Laboratory",
     "section": "",
-    "text": "Unix has the ability to run your program in the background. This means that instead of waiting for the program to finish execution, the UNIX shell prompts you again and you can run other commands at the same time that the background process is running. To run the program myprog in background, type:\nmyprog &\nThe shell will respond with a number, its process identification number (or PID) and then return to the prompt.\nIt is also possible to leave a big job running in the background even after you logout. To keep the program myprog running in background, type:\nnohup myprog &\nFor example, to run your R job in the background from tcsh with a nice level of 19:\nnohup nice +19 R --slave &lt; infile.R &\nOr from bash:\nnohup nice -19 R --slave &lt; in.R &gt; R.out 2&gt;&1 &\nOr MATLAB from tcsh, while running it with a nice level of 19:\nnohup nice +19 matlab &lt; infile.m &gt; outfile &\n\n\n\nYou may alternatively choose to use GNU screen to run your jobs so that you can leave them running when you logout. Just invoke screen from your shell, type a space or carriage return to dismiss the startup message, then start your job. When you want to detach, type Control-a followed by Control-d. You can then exit from your terminal session. When you want to access your job again, connect to the same machine your job is running on and type screen -r.",
+    "text": "The Econometrics Laboratory\nThe Econometrics Laboratory (EML) is a computing facility dedicated to instruction at the graduate level and research by graduate students and faculty in the Department of Economics. This work concentrates on new developments in computationally intensive econometrics.\nEML is a unit of the Institute of Business and Economic Research, located in space provided by the Department of Economics at the University of California, Berkeley.\nThe Laboratory’s Director is David Card. He is the Class of 1950 Professor of Economics and the Director for the Center for Labor Economics at the University of California, Berkeley. He is also the Director of the Labor Studies Program at the National Bureau of Economic Research."
+  },
+  {
+    "objectID": "account-types.html",
+    "href": "account-types.html",
+    "title": "Account Types",
+    "section": "",
+    "text": "Account Types\nComputer accounts are issued to individuals in the following categories:\n\nClass accounts: Economics courses which require computer access may obtain class accounts. Class accounts are assigned to individual students by the course instructor or TA. Course instructors should contact the EML Manager in room 643 Evans. Please allow 2 weeks for class accounts to be added to the system.\nDepartmental accounts: Currently registered students (undergraduates or graduates) and faculty in the Economics Departments, and employees of the Economics Department.\nCampus student accounts: Currently registered students (undergraduates or graduates) from other UC departments with a demonstrated need for specific EML services (such as statistical packages). This type of account cannot be used for work that is funded by either grants and/or outside funds. This type of account requires faculty approval and must be renewed each semester.\nCampus staff accounts: Currently active UC staff employees from other UC departments with a demonstrated need for specific EML services (such as statistical packages). This type of account cannot be used for work that is funded by either grants and/or outside funds and must be renewed annually.\nResearch accounts: Persons working within the UC system on specific research projects which are funded by grants and/or outside funds.\nOfficial guests (visiting faculty) and visitors (associate research fellows) in the Department, at the invitation (and with the approval) of faculty.\nAlumni accounts: Past students of the Economics Department. The alumni category also includes past employees of the Economics Department. This type of account is issued to individuals who have left the Department in good standing and is only valid for one year after separation from the Department. It may not be renewed. If one of the above relationships with the Department resumes, then a new account may be issued, but the alumni account is terminated after one year. The alumni account only provides for up to 5MB under the home directory. It will be necessary to obtain a contrator account if additional resources are required.\nContractor accounts: An individual may obtain an account on a recharge basis. The person will be billed monthly for the use of system resources (login time, cpu time, disk usage, and printing). Any person who does not fall into one of the above categories may apply for a contractor account. This type of account is valid indefinitely, as long as the account is in good standing.",
     "crumbs": [
       "Home",
-      "Cluster",
-      "Login/Standalone Servers",
-      "Background Processes"
+      "Accounts",
+      "Account Types"
     ]
   },
   {
-    "objectID": "background.html#bash",
-    "href": "background.html#bash",
-    "title": "Background Processes",
+    "objectID": "availability.html",
+    "href": "availability.html",
+    "title": "Availability",
     "section": "",
-    "text": "Unix has the ability to run your program in the background. This means that instead of waiting for the program to finish execution, the UNIX shell prompts you again and you can run other commands at the same time that the background process is running. To run the program myprog in background, type:\nmyprog &\nThe shell will respond with a number, its process identification number (or PID) and then return to the prompt.\nIt is also possible to leave a big job running in the background even after you logout. To keep the program myprog running in background, type:\nnohup myprog &\nFor example, to run your R job in the background from tcsh with a nice level of 19:\nnohup nice +19 R --slave &lt; infile.R &\nOr from bash:\nnohup nice -19 R --slave &lt; in.R &gt; R.out 2&gt;&1 &\nOr MATLAB from tcsh, while running it with a nice level of 19:\nnohup nice +19 matlab &lt; infile.m &gt; outfile &",
+    "text": "The EML is normally available 24/7. Our systems are remotely accessible during all hours.\nWe periodically perform maintenance activities which requires taking some systems offline. We also need to respond to campus Facilities events – such as power or cooling activities. In those cases we may need to take all systems down.\n\n\n\nEvery attempt will be made to schedule downtimes during off hours.\nScheduled system downtime is posted on this website and in the ssh login message. We will attempt to post the message at least 24 hours in advance. The announcement will state the date(s) and time(s) of the downtime and every attempt will be made not to exceed the posted downtime hours. Whenever possible, 10 minutes warning will be given prior to shutting the system down.\n\n\n\nAll systems will be taken down under the following circumstances:\n\nEmergency hardware or software conditions may occur, including emergency filesystem repair, which may result in unscheduled system downtime. As much advance warning as possible will be given; but at times the system must be taken down rapidly to avoid further damage to hardware or other system resources.\nIf it is transparent to all users (which in practice means that there are no users on the system and no user background jobs running) the system may be taken down (for no more than 30 minutes) without advance message of the day warning.\nThe machines usually can reboot themselves from a crash, but occasionally the system will be unavailable until a qualified person can be reached.",
     "crumbs": [
       "Home",
-      "Cluster",
-      "Login/Standalone Servers",
-      "Background Processes"
+      "About",
+      "Availability"
     ]
   },
   {
-    "objectID": "background.html#screen",
-    "href": "background.html#screen",
-    "title": "Background Processes",
+    "objectID": "availability.html#normal-hours",
+    "href": "availability.html#normal-hours",
+    "title": "Availability",
     "section": "",
-    "text": "You may alternatively choose to use GNU screen to run your jobs so that you can leave them running when you logout. Just invoke screen from your shell, type a space or carriage return to dismiss the startup message, then start your job. When you want to detach, type Control-a followed by Control-d. You can then exit from your terminal session. When you want to access your job again, connect to the same machine your job is running on and type screen -r.",
+    "text": "The EML is normally available 24/7. Our systems are remotely accessible during all hours.\nWe periodically perform maintenance activities which requires taking some systems offline. We also need to respond to campus Facilities events – such as power or cooling activities. In those cases we may need to take all systems down.",
     "crumbs": [
       "Home",
-      "Cluster",
-      "Login/Standalone Servers",
-      "Background Processes"
+      "About",
+      "Availability"
+    ]
+  },
+  {
+    "objectID": "availability.html#scheduled-downtimes",
+    "href": "availability.html#scheduled-downtimes",
+    "title": "Availability",
+    "section": "",
+    "text": "Every attempt will be made to schedule downtimes during off hours.\nScheduled system downtime is posted on this website and in the ssh login message. We will attempt to post the message at least 24 hours in advance. The announcement will state the date(s) and time(s) of the downtime and every attempt will be made not to exceed the posted downtime hours. Whenever possible, 10 minutes warning will be given prior to shutting the system down.",
+    "crumbs": [
+      "Home",
+      "About",
+      "Availability"
+    ]
+  },
+  {
+    "objectID": "availability.html#unscheduled-downtimes",
+    "href": "availability.html#unscheduled-downtimes",
+    "title": "Availability",
+    "section": "",
+    "text": "All systems will be taken down under the following circumstances:\n\nEmergency hardware or software conditions may occur, including emergency filesystem repair, which may result in unscheduled system downtime. As much advance warning as possible will be given; but at times the system must be taken down rapidly to avoid further damage to hardware or other system resources.\nIf it is transparent to all users (which in practice means that there are no users on the system and no user background jobs running) the system may be taken down (for no more than 30 minutes) without advance message of the day warning.\nThe machines usually can reboot themselves from a crash, but occasionally the system will be unavailable until a qualified person can be reached.",
+    "crumbs": [
+      "Home",
+      "About",
+      "Availability"
     ]
   },
   {
