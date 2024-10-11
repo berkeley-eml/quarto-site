@@ -1,0 +1,83 @@
+# SSH Agent
+
+SSH agent forwarding allows you to use the [SSH keys](ssh-keys.qmd) stored on your local device to authenticate to remote systems, without copying the private keys between machines. This is especially useful when connecting to multiple accounts on an HPC cluster, such as your personal Unix account and shared project accounts.
+
+## Prerequisites
+
+* You must have SSH keys set up on your local device.
+* Your local SSH agent must be running (this usually happens by default on Linux/macOS systems).
+
+## Forwarding Agent From Your Computer
+
+To enable SSH agent forwarding from your computer to your own EML account:
+
+1. Start your SSH agent on your local device. This usually happens by default on macOS and on modern Linux systems. If it is not running, run the following in a terminal:
+   ```bash
+   eval $(ssh-agent)
+   ```
+
+1. Add your private key to the SSH agent:
+
+   ```bash
+   # On Linux
+   ssh-add ~/.ssh/id_ed25519
+
+   # On macOS
+   ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+   ```
+   Replace `id_ed25519` with your actual private key file, if it is named differently.
+
+1. Connect to the EML using SSH:
+
+   ```bash
+   ssh -A your-username@some-eml-machine.berkeley.edu
+   ```
+
+## Forwarding Agent between EML Accounts
+
+Once you are logged in to your EML account, you may need to login to, or transfter data between, a shared project account at the EML. To avoid re-entering your passphrase, you can forward the agent to the shared project account as well.
+
+1. Verify that the agent is available in your personal Unix account by running:
+
+   ```bash
+   ssh-add -l
+   ```
+
+   This should list your keys. If the output says The agent has no identities, it means the agent is not properly forwarded.
+
+1. Connect to the shared account:
+
+   ```bash
+   ssh -A your-project-account@some-eml-machine.berkeley.edu
+   ```
+
+   Or copy data to the project account:
+   ```bash
+   scp -A some-directory your-project-account@some-eml-machine.berkeley.edu:
+   ```
+
+   Or copy data from the project account:
+   ```bash
+   scp -A your-project-account@some-eml-machine.berkeley.edu:some-directory .
+   ```
+1. (Optional) Use SSH config to simplify the connection between your personal and shared accounts:
+
+   In your own account, you can create or modify the SSH configuration (`~/.ssh/config`) to make switching accounts easier:
+
+   ```bash
+   Host project-account
+       Hostname localhost
+       User project-account
+       ForwardAgent yes
+   ```
+
+   Then, you can switch to the shared project account with a simpler command:
+
+   ```bash
+   ssh project-account
+   ```
+
+   Or copy data to/from it:
+   ```bash
+   scp -r some-directory project-account:
+   ```

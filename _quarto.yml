@@ -65,6 +65,7 @@ website:
             contents:
               - ssh.qmd
               - ssh-keys.qmd
+              - ssh-agent.qmd
               - ssh-tunnel.qmd
               - putty.qmd
           - section: "File Transfer"
