@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>history – Econometrics Laboratory</title>
+<title>ssh-agent – Econometrics Laboratory</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./availability.html" rel="next">
+<link href="./ssh-tunnel.html" rel="next">
+<link href="./ssh-keys.html" rel="prev">
 <link href="./images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./history.html">About</a></li><li class="breadcrumb-item"><a href="./history.html">A Brief History of the EML</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./monitoring.html">Remote Access</a></li><li class="breadcrumb-item"><a href="./ssh.html">Secure Shell</a></li><li class="breadcrumb-item"><a href="./ssh-agent.html">SSH Agent</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -137,16 +172,16 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">About</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./history.html" class="sidebar-item-text sidebar-link active">
+  <a href="./history.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A Brief History of the EML</span></a>
   </div>
 </li>
@@ -260,13 +295,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Remote Access</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./monitoring.html" class="sidebar-item-text sidebar-link">
@@ -281,13 +316,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Secure Shell</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ssh.html" class="sidebar-item-text sidebar-link">
@@ -302,7 +337,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ssh-agent.html" class="sidebar-item-text sidebar-link">
+  <a href="./ssh-agent.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">SSH Agent</span></a>
   </div>
 </li>
@@ -555,7 +590,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-brief-history-of-the-eml" id="toc-a-brief-history-of-the-eml" class="nav-link active" data-scroll-target="#a-brief-history-of-the-eml">A Brief History of the EML</a></li>
+  <li><a href="#ssh-agent" id="toc-ssh-agent" class="nav-link active" data-scroll-target="#ssh-agent">SSH Agent</a>
+  <ul class="collapse">
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#forwarding-agent-from-your-computer" id="toc-forwarding-agent-from-your-computer" class="nav-link" data-scroll-target="#forwarding-agent-from-your-computer">Forwarding Agent From Your Computer</a></li>
+  <li><a href="#forwarding-agent-between-eml-accounts" id="toc-forwarding-agent-between-eml-accounts" class="nav-link" data-scroll-target="#forwarding-agent-between-eml-accounts">Forwarding Agent between EML Accounts</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -565,20 +605,60 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="a-brief-history-of-the-eml" class="level1">
-<h1>A Brief History of the EML</h1>
-<p>The Econometrics Laboratory became operational in December 1991 and was formally opened on January 24, 1992. It is was originally a Unix facility dedicated to graduate student and faculty teaching and research in the Department of Economics, University of California at Berkeley. The EML emphasizes new developments in computationally intensive econometrics. During the Spring 1992 semester it was used for instruction in three graduate courses in economics with a total enrollment of over 100 students. In its first year of operation, the EML supported an average user base of approximately 75 graduate students and faculty members in addition to the graduate courses. By the end of the academic year 1994-95, the EML supported a user base of roughly 400 graduate students and faculty members, and had provided instructional support to eight graduate courses.</p>
-<p>In its first phase of equipment acquisition, completed in the Spring of 1992, the EML was comprised of a Sun SPARCstation 2 fileserver with six gigabytes of disk storage, serving a SPARCstation 2 and four x-terminals in the faculty cluster, and ten SPARCstation IPXs in the student cluster. EML facilities also included an Exabyte tape drive, three DAT tape drives, two CD ROM drives, two laserprinters, and a port selector that served seven 14.4K modems.</p>
-<p>In its second phase of equipment acquisition, completed in the Spring of 1995, the EML installed a Sun SPARCcenter 2000 fileserver with twenty-seven gigabytes of disk storage. Its faculty cluster was expanded to two SPARC 2, two SPARC 10, and two SPARC 20 compute servers, while its graduate student cluster was expanded to fifteen SPARCstation IPXs. The original SPARC 2 fileserver became the ELSA web server. Peripheral devices includes two additional CD ROMs, an additional laserprinter, a DAT autoloader, and an upgrade to the port selector to support PPP.</p>
-<p>Additional disk packs continued to be added to the fileserver; the EML handle droughly 200GB in 1995 of disk storage; by 2000 we had two fully packed D1000 trays and roughly 400MB of disks; in 2001 we acquired an A3500 cabinet with 1 terabyte of storage.</p>
-<p>In 1996 the EML acquired an UltraSPARC 3000 enterprise server. It is a dedicated compute server for programs requiring vector processing capabilities. The core of IPX workstations was upgraded and an additional network laserprinter was added. In 1997, Sun Microsystems generously donated 14 Ultra 1 workstations to replace our aging core of IPX workstations. The Lab subsequently upgraded its ethernet infrastructure to 100 mb/s. In 1998, the Lab installed a PRI line and upgraded its modem bank to 23 57.6K modems and added another network printer. The ELSA web server was upgraded to a SPARC 10 and new disk packs were installed that more than doubles its storage capacity.</p>
-<p>In 2000, with a grant from Sun Microsystems, the Lab’s Ultra 1 workstations were upgraded to Ultra 5s and 10s. The web/ftp server was upgraded to an Ultra 1, and a new database server was installed. An additional 200GB of disk storage was acquired along with a new DLT tape autoloader.</p>
-<p>In 2001, the EML embarked on an ambitious program. We upgraded the entire Economics Department from a shared 10 mb/s infrastructure to fully switched, 100 mb/s fast ethernet (previously, only the EML’s Suns had been upgraded to fast ethernet); expanded the “econ” domain to two subnets, and acquired a new Sun Fire 3800e fileserver. The EML also acquired an 8 kilovolt UPS for its servers.</p>
-<p>In 2002, the EML received an equipment grant from the National Science Foundation, to fund acquisition of an LTO tape library and a 660 GB T3B fiber channel, RAID5-enabled disk tray for the new server. The EML now held more than 1 terabyte of disks, with the largest allocations going toward faculty research projects and graduate student dissertation research. Through a grant from Sun Microsystems, the EML also upgraded 16 Ultra 5s to Sun Blade 150s in 2002. Over the past few years, EML users have engaged in ever larger empirical research projects, and through grants from Sun, NSF, and other sources, the EML has kept pace with their computational needs.</p>
-<p>From 2005 to the present, the EML continues to add powerful compute servers, upgrade file servers to increase disk storage, and improve backup hardware to accommodate the increasing demand for large data store on fast hardware. In 2009, the EML received matching funding from the department to replace the Unix workstations in the general public lab with Apple iMacs.</p>
-<p>The Laboratory continues to pursue its mission of providing outstanding computational support in econometrics and statistics to its faculty and graduate students. Creation of the EML was motivated by Professor Daniel McFadden’s vision; its implementation was accomplished through the generous financial support of the National Science Foundation, the E. Morris Cox Endowment, the College of Letters and Science, the Office of the Vice Chancellor for Research, and individual faculty associates.</p>
+<section id="ssh-agent" class="level1">
+<h1>SSH Agent</h1>
+<p>SSH agent forwarding allows you to use the <a href="./ssh-keys.html">SSH keys</a> stored on your local device to authenticate to remote systems, without copying the private keys between machines. This is especially useful when connecting to multiple accounts on an HPC cluster, such as your personal Unix account and shared project accounts.</p>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<ul>
+<li>You must have SSH keys set up on your local device.</li>
+<li>Your local SSH agent must be running (this usually happens by default on Linux/macOS systems).</li>
+</ul>
+</section>
+<section id="forwarding-agent-from-your-computer" class="level2">
+<h2 class="anchored" data-anchor-id="forwarding-agent-from-your-computer">Forwarding Agent From Your Computer</h2>
+<p>To enable SSH agent forwarding from your computer to your own EML account:</p>
+<ol type="1">
+<li><p>Start your SSH agent on your local device. This usually happens by default on macOS and on modern Linux systems. If it is not running, run the following in a terminal:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="va">$(</span><span class="fu">ssh-agent</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Add your private key to the SSH agent:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On Linux</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_ed25519</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># On macOS</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> <span class="at">--apple-use-keychain</span> ~/.ssh/id_ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Replace <code>id_ed25519</code> with your actual private key file, if it is named differently.</p></li>
+<li><p>Connect to the EML using SSH:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-A</span> your-username@some-eml-machine.berkeley.edu</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="forwarding-agent-between-eml-accounts" class="level2">
+<h2 class="anchored" data-anchor-id="forwarding-agent-between-eml-accounts">Forwarding Agent between EML Accounts</h2>
+<p>Once you are logged in to your EML account, you may need to login to, or transfter data between, a shared project account at the EML. To avoid re-entering your passphrase, you can forward the agent to the shared project account as well.</p>
+<ol type="1">
+<li><p>Verify that the agent is available in your personal Unix account by running:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This should list your keys. If the output says The agent has no identities, it means the agent is not properly forwarded.</p></li>
+<li><p>Connect to the shared account:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-A</span> your-project-account@some-eml-machine.berkeley.edu</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or copy data to the project account:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-A</span> some-directory your-project-account@some-eml-machine.berkeley.edu:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or copy data from the project account:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-A</span> your-project-account@some-eml-machine.berkeley.edu:some-directory .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>(Optional) Use SSH config to simplify the connection between your personal and shared accounts:</p>
+<p>In your own account, you can create or modify the SSH configuration (<code>~/.ssh/config</code>) to make switching accounts easier:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> project-account</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Hostname</span> localhost</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">User</span> project-account</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ForwardAgent</span> yes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then, you can switch to the shared project account with a simpler command:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> project-account</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or copy data to/from it:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> some-directory project-account:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1004,10 +1084,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./ssh-keys.html" class="pagination-link" aria-label="Manage SSH Keys">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Manage SSH Keys</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./availability.html" class="pagination-link" aria-label="Availability">
-        <span class="nav-page-text">Availability</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ssh-tunnel.html" class="pagination-link" aria-label="SSH Tunneling">
+        <span class="nav-page-text">SSH Tunneling</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
