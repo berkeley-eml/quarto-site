@@ -778,8 +778,8 @@ marlowe, marshall, nerlove, radner, theil</code></pre>
 </section>
 <section id="submitting-gpu-jobs" class="level3">
 <h3 class="anchored" data-anchor-id="submitting-gpu-jobs">Submitting GPU Jobs</h3>
-<p>To submit a job to the GPU node, you must include either the ‘–partition=gpu’ or ‘-p gpu’ flag, as well as the “–gres=gpu:1” flag. For example:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> sbatch <span class="at">-p</span> gpu <span class="at">--gres</span><span class="op">=</span>gpu:1 job.sh</span>
+<p>To submit a job to the GPU node, you must include either the ‘–partition=gpu’ or ‘-p gpu’ flag, as well as the “–gpus=1” flag. For example:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> sbatch <span class="at">-p</span> gpu <span class="at">--gpus</span><span class="op">=</span>1 job.sh</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Submitted</span> batch job 380</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To use CUDA or cuDNN, you’ll need to load the ‘cuda’ or ‘cudnn’ modules. To use Tensorflow with the GPU, you’ll need to load the ‘tensorflow’ module (without loading the <code>cuda</code> or <code>cudnn</code> modules, as CUDA and cuDNN will be available to Tensorflow via a different mechanism).</p>
 </section>
