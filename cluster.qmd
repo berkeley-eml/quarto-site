@@ -328,11 +328,11 @@ access to a node by adding the '--exclusive' flag.
 ### Submitting GPU Jobs
 
 To submit a job to the GPU node, you must include either the
-'--partition=gpu' or '-p gpu' flag, as well as the "--gres=gpu:1" flag.
+'--partition=gpu' or '-p gpu' flag, as well as the "--gpus=1" flag.
 For example:
 
 ```bash
-theil:~$ sbatch -p gpu --gres=gpu:1 job.sh
+theil:~$ sbatch -p gpu --gpus=1 job.sh
 Submitted batch job 380
 ```
 
