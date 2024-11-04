@@ -796,34 +796,33 @@ marlowe, marshall, nerlove, radner, theil</code></pre>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>     <span class="ex">381</span>      high   job.sh paciorek  R     28:00     4     None      1 eml-sm20</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>     <span class="ex">380</span>      low    job.sh paciorek  R     28:09     4     None      1 eml-sm11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>ST</code> field indicates whether a job is running (R), failed (F), or pending (PD). The latter occurs when there are not yet enough resources on the system for your job to run.</p>
-<p>If you would like to logon to the node on which your job is running in order to assess CPU or memory use, you can run an interactive job within the context of your existing job. First determine the job ID of your running job using squeue (here job 380) and insert that in the following command:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--pty</span> <span class="at">--jobid</span><span class="op">=</span>380 /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you would like to logon to the node on which your job is running in order to assess CPU or memory use, you can SSH to the node in the context of your existing job. (Otherwise SSH to a cluster node will fail if you don’t have a job running on the node.) You’ll need to determine the node on which your job is running and then ssh to that node from a standalone/login node.</p>
 <p>You can then run ‘top’ and other such tools.</p>
 <p>To see a history of your jobs (within a time range), including reasons they might have failed:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sacct</span>  <span class="at">--starttime</span><span class="op">=</span>2021-04-01 <span class="at">--endtime</span><span class="op">=</span>2021-04-30 <span class="dt">\</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--format</span> JobID,JobName,Partition,Account,AllocCPUS,State%30,ExitCode,Submit,Start,End,NodeList,MaxRSS</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sacct</span>  <span class="at">--starttime</span><span class="op">=</span>2021-04-01 <span class="at">--endtime</span><span class="op">=</span>2021-04-30 <span class="dt">\</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--format</span> JobID,JobName,Partition,Account,AllocCPUS,State%30,ExitCode,Submit,Start,End,NodeList,MaxRSS</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="how-to-monitor-cluster-usage" class="level3">
 <h3 class="anchored" data-anchor-id="how-to-monitor-cluster-usage">How to Monitor Cluster Usage</h3>
 <p>If you’d like to see how busy each node is (e.g., to choose what partition to submit a job to), you can run the following:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> sinfo <span class="at">-N</span> <span class="at">-o</span> <span class="st">"%8P %15N %.5a %6t %C"</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">PARTITIO</span> NODELIST        AVAIL STATE  CPUS<span class="er">(</span><span class="ex">A/I/O/T</span><span class="kw">)</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm00           up idle   0/32/0/32</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm01           up idle   0/32/0/32</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm02           up idle   0/32/0/32</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm03           up idle   0/32/0/32</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm10           up mix    29/3/0/32</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm11           up mix    27/5/0/32</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm12           up mix    9/23/0/32</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm13           up idle   0/32/0/32</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm20           up idle   0/56/0/56</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm21           up mix    8/48/0/56</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm22           up idle   0/56/0/56</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm23           up idle   0/56/0/56</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm30           up mix    28/4/0/32</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm31           up mix    28/4/0/32</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm32           up idle   0/32/0/32</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm33           up idle   0/32/0/32</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> sinfo <span class="at">-N</span> <span class="at">-o</span> <span class="st">"%8P %15N %.5a %6t %C"</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">PARTITIO</span> NODELIST        AVAIL STATE  CPUS<span class="er">(</span><span class="ex">A/I/O/T</span><span class="kw">)</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm00           up idle   0/32/0/32</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm01           up idle   0/32/0/32</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm02           up idle   0/32/0/32</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm03           up idle   0/32/0/32</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm10           up mix    29/3/0/32</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm11           up mix    27/5/0/32</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm12           up mix    9/23/0/32</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="ex">low*</span>     eml-sm13           up idle   0/32/0/32</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm20           up idle   0/56/0/56</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm21           up mix    8/48/0/56</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm22           up idle   0/56/0/56</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm23           up idle   0/56/0/56</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm30           up mix    28/4/0/32</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm31           up mix    28/4/0/32</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm32           up idle   0/32/0/32</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="ex">high</span>     eml-sm33           up idle   0/32/0/32</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here the A column indicates the number of cores used (i.e., active), I indicates the number of inactive cores, and T the total number of cores on the node.</p>
 </section>
 <section id="when-will-my-job-run-or-why-is-it-not-starting" class="level3">
@@ -849,11 +848,11 @@ marlowe, marshall, nerlove, radner, theil</code></pre>
 <li><code>sassoc</code>: gives information about user access to cluster partitions</li>
 </ul>
 <p>For each of these commands, you can add the <code>-h</code> flag to see how to use them. For example:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> slogin <span class="at">-h</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Usages:</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="st">'slogin'</span> to start an interactive job</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="st">'slogin jobid'</span> to start a shell on the node a job is running on</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="st">'slogin additional_arguments_to_srun'</span> to start an interactive job with additional arguments to srun</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">theil:~$</span> slogin <span class="at">-h</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Usages:</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="st">'slogin'</span> to start an interactive job</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="st">'slogin jobid'</span> to start a shell on the node a job is running on</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="st">'slogin additional_arguments_to_srun'</span> to start an interactive job with additional arguments to srun</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="submitting-parallel-jobs" class="level2">
@@ -863,16 +862,16 @@ marlowe, marshall, nerlove, radner, theil</code></pre>
 <section id="submitting-threaded-jobs" class="level3">
 <h3 class="anchored" data-anchor-id="submitting-threaded-jobs">Submitting Threaded Jobs</h3>
 <p>Here’s an example job script to use multiple threads (4 in this case) in R (or with your own openMP-based program):</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OMP_NUM_THREADS</span><span class="op">=</span><span class="va">$SLURM_CPUS_PER_TASK</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> simulate.R simulate.Rout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OMP_NUM_THREADS</span><span class="op">=</span><span class="va">$SLURM_CPUS_PER_TASK</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> simulate.R simulate.Rout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will allow your R code to use the system’s threaded BLAS and LAPACK routines. [Note that in R you can instead use the <code>omp_set_num_threads()</code> function in the RhpcBLASctl package, again making use of the SLURM_CPUS_PER_TASK environment variable.]</p>
 <p>The same syntax in your job script will work if you’ve compiled a C/C++/Fortran program that makes use of openMP for threading. Just replace the R CMD BATCH line with the line calling your program.</p>
 <p>Here’s an example job script to use multiple threads (4 in this case) in MATLAB:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="op">&lt;</span> simulate.m <span class="op">&gt;</span> simulate.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="op">&lt;</span> simulate.m <span class="op">&gt;</span> simulate.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -884,13 +883,13 @@ Required Matlab Code
 </div>
 <div class="callout-body-container callout-body">
 <p>At the start of your MATLAB code file you should include this line:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="va">maxNumCompThreads</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="va">maxNumCompThreads</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>Here’s an example job script to use multiple threads (4 in this case) in SAS:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sas</span> <span class="at">-threads</span> <span class="at">-cpucount</span> <span class="va">$SLURM_CPUS_PER_TASK</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sas</span> <span class="at">-threads</span> <span class="at">-cpucount</span> <span class="va">$SLURM_CPUS_PER_TASK</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>A number of SAS procs are set to take advantage of threading, including SORT, SUMMARY, TABULATE, GLM, LOESS, and REG. SAS enables threading by default, with the default number of threads set to four. Starting SAS as above ensures that the number of threads is set to the number of cores you requested. You can check that threading is enabled from within SAS by running the following and looking for the cpucount and threads options in the printout.</p>
 <pre class="sas"><code>Proc Options group=performance; run;</code></pre>
 <p>You can use up to eight cores with Stata/MP (limited by the EML license for Stata).</p>
@@ -908,20 +907,20 @@ Important
 </div>
 </div>
 <p>It’s possible to explicitly set the number of processors in Stata to be the number you requested in your job submission, but that is unnecessary because Slurm will limit your job to the number of cores requested. That said, one way to do this is to hard-code the following line at the start of your Stata code (in this case assuming you requested four cores):</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> processors 4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> processors 4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can do this in an automated fashion by first invoking Stata in your job script as:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stata-mp</span> <span class="at">-b</span> do myStataCode.do <span class="va">${SLURM_CPUS_PER_TASK}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stata-mp</span> <span class="at">-b</span> do myStataCode.do <span class="va">${SLURM_CPUS_PER_TASK}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and then at the start of your Stata code including these two lines:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">args</span> ncores</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> processors <span class="kw">`</span><span class="ex">ncores</span><span class="st">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">args</span> ncores</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> processors <span class="kw">`</span><span class="ex">ncores</span><span class="st">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="submitting-multi-core-jobs" class="level3">
 <h3 class="anchored" data-anchor-id="submitting-multi-core-jobs">Submitting Multi-core Jobs</h3>
 <p>The following example job script files pertain to jobs that need to use multiple cores on a single node that do not fall under the threading/openMP context. This is relevant for parfor in MATLAB; for IPython parallel (ipyparallel), Dask, Ray, Pool.map and pp.Server in Python; and for parallel code in R that starts multiple R process (e.g., future’s future_lapply, foreach, mclapply, parLapply).</p>
 <p>Here’s an example script that uses multiple cores (4 in this case):</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> simulate.R simulate.Rout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 4</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--no-save</span> simulate.R simulate.Rout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -936,22 +935,22 @@ Important
 </div>
 </div>
 <p>The same syntax for your job script pertains to MATLAB. When using parpool in MATLAB, you can do the following:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="va">parpool</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="va">parpool</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In the high (default) partition, the default maximum number of workers is 28 on the eml-sm2 nodes and 16 on the eml-sm3 nodes, while in the low partition it is also 16. To increase this (up to the maximum number of cores on a machine), run the following code before invoking parpool:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>()<span class="op">;</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumWorkers</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>))<span class="op">;</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">parpool</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>()<span class="op">;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumWorkers</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>))<span class="op">;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">parpool</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To use more than 32 workers (i.e., 32 cores or more) (or more than 56 in the eml-sm2 nodes on the high (default) partition) in MATLAB in a parpool context (or to use cores spread across multiple nodes, which can help start your job faster when the cluster is busy), you need to use MATLAB Parallel Server, discussed below.</p>
 <p>To use multiple threads per worker in MATLAB, here is an example script for four workers and two threads per worker:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes 1</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 4</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 2</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="op">&lt;</span> simulate.m <span class="op">&gt;</span> simulate.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes 1</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 4</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 2</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="op">&lt;</span> simulate.m <span class="op">&gt;</span> simulate.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And here is how to start your parpool in your MATLAB code:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>()<span class="op">;</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumThreads</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>))<span class="op">;</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">parpool</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_NTASKS'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>()<span class="op">;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumThreads</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>))<span class="op">;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">parpool</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_NTASKS'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Also note that as indicated above, the cores in the high and gpu partitions use hyperthreading, which could slow multi-core computations in some cases. If you’d like to run multi-core jobs without hyperthreading, please contact us for work-arounds.</p>
 </section>
 <section id="submitting-multi-node-jobs" class="level3">
@@ -962,16 +961,16 @@ Important
 <h3 class="anchored" data-anchor-id="submitting-mpi-jobs">Submitting MPI Jobs</h3>
 <p>You can use MPI to run jobs across multiple nodes. This modality allows you to use more cores than exist on a single node or to gather free cores that are scattered across the nodes when the cluster is heavily used.</p>
 <p>Here’s an example script that uses multiple processors via MPI (64 in this case):</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 64</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mpirun</span> <span class="at">-np</span> <span class="va">$SLURM_NTASKS</span> myMPIexecutable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 64</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mpirun</span> <span class="at">-np</span> <span class="va">$SLURM_NTASKS</span> myMPIexecutable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note that “-n” is a shorthand for “–ntasks”.</p>
 <p>“myMPIexecutable” could be C/C++/Fortran code you’ve written that uses MPI, or R or Python code that makes use of MPI. More details are available <a href="http://statistics.berkeley.edu/computing/parallel">here</a>.</p>
 <p>To run an MPI job with each process threaded, your job script would look like the following (here with 14 processes and two threads per process):</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 14 --cpus-per-task 2</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OMP_NUM_THREADS</span><span class="op">=</span><span class="va">$SLURM_CPUS_PER_TASK</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="ex">mpirun</span> <span class="at">-np</span> <span class="va">$SLURM_NTASKS</span> <span class="at">-x</span> OMP_NUM_THREADS myMPIexecutable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 14 --cpus-per-task 2</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OMP_NUM_THREADS</span><span class="op">=</span><span class="va">$SLURM_CPUS_PER_TASK</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="ex">mpirun</span> <span class="at">-np</span> <span class="va">$SLURM_NTASKS</span> <span class="at">-x</span> OMP_NUM_THREADS myMPIexecutable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="submitting-matlab-parallel-server-multi-node-jobs" class="level3">
 <h3 class="anchored" data-anchor-id="submitting-matlab-parallel-server-multi-node-jobs">Submitting MATLAB Parallel Server (Multi-node) Jobs</h3>
@@ -983,46 +982,46 @@ Important
 <h4 class="anchored" data-anchor-id="option-1a---submit-a-slurm-job-via-sbatch-that-uses-matlab-parallel-server-new-approach-for-matlab-r2023a-as-well-as-r2022a">Option 1a - submit a Slurm job via sbatch that uses MATLAB Parallel Server (new approach for MATLAB R2023a, as well as R2022a)</h4>
 <p>As a one-time setup step (you only need to do this the first time you are using the approach), go to “Environment-&gt;Parallel-&gt;Create and Manage Cluster Profiles” in the MATLAB Desktop toolbar; this will open the Cluster Profile Manager. Then click on ‘Import’ and navigate to <code>/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings</code> (<code>dcsProfile.settings</code> in MATLAB R2022a) and click ‘Open’. Then exit out of the Cluster Profile Manager.</p>
 <p>To submit a MATLAB Parallel Server job, you’ll need to specify the number of MATLAB workers (by using the -n or –ntasks flag). Unlike in the past you should NOT use the ‘-C dcs’ flag. Here’s an example job script that would use 40 cores for 40 workers (making sure to use the ‘-n’ flag when requesting the number of cores):</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 40</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="op">&lt;</span> code.m <span class="op">&gt;</span> code.mout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 40</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="op">&lt;</span> code.m <span class="op">&gt;</span> code.mout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then in your MATLAB code, simply invoke parpool as:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">parpool</span>(<span class="ss">'dcs'</span><span class="op">,</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_NTASKS'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">parpool</span>(<span class="ss">'dcs'</span><span class="op">,</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_NTASKS'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you’d like to use multiple threads per worker, please set –cpus-per-task equal to the number of threads per worker you desire and then use this approach in your MATLAB code:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumThreads</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>))<span class="op">;</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co">% Start a pool of multi-core workers on the EML cluster</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">cl</span>.<span class="va">parpool</span>(<span class="ss">'dcs'</span><span class="op">,</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_NTASKS'</span>))<span class="op">;</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumThreads</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>))<span class="op">;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">% Start a pool of multi-core workers on the EML cluster</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">cl</span>.<span class="va">parpool</span>(<span class="ss">'dcs'</span><span class="op">,</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_NTASKS'</span>))<span class="op">;</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You should also be able to use the “batch” command to execute a script or function across multiple workers as described under Option 2 below. Other uses of MATLAB parallel server functionality may also be possible.</p>
 </section>
 <section id="option-1b---submit-a-slurm-job-via-sbatch-that-uses-matlab-parallel-server-deprecated-approach-for-matlab-r2022a-and-earlier" class="level4">
 <h4 class="anchored" data-anchor-id="option-1b---submit-a-slurm-job-via-sbatch-that-uses-matlab-parallel-server-deprecated-approach-for-matlab-r2022a-and-earlier">Option 1b - submit a Slurm job via sbatch that uses MATLAB Parallel Server (deprecated approach for MATLAB R2022a and earlier)</h4>
 <p>To submit a MATLAB Parallel Server job, you’ll need to specify the number of MATLAB workers (by using the -n or –ntasks flag) and indicate that a Parallel Server job will be run (by using ‘-C dcs’). This won’t work with srun, only with sbatch. Here’s an example job script that would use 40 cores for 40 workers (making sure to use the ‘-n’ flag when requesting the number of cores):</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 40 -C dcs</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="op">&lt;</span> code.m <span class="op">&gt;</span> code.mout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 40 -C dcs</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="op">&lt;</span> code.m <span class="op">&gt;</span> code.mout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then in your MATLAB code, simply invoke parpool as:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">parpool</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_NTASKS'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">parpool</span>(<span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_NTASKS'</span>)))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note that the workers will run as the user “matlabdcs”, so if you interactively log into a node with some of the workers on it, you will see MATLAB processes running as this user if you use ‘top’ or ‘ps’.</p>
 <p>If you’d like to use multiple threads per worker, please set –cpus-per-task equal to the number of threads per worker you desire and then use this appraoch in your MATLAB code:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumThreads</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>))<span class="op">;</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co">% Start a 20-worker pool of multi-core workers on the EML cluster</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">cl</span>.<span class="va">parpool</span>(<span class="ss">'dcs'</span><span class="op">,</span> <span class="fl">20</span>)<span class="op">;</span></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumThreads</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'SLURM_CPUS_PER_TASK'</span>))<span class="op">;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">% Start a 20-worker pool of multi-core workers on the EML cluster</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">cl</span>.<span class="va">parpool</span>(<span class="ss">'dcs'</span><span class="op">,</span> <span class="fl">20</span>)<span class="op">;</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="option-2---run-your-matlab-code-on-an-eml-linux-machine-and-offload-parallel-code-to-the-cluster-from-within-matlab" class="level4">
 <h4 class="anchored" data-anchor-id="option-2---run-your-matlab-code-on-an-eml-linux-machine-and-offload-parallel-code-to-the-cluster-from-within-matlab">Option 2 - run your MATLAB code on an EML Linux machine and offload parallel code to the cluster from within MATLAB</h4>
@@ -1031,53 +1030,53 @@ Important
 <p>To start up a pool of workers (with the only limit on the number of workers being the number of cores in a given partition and the usage of cores by other users’ jobs), you’ll need to use the ‘dcs’ cluster profile.</p>
 <p>As a one-time setup step (you only need to do this the first time you are using the approach), go to “Environment-&gt;Parallel-&gt;Create and Manage Cluster Profiles” in the MATLAB Desktop toolbar; this will open the Cluster Profile Manager. Then click on ‘Import’ and navigate to <code>/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings</code> (<code>dcsProfile.settings</code> in R2022a and earlier versions) and click ‘Open’. Then exit out of the Cluster Profile Manager.</p>
 <p>Now, whenever you want to start up a pool of workers, simply do the following (here for 40 workers):</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">% Start a 40-worker pool on the EML cluster</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">parpool</span>(<span class="ss">'dcs'</span><span class="op">,</span> <span class="fl">40</span>)<span class="op">;</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">% Start a 40-worker pool on the EML cluster</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">parpool</span>(<span class="ss">'dcs'</span><span class="op">,</span> <span class="fl">40</span>)<span class="op">;</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This starts a Slurm job (and prints out the job ID to the screen in case you want to monitor the Slurm job). Once the pool is ready, simply execute your parallel code (such as with a parfor loop). When you are done remember to delete the pool so the cluster job ends and the resources are available to others.</p>
 <p>For threaded workers, you can simply do this:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumThreads</span> <span class="op">=</span> <span class="fl">2</span><span class="op">;</span> <span class="co">% however many threads per worker you'd like to use</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">% Start a 20-worker pool of multi-core workers on the EML cluster</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">cl</span>.<span class="va">parpool</span>(<span class="fl">20</span>)<span class="op">;</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you’d like to modify the flags that are used when the underlying Slurm job is submitted (e.g., to use the ‘low’ partition and set a particular time limit as shown here), you would do it like this:</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">NumThreads</span> <span class="op">=</span> <span class="fl">2</span><span class="op">;</span> <span class="co">% however many threads per worker you'd like to use</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">AdditionalProperties</span>.<span class="va">AdditionalSubmitArgs</span><span class="op">=</span><span class="ss">'-p low -t 30:00'</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">% Start a 20-worker pool of multi-core workers on the EML cluster</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">cl</span>.<span class="va">parpool</span>(<span class="fl">20</span>)<span class="op">;</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">% Start a 40-worker pool on EML cluster low partition, 30 min. time limit</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">cl</span>.<span class="va">parpool</span>(<span class="fl">40</span>)<span class="op">;</span></span>
 <span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
 <span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
 <span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
 <span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you’d like to modify the flags that are used when the underlying Slurm job is submitted (e.g., to use the ‘low’ partition and set a particular time limit as shown here), you would do it like this:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="va">cl</span>.<span class="va">AdditionalProperties</span>.<span class="va">AdditionalSubmitArgs</span><span class="op">=</span><span class="ss">'-p low -t 30:00'</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">% Start a 40-worker pool on EML cluster low partition, 30 min. time limit</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="va">pool</span> <span class="op">=</span> <span class="va">cl</span>.<span class="va">parpool</span>(<span class="fl">40</span>)<span class="op">;</span></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co">% execute code</span></span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co">% ...</span></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="va">delete</span>(<span class="va">pool</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Alternatively you can use the “batch” command to execute a script or function across multiple workers. Here is one example usage but there are a variety of others discussed in MATLAB’s online documentation for the “batch” command. Suppose you have a file ‘code.m’ that executes a parfor. To run that code on 39 workers (an additional worker will be used to manage the work, for a total of 40 workers), you would do this:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">% Sets things up to make use of MATLAB Parallel Server</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="va">c</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">% Uses 40 workers total, starting a Slurm job on the EML cluster</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="va">j</span> <span class="op">=</span> <span class="va">c</span>.<span class="va">batch</span>(<span class="ss">'code'</span><span class="op">,</span> <span class="ss">'Pool'</span><span class="op">,</span> <span class="fl">39</span>)<span class="op">;</span></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="va">wait</span>(<span class="va">j</span>)                          <span class="co">% Wait for the job to finish</span></span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="va">diary</span>(<span class="va">j</span>)                         <span class="co">% Display logging output</span></span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="va">r</span> <span class="op">=</span> <span class="va">fetchOutputs</span>(<span class="va">j</span>)<span class="op">;</span>             <span class="co">% Get results into a cell array</span></span>
-<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="va">r</span>{<span class="fl">1</span>}                             <span class="co">% Display results</span></span>
-<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
-<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="va">j</span>.<span class="va">delete</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">% Sets things up to make use of MATLAB Parallel Server</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="va">c</span> <span class="op">=</span> <span class="va">parcluster</span>(<span class="ss">'dcs'</span>)<span class="op">;</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">% Uses 40 workers total, starting a Slurm job on the EML cluster</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="va">j</span> <span class="op">=</span> <span class="va">c</span>.<span class="va">batch</span>(<span class="ss">'code'</span><span class="op">,</span> <span class="ss">'Pool'</span><span class="op">,</span> <span class="fl">39</span>)<span class="op">;</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="va">wait</span>(<span class="va">j</span>)                          <span class="co">% Wait for the job to finish</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="va">diary</span>(<span class="va">j</span>)                         <span class="co">% Display logging output</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="va">r</span> <span class="op">=</span> <span class="va">fetchOutputs</span>(<span class="va">j</span>)<span class="op">;</span>             <span class="co">% Get results into a cell array</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="va">r</span>{<span class="fl">1</span>}                             <span class="co">% Display results</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co">% Delete the job to release its cluster resources</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="va">j</span>.<span class="va">delete</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 </section>
@@ -1087,21 +1086,21 @@ Important
 <h3 class="anchored" data-anchor-id="using-job-arrays-to-submit-multiple-jobs-at-once">Using Job Arrays to Submit Multiple jobs at Once</h3>
 <p>Job array submissions are a nice way to submit multiple jobs in which you vary a parameter across the different jobs.</p>
 <p>Here’s what your job script would look like, in this case to run a total of 5 jobs with parameter values of 0, 1, 2, 5, 7:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -a 0-2,5,7</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="ex">myExecutable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -a 0-2,5,7</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="ex">myExecutable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Your program should then make use of the SLURM_ARRAY_TASK_ID environment variable, which for a given job will contain one of the values from the set given with the -a flag (in this case from {0,1,2,5,7}). You could, for example, read SLURM_ARRAY_TASK_ID into your R, Python, MATLAB, or C code.</p>
 <p>Here’s a concrete example where it’s sufficient to use SLURM_ARRAY_TASK_ID to distinguish different input files if you need to run the same command (the bioinformatics program tophat in this case) on multiple input files (in this case, trans0.fq, trans1.fq, …):</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -a 0-2,5,7</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="ex">tophat</span> BowtieIndex trans<span class="va">${SLURM_ARRAY_TASK_ID}</span>.fq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -a 0-2,5,7</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="ex">tophat</span> BowtieIndex trans<span class="va">${SLURM_ARRAY_TASK_ID}</span>.fq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="submitting-data-parallel-spmd-code" class="level3">
 <h3 class="anchored" data-anchor-id="submitting-data-parallel-spmd-code">Submitting Data Parallel (SPMD) Code</h3>
 <p>Here’s how you would set up your job script if you want to run multiple instances (18 in this case) of the same code as part of a single job.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 18</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> myExecutable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks 18</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> myExecutable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To have each instance behave differently, you can make use of the SLURM_PROCID environment variable, which will be distinct (and have values 0, 1, 2, …) between the different instances.</p>
 <p>To have each process be threaded, see the syntax under the MPI section above.</p>
 </section>
@@ -1110,31 +1109,31 @@ Important
 <p>The above approaches are more elegant, but you can also use UNIX shell tools to submit multiple Slurm jobs. Here are some approaches and example syntax. We’ve tested these a bit but email <a href="mailto:consult@econ.berkeley.edu" class="email">consult@econ.berkeley.edu</a> if you have problems or find a better way to do this. (Of course you can also manually create lots of individual job submission scripts, each of which calls a different script.)</p>
 <p>First, remember that each individual job should be submitted through sbatch.</p>
 <p>Here is some example bash shell code (which could be placed in a shell script file) that loops over two variables (one numeric and the other a string):</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="kw">((</span><span class="va">it</span> <span class="op">=</span> <span class="dv">1</span><span class="kw">;</span> <span class="va">it</span> <span class="op">&lt;=</span> <span class="dv">10</span><span class="kw">;</span> <span class="va">it</span><span class="op">++</span><span class="kw">));</span> <span class="cf">do</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> mode <span class="kw">in</span> short long<span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">sbatch</span> job.sh <span class="va">$it</span> <span class="va">$mode</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">done</span></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="kw">((</span><span class="va">it</span> <span class="op">=</span> <span class="dv">1</span><span class="kw">;</span> <span class="va">it</span> <span class="op">&lt;=</span> <span class="dv">10</span><span class="kw">;</span> <span class="va">it</span><span class="op">++</span><span class="kw">));</span> <span class="cf">do</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> mode <span class="kw">in</span> short long<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">sbatch</span> job.sh <span class="va">$it</span> <span class="va">$mode</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">done</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You now have a couple options in terms of how job.sh is specified. This illustrates things for MATLAB jobs, but it shouldn’t be too hard to modify for other types of jobs.</p>
 <section id="option-1" class="level4">
 <h4 class="anchored" data-anchor-id="option-1">Option #1</h4>
-<div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># contents of job.sh</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"it = </span><span class="va">$1</span><span class="st">; mode = '</span><span class="va">$2</span><span class="st">'; myMatlabCode"</span> <span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.m</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="at">-singleCompThread</span> <span class="op">&lt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.m <span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.out <span class="dv">2</span><span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.err</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># contents of job.sh</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"it = </span><span class="va">$1</span><span class="st">; mode = '</span><span class="va">$2</span><span class="st">'; myMatlabCode"</span> <span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.m</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="at">-singleCompThread</span> <span class="op">&lt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.m <span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.out <span class="dv">2</span><span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.err</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this case myMatlabCode.m would use the variables ‘it’ and ‘mode’ but not define them.</p>
 </section>
 <section id="option-2" class="level4">
 <h4 class="anchored" data-anchor-id="option-2">Option #2</h4>
-<div class="sourceCode" id="cb52"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># contents of job.sh</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">it</span><span class="op">=</span><span class="va">$1</span><span class="kw">;</span> <span class="bu">export</span> <span class="va">mode</span><span class="op">=</span><span class="va">$2</span><span class="kw">;</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="at">-singleCompThread</span> <span class="op">&lt;</span> myMatlabCode.m <span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.out <span class="dv">2</span><span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.err</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># contents of job.sh</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">it</span><span class="op">=</span><span class="va">$1</span><span class="kw">;</span> <span class="bu">export</span> <span class="va">mode</span><span class="op">=</span><span class="va">$2</span><span class="kw">;</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="ex">matlab</span> <span class="at">-nodesktop</span> <span class="at">-nodisplay</span> <span class="at">-singleCompThread</span> <span class="op">&lt;</span> myMatlabCode.m <span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.out <span class="dv">2</span><span class="op">&gt;</span> tmp-<span class="va">$1</span>-<span class="va">$2</span>.err</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this case you need to insert the following MATLAB code at the start of myMatlabCode.m so that MATLAB correctly reads the values of ‘it’ and ‘mode’ from the UNIX environment variables:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="va">it</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'it'</span>))<span class="op">;</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="va">mode</span> <span class="op">=</span> <span class="va">getenv</span>(<span class="ss">'mode'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="va">it</span> <span class="op">=</span> <span class="va">str2num</span>(<span class="va">getenv</span>(<span class="ss">'it'</span>))<span class="op">;</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="va">mode</span> <span class="op">=</span> <span class="va">getenv</span>(<span class="ss">'mode'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For Stata jobs, there’s an easier mechanism for passing arguments into a batch job. Invoke Stata as follows in job.sh:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stata</span> <span class="at">-b</span> do myStataCode.do <span class="va">$1</span> <span class="va">$2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stata</span> <span class="at">-b</span> do myStataCode.do <span class="va">$1</span> <span class="va">$2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and then in the first line of your Stata code file, myStataCode.do above, assign the input values to variables (in this case I’ve named them id and mode to match the shell variables, but they can be named differently):</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="ex">args</span> id mode</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="ex">args</span> id mode</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then the remainder of your code can make use of these variables.</p>
 
 
