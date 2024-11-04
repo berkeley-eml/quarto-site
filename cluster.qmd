@@ -367,14 +367,11 @@ pending (PD). The latter occurs when there are not yet enough resources
 on the system for your job to run.
 
 If you would like to logon to the node on which your job is running in
-order to assess CPU or memory use, you can run an interactive job within
-the context of your existing job. First determine the job ID of your
-running job using squeue (here job 380) and insert that in the following
-command:
-
-```bash
-srun --pty --jobid=380 /bin/bash
-```
+order to assess CPU or memory use, you can SSH to the node in
+the context of your existing job. (Otherwise SSH to a cluster node will
+fail if you don't have a job running on the node.) You'll need to
+determine the node on which your job is running and then ssh to that node
+from a standalone/login node.
 
 You can then run 'top' and other such tools.
 
