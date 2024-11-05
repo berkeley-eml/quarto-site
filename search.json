@@ -1,314 +1,309 @@
 [
   {
-    "objectID": "savio.html",
-    "href": "savio.html",
-    "title": "EML Condo Node at Savio",
+    "objectID": "ssh-keys.html",
+    "href": "ssh-keys.html",
+    "title": "Manage SSH Keys",
     "section": "",
-    "text": "EML has purchased two nodes in a condo at Savio, the high-performance computational cluster managed by the Berkeley Research Computing (BRC) program. As of 2024, these nodes are quite old won’t have as high performance as new Savio nodes or as new nodes on the EML, but they are available, and in addition, because of the condo, users are entitled to use the extra resource available on the Savio cluster through a low priority QoS.\nIf you are interested in using this resource, please create an account at the MyBRC user portal. Once your account is created and you’ve signed the cluster user access agreement, from the welcome page, click on Join next to Create or join a project. Look for co_econ and click Join next to it. You will receive notification when your request has been approved.\nInstructions on how to access the SAVIO cluster, hardware details, filesystems, job scheduler, and how to submit jobs to the condo all are available at the user guide.",
-    "crumbs": [
-      "Home",
-      "Cluster",
-      "EML Condo Node at Savio"
-    ]
-  },
-  {
-    "objectID": "x-windows.html",
-    "href": "x-windows.html",
-    "title": "X Windows",
-    "section": "",
-    "text": "This article describes the steps necessary to install X server software on your home computer. This will enable you to display windows and graphics created by applications running on remote UNIX systems.\nNote that in many cases you may be better of using the EML JupyterHub for browser-based access to RStudio and VS Code, or Remote Desktop to run any graphical program in a remote desktop window.\n\n\nMost of our users who require X server software tend to choose Hummingbird’s eXceed because of its availability to the Berkeley campus, its broad feature set, and its Microsoft Windows compatability.\n\n\nHummingbird eXceed can be downloaded from http://software.berkeley.edu. You are required to authenticate with your CalNet ID.\n\n\n\nInstallation is fairly simple; just double-click on the installation program. The installer runs some display diagnostics towards the end so expect the installation process to take longer than most software installations.\n\n\n\nThe best way to run eXceed is in conjunction with SSH software. This ensures that your connection is secure and that anyone snooping on your internet connection will not be able to read any passwords or other secure information that you type. When you run eXceed and SSH software, you will launch programs from the SSH window and eXceed will be able to display them. See these instructions for information on downloading and installing SSH software.\n\n\nTo enable eXceed to work with SSH clients, it will have to be configured to wait for X connections, as opposed to initiating X sessions itself.\nRun the Xconfig utility that comes with eXceed. In the Xconfig control panel, open the Communication item and configure your connection to be Passive.\n\n\n\nYour Windows SSH client must be configured to forward X Window System communication from the machine you are connecting to to your PC’s display.\n\nputty\nLaunch putty.exe, click on the plus sign to the left of “SSH” in the left hand pane, then click “X11” and check the box labelled “Enable X11 Forwarding”.\nSSH Communications Security\nChoose Settings… from the Edit menu and then choose Tunneling from the Profile Settings tree on the left. Check Tunnel X11 connections in the pane on the right.\nThe above works fine if you start eXceed first and then start your SSH client. It is possible, however, to create a shortcut on your desktop that will automatically start both eXceed and your SSH client automatically. To enable this:\n\nOpen the Xsession utility that came with eXceed.\nIn the Xsession Session Startup Application popup window, click on New Program. Then choose Windows App and then the OK button.\nIn the Wstart popup window, fill in:\nDescription:  ssh\nCommand line: the path to ssh.exe (Browse for it)\nWorking directory: the path up to \\ssh, i.e., c:\\data fellows\\f-secure\\ssh\nRun:  Normal\nThen choose Save from the File menu and name the file ssh.ws. Then quit the Wstart window.\nNow in the Xsession window, you will see ssh.ws ssh under Available Programs. ssh.ws is the new filename, and ssh is the description.\nClick on ssh.ws ssh to enable the Add button. Click on Add. This adds the ssh.ws file to Included Programs.\nNext choose Save from the File menu and name the file ssh.ses. Again, the default path is the user directory in the exceed tree.\nThe last step is to find where eXceed saved ssh.ses and create a shortcup to it on your desktop. This is the icon you should double-click to start your secure X session.\n\n\n\n\n\n\n\nXming is the X Windows Software from X.Org ported to Microsoft Windows. It shares source code with Cygwin’s X server (see below), but you do not need the full cygwin environment to run it. You can use this X server in much the same way you use eXceed, though it does not come with many of the features of eXceed. If, for some reason, eXceed becomes unavailable to you, try this software. It can be downloaded from http://www.straightrunning.com/XmingNotes/.\n\n\n\nThe Cygwin UNIX environment also includes the XFree86 X Window System. It can be downloaded from http://www.cygwin.com/xfree/.\n\n\n\n\n\nDownload XQuartz from https://www.xquartz.org.\n\n\n\nFor forwarding remote X sessions over ssh you can use either Terminal.app (also found in /Applications/Utilities) or xterm. If you are using the macOS Terminal, you will need to set your DISPLAY variable. Enter this statement into the file ~/.bashrc on your own computer (not your EML account):\nif [ -z \"$DISPLAY\" ]; then export DISPLAY=:0.0; fi\nand then start a new Terminal window. If you are using xterm from with XQuartz (via the Application menu &gt; xterm), the variable should be set for you.\nOn the Mac you should also use the -X and -Y options:\nssh -X -Y username@hostname",
+    "text": "It is possible to open an SSH connection without having to type your password everytime. Instead, you can use a passphrase in combination with SSH “key pairs”. On macOS or UNIX, you will be able to type in your passphrase once at login, and during that session, connect to different remote computers without typing in a password or passphrase each time. On Windows PCs, using the passphrase enables you to connect to different accounts or hosts in the same session seamlessly, without having to type in a password or passphrase every time.\nYou will need to create an SSH keypair to facilitate this process. One key, the private key, stays on the machine you will connect from. The other key, the public key, can be put in any account you connect to. Think of this process as leaving a real key (the public key) in a remote door. The door will only open if you have the associated private key as you approach. This is why you must keep the private key to yourself, otherwise people who have a copy of it can pass through all the doors in which you left your public key.",
     "crumbs": [
       "Home",
       "Remote Access",
-      "X Windows"
+      "Secure Shell",
+      "Manage SSH Keys"
     ]
   },
   {
-    "objectID": "x-windows.html#windows-exceed",
-    "href": "x-windows.html#windows-exceed",
-    "title": "X Windows",
-    "section": "",
-    "text": "Most of our users who require X server software tend to choose Hummingbird’s eXceed because of its availability to the Berkeley campus, its broad feature set, and its Microsoft Windows compatability.\n\n\nHummingbird eXceed can be downloaded from http://software.berkeley.edu. You are required to authenticate with your CalNet ID.\n\n\n\nInstallation is fairly simple; just double-click on the installation program. The installer runs some display diagnostics towards the end so expect the installation process to take longer than most software installations.\n\n\n\nThe best way to run eXceed is in conjunction with SSH software. This ensures that your connection is secure and that anyone snooping on your internet connection will not be able to read any passwords or other secure information that you type. When you run eXceed and SSH software, you will launch programs from the SSH window and eXceed will be able to display them. See these instructions for information on downloading and installing SSH software.\n\n\nTo enable eXceed to work with SSH clients, it will have to be configured to wait for X connections, as opposed to initiating X sessions itself.\nRun the Xconfig utility that comes with eXceed. In the Xconfig control panel, open the Communication item and configure your connection to be Passive.\n\n\n\nYour Windows SSH client must be configured to forward X Window System communication from the machine you are connecting to to your PC’s display.\n\nputty\nLaunch putty.exe, click on the plus sign to the left of “SSH” in the left hand pane, then click “X11” and check the box labelled “Enable X11 Forwarding”.\nSSH Communications Security\nChoose Settings… from the Edit menu and then choose Tunneling from the Profile Settings tree on the left. Check Tunnel X11 connections in the pane on the right.\nThe above works fine if you start eXceed first and then start your SSH client. It is possible, however, to create a shortcut on your desktop that will automatically start both eXceed and your SSH client automatically. To enable this:\n\nOpen the Xsession utility that came with eXceed.\nIn the Xsession Session Startup Application popup window, click on New Program. Then choose Windows App and then the OK button.\nIn the Wstart popup window, fill in:\nDescription:  ssh\nCommand line: the path to ssh.exe (Browse for it)\nWorking directory: the path up to \\ssh, i.e., c:\\data fellows\\f-secure\\ssh\nRun:  Normal\nThen choose Save from the File menu and name the file ssh.ws. Then quit the Wstart window.\nNow in the Xsession window, you will see ssh.ws ssh under Available Programs. ssh.ws is the new filename, and ssh is the description.\nClick on ssh.ws ssh to enable the Add button. Click on Add. This adds the ssh.ws file to Included Programs.\nNext choose Save from the File menu and name the file ssh.ses. Again, the default path is the user directory in the exceed tree.\nThe last step is to find where eXceed saved ssh.ses and create a shortcup to it on your desktop. This is the icon you should double-click to start your secure X session.",
+    "objectID": "ssh-keys.html#on-windows",
+    "href": "ssh-keys.html#on-windows",
+    "title": "Manage SSH Keys",
+    "section": "On Windows",
+    "text": "On Windows\nNote: newer versions of Windows 10 may have native SSH clients. If you have the software already installed, see the UNIX and macOS instructions below. You can run the same commands in the Windows command prompt program.\n\nCreating the key pair\n\nInstall PuTTY on your machine, and go to Start Menu &gt; PuTTY &gt; PuTTYgen.\nA new window will appear. At the bottom, for “Type of key”, choose RSA, ECDSA, or ED25519. Then click the the “Generate” button. You may need to move your mouse about in the small window area in order to generate randomness that the process requires.\nType in a unique passphrase in the Key and Confirm passphrase fields. The passphrase is used to protect your key and you will be asked for it when you connect via SSH using public key authentication.\nClick on the “Save Public Key” and “Save Private Key” buttons to save the keys.\n\n\n\nUploading the public key\nOnce you have generated the key pair, you will need to transfer the public key to the remote site. You can transfer the public key in any number of ways, such as by emailing it to the owner of the remote account or an administrator, or SCP or SFTP if you have access. The public key file is actually just a text file.\n\n\nInstalling the public key\nSee the UNIX instructions for this step below as they are identical.",
     "crumbs": [
       "Home",
       "Remote Access",
-      "X Windows"
+      "Secure Shell",
+      "Manage SSH Keys"
     ]
   },
   {
-    "objectID": "x-windows.html#windows-xming",
-    "href": "x-windows.html#windows-xming",
-    "title": "X Windows",
-    "section": "",
-    "text": "Xming is the X Windows Software from X.Org ported to Microsoft Windows. It shares source code with Cygwin’s X server (see below), but you do not need the full cygwin environment to run it. You can use this X server in much the same way you use eXceed, though it does not come with many of the features of eXceed. If, for some reason, eXceed becomes unavailable to you, try this software. It can be downloaded from http://www.straightrunning.com/XmingNotes/.",
+    "objectID": "ssh-keys.html#on-unix-and-macos",
+    "href": "ssh-keys.html#on-unix-and-macos",
+    "title": "Manage SSH Keys",
+    "section": "On UNIX and macOS",
+    "text": "On UNIX and macOS\n\nGenerating SSH Keys\nYou can generate keys with the ‘ssh-keygen’ command:\n% ssh-keygen -t ed25519\nGenerating public/private ed25519 key pair.\nEnter file in which to save the key ($HOME/.ssh/id_ed25519):    \nEnter passphrase (empty for no passphrase): \nEnter same passphrase again:  Your identification has been saved in $HOME/.ssh/id_ed25519.\nour public key has been saved in $HOME/.ssh/id_ed25519.pub.\n  ### Uploading the public key\nOnce you have generated the key pair, you will need to transfer the public key, e.g. id_ed25519.pub, to the remote site. You can transfer the public key in any number of ways, such as FTP, SFTP, or even by email as an attachment. The public key file is actually just a text file. Upload the file to anyplace in the top-level of your home directory.\nTo transfer the file to the remote machine using SCP, execute:\nscp ~/.ssh/id_ed25519.pub username@remotehost:mynewkey.pub\n\n\nInstalling the public key\nAppend the public key to ~/.ssh/authorized_keys on the remote machine. SSH to that computer and run:\n$ cat ~/mynewkey.pub &gt;&gt; ~/.ssh/authorized_keys\n$ rm ~/mynewkey.pub",
     "crumbs": [
       "Home",
       "Remote Access",
-      "X Windows"
+      "Secure Shell",
+      "Manage SSH Keys"
     ]
   },
   {
-    "objectID": "x-windows.html#windows-cygwin",
-    "href": "x-windows.html#windows-cygwin",
-    "title": "X Windows",
+    "objectID": "x2go.html",
+    "href": "x2go.html",
+    "title": "X2Go",
     "section": "",
-    "text": "The Cygwin UNIX environment also includes the XFree86 X Window System. It can be downloaded from http://www.cygwin.com/xfree/.",
+    "text": "X2Go provides fast and secure graphical access to an EML desktop with support for copy and paste between the local and remote computers.\n\n\nThere are clients for both Mac and Windows. If you have a Mac, make sure you have Xquartz installed.\n\n\n\nLaunch the application and create a new session. The following settings override the default values:\n\nSession\n\nSession name: Your Favorite Machine\nHost: machine-name.berkeley.edu\nLogin: YOUR EML LOGIN\nEnable “Try auto login (ssh-agent or default ssh key)” if you use ssh-agent to connect to the EML without your password. If you do not enable this you will be prompted to enter your EML password when connecting.\nSession type: XFCE\n\nInput/Output\n\nCustom: 1024x768 (or whatever you desire)\nSet display DPI: 100\n\nMedia\n\nDisable “Enable sound support”\nDisable “Client side printing support”",
     "crumbs": [
       "Home",
       "Remote Access",
-      "X Windows"
+      "X2Go"
     ]
   },
   {
-    "objectID": "x-windows.html#apple-xquartz",
-    "href": "x-windows.html#apple-xquartz",
-    "title": "X Windows",
+    "objectID": "x2go.html#download",
+    "href": "x2go.html#download",
+    "title": "X2Go",
     "section": "",
-    "text": "Download XQuartz from https://www.xquartz.org.\n\n\n\nFor forwarding remote X sessions over ssh you can use either Terminal.app (also found in /Applications/Utilities) or xterm. If you are using the macOS Terminal, you will need to set your DISPLAY variable. Enter this statement into the file ~/.bashrc on your own computer (not your EML account):\nif [ -z \"$DISPLAY\" ]; then export DISPLAY=:0.0; fi\nand then start a new Terminal window. If you are using xterm from with XQuartz (via the Application menu &gt; xterm), the variable should be set for you.\nOn the Mac you should also use the -X and -Y options:\nssh -X -Y username@hostname",
+    "text": "There are clients for both Mac and Windows. If you have a Mac, make sure you have Xquartz installed.",
     "crumbs": [
       "Home",
       "Remote Access",
-      "X Windows"
+      "X2Go"
     ]
   },
   {
-    "objectID": "unix-processes.html",
-    "href": "unix-processes.html",
-    "title": "Managing UNIX processes",
+    "objectID": "x2go.html#settings",
+    "href": "x2go.html#settings",
+    "title": "X2Go",
     "section": "",
-    "text": "The output of ps will indicate the name of the program, its process I.D., and the amount of CPU time it has consumed so far.\n\nTo display information about a specific user’s processes:\n\nps -U USERNAME\nwhere USERNAME is your username\n\nTo display information about a specific running program:\n\nps -ef | grep PROGRAM\nwhere PROGRAM is the program’s name\nSee man ps for additional information.\n\n\n\nTo kill a running program, type:\nkill PID\nwhere PID is the process I.D. obtained by running ps.\nIf the first form does not kill your process, try\nkill -9 PID\nTo kill all your background processes, execute:\nkill 0\n\n\n\nMost programs initially inherit the current terminal or pseudo-terminal for doing input and output. This means that these programs have a “controlling terminal”. The “controlling terminal”, and therefore all output, is lost if you logout before your background job completes. To avoid this loss, you should either code your program to read all input and write all output to specific files, or your should redirect input and output for the program by using the shell operators: &lt;, &gt;, &gt;&gt;, and &gt;&.\nIt is recommended that you redirect standard output and standard error to a log file for all programs run in the background. For example:\nmyprog &gt;& logfile &\nwill run myprog in the background, redirecting all output to the file ‘logfile’ in the current directory. See man bash for details on shell redirection operators.\n\n\n\nA “big job” is any CPU-bound process which requires over one minute of CPU time.\n\n\nIn order to run big jobs without slowing down the entire system and inconveniencing all users, everyone must follow certain procedures.\n\nClass accounts are restricted to running their jobs on the public workstations (Use the command sitehosts public for a list of public workstations). Class accounts are not allowed to run a job on a faculty workstation without the prior consent of the faculty member.\nRun the program in background. Do not run the program as “a.out”. Please rename the “a.out” file before executing the program and do not remove the program “binary” before the program has completed executing.\nRun only one background job at a time per machine. If you need to run multiple jobs on one machine, run them in sequence, not in parallel, by putting all the commands in a shell script. Select another computer if a large job is already running on the computer that you have selected. Use the command idle to select a host and top to examine the most CPU intensive jobs are running on that host.\nPlease do not submit jobs to more than 8 computers at any one time. If you have special requirements, you can request an increase in the number of computers to use concurrently by notifying the EML staff. This will enable the EML staff to evaluate load requirements and to monitor the system resources, which will help to avoid conflicts with other users.\nBig jobs should run at low priority, or high “nice value”, of 18 or 19. By default, all programs run at nice value 0. But on the EML systems, the following minumum nice values are required for big jobs:\nTable 1. Appropriate nice values\n\n\n\n\nCPU time\n\n\nMinimum nice value\n\n\n\n\n\n\n1 - 5 minutes\n\n\n18\n\n\n\n\nover 5 minutes\n\n\n19\n\n\n\n\n\nFor example, suppose one wanted to run Matlab in the background with nice value of 19:\n% nice +19 matlab &\nFor more information on these commands, see “man nice” (but note that where the manual says “nice -10” the C shell requires “nice +10”. Each user is responsible for ensuring that his/her big jobs are running at appropriate priorities. The superuser is free to renice appropriately any process which is slowing the system down.\nIf you need to nice a process while it is running, look up the PID as described above and run:\n% renice +19 PID\n\n\n\nComputer memory is necessary for the computer to operate on your data. As the size of the data you’re working with gets bigger and bigger, the computer tends to need more memory. Thus, when you’re working with lots of data and your program prints an error message, especially one which reports a number of bytes or kilobytes of memory requested, the problem is most likely computer memory. The first step is to lift the default restriction on the use of memory which is imposed by the shell, by typing the command:\nlimit datasize unlimited\nat the UNIX command prompt, before you run the program which is failing to obtain the required memory. If the problem persists, in general your only alternative is to run the job on a computer which has more memory. Please send mail to consult to get information about the memory resources of the different EML machines.\n\n\n\nSome people run 2-hour CPU-time jobs only to discover afterwords that the program didn’t even do what they wanted. Avoid this. Debug your program using small test cases until you’re sure you’ve got it right. Only then should you run the big monster.\nIf it’s a very long computation and you can wait for the results, use the “batch” and “at” commands to run it when the system is unloaded.\n\n\n\nTwo common questions when running big jobs are “How do I find out the running time?” and “How do I capture the program output which would normally go to the screen?”. Here is one simple way to do both (as:\n% nice +18 /usr/bin/time program-name &gt;& ouput-filename\nWhere program-name is the name of your program and ouput-filename is the name of the file in which you want to capture output. The running time will be the last line of the output file, formatted like this:\n60.0 real        10.0 user         0.5 sys\nIn this example, the cpu time used was 10.5 seconds (10.0 user + 0.5 sys) and the elapsed (wall-clock) time was 60.0 seconds. By division, your program used 10.5/60 or just over 1/6th of the available cpu time while it ran.\n\n\n\nUsers should run only one background job at a time per machine. If you must run several jobs in background, run them sequentially, not simultaneously. If your programs are ‘prog1’, ‘prog2’ and ‘prog3’, run them in background via the shell command:\n(prog1 ; prog2 ; prog3) &gt;& log &\nAnother way is to use a semicolon:\nrun1 &gt;& run1.log ; run2 &gt;& run2.log\nwhere run1 and run2 are the programs you wish to run and run1.log and run2.log are the logfiles.\nYet annother way is to set up a shell script file, for example ‘run_all’, containing:\n#!/bin/sh run1 &gt;& run1.log run2 &gt;& run2.log\nBy specifying the &gt; sign, you save the output from run1 into file run1.log. By also including the & sign, it also saves any error message output into run1.log.\nThen from the unix prompt:\n% chmod +x run_all\nto allow the script to be executable, and then type:\n./run_all\nto run the script. You could also type:\n./run_all &\nto have it run in the background.\n\n\n\n\nThe at and batch commands allow the system to queue up big jobs and run them at a later time. at allows you to specify when the commands should be executed, while jobs queued with batch will execute as soon as the system load level permits. These commands provide a mechanism for big jobs to run without slowing down interactive response and interfering with other people trying to use the computer.\n\n\nTo use at or batch, create a script file which contains the unix commands you want to run. Suppose your script file is called ‘filename’. To run it in batch, type the command:\nbatch filename\nTo run the script at a specific time, use:\nat time date filename\nwhere time is in the form 0815, 0815am, 8:15am, now, and 5 pm; and date is in the form Jan 24, Friday, tomorrow, and today.\nIf you leave out the date field, the date will default to today.\nThe computer will respond:\njob N at &lt;full date&gt;\nwhere ‘N’ is the job number it creates. When the job finishes, it will mail you the output of the script, unless output was redirected. (see below)\n\n\n\nBy default, /bin/sh is used as the shell interpreter for the commands in your script. If your script-file is a /bin/csh script, use the ‘-c’ flag, as in ‘at -c 1 pm script’.\nIf the commands in your script file need any input, create separate input files which contain the necessary input and use the ‘&lt;’ shell feature in the script file. To redirect the output of a particular command in your script, use the ‘&gt;’ shell feature. For example, your script file might contain the line:\n\nproga &lt; inputa &gt; outputa\n\nThis would cause the program ‘proga’ to take its input from the file ‘inputa’ and send output to ‘outputa’.\n\n\n\nTo find out the status of your jobs, type the command:\nat -l\nThis will report both ‘batch’ and ‘at’ jobs. If ‘N’ is the job number reported by ‘at -l’ then the command:\nat -r N\nwill remove that job from the queue (whether or not it is already running) and interrupt it (if it is already running).",
+    "text": "Launch the application and create a new session. The following settings override the default values:\n\nSession\n\nSession name: Your Favorite Machine\nHost: machine-name.berkeley.edu\nLogin: YOUR EML LOGIN\nEnable “Try auto login (ssh-agent or default ssh key)” if you use ssh-agent to connect to the EML without your password. If you do not enable this you will be prompted to enter your EML password when connecting.\nSession type: XFCE\n\nInput/Output\n\nCustom: 1024x768 (or whatever you desire)\nSet display DPI: 100\n\nMedia\n\nDisable “Enable sound support”\nDisable “Client side printing support”",
     "crumbs": [
       "Home",
-      "Cluster",
-      "Login/Standalone Servers",
-      "Managing UNIX processes"
+      "Remote Access",
+      "X2Go"
     ]
   },
   {
-    "objectID": "unix-processes.html#the-ps-command",
-    "href": "unix-processes.html#the-ps-command",
-    "title": "Managing UNIX processes",
+    "objectID": "vpn.html",
+    "href": "vpn.html",
+    "title": "Econometrics Laboratory",
     "section": "",
-    "text": "The output of ps will indicate the name of the program, its process I.D., and the amount of CPU time it has consumed so far.\n\nTo display information about a specific user’s processes:\n\nps -U USERNAME\nwhere USERNAME is your username\n\nTo display information about a specific running program:\n\nps -ef | grep PROGRAM\nwhere PROGRAM is the program’s name\nSee man ps for additional information.",
+    "text": "Download the AnyConnect software from the bottom of its Software Central page.\nRun the AnyConnect client and on the Connection tab, in the field marked Connect to enter ucbvpn.berkeley.edu as the hostname.\nWhen prompted enter your CalNet credentials for the username and password fields.\nChoose a connection group. The first option is suitable for most cases:\n\n1-Campus_VPN: tunnel only campus traffic through the VPN\n2-Campus_VPN_Full_Tunnel: tunnel all of your internet traffic through it\n3-Library_VPN groups: just library traffic\n\nClick the Connect button.",
     "crumbs": [
       "Home",
-      "Cluster",
-      "Login/Standalone Servers",
-      "Managing UNIX processes"
+      "Remote Access",
+      "Using the Campus VPN"
     ]
   },
   {
-    "objectID": "unix-processes.html#killing-processes",
-    "href": "unix-processes.html#killing-processes",
-    "title": "Managing UNIX processes",
+    "objectID": "vpn.html#using-the-campus-vpn",
+    "href": "vpn.html#using-the-campus-vpn",
+    "title": "Econometrics Laboratory",
     "section": "",
-    "text": "To kill a running program, type:\nkill PID\nwhere PID is the process I.D. obtained by running ps.\nIf the first form does not kill your process, try\nkill -9 PID\nTo kill all your background processes, execute:\nkill 0",
+    "text": "Download the AnyConnect software from the bottom of its Software Central page.\nRun the AnyConnect client and on the Connection tab, in the field marked Connect to enter ucbvpn.berkeley.edu as the hostname.\nWhen prompted enter your CalNet credentials for the username and password fields.\nChoose a connection group. The first option is suitable for most cases:\n\n1-Campus_VPN: tunnel only campus traffic through the VPN\n2-Campus_VPN_Full_Tunnel: tunnel all of your internet traffic through it\n3-Library_VPN groups: just library traffic\n\nClick the Connect button.",
     "crumbs": [
       "Home",
-      "Cluster",
-      "Login/Standalone Servers",
-      "Managing UNIX processes"
+      "Remote Access",
+      "Using the Campus VPN"
     ]
   },
   {
-    "objectID": "unix-processes.html#input-and-output",
-    "href": "unix-processes.html#input-and-output",
-    "title": "Managing UNIX processes",
+    "objectID": "ucthesis.html",
+    "href": "ucthesis.html",
+    "title": "ucthesis LaTeX style",
     "section": "",
-    "text": "Most programs initially inherit the current terminal or pseudo-terminal for doing input and output. This means that these programs have a “controlling terminal”. The “controlling terminal”, and therefore all output, is lost if you logout before your background job completes. To avoid this loss, you should either code your program to read all input and write all output to specific files, or your should redirect input and output for the program by using the shell operators: &lt;, &gt;, &gt;&gt;, and &gt;&.\nIt is recommended that you redirect standard output and standard error to a log file for all programs run in the background. For example:\nmyprog &gt;& logfile &\nwill run myprog in the background, redirecting all output to the file ‘logfile’ in the current directory. See man bash for details on shell redirection operators.",
-    "crumbs": [
-      "Home",
-      "Cluster",
-      "Login/Standalone Servers",
-      "Managing UNIX processes"
-    ]
-  },
-  {
-    "objectID": "unix-processes.html#running-intensive-processes",
-    "href": "unix-processes.html#running-intensive-processes",
-    "title": "Managing UNIX processes",
-    "section": "",
-    "text": "A “big job” is any CPU-bound process which requires over one minute of CPU time.\n\n\nIn order to run big jobs without slowing down the entire system and inconveniencing all users, everyone must follow certain procedures.\n\nClass accounts are restricted to running their jobs on the public workstations (Use the command sitehosts public for a list of public workstations). Class accounts are not allowed to run a job on a faculty workstation without the prior consent of the faculty member.\nRun the program in background. Do not run the program as “a.out”. Please rename the “a.out” file before executing the program and do not remove the program “binary” before the program has completed executing.\nRun only one background job at a time per machine. If you need to run multiple jobs on one machine, run them in sequence, not in parallel, by putting all the commands in a shell script. Select another computer if a large job is already running on the computer that you have selected. Use the command idle to select a host and top to examine the most CPU intensive jobs are running on that host.\nPlease do not submit jobs to more than 8 computers at any one time. If you have special requirements, you can request an increase in the number of computers to use concurrently by notifying the EML staff. This will enable the EML staff to evaluate load requirements and to monitor the system resources, which will help to avoid conflicts with other users.\nBig jobs should run at low priority, or high “nice value”, of 18 or 19. By default, all programs run at nice value 0. But on the EML systems, the following minumum nice values are required for big jobs:\nTable 1. Appropriate nice values\n\n\n\n\nCPU time\n\n\nMinimum nice value\n\n\n\n\n\n\n1 - 5 minutes\n\n\n18\n\n\n\n\nover 5 minutes\n\n\n19\n\n\n\n\n\nFor example, suppose one wanted to run Matlab in the background with nice value of 19:\n% nice +19 matlab &\nFor more information on these commands, see “man nice” (but note that where the manual says “nice -10” the C shell requires “nice +10”. Each user is responsible for ensuring that his/her big jobs are running at appropriate priorities. The superuser is free to renice appropriately any process which is slowing the system down.\nIf you need to nice a process while it is running, look up the PID as described above and run:\n% renice +19 PID\n\n\n\nComputer memory is necessary for the computer to operate on your data. As the size of the data you’re working with gets bigger and bigger, the computer tends to need more memory. Thus, when you’re working with lots of data and your program prints an error message, especially one which reports a number of bytes or kilobytes of memory requested, the problem is most likely computer memory. The first step is to lift the default restriction on the use of memory which is imposed by the shell, by typing the command:\nlimit datasize unlimited\nat the UNIX command prompt, before you run the program which is failing to obtain the required memory. If the problem persists, in general your only alternative is to run the job on a computer which has more memory. Please send mail to consult to get information about the memory resources of the different EML machines.\n\n\n\nSome people run 2-hour CPU-time jobs only to discover afterwords that the program didn’t even do what they wanted. Avoid this. Debug your program using small test cases until you’re sure you’ve got it right. Only then should you run the big monster.\nIf it’s a very long computation and you can wait for the results, use the “batch” and “at” commands to run it when the system is unloaded.\n\n\n\nTwo common questions when running big jobs are “How do I find out the running time?” and “How do I capture the program output which would normally go to the screen?”. Here is one simple way to do both (as:\n% nice +18 /usr/bin/time program-name &gt;& ouput-filename\nWhere program-name is the name of your program and ouput-filename is the name of the file in which you want to capture output. The running time will be the last line of the output file, formatted like this:\n60.0 real        10.0 user         0.5 sys\nIn this example, the cpu time used was 10.5 seconds (10.0 user + 0.5 sys) and the elapsed (wall-clock) time was 60.0 seconds. By division, your program used 10.5/60 or just over 1/6th of the available cpu time while it ran.\n\n\n\nUsers should run only one background job at a time per machine. If you must run several jobs in background, run them sequentially, not simultaneously. If your programs are ‘prog1’, ‘prog2’ and ‘prog3’, run them in background via the shell command:\n(prog1 ; prog2 ; prog3) &gt;& log &\nAnother way is to use a semicolon:\nrun1 &gt;& run1.log ; run2 &gt;& run2.log\nwhere run1 and run2 are the programs you wish to run and run1.log and run2.log are the logfiles.\nYet annother way is to set up a shell script file, for example ‘run_all’, containing:\n#!/bin/sh run1 &gt;& run1.log run2 &gt;& run2.log\nBy specifying the &gt; sign, you save the output from run1 into file run1.log. By also including the & sign, it also saves any error message output into run1.log.\nThen from the unix prompt:\n% chmod +x run_all\nto allow the script to be executable, and then type:\n./run_all\nto run the script. You could also type:\n./run_all &\nto have it run in the background.",
-    "crumbs": [
-      "Home",
-      "Cluster",
-      "Login/Standalone Servers",
-      "Managing UNIX processes"
-    ]
-  },
-  {
-    "objectID": "unix-processes.html#scheduling-jobs",
-    "href": "unix-processes.html#scheduling-jobs",
-    "title": "Managing UNIX processes",
-    "section": "",
-    "text": "The at and batch commands allow the system to queue up big jobs and run them at a later time. at allows you to specify when the commands should be executed, while jobs queued with batch will execute as soon as the system load level permits. These commands provide a mechanism for big jobs to run without slowing down interactive response and interfering with other people trying to use the computer.\n\n\nTo use at or batch, create a script file which contains the unix commands you want to run. Suppose your script file is called ‘filename’. To run it in batch, type the command:\nbatch filename\nTo run the script at a specific time, use:\nat time date filename\nwhere time is in the form 0815, 0815am, 8:15am, now, and 5 pm; and date is in the form Jan 24, Friday, tomorrow, and today.\nIf you leave out the date field, the date will default to today.\nThe computer will respond:\njob N at &lt;full date&gt;\nwhere ‘N’ is the job number it creates. When the job finishes, it will mail you the output of the script, unless output was redirected. (see below)\n\n\n\nBy default, /bin/sh is used as the shell interpreter for the commands in your script. If your script-file is a /bin/csh script, use the ‘-c’ flag, as in ‘at -c 1 pm script’.\nIf the commands in your script file need any input, create separate input files which contain the necessary input and use the ‘&lt;’ shell feature in the script file. To redirect the output of a particular command in your script, use the ‘&gt;’ shell feature. For example, your script file might contain the line:\n\nproga &lt; inputa &gt; outputa\n\nThis would cause the program ‘proga’ to take its input from the file ‘inputa’ and send output to ‘outputa’.\n\n\n\nTo find out the status of your jobs, type the command:\nat -l\nThis will report both ‘batch’ and ‘at’ jobs. If ‘N’ is the job number reported by ‘at -l’ then the command:\nat -r N\nwill remove that job from the queue (whether or not it is already running) and interrupt it (if it is already running).",
-    "crumbs": [
-      "Home",
-      "Cluster",
-      "Login/Standalone Servers",
-      "Managing UNIX processes"
-    ]
-  },
-  {
-    "objectID": "terminate-r.html",
-    "href": "terminate-r.html",
-    "title": "Terminate R sessions",
-    "section": "",
-    "text": "When you run an R job, you should properly quit the job when you’re done, by typing “q()” at the R prompt, and responding to the query about “Save workspace image?” appropriately. DO NOT log off without terminating your R job/session, and you should not kill a window with a running R process unless you follow one of the suggestions below.\n\n\n\nIf you want your R job to keep running after you log out, the best way to run R is through the BATCH command, i.e. run a command like this one at the UNIX prompt:\nR CMD BATCH cmds.r output.txt &\nwhere “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type help(BATCH) from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.\n\n\n\nIf you don’t want to worry about shutting down your interactive R session, you MUST use either the -save or the -no-save option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing R at the UNIX prompt, type\nR --save\nor\nR --no-save",
+    "text": "This is the README file for the UCTHESIS class for LaTeX. It corresponds to version 3.1 of the UCTHESIS class (14 July 2001).\nNOTE: v3.0 is the first LaTeX2e version of UCTHESIS. It is now a class that runs in native LaTeX2e mode. It is functionally identical to UCTHESIS.STY v2.7 released on 30 October 1994 by Ethan V. Munson. Other than changes for compatibility (mostly having to do with font selection), and option selection, very little modification has been done to the style. As a result, there are probably cleaner ways to implement a number of features. That will have to wait for the next release. (BBF 10/31/94)\n\n\n\n\n\nThere is a sample dissertation (by the fictitious, but very irritating, Perry H Disdainful) in the file uctest.tex. It also uses uctest.bib as its bibliography database (though the contents of the database are not important). Mostly this is useful as an example of how to produce the front matter. If you don’t understand LaTeX at all, this file might help you get started, but, since you’re going to be writing a 100+ page document, you should invest the $20 in a copy of the LaTeX manual (by Leslie Lamport the original author of LaTeX). This has recently been updated for LaTeX2e.\nThe LaTeX Companion, by Goossens, Mittelbach, and Samarin (who have been involved in developping and supporting the new version of LaTeX) is also quite good. It gives a lot of useful information if you are going to be writing or modifying classes, and gives a lot of additional information on commonly available style packages. It’s about $35.\n\n\n\nTo use the UCTHESIS class, make sure that the ucthesis.cls file is on your TEXINPUTS search path and use the following command at the start of your input file:\ndocumentclass{ucthesis}\n\n\n\n\nThe UCTHESIS class is a port of the UCTHESIS style version 2.7 (the final 2.09 release) to LaTeX2e. The UCTHESIS style is a modified version of the standard LaTeX REPORT style that is accepted for use with University of California PhD dissertations and Masters theses. The available commands are almost identical to those of the REPORT style, so your best starting point for documentation is the LaTeX manual written by Leslie Lamport.\nThe key features of the class are:\n\nThe primary modification to the REPORT style is the use of pseudo-double-spacing, since the UC system’s rules are still designed for typewriters. This is achieved by increasing the baselinestretch parameter to 1.37. The baselinestretch is returned to a single-spaced value of 1.00 for elements like tables, captions, and footnotes and for all displayed text (quote, quotation, and verse environments). Unfortunately, this is done with a macro called ssp which resets the font size to normalsize. In LaTeX 2.09 this seems to be unavoidable, but it makes it very hard to create tables in different font sizes.\nMargins are 1.5 inches on the left, 1.0 inches elsewhere.\n3) Uses 11 point by default; you can use the 10pt or 12pt options for those sizes.\nPage numbers are in the top right corner for all pages.\nComplete, correct front matter for UC dissertations can be generated. If you are not a UC student, you should make sure that the front matter is OK with your school.\n\n\n\nThere are five primary options:\nThe “draft” style uses single-spacing throughout the document.\nThe “final” style uses the correct pseudo-double-spacing. This option is the default and is redundant, but is included for symmetry.\nThe “10pt”, “11pt”, and “12pt” styles set the default font size to the obvious value. The “11pt” option is the default and thus is redundant, but is safe to use anyway.\nThe options are selected on the documentclass line, e.g.:\ndocumentclass[10pt,draft]{ucthesis}\n\n\n\nIf you want to use page headers or footers other than the default ones, you should try using “headerfooter.sty” or “fancyheadings.sty”. The myheadings pagestyle doesn’t work well and there is no workaround. The headerfooter and fancyheadings styles are widely distributed, well documented, and easy to use.\n\n\n\n\nThe other key service provided by this class is that it generates correct front matter (title page, approval page, abstract, etc.) with a failrly simple set of commands. This facility could be a little easier, but compared to an earlier state of affairs, it’s pretty slick. The format of the front matter is specified quite explicitly in the document “Guidelines for Submitting a Doctoral Dissertation or Master’s Thesis” distributed by the UC Berkeley Graduate Division. The current version of the class is based on the 2001 version of this document.\nA complete example of the use of the front matter commands can be found in the sample dissertation distributed with the class.\n\n\nTo use the front matter macros and environments, you must first declare a number of text strings:\ntitle           Dissertation title author          Your name as registered with UC (usually w/ full middle name) degreeyear      Year your dissertation will be granted degreesemester  Semester (or quarter) your dissertation will be granted degree          The title of your degree (e.g. Doctor of Philosophy) chair           Title and name of your committee chair (e.g. \"Professor Michael A. Harrison\") othermembers    The names of the other members of your committee separated by linebreaks (e.g. \"Professor Susan L. Graham\\Professor Jim Pitman) numberofmembers The number of members on your committee.  This defaults to 3 (and thus is optional) and can be any value between 3 and 6.  It affects the number of lines on the approval page and the space between them. prevdegrees     Your previous degrees:                 \"B.A. (University of California, San Diego) 1978\\\\                 B.A. (University of California, San Diego) 1986\\\\                 M.S. (University of California, Berkeley) 1989\" field           The official title of your field.  This is usually your department's name, but at Berkeley, most Engineering degrees have a more complex name.  Be sure to check the guidelines for any special twists on the name of your field. campus          The name of your UC campus.  This should be capitalized. (e.g. Berkeley) \n\n\n\nThe title, approval, and copyright pages have extremely rigid formats that allow them to be generated automatically once the above declarations have been made. To generate them, invoke the macros\n\\maketitle \\approvalpage \\copyrightpage\nYou should probably invoke them in that order, because that’s the order required by the guidelines.\n\n\n\nBecause you have to provide the text of the abstract, only the title can be generated automatically. So, there is an abstract environment. It generates the title and numbers the abstract in arabic numerals and makes sure that it starts on new page.\nThe UC system requires that your advisor sign the last page of your abstract. Many students just let their advisor just sign at a random location on the page, but you can use the abstractsignature command to generate a signature line with your advisor’s name printed below it. This command generates the signature line at the point it is invoked, so it should be placed at the end of the abstract.\n\n\n\nThe remaining front matter (dedication, table of contents, lists of figures and tables, acknowledgements) MUST be put inside the “frontmatter” environment, which ensures that page-numbering is handled properly. Within this frontmatter environment, you put the environments and commands for the rest of the front matter. There are environments for “dedication” and “acknowledgements” and the standard LaTeX commands for producing tableofcontents, listoffigures, and listoftables.\nThe standard LaTeX commands are well documented in the LaTeX manual. You will probably have to hand edit the .lof (list of figures) and .lot (list of tables) files to make verbose captions more suitable for this front matter. Once you do this, remember to use the nofiles macro to keep them from getting overwritten.\nThe acknowledgements and dedication environments make their contents start on a new page. The acknowledgements environment also put the word “Acknowledgements” in large, bold, centered text at the top of the page. For formatting the dedication page, you’re on your own. After all, the dedication is a kind of poetry and there’s no predicting the right way to format poetry.\n\n\n\n\nThe “smalltabular” and “smalltabular*” environments are equivalent to the “tabular” and “tabular*” environments, except that they use the small font. The “scriptsizetabular” and “scriptsizetabular*” use the scriptsize font.\n\n\n\nTo install the UCTHESIS class, you need to install four files:\nucthesis.cls uct10.clo uct11.clo uct12.clo\nin your LaTeX class file repository.",
     "crumbs": [
       "Home",
       "Software",
-      "Terminate R sessions"
+      "ucthesis LaTeX style"
     ]
   },
   {
-    "objectID": "terminate-r.html#quit",
-    "href": "terminate-r.html#quit",
-    "title": "Terminate R sessions",
+    "objectID": "ucthesis.html#ucthesis-latex-class",
+    "href": "ucthesis.html#ucthesis-latex-class",
+    "title": "ucthesis LaTeX style",
     "section": "",
-    "text": "When you run an R job, you should properly quit the job when you’re done, by typing “q()” at the R prompt, and responding to the query about “Save workspace image?” appropriately. DO NOT log off without terminating your R job/session, and you should not kill a window with a running R process unless you follow one of the suggestions below.",
+    "text": "This is the README file for the UCTHESIS class for LaTeX. It corresponds to version 3.1 of the UCTHESIS class (14 July 2001).\nNOTE: v3.0 is the first LaTeX2e version of UCTHESIS. It is now a class that runs in native LaTeX2e mode. It is functionally identical to UCTHESIS.STY v2.7 released on 30 October 1994 by Ethan V. Munson. Other than changes for compatibility (mostly having to do with font selection), and option selection, very little modification has been done to the style. As a result, there are probably cleaner ways to implement a number of features. That will have to wait for the next release. (BBF 10/31/94)",
     "crumbs": [
       "Home",
       "Software",
-      "Terminate R sessions"
+      "ucthesis LaTeX style"
     ]
   },
   {
-    "objectID": "terminate-r.html#batch",
-    "href": "terminate-r.html#batch",
-    "title": "Terminate R sessions",
+    "objectID": "ucthesis.html#using-the-ucthesis-class",
+    "href": "ucthesis.html#using-the-ucthesis-class",
+    "title": "ucthesis LaTeX style",
     "section": "",
-    "text": "If you want your R job to keep running after you log out, the best way to run R is through the BATCH command, i.e. run a command like this one at the UNIX prompt:\nR CMD BATCH cmds.r output.txt &\nwhere “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type help(BATCH) from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.",
+    "text": "There is a sample dissertation (by the fictitious, but very irritating, Perry H Disdainful) in the file uctest.tex. It also uses uctest.bib as its bibliography database (though the contents of the database are not important). Mostly this is useful as an example of how to produce the front matter. If you don’t understand LaTeX at all, this file might help you get started, but, since you’re going to be writing a 100+ page document, you should invest the $20 in a copy of the LaTeX manual (by Leslie Lamport the original author of LaTeX). This has recently been updated for LaTeX2e.\nThe LaTeX Companion, by Goossens, Mittelbach, and Samarin (who have been involved in developping and supporting the new version of LaTeX) is also quite good. It gives a lot of useful information if you are going to be writing or modifying classes, and gives a lot of additional information on commonly available style packages. It’s about $35.\n\n\n\nTo use the UCTHESIS class, make sure that the ucthesis.cls file is on your TEXINPUTS search path and use the following command at the start of your input file:\ndocumentclass{ucthesis}",
     "crumbs": [
       "Home",
       "Software",
-      "Terminate R sessions"
+      "ucthesis LaTeX style"
     ]
   },
   {
-    "objectID": "terminate-r.html#explicit-invocation",
-    "href": "terminate-r.html#explicit-invocation",
-    "title": "Terminate R sessions",
+    "objectID": "ucthesis.html#what-the-ucthesis-class-does",
+    "href": "ucthesis.html#what-the-ucthesis-class-does",
+    "title": "ucthesis LaTeX style",
     "section": "",
-    "text": "If you don’t want to worry about shutting down your interactive R session, you MUST use either the -save or the -no-save option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing R at the UNIX prompt, type\nR --save\nor\nR --no-save",
+    "text": "The UCTHESIS class is a port of the UCTHESIS style version 2.7 (the final 2.09 release) to LaTeX2e. The UCTHESIS style is a modified version of the standard LaTeX REPORT style that is accepted for use with University of California PhD dissertations and Masters theses. The available commands are almost identical to those of the REPORT style, so your best starting point for documentation is the LaTeX manual written by Leslie Lamport.\nThe key features of the class are:\n\nThe primary modification to the REPORT style is the use of pseudo-double-spacing, since the UC system’s rules are still designed for typewriters. This is achieved by increasing the baselinestretch parameter to 1.37. The baselinestretch is returned to a single-spaced value of 1.00 for elements like tables, captions, and footnotes and for all displayed text (quote, quotation, and verse environments). Unfortunately, this is done with a macro called ssp which resets the font size to normalsize. In LaTeX 2.09 this seems to be unavoidable, but it makes it very hard to create tables in different font sizes.\nMargins are 1.5 inches on the left, 1.0 inches elsewhere.\n3) Uses 11 point by default; you can use the 10pt or 12pt options for those sizes.\nPage numbers are in the top right corner for all pages.\nComplete, correct front matter for UC dissertations can be generated. If you are not a UC student, you should make sure that the front matter is OK with your school.\n\n\n\nThere are five primary options:\nThe “draft” style uses single-spacing throughout the document.\nThe “final” style uses the correct pseudo-double-spacing. This option is the default and is redundant, but is included for symmetry.\nThe “10pt”, “11pt”, and “12pt” styles set the default font size to the obvious value. The “11pt” option is the default and thus is redundant, but is safe to use anyway.\nThe options are selected on the documentclass line, e.g.:\ndocumentclass[10pt,draft]{ucthesis}\n\n\n\nIf you want to use page headers or footers other than the default ones, you should try using “headerfooter.sty” or “fancyheadings.sty”. The myheadings pagestyle doesn’t work well and there is no workaround. The headerfooter and fancyheadings styles are widely distributed, well documented, and easy to use.",
     "crumbs": [
       "Home",
       "Software",
-      "Terminate R sessions"
+      "ucthesis LaTeX style"
     ]
   },
   {
-    "objectID": "temp-space.html",
-    "href": "temp-space.html",
-    "title": "Temporary Disk Space",
+    "objectID": "ucthesis.html#front-matter",
+    "href": "ucthesis.html#front-matter",
+    "title": "ucthesis LaTeX style",
     "section": "",
-    "text": "There are several places where users can temporarily store data.\n\n\nTemporary storage locations are not backed up and may be removed without notice.\n\n\n\nFiles put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed.\n\n\n\nThe /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers.\n\n\n\nThe /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured.\n\n\n\nDirectories under /scratch/public can be used for projects requiring large files that are modified frequently. The scratch directories exist on the file server and not on the local workstations, however if space becomes limited we may automatically compress/gzip files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users needs. Files that are not actively being used and are compressible should be stored in a compressed format."
+    "text": "The other key service provided by this class is that it generates correct front matter (title page, approval page, abstract, etc.) with a failrly simple set of commands. This facility could be a little easier, but compared to an earlier state of affairs, it’s pretty slick. The format of the front matter is specified quite explicitly in the document “Guidelines for Submitting a Doctoral Dissertation or Master’s Thesis” distributed by the UC Berkeley Graduate Division. The current version of the class is based on the 2001 version of this document.\nA complete example of the use of the front matter commands can be found in the sample dissertation distributed with the class.\n\n\nTo use the front matter macros and environments, you must first declare a number of text strings:\ntitle           Dissertation title author          Your name as registered with UC (usually w/ full middle name) degreeyear      Year your dissertation will be granted degreesemester  Semester (or quarter) your dissertation will be granted degree          The title of your degree (e.g. Doctor of Philosophy) chair           Title and name of your committee chair (e.g. \"Professor Michael A. Harrison\") othermembers    The names of the other members of your committee separated by linebreaks (e.g. \"Professor Susan L. Graham\\Professor Jim Pitman) numberofmembers The number of members on your committee.  This defaults to 3 (and thus is optional) and can be any value between 3 and 6.  It affects the number of lines on the approval page and the space between them. prevdegrees     Your previous degrees:                 \"B.A. (University of California, San Diego) 1978\\\\                 B.A. (University of California, San Diego) 1986\\\\                 M.S. (University of California, Berkeley) 1989\" field           The official title of your field.  This is usually your department's name, but at Berkeley, most Engineering degrees have a more complex name.  Be sure to check the guidelines for any special twists on the name of your field. campus          The name of your UC campus.  This should be capitalized. (e.g. Berkeley) \n\n\n\nThe title, approval, and copyright pages have extremely rigid formats that allow them to be generated automatically once the above declarations have been made. To generate them, invoke the macros\n\\maketitle \\approvalpage \\copyrightpage\nYou should probably invoke them in that order, because that’s the order required by the guidelines.\n\n\n\nBecause you have to provide the text of the abstract, only the title can be generated automatically. So, there is an abstract environment. It generates the title and numbers the abstract in arabic numerals and makes sure that it starts on new page.\nThe UC system requires that your advisor sign the last page of your abstract. Many students just let their advisor just sign at a random location on the page, but you can use the abstractsignature command to generate a signature line with your advisor’s name printed below it. This command generates the signature line at the point it is invoked, so it should be placed at the end of the abstract.\n\n\n\nThe remaining front matter (dedication, table of contents, lists of figures and tables, acknowledgements) MUST be put inside the “frontmatter” environment, which ensures that page-numbering is handled properly. Within this frontmatter environment, you put the environments and commands for the rest of the front matter. There are environments for “dedication” and “acknowledgements” and the standard LaTeX commands for producing tableofcontents, listoffigures, and listoftables.\nThe standard LaTeX commands are well documented in the LaTeX manual. You will probably have to hand edit the .lof (list of figures) and .lot (list of tables) files to make verbose captions more suitable for this front matter. Once you do this, remember to use the nofiles macro to keep them from getting overwritten.\nThe acknowledgements and dedication environments make their contents start on a new page. The acknowledgements environment also put the word “Acknowledgements” in large, bold, centered text at the top of the page. For formatting the dedication page, you’re on your own. After all, the dedication is a kind of poetry and there’s no predicting the right way to format poetry.",
+    "crumbs": [
+      "Home",
+      "Software",
+      "ucthesis LaTeX style"
+    ]
   },
   {
-    "objectID": "temp-space.html#tmp",
-    "href": "temp-space.html#tmp",
-    "title": "Temporary Disk Space",
+    "objectID": "ucthesis.html#other-commands-not-found-in-the-standard-report-style",
+    "href": "ucthesis.html#other-commands-not-found-in-the-standard-report-style",
+    "title": "ucthesis LaTeX style",
     "section": "",
-    "text": "Files put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed."
+    "text": "The “smalltabular” and “smalltabular*” environments are equivalent to the “tabular” and “tabular*” environments, except that they use the small font. The “scriptsizetabular” and “scriptsizetabular*” use the scriptsize font.",
+    "crumbs": [
+      "Home",
+      "Software",
+      "ucthesis LaTeX style"
+    ]
   },
   {
-    "objectID": "temp-space.html#vartmp-usersshared",
-    "href": "temp-space.html#vartmp-usersshared",
-    "title": "Temporary Disk Space",
+    "objectID": "ucthesis.html#installing-the-ucthesis-class",
+    "href": "ucthesis.html#installing-the-ucthesis-class",
+    "title": "ucthesis LaTeX style",
     "section": "",
-    "text": "The /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers."
+    "text": "To install the UCTHESIS class, you need to install four files:\nucthesis.cls uct10.clo uct11.clo uct12.clo\nin your LaTeX class file repository.",
+    "crumbs": [
+      "Home",
+      "Software",
+      "ucthesis LaTeX style"
+    ]
   },
   {
-    "objectID": "temp-space.html#vartmpscratch",
-    "href": "temp-space.html#vartmpscratch",
-    "title": "Temporary Disk Space",
+    "objectID": "tensorflow.html",
+    "href": "tensorflow.html",
+    "title": "Tensorflow",
     "section": "",
-    "text": "The /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured."
+    "text": "Recent versions of Tensorflow by default make use of AVX instructions, a feature of newer chips. If Tensorflow is run on these older machines, the instruction is not available and the error occurs. To avoid this, when submitting your job via Slurm, include `-c avx`. If you are directly accessing a compute server, you can run `grep avx /proc/cpuinfo | wc - l`. If the result is `0`, the AVX instructions are not available and you should use a newer machine, such as klein, fargo, quesnay, or sargan.",
+    "crumbs": [
+      "Home",
+      "Software",
+      "Tensorflow"
+    ]
   },
   {
-    "objectID": "temp-space.html#scratchpublic",
-    "href": "temp-space.html#scratchpublic",
-    "title": "Temporary Disk Space",
+    "objectID": "tensorflow.html#why-does-tensorflow-fail-with-an-illegal-instruction",
+    "href": "tensorflow.html#why-does-tensorflow-fail-with-an-illegal-instruction",
+    "title": "Tensorflow",
     "section": "",
-    "text": "Directories under /scratch/public can be used for projects requiring large files that are modified frequently. The scratch directories exist on the file server and not on the local workstations, however if space becomes limited we may automatically compress/gzip files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users needs. Files that are not actively being used and are compressible should be stored in a compressed format."
+    "text": "Recent versions of Tensorflow by default make use of AVX instructions, a feature of newer chips. If Tensorflow is run on these older machines, the instruction is not available and the error occurs. To avoid this, when submitting your job via Slurm, include `-c avx`. If you are directly accessing a compute server, you can run `grep avx /proc/cpuinfo | wc - l`. If the result is `0`, the AVX instructions are not available and you should use a newer machine, such as klein, fargo, quesnay, or sargan.",
+    "crumbs": [
+      "Home",
+      "Software",
+      "Tensorflow"
+    ]
   },
   {
-    "objectID": "system-status.html",
-    "href": "system-status.html",
-    "title": "Service Status",
+    "objectID": "tape-backups.html",
+    "href": "tape-backups.html",
+    "title": "Econometrics Laboratory",
     "section": "",
-    "text": "There are no scheduled maintenance activities or active incidents to report."
+    "text": "Weekly filesystem snapshots are performed on Sunday night at 10:00 pm. We keep about four weekly snapshots at a time. A weekly snapshot reflects the content of the files prior to the time of the creation of the previous monthly backup tape. Incremental changes to files can be recovered on a weekly basis from subsequent weekly backup tapes for up to five weeks.\nMonthly back-ups are performed on the first Sunday night of each month between the hours of 5:00pm and 12:00 midnight. Monthly backup tapes are retained for six months before being rotated on a new cycle. A monthly backup tape contains all user data.",
+    "crumbs": [
+      "Home",
+      "Data and Storage",
+      "Backup Schedule"
+    ]
   },
   {
-    "objectID": "system-status.html#nothing-to-report",
-    "href": "system-status.html#nothing-to-report",
-    "title": "Service Status",
+    "objectID": "tape-backups.html#backup-schedule",
+    "href": "tape-backups.html#backup-schedule",
+    "title": "Econometrics Laboratory",
     "section": "",
-    "text": "There are no scheduled maintenance activities or active incidents to report."
+    "text": "Weekly filesystem snapshots are performed on Sunday night at 10:00 pm. We keep about four weekly snapshots at a time. A weekly snapshot reflects the content of the files prior to the time of the creation of the previous monthly backup tape. Incremental changes to files can be recovered on a weekly basis from subsequent weekly backup tapes for up to five weeks.\nMonthly back-ups are performed on the first Sunday night of each month between the hours of 5:00pm and 12:00 midnight. Monthly backup tapes are retained for six months before being rotated on a new cycle. A monthly backup tape contains all user data.",
+    "crumbs": [
+      "Home",
+      "Data and Storage",
+      "Backup Schedule"
+    ]
   },
   {
-    "objectID": "ssh-tunnel.html",
-    "href": "ssh-tunnel.html",
-    "title": "SSH Tunneling",
+    "objectID": "tape-backups.html#requesting-file-restoration",
+    "href": "tape-backups.html#requesting-file-restoration",
+    "title": "Econometrics Laboratory",
+    "section": "Requesting File Restoration",
+    "text": "Requesting File Restoration\nContact trouble@econ.berkeley.edu to request file restoration. You need to supply the following information:\n\nThe absolute pathnames of each file/directory you want restored, e.g. /accounts/projects/foobar, or just ~joe/pathname if you are user joe and the pathname is in your home directory.\nThe date and time they were deleted.\nThe date and time the files were last modified (very important).\n\nUsually the restorations can be done within 24 hours of the request. The files can usually be reconstructed to their state prior to the last backup which was done before they were destroyed. Since backups are done once every day, it is possible to lose whatever work was done during the previous 24 hours.\nThere is a $20 service fee (and if applicable, the cost of media) to recover files from any account that has been closed.",
+    "crumbs": [
+      "Home",
+      "Data and Storage",
+      "Backup Schedule"
+    ]
+  },
+  {
+    "objectID": "tape-backups.html#policy",
+    "href": "tape-backups.html#policy",
+    "title": "Econometrics Laboratory",
+    "section": "Policy",
+    "text": "Policy\nIn the event of a catastrophic disaster, for example, damage resulting from either an earthquake, fire, or bomb, access to the computing facilities and/or entry to Evans Hall may be prohibited on either a temporary or permanent basis. Users must be aware that the EML does not store information off-site. (outside of Evans Hall) If a user has a need for that level of protection, the user is responsible for maintaining their own backups.",
+    "crumbs": [
+      "Home",
+      "Data and Storage",
+      "Backup Schedule"
+    ]
+  },
+  {
+    "objectID": "ssh.html",
+    "href": "ssh.html",
+    "title": "SSH",
     "section": "",
-    "text": "An SSH tunnel establishes a connection between your local machine and the remote machine via a TCP port. When you configure your local application to use an SSH tunnel you tell it to connect to your local machine at a specified port, rather than the remote machine. The tunnel then carries your traffic securely to the remote machine.\n\n\nHere is a list of application-specific tunnel settings. Note that in order to bind to ports lower than 1024 on Linux and Mac, one must have administrative privileges.\n\nTunnel Settings\n\n\nApplication\nType\nListen Port\n\n\n\n\nSMB\nTCP\n139\n\n\nSMB\nTCP\n445\n\n\nPrinting\nTCP\n515\n\n\nRemote Desktop\nTCP\n3389\n\n\nMySQL\nTCP\n3306\n\n\nVNC\nTCP\n5901\n\n\nJSTOR\nTCP\n8000\n\n\n\n\n\n\n\nClick the plus sign by the SSH menu choice in the left pane of the main window.\nClick on Tunnels.\nSet Source port to the value of the listen port and Destination to DESTINATION_HOST:DESTINATION_PORT given your specific tunneling options. (see table above)\nOnce the information is in place, click the Add button to create the tunnel.\nClick on the Session menu choice at the top of the left hand pane and enter any valid EML host in the Host Name window. Click on Open, and log in with your EML username and password.\nIf you are using an Remote Desktop application, under computername, type localhost:53389\n\n\n\n\nType (on your local machine) in a terminal window:\nssh -l username -L LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME\nwhere LISTEN_PORT is the Listen Port, DESTINATION_PORT is the Destination Port, and EML_HOSTNAME is any EML computer. See our dashboards for a list of EML computers.\nYou may included more than one tunnel on the command-line, for example:\nssh -l username -L 25:DESTINATION_HOST:25 -L 110:DESTINATION_HOST:110 EML_HOSTNAME\n\n\nIf you receive a message that the port is in use or are denied permission, you will need to choose a different port number for the local port. For example you would specify port 5445 rather than 445 as in the example below.\n\n\n\n\n\n\nConnect to the EML file server from off campus:\nssh -L 5445:eml.berkeley.edu:445 username@EML_HOSTNAME\nand then connect your SMB client to smb://localhost:5445/homes (or \\localhost:5445on Windows).\n\n\n\nRead JSTOR from off campus:\nssh -L 8000:www.jstor.org:80 username@EML_HOSTNAME\nand then connect your web browser to http://localhost:8000.\n\n\n\nConnect to an EML server through the VPN:\nssh -L 53389:localhost:3389 username@EML_HOSTNAME\nand then connect your RDP client (e.g. Microsoft Remote Desktop) to localhost:53389.",
+    "text": "SSH provides a secure means to access a UNIX command-line shell on a remote computer. It also provides a way of transfering files and securing otherwise unsafe protocols.\nThe term ‘SSH’ may be used to name the secure connection protocol and the name of the primary program that implements the protocol.\n\n\n\n\n\nNewer versions of Windows 10 come with a built-in SSH client. It must be enabled.\nThe most popular SSH program for Windows is putty. The putty executable is a single file, so it can be stored wherever you find it convenient.\nMobaXterm is a newer alternative that is also popular.\n\n\n\nmacOS comes with OpenSSH preinstalled. Open Terminal.app (in /Applications/Utilities/) and use SSH as you would on UNIX.\n\n\n\nLinux comes with OpenSSH preinstalled. If not, you will need to use your distribution’s software management program to install SSH.\n\n\n\nYou can visit the EML’s JupyterHub in any browser. Once you start your server you can launch New &gt; Terminal. This isn’t SSH, but it does let you access the EML in a remote terminal.\n\n\n\n\nThe most common way of logging into a remote site is with ‘ssh username@remotehost’. An alternative is ‘ssh -l username remotehost’. If your local username is the same as your remote username, you needn’t specify it on the command line, e.g. ‘ssh remotehost’.\nHere is an example login:\n$ ssh eml_user@iia.berkeley.edu\nThe authenticity of host 'iia.berkeley.edu' can't be established.\nRSA key fingerprint is xx:yy...\nAre you sure you want to continue connecting (yes/no)? yes\nWarning: Permanently added 'iia.berkeley.edu' (RSA) to the list of known hosts.\neml_user@iia.berkeley.edu's password:  \nYou have mail.\n...\nWhenever SSH connects to another computer, it receives a digital fingerprint of that computer. If you are connecting to a computer for the first time, it asks whether you want to continue, and then saves the fingerprint for the next time you want to connect. If you have connected to that computer before, it checks to make sure that the fingerprint is the same as it was the first time you connected to that machine. If the fingerprints are different, it will warn you that someone might have installed nefarious ssh software on the remote host. This is useful because bad people to break into computer seldom know the passphrase that the remote administrator used to generate the fingerprint with.",
     "crumbs": [
       "Home",
       "Remote Access",
       "Secure Shell",
-      "SSH Tunneling"
+      "SSH"
     ]
   },
   {
-    "objectID": "ssh-tunnel.html#typical-configurations",
-    "href": "ssh-tunnel.html#typical-configurations",
-    "title": "SSH Tunneling",
+    "objectID": "ssh.html#introduction",
+    "href": "ssh.html#introduction",
+    "title": "SSH",
     "section": "",
-    "text": "Here is a list of application-specific tunnel settings. Note that in order to bind to ports lower than 1024 on Linux and Mac, one must have administrative privileges.\n\nTunnel Settings\n\n\nApplication\nType\nListen Port\n\n\n\n\nSMB\nTCP\n139\n\n\nSMB\nTCP\n445\n\n\nPrinting\nTCP\n515\n\n\nRemote Desktop\nTCP\n3389\n\n\nMySQL\nTCP\n3306\n\n\nVNC\nTCP\n5901\n\n\nJSTOR\nTCP\n8000",
+    "text": "SSH provides a secure means to access a UNIX command-line shell on a remote computer. It also provides a way of transfering files and securing otherwise unsafe protocols.\nThe term ‘SSH’ may be used to name the secure connection protocol and the name of the primary program that implements the protocol.",
     "crumbs": [
       "Home",
       "Remote Access",
       "Secure Shell",
-      "SSH Tunneling"
+      "SSH"
     ]
   },
   {
-    "objectID": "ssh-tunnel.html#in-windows---putty",
-    "href": "ssh-tunnel.html#in-windows---putty",
-    "title": "SSH Tunneling",
+    "objectID": "ssh.html#software",
+    "href": "ssh.html#software",
+    "title": "SSH",
     "section": "",
-    "text": "Click the plus sign by the SSH menu choice in the left pane of the main window.\nClick on Tunnels.\nSet Source port to the value of the listen port and Destination to DESTINATION_HOST:DESTINATION_PORT given your specific tunneling options. (see table above)\nOnce the information is in place, click the Add button to create the tunnel.\nClick on the Session menu choice at the top of the left hand pane and enter any valid EML host in the Host Name window. Click on Open, and log in with your EML username and password.\nIf you are using an Remote Desktop application, under computername, type localhost:53389",
+    "text": "Newer versions of Windows 10 come with a built-in SSH client. It must be enabled.\nThe most popular SSH program for Windows is putty. The putty executable is a single file, so it can be stored wherever you find it convenient.\nMobaXterm is a newer alternative that is also popular.\n\n\n\nmacOS comes with OpenSSH preinstalled. Open Terminal.app (in /Applications/Utilities/) and use SSH as you would on UNIX.\n\n\n\nLinux comes with OpenSSH preinstalled. If not, you will need to use your distribution’s software management program to install SSH.\n\n\n\nYou can visit the EML’s JupyterHub in any browser. Once you start your server you can launch New &gt; Terminal. This isn’t SSH, but it does let you access the EML in a remote terminal.",
     "crumbs": [
       "Home",
       "Remote Access",
       "Secure Shell",
-      "SSH Tunneling"
+      "SSH"
     ]
   },
   {
-    "objectID": "ssh-tunnel.html#macos-and-linux",
-    "href": "ssh-tunnel.html#macos-and-linux",
-    "title": "SSH Tunneling",
+    "objectID": "ssh.html#basic-usage",
+    "href": "ssh.html#basic-usage",
+    "title": "SSH",
     "section": "",
-    "text": "Type (on your local machine) in a terminal window:\nssh -l username -L LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME\nwhere LISTEN_PORT is the Listen Port, DESTINATION_PORT is the Destination Port, and EML_HOSTNAME is any EML computer. See our dashboards for a list of EML computers.\nYou may included more than one tunnel on the command-line, for example:\nssh -l username -L 25:DESTINATION_HOST:25 -L 110:DESTINATION_HOST:110 EML_HOSTNAME\n\n\nIf you receive a message that the port is in use or are denied permission, you will need to choose a different port number for the local port. For example you would specify port 5445 rather than 445 as in the example below.",
+    "text": "The most common way of logging into a remote site is with ‘ssh username@remotehost’. An alternative is ‘ssh -l username remotehost’. If your local username is the same as your remote username, you needn’t specify it on the command line, e.g. ‘ssh remotehost’.\nHere is an example login:\n$ ssh eml_user@iia.berkeley.edu\nThe authenticity of host 'iia.berkeley.edu' can't be established.\nRSA key fingerprint is xx:yy...\nAre you sure you want to continue connecting (yes/no)? yes\nWarning: Permanently added 'iia.berkeley.edu' (RSA) to the list of known hosts.\neml_user@iia.berkeley.edu's password:  \nYou have mail.\n...\nWhenever SSH connects to another computer, it receives a digital fingerprint of that computer. If you are connecting to a computer for the first time, it asks whether you want to continue, and then saves the fingerprint for the next time you want to connect. If you have connected to that computer before, it checks to make sure that the fingerprint is the same as it was the first time you connected to that machine. If the fingerprints are different, it will warn you that someone might have installed nefarious ssh software on the remote host. This is useful because bad people to break into computer seldom know the passphrase that the remote administrator used to generate the fingerprint with.",
     "crumbs": [
       "Home",
       "Remote Access",
       "Secure Shell",
-      "SSH Tunneling"
-    ]
-  },
-  {
-    "objectID": "ssh-tunnel.html#examples",
-    "href": "ssh-tunnel.html#examples",
-    "title": "SSH Tunneling",
-    "section": "",
-    "text": "Connect to the EML file server from off campus:\nssh -L 5445:eml.berkeley.edu:445 username@EML_HOSTNAME\nand then connect your SMB client to smb://localhost:5445/homes (or \\localhost:5445on Windows).\n\n\n\nRead JSTOR from off campus:\nssh -L 8000:www.jstor.org:80 username@EML_HOSTNAME\nand then connect your web browser to http://localhost:8000.\n\n\n\nConnect to an EML server through the VPN:\nssh -L 53389:localhost:3389 username@EML_HOSTNAME\nand then connect your RDP client (e.g. Microsoft Remote Desktop) to localhost:53389.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH Tunneling"
+      "SSH"
     ]
   },
   {
@@ -1698,349 +1693,315 @@
     ]
   },
   {
-    "objectID": "ssh-keys.html",
-    "href": "ssh-keys.html",
-    "title": "Manage SSH Keys",
+    "objectID": "ssh-tunnel.html",
+    "href": "ssh-tunnel.html",
+    "title": "SSH Tunneling",
     "section": "",
-    "text": "It is possible to open an SSH connection without having to type your password everytime. Instead, you can use a passphrase in combination with SSH “key pairs”. On macOS or UNIX, you will be able to type in your passphrase once at login, and during that session, connect to different remote computers without typing in a password or passphrase each time. On Windows PCs, using the passphrase enables you to connect to different accounts or hosts in the same session seamlessly, without having to type in a password or passphrase every time.\nYou will need to create an SSH keypair to facilitate this process. One key, the private key, stays on the machine you will connect from. The other key, the public key, can be put in any account you connect to. Think of this process as leaving a real key (the public key) in a remote door. The door will only open if you have the associated private key as you approach. This is why you must keep the private key to yourself, otherwise people who have a copy of it can pass through all the doors in which you left your public key.\n\n\nNote: newer versions of Windows 10 may have native SSH clients. If you have the software already installed, see the UNIX and macOS instructions below. You can run the same commands in the Windows command prompt program.\n\n\n\n\nInstall PuTTY on your machine, and go to Start Menu &gt; PuTTY &gt; PuTTYgen.\nA new window will appear. At the bottom, for “Type of key”, choose RSA, ECDSA, or ED25519. Then click the the “Generate” button. You may need to move your mouse about in the small window area in order to generate randomness that the process requires.\nType in a unique passphrase in the Key and Confirm passphrase fields. The passphrase is used to protect your key and you will be asked for it when you connect via SSH using public key authentication.\nClick on the “Save Public Key” and “Save Private Key” buttons to save the keys.\n\n\n\n\nOnce you have generated the key pair, you will need to transfer the public key to the remote site. You can transfer the public key in any number of ways, such as by emailing it to the owner of the remote account or an administrator, or SCP or SFTP if you have access. The public key file is actually just a text file.\n\n\n\nSee the UNIX instructions for this step below as they are identical.\n\n\n\n\n\nYou can generate keys with the ‘ssh-keygen’ command:\n% ssh-keygen -t ed25519\nGenerating public/private ed25519 key pair.\nEnter file in which to save the key ($HOME/.ssh/id_ed25519):    \nEnter passphrase (empty for no passphrase): \nEnter same passphrase again:  Your identification has been saved in $HOME/.ssh/id_ed25519.\nour public key has been saved in $HOME/.ssh/id_ed25519.pub.\n \n\n\n\nOnce you have generated the key pair, you will need to transfer the public key, e.g. id_ed25519.pub, to the remote site. You can transfer the public key in any number of ways, such as FTP, SFTP, or even by email as an attachment. The public key file is actually just a text file. Upload the file to anyplace in the top-level of your home directory.\nTo transfer the file to the remote machine using SCP, execute:\nscp ~/.ssh/id_ed25519.pub username@remotehost:mynewkey.pub\n\n\n\nAppend the public key to ~/.ssh/authorized_keys on the remote machine. SSH to that computer and run:\n$ cat ~/mynewkey.pub &gt;&gt; ~/.ssh/authorized_keys\n$ rm ~/mynewkey.pub",
+    "text": "An SSH tunnel establishes a connection between your local machine and the remote machine via a TCP port. When you configure your local application to use an SSH tunnel you tell it to connect to your local machine at a specified port, rather than the remote machine. The tunnel then carries your traffic securely to the remote machine.\n\n\nHere is a list of application-specific tunnel settings. Note that in order to bind to ports lower than 1024 on Linux and Mac, one must have administrative privileges.\n\nTunnel Settings\n\n\nApplication\nType\nListen Port\n\n\n\n\nSMB\nTCP\n139\n\n\nSMB\nTCP\n445\n\n\nPrinting\nTCP\n515\n\n\nRemote Desktop\nTCP\n3389\n\n\nMySQL\nTCP\n3306\n\n\nVNC\nTCP\n5901\n\n\nJSTOR\nTCP\n8000\n\n\n\n\n\n\n\nClick the plus sign by the SSH menu choice in the left pane of the main window.\nClick on Tunnels.\nSet Source port to the value of the listen port and Destination to DESTINATION_HOST:DESTINATION_PORT given your specific tunneling options. (see table above)\nOnce the information is in place, click the Add button to create the tunnel.\nClick on the Session menu choice at the top of the left hand pane and enter any valid EML host in the Host Name window. Click on Open, and log in with your EML username and password.\nIf you are using an Remote Desktop application, under computername, type localhost:53389\n\n\n\n\nType (on your local machine) in a terminal window:\nssh -l username -L LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME\nwhere LISTEN_PORT is the Listen Port, DESTINATION_PORT is the Destination Port, and EML_HOSTNAME is any EML computer. See our dashboards for a list of EML computers.\nYou may included more than one tunnel on the command-line, for example:\nssh -l username -L 25:DESTINATION_HOST:25 -L 110:DESTINATION_HOST:110 EML_HOSTNAME\n\n\nIf you receive a message that the port is in use or are denied permission, you will need to choose a different port number for the local port. For example you would specify port 5445 rather than 445 as in the example below.\n\n\n\n\n\n\nConnect to the EML file server from off campus:\nssh -L 5445:eml.berkeley.edu:445 username@EML_HOSTNAME\nand then connect your SMB client to smb://localhost:5445/homes (or \\localhost:5445on Windows).\n\n\n\nRead JSTOR from off campus:\nssh -L 8000:www.jstor.org:80 username@EML_HOSTNAME\nand then connect your web browser to http://localhost:8000.\n\n\n\nConnect to an EML server through the VPN:\nssh -L 53389:localhost:3389 username@EML_HOSTNAME\nand then connect your RDP client (e.g. Microsoft Remote Desktop) to localhost:53389.",
     "crumbs": [
       "Home",
       "Remote Access",
       "Secure Shell",
-      "Manage SSH Keys"
+      "SSH Tunneling"
     ]
   },
   {
-    "objectID": "ssh-keys.html#on-windows",
-    "href": "ssh-keys.html#on-windows",
-    "title": "Manage SSH Keys",
+    "objectID": "ssh-tunnel.html#typical-configurations",
+    "href": "ssh-tunnel.html#typical-configurations",
+    "title": "SSH Tunneling",
     "section": "",
-    "text": "Note: newer versions of Windows 10 may have native SSH clients. If you have the software already installed, see the UNIX and macOS instructions below. You can run the same commands in the Windows command prompt program.",
+    "text": "Here is a list of application-specific tunnel settings. Note that in order to bind to ports lower than 1024 on Linux and Mac, one must have administrative privileges.\n\nTunnel Settings\n\n\nApplication\nType\nListen Port\n\n\n\n\nSMB\nTCP\n139\n\n\nSMB\nTCP\n445\n\n\nPrinting\nTCP\n515\n\n\nRemote Desktop\nTCP\n3389\n\n\nMySQL\nTCP\n3306\n\n\nVNC\nTCP\n5901\n\n\nJSTOR\nTCP\n8000",
     "crumbs": [
       "Home",
       "Remote Access",
       "Secure Shell",
-      "Manage SSH Keys"
+      "SSH Tunneling"
     ]
   },
   {
-    "objectID": "ssh-keys.html#creating-the-key-pair",
-    "href": "ssh-keys.html#creating-the-key-pair",
-    "title": "Manage SSH Keys",
+    "objectID": "ssh-tunnel.html#in-windows---putty",
+    "href": "ssh-tunnel.html#in-windows---putty",
+    "title": "SSH Tunneling",
     "section": "",
-    "text": "Install PuTTY on your machine, and go to Start Menu &gt; PuTTY &gt; PuTTYgen.\nA new window will appear. At the bottom, for “Type of key”, choose RSA, ECDSA, or ED25519. Then click the the “Generate” button. You may need to move your mouse about in the small window area in order to generate randomness that the process requires.\nType in a unique passphrase in the Key and Confirm passphrase fields. The passphrase is used to protect your key and you will be asked for it when you connect via SSH using public key authentication.\nClick on the “Save Public Key” and “Save Private Key” buttons to save the keys.",
+    "text": "Click the plus sign by the SSH menu choice in the left pane of the main window.\nClick on Tunnels.\nSet Source port to the value of the listen port and Destination to DESTINATION_HOST:DESTINATION_PORT given your specific tunneling options. (see table above)\nOnce the information is in place, click the Add button to create the tunnel.\nClick on the Session menu choice at the top of the left hand pane and enter any valid EML host in the Host Name window. Click on Open, and log in with your EML username and password.\nIf you are using an Remote Desktop application, under computername, type localhost:53389",
     "crumbs": [
       "Home",
       "Remote Access",
       "Secure Shell",
-      "Manage SSH Keys"
+      "SSH Tunneling"
     ]
   },
   {
-    "objectID": "ssh-keys.html#uploading-the-public-key",
-    "href": "ssh-keys.html#uploading-the-public-key",
-    "title": "Manage SSH Keys",
+    "objectID": "ssh-tunnel.html#macos-and-linux",
+    "href": "ssh-tunnel.html#macos-and-linux",
+    "title": "SSH Tunneling",
     "section": "",
-    "text": "Once you have generated the key pair, you will need to transfer the public key to the remote site. You can transfer the public key in any number of ways, such as by emailing it to the owner of the remote account or an administrator, or SCP or SFTP if you have access. The public key file is actually just a text file.",
+    "text": "Type (on your local machine) in a terminal window:\nssh -l username -L LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME\nwhere LISTEN_PORT is the Listen Port, DESTINATION_PORT is the Destination Port, and EML_HOSTNAME is any EML computer. See our dashboards for a list of EML computers.\nYou may included more than one tunnel on the command-line, for example:\nssh -l username -L 25:DESTINATION_HOST:25 -L 110:DESTINATION_HOST:110 EML_HOSTNAME\n\n\nIf you receive a message that the port is in use or are denied permission, you will need to choose a different port number for the local port. For example you would specify port 5445 rather than 445 as in the example below.",
     "crumbs": [
       "Home",
       "Remote Access",
       "Secure Shell",
-      "Manage SSH Keys"
+      "SSH Tunneling"
     ]
   },
   {
-    "objectID": "ssh-keys.html#installing-the-public-key",
-    "href": "ssh-keys.html#installing-the-public-key",
-    "title": "Manage SSH Keys",
+    "objectID": "ssh-tunnel.html#examples",
+    "href": "ssh-tunnel.html#examples",
+    "title": "SSH Tunneling",
     "section": "",
-    "text": "See the UNIX instructions for this step below as they are identical.",
+    "text": "Connect to the EML file server from off campus:\nssh -L 5445:eml.berkeley.edu:445 username@EML_HOSTNAME\nand then connect your SMB client to smb://localhost:5445/homes (or \\localhost:5445on Windows).\n\n\n\nRead JSTOR from off campus:\nssh -L 8000:www.jstor.org:80 username@EML_HOSTNAME\nand then connect your web browser to http://localhost:8000.\n\n\n\nConnect to an EML server through the VPN:\nssh -L 53389:localhost:3389 username@EML_HOSTNAME\nand then connect your RDP client (e.g. Microsoft Remote Desktop) to localhost:53389.",
     "crumbs": [
       "Home",
       "Remote Access",
       "Secure Shell",
-      "Manage SSH Keys"
+      "SSH Tunneling"
     ]
   },
   {
-    "objectID": "ssh-keys.html#on-unix-and-macos",
-    "href": "ssh-keys.html#on-unix-and-macos",
-    "title": "Manage SSH Keys",
+    "objectID": "system-status.html",
+    "href": "system-status.html",
+    "title": "Service Status",
     "section": "",
-    "text": "You can generate keys with the ‘ssh-keygen’ command:\n% ssh-keygen -t ed25519\nGenerating public/private ed25519 key pair.\nEnter file in which to save the key ($HOME/.ssh/id_ed25519):    \nEnter passphrase (empty for no passphrase): \nEnter same passphrase again:  Your identification has been saved in $HOME/.ssh/id_ed25519.\nour public key has been saved in $HOME/.ssh/id_ed25519.pub.\n \n\n\n\nOnce you have generated the key pair, you will need to transfer the public key, e.g. id_ed25519.pub, to the remote site. You can transfer the public key in any number of ways, such as FTP, SFTP, or even by email as an attachment. The public key file is actually just a text file. Upload the file to anyplace in the top-level of your home directory.\nTo transfer the file to the remote machine using SCP, execute:\nscp ~/.ssh/id_ed25519.pub username@remotehost:mynewkey.pub\n\n\n\nAppend the public key to ~/.ssh/authorized_keys on the remote machine. SSH to that computer and run:\n$ cat ~/mynewkey.pub &gt;&gt; ~/.ssh/authorized_keys\n$ rm ~/mynewkey.pub",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "Manage SSH Keys"
-    ]
+    "text": "There are no scheduled maintenance activities or active incidents to report."
   },
   {
-    "objectID": "ssh.html",
-    "href": "ssh.html",
-    "title": "SSH",
+    "objectID": "system-status.html#nothing-to-report",
+    "href": "system-status.html#nothing-to-report",
+    "title": "Service Status",
     "section": "",
-    "text": "SSH provides a secure means to access a UNIX command-line shell on a remote computer. It also provides a way of transfering files and securing otherwise unsafe protocols.\nThe term ‘SSH’ may be used to name the secure connection protocol and the name of the primary program that implements the protocol.\n\n\n\n\n\nNewer versions of Windows 10 come with a built-in SSH client. It must be enabled.\nThe most popular SSH program for Windows is putty. The putty executable is a single file, so it can be stored wherever you find it convenient.\nMobaXterm is a newer alternative that is also popular.\n\n\n\nmacOS comes with OpenSSH preinstalled. Open Terminal.app (in /Applications/Utilities/) and use SSH as you would on UNIX.\n\n\n\nLinux comes with OpenSSH preinstalled. If not, you will need to use your distribution’s software management program to install SSH.\n\n\n\nYou can visit the EML’s JupyterHub in any browser. Once you start your server you can launch New &gt; Terminal. This isn’t SSH, but it does let you access the EML in a remote terminal.\n\n\n\n\nThe most common way of logging into a remote site is with ‘ssh username@remotehost’. An alternative is ‘ssh -l username remotehost’. If your local username is the same as your remote username, you needn’t specify it on the command line, e.g. ‘ssh remotehost’.\nHere is an example login:\n$ ssh eml_user@iia.berkeley.edu\nThe authenticity of host 'iia.berkeley.edu' can't be established.\nRSA key fingerprint is xx:yy...\nAre you sure you want to continue connecting (yes/no)? yes\nWarning: Permanently added 'iia.berkeley.edu' (RSA) to the list of known hosts.\neml_user@iia.berkeley.edu's password:  \nYou have mail.\n...\nWhenever SSH connects to another computer, it receives a digital fingerprint of that computer. If you are connecting to a computer for the first time, it asks whether you want to continue, and then saves the fingerprint for the next time you want to connect. If you have connected to that computer before, it checks to make sure that the fingerprint is the same as it was the first time you connected to that machine. If the fingerprints are different, it will warn you that someone might have installed nefarious ssh software on the remote host. This is useful because bad people to break into computer seldom know the passphrase that the remote administrator used to generate the fingerprint with.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH"
-    ]
+    "text": "There are no scheduled maintenance activities or active incidents to report."
   },
   {
-    "objectID": "ssh.html#introduction",
-    "href": "ssh.html#introduction",
-    "title": "SSH",
+    "objectID": "temp-space.html",
+    "href": "temp-space.html",
+    "title": "Temporary Disk Space",
     "section": "",
-    "text": "SSH provides a secure means to access a UNIX command-line shell on a remote computer. It also provides a way of transfering files and securing otherwise unsafe protocols.\nThe term ‘SSH’ may be used to name the secure connection protocol and the name of the primary program that implements the protocol.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH"
-    ]
+    "text": "There are several places where users can temporarily store data.\n\n\nTemporary storage locations are not backed up and may be removed without notice.\n\n\n\nFiles put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed.\n\n\n\nThe /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers.\n\n\n\nThe /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured.\n\n\n\nDirectories under /scratch/public can be used for projects requiring large files that are modified frequently. The scratch directories exist on the file server and not on the local workstations, however if space becomes limited we may automatically compress/gzip files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users needs. Files that are not actively being used and are compressible should be stored in a compressed format."
   },
   {
-    "objectID": "ssh.html#software",
-    "href": "ssh.html#software",
-    "title": "SSH",
+    "objectID": "temp-space.html#tmp",
+    "href": "temp-space.html#tmp",
+    "title": "Temporary Disk Space",
     "section": "",
-    "text": "Newer versions of Windows 10 come with a built-in SSH client. It must be enabled.\nThe most popular SSH program for Windows is putty. The putty executable is a single file, so it can be stored wherever you find it convenient.\nMobaXterm is a newer alternative that is also popular.\n\n\n\nmacOS comes with OpenSSH preinstalled. Open Terminal.app (in /Applications/Utilities/) and use SSH as you would on UNIX.\n\n\n\nLinux comes with OpenSSH preinstalled. If not, you will need to use your distribution’s software management program to install SSH.\n\n\n\nYou can visit the EML’s JupyterHub in any browser. Once you start your server you can launch New &gt; Terminal. This isn’t SSH, but it does let you access the EML in a remote terminal.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH"
-    ]
+    "text": "Files put in the /tmp directory are only accessible on the machine on which they were created and are automatically wiped everytime the computer is rebooted. Files may also be deleted with little or no warning if resources become scarce. However, if you need a large amount of disk space for a short amount of time, /tmp provides a solution which does not need any staff intervention. Remember that there is no guarantee that files stored in /tmp are safe. Do not use /tmp for data that that is difficult or expensive to re-create.\nNo special permissions are required to use /tmp. To reference your files using /tmp, use ‘/tmp’ as the prefix to the name of the file, for example ‘/tmp/myfile’. If you are storing more than a handful of files, reduce the clutter by using a subdirectory of /tmp named with your account name, for example ‘/tmp/username/myfile’.\nThe limit to the amount of storage a user can take up is the physical limitation of the partition. However, if /tmp is full, editors, compilers, and many other programs will not work or behave erratically. To find out how much space is available in /tmp on your system, type ‘df -k /tmp’. Do not use /tmp if less than 30% of the space is available. Remove files when they are no longer needed."
   },
   {
-    "objectID": "ssh.html#basic-usage",
-    "href": "ssh.html#basic-usage",
-    "title": "SSH",
+    "objectID": "temp-space.html#vartmp-usersshared",
+    "href": "temp-space.html#vartmp-usersshared",
+    "title": "Temporary Disk Space",
     "section": "",
-    "text": "The most common way of logging into a remote site is with ‘ssh username@remotehost’. An alternative is ‘ssh -l username remotehost’. If your local username is the same as your remote username, you needn’t specify it on the command line, e.g. ‘ssh remotehost’.\nHere is an example login:\n$ ssh eml_user@iia.berkeley.edu\nThe authenticity of host 'iia.berkeley.edu' can't be established.\nRSA key fingerprint is xx:yy...\nAre you sure you want to continue connecting (yes/no)? yes\nWarning: Permanently added 'iia.berkeley.edu' (RSA) to the list of known hosts.\neml_user@iia.berkeley.edu's password:  \nYou have mail.\n...\nWhenever SSH connects to another computer, it receives a digital fingerprint of that computer. If you are connecting to a computer for the first time, it asks whether you want to continue, and then saves the fingerprint for the next time you want to connect. If you have connected to that computer before, it checks to make sure that the fingerprint is the same as it was the first time you connected to that machine. If the fingerprints are different, it will warn you that someone might have installed nefarious ssh software on the remote host. This is useful because bad people to break into computer seldom know the passphrase that the remote administrator used to generate the fingerprint with.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH"
-    ]
+    "text": "The /var/tmp directory functions similarly to /tmp, however, files are not automatically removed after the machine is rebooted. This directory does get erased, however, whenever the workstation needs to be reinstalled or reconfigured. Otherwise, the same policies that apply to /tmp apply to /var/tmp.\nThe /Users/Shared directory functions identically to /var/tmp, except it is only found on our Macintosh computers."
   },
   {
-    "objectID": "tape-backups.html",
-    "href": "tape-backups.html",
-    "title": "Econometrics Laboratory",
+    "objectID": "temp-space.html#vartmpscratch",
+    "href": "temp-space.html#vartmpscratch",
+    "title": "Temporary Disk Space",
     "section": "",
-    "text": "Weekly filesystem snapshots are performed on Sunday night at 10:00 pm. We keep about four weekly snapshots at a time. A weekly snapshot reflects the content of the files prior to the time of the creation of the previous monthly backup tape. Incremental changes to files can be recovered on a weekly basis from subsequent weekly backup tapes for up to five weeks.\nMonthly back-ups are performed on the first Sunday night of each month between the hours of 5:00pm and 12:00 midnight. Monthly backup tapes are retained for six months before being rotated on a new cycle. A monthly backup tape contains all user data.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Backup Schedule"
-    ]
+    "text": "The /var/tmp/scratch directory exists on some workstations that have secondary disks. This directory functions similarly to /var/tmp, however, it does not get erased when the computer is reinstalled or reconfigured."
   },
   {
-    "objectID": "tape-backups.html#backup-schedule",
-    "href": "tape-backups.html#backup-schedule",
-    "title": "Econometrics Laboratory",
+    "objectID": "temp-space.html#scratchpublic",
+    "href": "temp-space.html#scratchpublic",
+    "title": "Temporary Disk Space",
     "section": "",
-    "text": "Weekly filesystem snapshots are performed on Sunday night at 10:00 pm. We keep about four weekly snapshots at a time. A weekly snapshot reflects the content of the files prior to the time of the creation of the previous monthly backup tape. Incremental changes to files can be recovered on a weekly basis from subsequent weekly backup tapes for up to five weeks.\nMonthly back-ups are performed on the first Sunday night of each month between the hours of 5:00pm and 12:00 midnight. Monthly backup tapes are retained for six months before being rotated on a new cycle. A monthly backup tape contains all user data.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Backup Schedule"
-    ]
+    "text": "Directories under /scratch/public can be used for projects requiring large files that are modified frequently. The scratch directories exist on the file server and not on the local workstations, however if space becomes limited we may automatically compress/gzip files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users needs. Files that are not actively being used and are compressible should be stored in a compressed format."
   },
   {
-    "objectID": "tape-backups.html#requesting-file-restoration",
-    "href": "tape-backups.html#requesting-file-restoration",
-    "title": "Econometrics Laboratory",
-    "section": "Requesting File Restoration",
-    "text": "Requesting File Restoration\nContact trouble@econ.berkeley.edu to request file restoration. You need to supply the following information:\n\nThe absolute pathnames of each file/directory you want restored, e.g. /accounts/projects/foobar, or just ~joe/pathname if you are user joe and the pathname is in your home directory.\nThe date and time they were deleted.\nThe date and time the files were last modified (very important).\n\nUsually the restorations can be done within 24 hours of the request. The files can usually be reconstructed to their state prior to the last backup which was done before they were destroyed. Since backups are done once every day, it is possible to lose whatever work was done during the previous 24 hours.\nThere is a $20 service fee (and if applicable, the cost of media) to recover files from any account that has been closed.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Backup Schedule"
-    ]
-  },
-  {
-    "objectID": "tape-backups.html#policy",
-    "href": "tape-backups.html#policy",
-    "title": "Econometrics Laboratory",
-    "section": "Policy",
-    "text": "Policy\nIn the event of a catastrophic disaster, for example, damage resulting from either an earthquake, fire, or bomb, access to the computing facilities and/or entry to Evans Hall may be prohibited on either a temporary or permanent basis. Users must be aware that the EML does not store information off-site. (outside of Evans Hall) If a user has a need for that level of protection, the user is responsible for maintaining their own backups.",
-    "crumbs": [
-      "Home",
-      "Data and Storage",
-      "Backup Schedule"
-    ]
-  },
-  {
-    "objectID": "tensorflow.html",
-    "href": "tensorflow.html",
-    "title": "Tensorflow",
+    "objectID": "terminate-r.html",
+    "href": "terminate-r.html",
+    "title": "Terminate R sessions",
     "section": "",
-    "text": "Recent versions of Tensorflow by default make use of AVX instructions, a feature of newer chips. If Tensorflow is run on these older machines, the instruction is not available and the error occurs. To avoid this, when submitting your job via Slurm, include `-c avx`. If you are directly accessing a compute server, you can run `grep avx /proc/cpuinfo | wc - l`. If the result is `0`, the AVX instructions are not available and you should use a newer machine, such as klein, fargo, quesnay, or sargan.",
+    "text": "When you run an R job, you should properly quit the job when you’re done, by typing “q()” at the R prompt, and responding to the query about “Save workspace image?” appropriately. DO NOT log off without terminating your R job/session, and you should not kill a window with a running R process unless you follow one of the suggestions below.\n\n\n\nIf you want your R job to keep running after you log out, the best way to run R is through the BATCH command, i.e. run a command like this one at the UNIX prompt:\nR CMD BATCH cmds.r output.txt &\nwhere “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type help(BATCH) from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.\n\n\n\nIf you don’t want to worry about shutting down your interactive R session, you MUST use either the -save or the -no-save option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing R at the UNIX prompt, type\nR --save\nor\nR --no-save",
     "crumbs": [
       "Home",
       "Software",
-      "Tensorflow"
+      "Terminate R sessions"
     ]
   },
   {
-    "objectID": "tensorflow.html#why-does-tensorflow-fail-with-an-illegal-instruction",
-    "href": "tensorflow.html#why-does-tensorflow-fail-with-an-illegal-instruction",
-    "title": "Tensorflow",
+    "objectID": "terminate-r.html#quit",
+    "href": "terminate-r.html#quit",
+    "title": "Terminate R sessions",
     "section": "",
-    "text": "Recent versions of Tensorflow by default make use of AVX instructions, a feature of newer chips. If Tensorflow is run on these older machines, the instruction is not available and the error occurs. To avoid this, when submitting your job via Slurm, include `-c avx`. If you are directly accessing a compute server, you can run `grep avx /proc/cpuinfo | wc - l`. If the result is `0`, the AVX instructions are not available and you should use a newer machine, such as klein, fargo, quesnay, or sargan.",
+    "text": "When you run an R job, you should properly quit the job when you’re done, by typing “q()” at the R prompt, and responding to the query about “Save workspace image?” appropriately. DO NOT log off without terminating your R job/session, and you should not kill a window with a running R process unless you follow one of the suggestions below.",
     "crumbs": [
       "Home",
       "Software",
-      "Tensorflow"
+      "Terminate R sessions"
     ]
   },
   {
-    "objectID": "ucthesis.html",
-    "href": "ucthesis.html",
-    "title": "ucthesis LaTeX style",
+    "objectID": "terminate-r.html#batch",
+    "href": "terminate-r.html#batch",
+    "title": "Terminate R sessions",
     "section": "",
-    "text": "This is the README file for the UCTHESIS class for LaTeX. It corresponds to version 3.1 of the UCTHESIS class (14 July 2001).\nNOTE: v3.0 is the first LaTeX2e version of UCTHESIS. It is now a class that runs in native LaTeX2e mode. It is functionally identical to UCTHESIS.STY v2.7 released on 30 October 1994 by Ethan V. Munson. Other than changes for compatibility (mostly having to do with font selection), and option selection, very little modification has been done to the style. As a result, there are probably cleaner ways to implement a number of features. That will have to wait for the next release. (BBF 10/31/94)\n\n\n\n\n\nThere is a sample dissertation (by the fictitious, but very irritating, Perry H Disdainful) in the file uctest.tex. It also uses uctest.bib as its bibliography database (though the contents of the database are not important). Mostly this is useful as an example of how to produce the front matter. If you don’t understand LaTeX at all, this file might help you get started, but, since you’re going to be writing a 100+ page document, you should invest the $20 in a copy of the LaTeX manual (by Leslie Lamport the original author of LaTeX). This has recently been updated for LaTeX2e.\nThe LaTeX Companion, by Goossens, Mittelbach, and Samarin (who have been involved in developping and supporting the new version of LaTeX) is also quite good. It gives a lot of useful information if you are going to be writing or modifying classes, and gives a lot of additional information on commonly available style packages. It’s about $35.\n\n\n\nTo use the UCTHESIS class, make sure that the ucthesis.cls file is on your TEXINPUTS search path and use the following command at the start of your input file:\ndocumentclass{ucthesis}\n\n\n\n\nThe UCTHESIS class is a port of the UCTHESIS style version 2.7 (the final 2.09 release) to LaTeX2e. The UCTHESIS style is a modified version of the standard LaTeX REPORT style that is accepted for use with University of California PhD dissertations and Masters theses. The available commands are almost identical to those of the REPORT style, so your best starting point for documentation is the LaTeX manual written by Leslie Lamport.\nThe key features of the class are:\n\nThe primary modification to the REPORT style is the use of pseudo-double-spacing, since the UC system’s rules are still designed for typewriters. This is achieved by increasing the baselinestretch parameter to 1.37. The baselinestretch is returned to a single-spaced value of 1.00 for elements like tables, captions, and footnotes and for all displayed text (quote, quotation, and verse environments). Unfortunately, this is done with a macro called ssp which resets the font size to normalsize. In LaTeX 2.09 this seems to be unavoidable, but it makes it very hard to create tables in different font sizes.\nMargins are 1.5 inches on the left, 1.0 inches elsewhere.\n3) Uses 11 point by default; you can use the 10pt or 12pt options for those sizes.\nPage numbers are in the top right corner for all pages.\nComplete, correct front matter for UC dissertations can be generated. If you are not a UC student, you should make sure that the front matter is OK with your school.\n\n\n\nThere are five primary options:\nThe “draft” style uses single-spacing throughout the document.\nThe “final” style uses the correct pseudo-double-spacing. This option is the default and is redundant, but is included for symmetry.\nThe “10pt”, “11pt”, and “12pt” styles set the default font size to the obvious value. The “11pt” option is the default and thus is redundant, but is safe to use anyway.\nThe options are selected on the documentclass line, e.g.:\ndocumentclass[10pt,draft]{ucthesis}\n\n\n\nIf you want to use page headers or footers other than the default ones, you should try using “headerfooter.sty” or “fancyheadings.sty”. The myheadings pagestyle doesn’t work well and there is no workaround. The headerfooter and fancyheadings styles are widely distributed, well documented, and easy to use.\n\n\n\n\nThe other key service provided by this class is that it generates correct front matter (title page, approval page, abstract, etc.) with a failrly simple set of commands. This facility could be a little easier, but compared to an earlier state of affairs, it’s pretty slick. The format of the front matter is specified quite explicitly in the document “Guidelines for Submitting a Doctoral Dissertation or Master’s Thesis” distributed by the UC Berkeley Graduate Division. The current version of the class is based on the 2001 version of this document.\nA complete example of the use of the front matter commands can be found in the sample dissertation distributed with the class.\n\n\nTo use the front matter macros and environments, you must first declare a number of text strings:\ntitle           Dissertation title author          Your name as registered with UC (usually w/ full middle name) degreeyear      Year your dissertation will be granted degreesemester  Semester (or quarter) your dissertation will be granted degree          The title of your degree (e.g. Doctor of Philosophy) chair           Title and name of your committee chair (e.g. \"Professor Michael A. Harrison\") othermembers    The names of the other members of your committee separated by linebreaks (e.g. \"Professor Susan L. Graham\\Professor Jim Pitman) numberofmembers The number of members on your committee.  This defaults to 3 (and thus is optional) and can be any value between 3 and 6.  It affects the number of lines on the approval page and the space between them. prevdegrees     Your previous degrees:                 \"B.A. (University of California, San Diego) 1978\\\\                 B.A. (University of California, San Diego) 1986\\\\                 M.S. (University of California, Berkeley) 1989\" field           The official title of your field.  This is usually your department's name, but at Berkeley, most Engineering degrees have a more complex name.  Be sure to check the guidelines for any special twists on the name of your field. campus          The name of your UC campus.  This should be capitalized. (e.g. Berkeley) \n\n\n\nThe title, approval, and copyright pages have extremely rigid formats that allow them to be generated automatically once the above declarations have been made. To generate them, invoke the macros\n\\maketitle \\approvalpage \\copyrightpage\nYou should probably invoke them in that order, because that’s the order required by the guidelines.\n\n\n\nBecause you have to provide the text of the abstract, only the title can be generated automatically. So, there is an abstract environment. It generates the title and numbers the abstract in arabic numerals and makes sure that it starts on new page.\nThe UC system requires that your advisor sign the last page of your abstract. Many students just let their advisor just sign at a random location on the page, but you can use the abstractsignature command to generate a signature line with your advisor’s name printed below it. This command generates the signature line at the point it is invoked, so it should be placed at the end of the abstract.\n\n\n\nThe remaining front matter (dedication, table of contents, lists of figures and tables, acknowledgements) MUST be put inside the “frontmatter” environment, which ensures that page-numbering is handled properly. Within this frontmatter environment, you put the environments and commands for the rest of the front matter. There are environments for “dedication” and “acknowledgements” and the standard LaTeX commands for producing tableofcontents, listoffigures, and listoftables.\nThe standard LaTeX commands are well documented in the LaTeX manual. You will probably have to hand edit the .lof (list of figures) and .lot (list of tables) files to make verbose captions more suitable for this front matter. Once you do this, remember to use the nofiles macro to keep them from getting overwritten.\nThe acknowledgements and dedication environments make their contents start on a new page. The acknowledgements environment also put the word “Acknowledgements” in large, bold, centered text at the top of the page. For formatting the dedication page, you’re on your own. After all, the dedication is a kind of poetry and there’s no predicting the right way to format poetry.\n\n\n\n\nThe “smalltabular” and “smalltabular*” environments are equivalent to the “tabular” and “tabular*” environments, except that they use the small font. The “scriptsizetabular” and “scriptsizetabular*” use the scriptsize font.\n\n\n\nTo install the UCTHESIS class, you need to install four files:\nucthesis.cls uct10.clo uct11.clo uct12.clo\nin your LaTeX class file repository.",
+    "text": "If you want your R job to keep running after you log out, the best way to run R is through the BATCH command, i.e. run a command like this one at the UNIX prompt:\nR CMD BATCH cmds.r output.txt &\nwhere “cmds.r” is a file containing the R commands that you wish to run, and output.txt is the file where R will write its output. Type help(BATCH) from inside of R for more information. You can use this technique even if you don’t think you’ll be logging off before your job is done to make sure that R will terminate properly.",
     "crumbs": [
       "Home",
       "Software",
-      "ucthesis LaTeX style"
+      "Terminate R sessions"
     ]
   },
   {
-    "objectID": "ucthesis.html#ucthesis-latex-class",
-    "href": "ucthesis.html#ucthesis-latex-class",
-    "title": "ucthesis LaTeX style",
+    "objectID": "terminate-r.html#explicit-invocation",
+    "href": "terminate-r.html#explicit-invocation",
+    "title": "Terminate R sessions",
     "section": "",
-    "text": "This is the README file for the UCTHESIS class for LaTeX. It corresponds to version 3.1 of the UCTHESIS class (14 July 2001).\nNOTE: v3.0 is the first LaTeX2e version of UCTHESIS. It is now a class that runs in native LaTeX2e mode. It is functionally identical to UCTHESIS.STY v2.7 released on 30 October 1994 by Ethan V. Munson. Other than changes for compatibility (mostly having to do with font selection), and option selection, very little modification has been done to the style. As a result, there are probably cleaner ways to implement a number of features. That will have to wait for the next release. (BBF 10/31/94)",
+    "text": "If you don’t want to worry about shutting down your interactive R session, you MUST use either the -save or the -no-save option. The reason that this is important is that if you log off or close a window while an interactive job is running, R will fall into an infinite loop at the end of your program, trying to ask you whether or not to save the data space. Using one of the options mentioned above will prevent this problem, as R will know the disposition of your data space before the program is completed. In other words, instead of just typing R at the UNIX prompt, type\nR --save\nor\nR --no-save",
     "crumbs": [
       "Home",
       "Software",
-      "ucthesis LaTeX style"
+      "Terminate R sessions"
     ]
   },
   {
-    "objectID": "ucthesis.html#using-the-ucthesis-class",
-    "href": "ucthesis.html#using-the-ucthesis-class",
-    "title": "ucthesis LaTeX style",
+    "objectID": "unix-processes.html",
+    "href": "unix-processes.html",
+    "title": "Managing UNIX processes",
     "section": "",
-    "text": "There is a sample dissertation (by the fictitious, but very irritating, Perry H Disdainful) in the file uctest.tex. It also uses uctest.bib as its bibliography database (though the contents of the database are not important). Mostly this is useful as an example of how to produce the front matter. If you don’t understand LaTeX at all, this file might help you get started, but, since you’re going to be writing a 100+ page document, you should invest the $20 in a copy of the LaTeX manual (by Leslie Lamport the original author of LaTeX). This has recently been updated for LaTeX2e.\nThe LaTeX Companion, by Goossens, Mittelbach, and Samarin (who have been involved in developping and supporting the new version of LaTeX) is also quite good. It gives a lot of useful information if you are going to be writing or modifying classes, and gives a lot of additional information on commonly available style packages. It’s about $35.\n\n\n\nTo use the UCTHESIS class, make sure that the ucthesis.cls file is on your TEXINPUTS search path and use the following command at the start of your input file:\ndocumentclass{ucthesis}",
+    "text": "The output of ps will indicate the name of the program, its process I.D., and the amount of CPU time it has consumed so far.\n\nTo display information about a specific user’s processes:\n\nps -U USERNAME\nwhere USERNAME is your username\n\nTo display information about a specific running program:\n\nps -ef | grep PROGRAM\nwhere PROGRAM is the program’s name\nSee man ps for additional information.\n\n\n\nTo kill a running program, type:\nkill PID\nwhere PID is the process I.D. obtained by running ps.\nIf the first form does not kill your process, try\nkill -9 PID\nTo kill all your background processes, execute:\nkill 0\n\n\n\nMost programs initially inherit the current terminal or pseudo-terminal for doing input and output. This means that these programs have a “controlling terminal”. The “controlling terminal”, and therefore all output, is lost if you logout before your background job completes. To avoid this loss, you should either code your program to read all input and write all output to specific files, or your should redirect input and output for the program by using the shell operators: &lt;, &gt;, &gt;&gt;, and &gt;&.\nIt is recommended that you redirect standard output and standard error to a log file for all programs run in the background. For example:\nmyprog &gt;& logfile &\nwill run myprog in the background, redirecting all output to the file ‘logfile’ in the current directory. See man bash for details on shell redirection operators.\n\n\n\nA “big job” is any CPU-bound process which requires over one minute of CPU time.\n\n\nIn order to run big jobs without slowing down the entire system and inconveniencing all users, everyone must follow certain procedures.\n\nClass accounts are restricted to running their jobs on the public workstations (Use the command sitehosts public for a list of public workstations). Class accounts are not allowed to run a job on a faculty workstation without the prior consent of the faculty member.\nRun the program in background. Do not run the program as “a.out”. Please rename the “a.out” file before executing the program and do not remove the program “binary” before the program has completed executing.\nRun only one background job at a time per machine. If you need to run multiple jobs on one machine, run them in sequence, not in parallel, by putting all the commands in a shell script. Select another computer if a large job is already running on the computer that you have selected. Use the command idle to select a host and top to examine the most CPU intensive jobs are running on that host.\nPlease do not submit jobs to more than 8 computers at any one time. If you have special requirements, you can request an increase in the number of computers to use concurrently by notifying the EML staff. This will enable the EML staff to evaluate load requirements and to monitor the system resources, which will help to avoid conflicts with other users.\nBig jobs should run at low priority, or high “nice value”, of 18 or 19. By default, all programs run at nice value 0. But on the EML systems, the following minumum nice values are required for big jobs:\nTable 1. Appropriate nice values\n\n\n\n\nCPU time\n\n\nMinimum nice value\n\n\n\n\n\n\n1 - 5 minutes\n\n\n18\n\n\n\n\nover 5 minutes\n\n\n19\n\n\n\n\n\nFor example, suppose one wanted to run Matlab in the background with nice value of 19:\n% nice +19 matlab &\nFor more information on these commands, see “man nice” (but note that where the manual says “nice -10” the C shell requires “nice +10”. Each user is responsible for ensuring that his/her big jobs are running at appropriate priorities. The superuser is free to renice appropriately any process which is slowing the system down.\nIf you need to nice a process while it is running, look up the PID as described above and run:\n% renice +19 PID\n\n\n\nComputer memory is necessary for the computer to operate on your data. As the size of the data you’re working with gets bigger and bigger, the computer tends to need more memory. Thus, when you’re working with lots of data and your program prints an error message, especially one which reports a number of bytes or kilobytes of memory requested, the problem is most likely computer memory. The first step is to lift the default restriction on the use of memory which is imposed by the shell, by typing the command:\nlimit datasize unlimited\nat the UNIX command prompt, before you run the program which is failing to obtain the required memory. If the problem persists, in general your only alternative is to run the job on a computer which has more memory. Please send mail to consult to get information about the memory resources of the different EML machines.\n\n\n\nSome people run 2-hour CPU-time jobs only to discover afterwords that the program didn’t even do what they wanted. Avoid this. Debug your program using small test cases until you’re sure you’ve got it right. Only then should you run the big monster.\nIf it’s a very long computation and you can wait for the results, use the “batch” and “at” commands to run it when the system is unloaded.\n\n\n\nTwo common questions when running big jobs are “How do I find out the running time?” and “How do I capture the program output which would normally go to the screen?”. Here is one simple way to do both (as:\n% nice +18 /usr/bin/time program-name &gt;& ouput-filename\nWhere program-name is the name of your program and ouput-filename is the name of the file in which you want to capture output. The running time will be the last line of the output file, formatted like this:\n60.0 real        10.0 user         0.5 sys\nIn this example, the cpu time used was 10.5 seconds (10.0 user + 0.5 sys) and the elapsed (wall-clock) time was 60.0 seconds. By division, your program used 10.5/60 or just over 1/6th of the available cpu time while it ran.\n\n\n\nUsers should run only one background job at a time per machine. If you must run several jobs in background, run them sequentially, not simultaneously. If your programs are ‘prog1’, ‘prog2’ and ‘prog3’, run them in background via the shell command:\n(prog1 ; prog2 ; prog3) &gt;& log &\nAnother way is to use a semicolon:\nrun1 &gt;& run1.log ; run2 &gt;& run2.log\nwhere run1 and run2 are the programs you wish to run and run1.log and run2.log are the logfiles.\nYet annother way is to set up a shell script file, for example ‘run_all’, containing:\n#!/bin/sh run1 &gt;& run1.log run2 &gt;& run2.log\nBy specifying the &gt; sign, you save the output from run1 into file run1.log. By also including the & sign, it also saves any error message output into run1.log.\nThen from the unix prompt:\n% chmod +x run_all\nto allow the script to be executable, and then type:\n./run_all\nto run the script. You could also type:\n./run_all &\nto have it run in the background.\n\n\n\n\nThe at and batch commands allow the system to queue up big jobs and run them at a later time. at allows you to specify when the commands should be executed, while jobs queued with batch will execute as soon as the system load level permits. These commands provide a mechanism for big jobs to run without slowing down interactive response and interfering with other people trying to use the computer.\n\n\nTo use at or batch, create a script file which contains the unix commands you want to run. Suppose your script file is called ‘filename’. To run it in batch, type the command:\nbatch filename\nTo run the script at a specific time, use:\nat time date filename\nwhere time is in the form 0815, 0815am, 8:15am, now, and 5 pm; and date is in the form Jan 24, Friday, tomorrow, and today.\nIf you leave out the date field, the date will default to today.\nThe computer will respond:\njob N at &lt;full date&gt;\nwhere ‘N’ is the job number it creates. When the job finishes, it will mail you the output of the script, unless output was redirected. (see below)\n\n\n\nBy default, /bin/sh is used as the shell interpreter for the commands in your script. If your script-file is a /bin/csh script, use the ‘-c’ flag, as in ‘at -c 1 pm script’.\nIf the commands in your script file need any input, create separate input files which contain the necessary input and use the ‘&lt;’ shell feature in the script file. To redirect the output of a particular command in your script, use the ‘&gt;’ shell feature. For example, your script file might contain the line:\n\nproga &lt; inputa &gt; outputa\n\nThis would cause the program ‘proga’ to take its input from the file ‘inputa’ and send output to ‘outputa’.\n\n\n\nTo find out the status of your jobs, type the command:\nat -l\nThis will report both ‘batch’ and ‘at’ jobs. If ‘N’ is the job number reported by ‘at -l’ then the command:\nat -r N\nwill remove that job from the queue (whether or not it is already running) and interrupt it (if it is already running).",
     "crumbs": [
       "Home",
-      "Software",
-      "ucthesis LaTeX style"
+      "Cluster",
+      "Login/Standalone Servers",
+      "Managing UNIX processes"
     ]
   },
   {
-    "objectID": "ucthesis.html#what-the-ucthesis-class-does",
-    "href": "ucthesis.html#what-the-ucthesis-class-does",
-    "title": "ucthesis LaTeX style",
+    "objectID": "unix-processes.html#the-ps-command",
+    "href": "unix-processes.html#the-ps-command",
+    "title": "Managing UNIX processes",
     "section": "",
-    "text": "The UCTHESIS class is a port of the UCTHESIS style version 2.7 (the final 2.09 release) to LaTeX2e. The UCTHESIS style is a modified version of the standard LaTeX REPORT style that is accepted for use with University of California PhD dissertations and Masters theses. The available commands are almost identical to those of the REPORT style, so your best starting point for documentation is the LaTeX manual written by Leslie Lamport.\nThe key features of the class are:\n\nThe primary modification to the REPORT style is the use of pseudo-double-spacing, since the UC system’s rules are still designed for typewriters. This is achieved by increasing the baselinestretch parameter to 1.37. The baselinestretch is returned to a single-spaced value of 1.00 for elements like tables, captions, and footnotes and for all displayed text (quote, quotation, and verse environments). Unfortunately, this is done with a macro called ssp which resets the font size to normalsize. In LaTeX 2.09 this seems to be unavoidable, but it makes it very hard to create tables in different font sizes.\nMargins are 1.5 inches on the left, 1.0 inches elsewhere.\n3) Uses 11 point by default; you can use the 10pt or 12pt options for those sizes.\nPage numbers are in the top right corner for all pages.\nComplete, correct front matter for UC dissertations can be generated. If you are not a UC student, you should make sure that the front matter is OK with your school.\n\n\n\nThere are five primary options:\nThe “draft” style uses single-spacing throughout the document.\nThe “final” style uses the correct pseudo-double-spacing. This option is the default and is redundant, but is included for symmetry.\nThe “10pt”, “11pt”, and “12pt” styles set the default font size to the obvious value. The “11pt” option is the default and thus is redundant, but is safe to use anyway.\nThe options are selected on the documentclass line, e.g.:\ndocumentclass[10pt,draft]{ucthesis}\n\n\n\nIf you want to use page headers or footers other than the default ones, you should try using “headerfooter.sty” or “fancyheadings.sty”. The myheadings pagestyle doesn’t work well and there is no workaround. The headerfooter and fancyheadings styles are widely distributed, well documented, and easy to use.",
+    "text": "The output of ps will indicate the name of the program, its process I.D., and the amount of CPU time it has consumed so far.\n\nTo display information about a specific user’s processes:\n\nps -U USERNAME\nwhere USERNAME is your username\n\nTo display information about a specific running program:\n\nps -ef | grep PROGRAM\nwhere PROGRAM is the program’s name\nSee man ps for additional information.",
     "crumbs": [
       "Home",
-      "Software",
-      "ucthesis LaTeX style"
+      "Cluster",
+      "Login/Standalone Servers",
+      "Managing UNIX processes"
     ]
   },
   {
-    "objectID": "ucthesis.html#front-matter",
-    "href": "ucthesis.html#front-matter",
-    "title": "ucthesis LaTeX style",
+    "objectID": "unix-processes.html#killing-processes",
+    "href": "unix-processes.html#killing-processes",
+    "title": "Managing UNIX processes",
     "section": "",
-    "text": "The other key service provided by this class is that it generates correct front matter (title page, approval page, abstract, etc.) with a failrly simple set of commands. This facility could be a little easier, but compared to an earlier state of affairs, it’s pretty slick. The format of the front matter is specified quite explicitly in the document “Guidelines for Submitting a Doctoral Dissertation or Master’s Thesis” distributed by the UC Berkeley Graduate Division. The current version of the class is based on the 2001 version of this document.\nA complete example of the use of the front matter commands can be found in the sample dissertation distributed with the class.\n\n\nTo use the front matter macros and environments, you must first declare a number of text strings:\ntitle           Dissertation title author          Your name as registered with UC (usually w/ full middle name) degreeyear      Year your dissertation will be granted degreesemester  Semester (or quarter) your dissertation will be granted degree          The title of your degree (e.g. Doctor of Philosophy) chair           Title and name of your committee chair (e.g. \"Professor Michael A. Harrison\") othermembers    The names of the other members of your committee separated by linebreaks (e.g. \"Professor Susan L. Graham\\Professor Jim Pitman) numberofmembers The number of members on your committee.  This defaults to 3 (and thus is optional) and can be any value between 3 and 6.  It affects the number of lines on the approval page and the space between them. prevdegrees     Your previous degrees:                 \"B.A. (University of California, San Diego) 1978\\\\                 B.A. (University of California, San Diego) 1986\\\\                 M.S. (University of California, Berkeley) 1989\" field           The official title of your field.  This is usually your department's name, but at Berkeley, most Engineering degrees have a more complex name.  Be sure to check the guidelines for any special twists on the name of your field. campus          The name of your UC campus.  This should be capitalized. (e.g. Berkeley) \n\n\n\nThe title, approval, and copyright pages have extremely rigid formats that allow them to be generated automatically once the above declarations have been made. To generate them, invoke the macros\n\\maketitle \\approvalpage \\copyrightpage\nYou should probably invoke them in that order, because that’s the order required by the guidelines.\n\n\n\nBecause you have to provide the text of the abstract, only the title can be generated automatically. So, there is an abstract environment. It generates the title and numbers the abstract in arabic numerals and makes sure that it starts on new page.\nThe UC system requires that your advisor sign the last page of your abstract. Many students just let their advisor just sign at a random location on the page, but you can use the abstractsignature command to generate a signature line with your advisor’s name printed below it. This command generates the signature line at the point it is invoked, so it should be placed at the end of the abstract.\n\n\n\nThe remaining front matter (dedication, table of contents, lists of figures and tables, acknowledgements) MUST be put inside the “frontmatter” environment, which ensures that page-numbering is handled properly. Within this frontmatter environment, you put the environments and commands for the rest of the front matter. There are environments for “dedication” and “acknowledgements” and the standard LaTeX commands for producing tableofcontents, listoffigures, and listoftables.\nThe standard LaTeX commands are well documented in the LaTeX manual. You will probably have to hand edit the .lof (list of figures) and .lot (list of tables) files to make verbose captions more suitable for this front matter. Once you do this, remember to use the nofiles macro to keep them from getting overwritten.\nThe acknowledgements and dedication environments make their contents start on a new page. The acknowledgements environment also put the word “Acknowledgements” in large, bold, centered text at the top of the page. For formatting the dedication page, you’re on your own. After all, the dedication is a kind of poetry and there’s no predicting the right way to format poetry.",
+    "text": "To kill a running program, type:\nkill PID\nwhere PID is the process I.D. obtained by running ps.\nIf the first form does not kill your process, try\nkill -9 PID\nTo kill all your background processes, execute:\nkill 0",
     "crumbs": [
       "Home",
-      "Software",
-      "ucthesis LaTeX style"
+      "Cluster",
+      "Login/Standalone Servers",
+      "Managing UNIX processes"
     ]
   },
   {
-    "objectID": "ucthesis.html#other-commands-not-found-in-the-standard-report-style",
-    "href": "ucthesis.html#other-commands-not-found-in-the-standard-report-style",
-    "title": "ucthesis LaTeX style",
+    "objectID": "unix-processes.html#input-and-output",
+    "href": "unix-processes.html#input-and-output",
+    "title": "Managing UNIX processes",
     "section": "",
-    "text": "The “smalltabular” and “smalltabular*” environments are equivalent to the “tabular” and “tabular*” environments, except that they use the small font. The “scriptsizetabular” and “scriptsizetabular*” use the scriptsize font.",
+    "text": "Most programs initially inherit the current terminal or pseudo-terminal for doing input and output. This means that these programs have a “controlling terminal”. The “controlling terminal”, and therefore all output, is lost if you logout before your background job completes. To avoid this loss, you should either code your program to read all input and write all output to specific files, or your should redirect input and output for the program by using the shell operators: &lt;, &gt;, &gt;&gt;, and &gt;&.\nIt is recommended that you redirect standard output and standard error to a log file for all programs run in the background. For example:\nmyprog &gt;& logfile &\nwill run myprog in the background, redirecting all output to the file ‘logfile’ in the current directory. See man bash for details on shell redirection operators.",
     "crumbs": [
       "Home",
-      "Software",
-      "ucthesis LaTeX style"
+      "Cluster",
+      "Login/Standalone Servers",
+      "Managing UNIX processes"
     ]
   },
   {
-    "objectID": "ucthesis.html#installing-the-ucthesis-class",
-    "href": "ucthesis.html#installing-the-ucthesis-class",
-    "title": "ucthesis LaTeX style",
+    "objectID": "unix-processes.html#running-intensive-processes",
+    "href": "unix-processes.html#running-intensive-processes",
+    "title": "Managing UNIX processes",
     "section": "",
-    "text": "To install the UCTHESIS class, you need to install four files:\nucthesis.cls uct10.clo uct11.clo uct12.clo\nin your LaTeX class file repository.",
+    "text": "A “big job” is any CPU-bound process which requires over one minute of CPU time.\n\n\nIn order to run big jobs without slowing down the entire system and inconveniencing all users, everyone must follow certain procedures.\n\nClass accounts are restricted to running their jobs on the public workstations (Use the command sitehosts public for a list of public workstations). Class accounts are not allowed to run a job on a faculty workstation without the prior consent of the faculty member.\nRun the program in background. Do not run the program as “a.out”. Please rename the “a.out” file before executing the program and do not remove the program “binary” before the program has completed executing.\nRun only one background job at a time per machine. If you need to run multiple jobs on one machine, run them in sequence, not in parallel, by putting all the commands in a shell script. Select another computer if a large job is already running on the computer that you have selected. Use the command idle to select a host and top to examine the most CPU intensive jobs are running on that host.\nPlease do not submit jobs to more than 8 computers at any one time. If you have special requirements, you can request an increase in the number of computers to use concurrently by notifying the EML staff. This will enable the EML staff to evaluate load requirements and to monitor the system resources, which will help to avoid conflicts with other users.\nBig jobs should run at low priority, or high “nice value”, of 18 or 19. By default, all programs run at nice value 0. But on the EML systems, the following minumum nice values are required for big jobs:\nTable 1. Appropriate nice values\n\n\n\n\nCPU time\n\n\nMinimum nice value\n\n\n\n\n\n\n1 - 5 minutes\n\n\n18\n\n\n\n\nover 5 minutes\n\n\n19\n\n\n\n\n\nFor example, suppose one wanted to run Matlab in the background with nice value of 19:\n% nice +19 matlab &\nFor more information on these commands, see “man nice” (but note that where the manual says “nice -10” the C shell requires “nice +10”. Each user is responsible for ensuring that his/her big jobs are running at appropriate priorities. The superuser is free to renice appropriately any process which is slowing the system down.\nIf you need to nice a process while it is running, look up the PID as described above and run:\n% renice +19 PID\n\n\n\nComputer memory is necessary for the computer to operate on your data. As the size of the data you’re working with gets bigger and bigger, the computer tends to need more memory. Thus, when you’re working with lots of data and your program prints an error message, especially one which reports a number of bytes or kilobytes of memory requested, the problem is most likely computer memory. The first step is to lift the default restriction on the use of memory which is imposed by the shell, by typing the command:\nlimit datasize unlimited\nat the UNIX command prompt, before you run the program which is failing to obtain the required memory. If the problem persists, in general your only alternative is to run the job on a computer which has more memory. Please send mail to consult to get information about the memory resources of the different EML machines.\n\n\n\nSome people run 2-hour CPU-time jobs only to discover afterwords that the program didn’t even do what they wanted. Avoid this. Debug your program using small test cases until you’re sure you’ve got it right. Only then should you run the big monster.\nIf it’s a very long computation and you can wait for the results, use the “batch” and “at” commands to run it when the system is unloaded.\n\n\n\nTwo common questions when running big jobs are “How do I find out the running time?” and “How do I capture the program output which would normally go to the screen?”. Here is one simple way to do both (as:\n% nice +18 /usr/bin/time program-name &gt;& ouput-filename\nWhere program-name is the name of your program and ouput-filename is the name of the file in which you want to capture output. The running time will be the last line of the output file, formatted like this:\n60.0 real        10.0 user         0.5 sys\nIn this example, the cpu time used was 10.5 seconds (10.0 user + 0.5 sys) and the elapsed (wall-clock) time was 60.0 seconds. By division, your program used 10.5/60 or just over 1/6th of the available cpu time while it ran.\n\n\n\nUsers should run only one background job at a time per machine. If you must run several jobs in background, run them sequentially, not simultaneously. If your programs are ‘prog1’, ‘prog2’ and ‘prog3’, run them in background via the shell command:\n(prog1 ; prog2 ; prog3) &gt;& log &\nAnother way is to use a semicolon:\nrun1 &gt;& run1.log ; run2 &gt;& run2.log\nwhere run1 and run2 are the programs you wish to run and run1.log and run2.log are the logfiles.\nYet annother way is to set up a shell script file, for example ‘run_all’, containing:\n#!/bin/sh run1 &gt;& run1.log run2 &gt;& run2.log\nBy specifying the &gt; sign, you save the output from run1 into file run1.log. By also including the & sign, it also saves any error message output into run1.log.\nThen from the unix prompt:\n% chmod +x run_all\nto allow the script to be executable, and then type:\n./run_all\nto run the script. You could also type:\n./run_all &\nto have it run in the background.",
     "crumbs": [
       "Home",
-      "Software",
-      "ucthesis LaTeX style"
+      "Cluster",
+      "Login/Standalone Servers",
+      "Managing UNIX processes"
     ]
   },
   {
-    "objectID": "vpn.html",
-    "href": "vpn.html",
-    "title": "Econometrics Laboratory",
+    "objectID": "unix-processes.html#scheduling-jobs",
+    "href": "unix-processes.html#scheduling-jobs",
+    "title": "Managing UNIX processes",
     "section": "",
-    "text": "Download the AnyConnect software from the bottom of its Software Central page.\nRun the AnyConnect client and on the Connection tab, in the field marked Connect to enter ucbvpn.berkeley.edu as the hostname.\nWhen prompted enter your CalNet credentials for the username and password fields.\nChoose a connection group. The first option is suitable for most cases:\n\n1-Campus_VPN: tunnel only campus traffic through the VPN\n2-Campus_VPN_Full_Tunnel: tunnel all of your internet traffic through it\n3-Library_VPN groups: just library traffic\n\nClick the Connect button.",
+    "text": "The at and batch commands allow the system to queue up big jobs and run them at a later time. at allows you to specify when the commands should be executed, while jobs queued with batch will execute as soon as the system load level permits. These commands provide a mechanism for big jobs to run without slowing down interactive response and interfering with other people trying to use the computer.\n\n\nTo use at or batch, create a script file which contains the unix commands you want to run. Suppose your script file is called ‘filename’. To run it in batch, type the command:\nbatch filename\nTo run the script at a specific time, use:\nat time date filename\nwhere time is in the form 0815, 0815am, 8:15am, now, and 5 pm; and date is in the form Jan 24, Friday, tomorrow, and today.\nIf you leave out the date field, the date will default to today.\nThe computer will respond:\njob N at &lt;full date&gt;\nwhere ‘N’ is the job number it creates. When the job finishes, it will mail you the output of the script, unless output was redirected. (see below)\n\n\n\nBy default, /bin/sh is used as the shell interpreter for the commands in your script. If your script-file is a /bin/csh script, use the ‘-c’ flag, as in ‘at -c 1 pm script’.\nIf the commands in your script file need any input, create separate input files which contain the necessary input and use the ‘&lt;’ shell feature in the script file. To redirect the output of a particular command in your script, use the ‘&gt;’ shell feature. For example, your script file might contain the line:\n\nproga &lt; inputa &gt; outputa\n\nThis would cause the program ‘proga’ to take its input from the file ‘inputa’ and send output to ‘outputa’.\n\n\n\nTo find out the status of your jobs, type the command:\nat -l\nThis will report both ‘batch’ and ‘at’ jobs. If ‘N’ is the job number reported by ‘at -l’ then the command:\nat -r N\nwill remove that job from the queue (whether or not it is already running) and interrupt it (if it is already running).",
+    "crumbs": [
+      "Home",
+      "Cluster",
+      "Login/Standalone Servers",
+      "Managing UNIX processes"
+    ]
+  },
+  {
+    "objectID": "x-windows.html",
+    "href": "x-windows.html",
+    "title": "X Windows",
+    "section": "",
+    "text": "This article describes the steps necessary to install X server software on your home computer. This will enable you to display windows and graphics created by applications running on remote UNIX systems.\nNote that in many cases you may be better of using the EML JupyterHub for browser-based access to RStudio and VS Code, or Remote Desktop to run any graphical program in a remote desktop window.\n\n\nMost of our users who require X server software tend to choose Hummingbird’s eXceed because of its availability to the Berkeley campus, its broad feature set, and its Microsoft Windows compatability.\n\n\nHummingbird eXceed can be downloaded from http://software.berkeley.edu. You are required to authenticate with your CalNet ID.\n\n\n\nInstallation is fairly simple; just double-click on the installation program. The installer runs some display diagnostics towards the end so expect the installation process to take longer than most software installations.\n\n\n\nThe best way to run eXceed is in conjunction with SSH software. This ensures that your connection is secure and that anyone snooping on your internet connection will not be able to read any passwords or other secure information that you type. When you run eXceed and SSH software, you will launch programs from the SSH window and eXceed will be able to display them. See these instructions for information on downloading and installing SSH software.\n\n\nTo enable eXceed to work with SSH clients, it will have to be configured to wait for X connections, as opposed to initiating X sessions itself.\nRun the Xconfig utility that comes with eXceed. In the Xconfig control panel, open the Communication item and configure your connection to be Passive.\n\n\n\nYour Windows SSH client must be configured to forward X Window System communication from the machine you are connecting to to your PC’s display.\n\nputty\nLaunch putty.exe, click on the plus sign to the left of “SSH” in the left hand pane, then click “X11” and check the box labelled “Enable X11 Forwarding”.\nSSH Communications Security\nChoose Settings… from the Edit menu and then choose Tunneling from the Profile Settings tree on the left. Check Tunnel X11 connections in the pane on the right.\nThe above works fine if you start eXceed first and then start your SSH client. It is possible, however, to create a shortcut on your desktop that will automatically start both eXceed and your SSH client automatically. To enable this:\n\nOpen the Xsession utility that came with eXceed.\nIn the Xsession Session Startup Application popup window, click on New Program. Then choose Windows App and then the OK button.\nIn the Wstart popup window, fill in:\nDescription:  ssh\nCommand line: the path to ssh.exe (Browse for it)\nWorking directory: the path up to \\ssh, i.e., c:\\data fellows\\f-secure\\ssh\nRun:  Normal\nThen choose Save from the File menu and name the file ssh.ws. Then quit the Wstart window.\nNow in the Xsession window, you will see ssh.ws ssh under Available Programs. ssh.ws is the new filename, and ssh is the description.\nClick on ssh.ws ssh to enable the Add button. Click on Add. This adds the ssh.ws file to Included Programs.\nNext choose Save from the File menu and name the file ssh.ses. Again, the default path is the user directory in the exceed tree.\nThe last step is to find where eXceed saved ssh.ses and create a shortcup to it on your desktop. This is the icon you should double-click to start your secure X session.\n\n\n\n\n\n\n\nXming is the X Windows Software from X.Org ported to Microsoft Windows. It shares source code with Cygwin’s X server (see below), but you do not need the full cygwin environment to run it. You can use this X server in much the same way you use eXceed, though it does not come with many of the features of eXceed. If, for some reason, eXceed becomes unavailable to you, try this software. It can be downloaded from http://www.straightrunning.com/XmingNotes/.\n\n\n\nThe Cygwin UNIX environment also includes the XFree86 X Window System. It can be downloaded from http://www.cygwin.com/xfree/.\n\n\n\n\n\nDownload XQuartz from https://www.xquartz.org.\n\n\n\nFor forwarding remote X sessions over ssh you can use either Terminal.app (also found in /Applications/Utilities) or xterm. If you are using the macOS Terminal, you will need to set your DISPLAY variable. Enter this statement into the file ~/.bashrc on your own computer (not your EML account):\nif [ -z \"$DISPLAY\" ]; then export DISPLAY=:0.0; fi\nand then start a new Terminal window. If you are using xterm from with XQuartz (via the Application menu &gt; xterm), the variable should be set for you.\nOn the Mac you should also use the -X and -Y options:\nssh -X -Y username@hostname",
     "crumbs": [
       "Home",
       "Remote Access",
-      "Using the Campus VPN"
+      "X Windows"
     ]
   },
   {
-    "objectID": "vpn.html#using-the-campus-vpn",
-    "href": "vpn.html#using-the-campus-vpn",
-    "title": "Econometrics Laboratory",
+    "objectID": "x-windows.html#windows-exceed",
+    "href": "x-windows.html#windows-exceed",
+    "title": "X Windows",
     "section": "",
-    "text": "Download the AnyConnect software from the bottom of its Software Central page.\nRun the AnyConnect client and on the Connection tab, in the field marked Connect to enter ucbvpn.berkeley.edu as the hostname.\nWhen prompted enter your CalNet credentials for the username and password fields.\nChoose a connection group. The first option is suitable for most cases:\n\n1-Campus_VPN: tunnel only campus traffic through the VPN\n2-Campus_VPN_Full_Tunnel: tunnel all of your internet traffic through it\n3-Library_VPN groups: just library traffic\n\nClick the Connect button.",
+    "text": "Most of our users who require X server software tend to choose Hummingbird’s eXceed because of its availability to the Berkeley campus, its broad feature set, and its Microsoft Windows compatability.\n\n\nHummingbird eXceed can be downloaded from http://software.berkeley.edu. You are required to authenticate with your CalNet ID.\n\n\n\nInstallation is fairly simple; just double-click on the installation program. The installer runs some display diagnostics towards the end so expect the installation process to take longer than most software installations.\n\n\n\nThe best way to run eXceed is in conjunction with SSH software. This ensures that your connection is secure and that anyone snooping on your internet connection will not be able to read any passwords or other secure information that you type. When you run eXceed and SSH software, you will launch programs from the SSH window and eXceed will be able to display them. See these instructions for information on downloading and installing SSH software.\n\n\nTo enable eXceed to work with SSH clients, it will have to be configured to wait for X connections, as opposed to initiating X sessions itself.\nRun the Xconfig utility that comes with eXceed. In the Xconfig control panel, open the Communication item and configure your connection to be Passive.\n\n\n\nYour Windows SSH client must be configured to forward X Window System communication from the machine you are connecting to to your PC’s display.\n\nputty\nLaunch putty.exe, click on the plus sign to the left of “SSH” in the left hand pane, then click “X11” and check the box labelled “Enable X11 Forwarding”.\nSSH Communications Security\nChoose Settings… from the Edit menu and then choose Tunneling from the Profile Settings tree on the left. Check Tunnel X11 connections in the pane on the right.\nThe above works fine if you start eXceed first and then start your SSH client. It is possible, however, to create a shortcut on your desktop that will automatically start both eXceed and your SSH client automatically. To enable this:\n\nOpen the Xsession utility that came with eXceed.\nIn the Xsession Session Startup Application popup window, click on New Program. Then choose Windows App and then the OK button.\nIn the Wstart popup window, fill in:\nDescription:  ssh\nCommand line: the path to ssh.exe (Browse for it)\nWorking directory: the path up to \\ssh, i.e., c:\\data fellows\\f-secure\\ssh\nRun:  Normal\nThen choose Save from the File menu and name the file ssh.ws. Then quit the Wstart window.\nNow in the Xsession window, you will see ssh.ws ssh under Available Programs. ssh.ws is the new filename, and ssh is the description.\nClick on ssh.ws ssh to enable the Add button. Click on Add. This adds the ssh.ws file to Included Programs.\nNext choose Save from the File menu and name the file ssh.ses. Again, the default path is the user directory in the exceed tree.\nThe last step is to find where eXceed saved ssh.ses and create a shortcup to it on your desktop. This is the icon you should double-click to start your secure X session.",
     "crumbs": [
       "Home",
       "Remote Access",
-      "Using the Campus VPN"
+      "X Windows"
     ]
   },
   {
-    "objectID": "x2go.html",
-    "href": "x2go.html",
-    "title": "X2Go",
+    "objectID": "x-windows.html#windows-xming",
+    "href": "x-windows.html#windows-xming",
+    "title": "X Windows",
     "section": "",
-    "text": "X2Go provides fast and secure graphical access to an EML desktop with support for copy and paste between the local and remote computers.\n\n\nThere are clients for both Mac and Windows. If you have a Mac, make sure you have Xquartz installed.\n\n\n\nLaunch the application and create a new session. The following settings override the default values:\n\nSession\n\nSession name: Your Favorite Machine\nHost: machine-name.berkeley.edu\nLogin: YOUR EML LOGIN\nEnable “Try auto login (ssh-agent or default ssh key)” if you use ssh-agent to connect to the EML without your password. If you do not enable this you will be prompted to enter your EML password when connecting.\nSession type: XFCE\n\nInput/Output\n\nCustom: 1024x768 (or whatever you desire)\nSet display DPI: 100\n\nMedia\n\nDisable “Enable sound support”\nDisable “Client side printing support”",
+    "text": "Xming is the X Windows Software from X.Org ported to Microsoft Windows. It shares source code with Cygwin’s X server (see below), but you do not need the full cygwin environment to run it. You can use this X server in much the same way you use eXceed, though it does not come with many of the features of eXceed. If, for some reason, eXceed becomes unavailable to you, try this software. It can be downloaded from http://www.straightrunning.com/XmingNotes/.",
     "crumbs": [
       "Home",
       "Remote Access",
-      "X2Go"
+      "X Windows"
     ]
   },
   {
-    "objectID": "x2go.html#download",
-    "href": "x2go.html#download",
-    "title": "X2Go",
+    "objectID": "x-windows.html#windows-cygwin",
+    "href": "x-windows.html#windows-cygwin",
+    "title": "X Windows",
     "section": "",
-    "text": "There are clients for both Mac and Windows. If you have a Mac, make sure you have Xquartz installed.",
+    "text": "The Cygwin UNIX environment also includes the XFree86 X Window System. It can be downloaded from http://www.cygwin.com/xfree/.",
     "crumbs": [
       "Home",
       "Remote Access",
-      "X2Go"
+      "X Windows"
     ]
   },
   {
-    "objectID": "x2go.html#settings",
-    "href": "x2go.html#settings",
-    "title": "X2Go",
+    "objectID": "x-windows.html#apple-xquartz",
+    "href": "x-windows.html#apple-xquartz",
+    "title": "X Windows",
     "section": "",
-    "text": "Launch the application and create a new session. The following settings override the default values:\n\nSession\n\nSession name: Your Favorite Machine\nHost: machine-name.berkeley.edu\nLogin: YOUR EML LOGIN\nEnable “Try auto login (ssh-agent or default ssh key)” if you use ssh-agent to connect to the EML without your password. If you do not enable this you will be prompted to enter your EML password when connecting.\nSession type: XFCE\n\nInput/Output\n\nCustom: 1024x768 (or whatever you desire)\nSet display DPI: 100\n\nMedia\n\nDisable “Enable sound support”\nDisable “Client side printing support”",
+    "text": "Download XQuartz from https://www.xquartz.org.\n\n\n\nFor forwarding remote X sessions over ssh you can use either Terminal.app (also found in /Applications/Utilities) or xterm. If you are using the macOS Terminal, you will need to set your DISPLAY variable. Enter this statement into the file ~/.bashrc on your own computer (not your EML account):\nif [ -z \"$DISPLAY\" ]; then export DISPLAY=:0.0; fi\nand then start a new Terminal window. If you are using xterm from with XQuartz (via the Application menu &gt; xterm), the variable should be set for you.\nOn the Mac you should also use the -X and -Y options:\nssh -X -Y username@hostname",
     "crumbs": [
       "Home",
       "Remote Access",
-      "X2Go"
+      "X Windows"
+    ]
+  },
+  {
+    "objectID": "savio.html",
+    "href": "savio.html",
+    "title": "EML Condo Node at Savio",
+    "section": "",
+    "text": "EML has purchased two nodes in a condo at Savio, the high-performance computational cluster managed by the Berkeley Research Computing (BRC) program. As of 2024, these nodes are quite old won’t have as high performance as new Savio nodes or as new nodes on the EML, but they are available, and in addition, because of the condo, users are entitled to use the extra resource available on the Savio cluster through a low priority QoS.\nIf you are interested in using this resource, please create an account at the MyBRC user portal. Once your account is created and you’ve signed the cluster user access agreement, from the welcome page, click on Join next to Create or join a project. Look for co_econ and click Join next to it. You will receive notification when your request has been approved.\nInstructions on how to access the SAVIO cluster, hardware details, filesystems, job scheduler, and how to submit jobs to the condo all are available at the user guide.",
+    "crumbs": [
+      "Home",
+      "Cluster",
+      "EML Condo Node at Savio"
     ]
   }
 ]

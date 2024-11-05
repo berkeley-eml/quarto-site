@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ssh-keys – Econometrics Laboratory</title>
+<title>Manage SSH Keys – Econometrics Laboratory</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -590,18 +590,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#manage-ssh-keys" id="toc-manage-ssh-keys" class="nav-link active" data-scroll-target="#manage-ssh-keys">Manage SSH Keys</a>
+  <li><a href="#on-windows" id="toc-on-windows" class="nav-link active" data-scroll-target="#on-windows">On Windows</a>
   <ul class="collapse">
-  <li><a href="#on-windows" id="toc-on-windows" class="nav-link" data-scroll-target="#on-windows">On Windows</a></li>
   <li><a href="#creating-the-key-pair" id="toc-creating-the-key-pair" class="nav-link" data-scroll-target="#creating-the-key-pair">Creating the key pair</a></li>
   <li><a href="#uploading-the-public-key" id="toc-uploading-the-public-key" class="nav-link" data-scroll-target="#uploading-the-public-key">Uploading the public key</a></li>
   <li><a href="#installing-the-public-key" id="toc-installing-the-public-key" class="nav-link" data-scroll-target="#installing-the-public-key">Installing the public key</a></li>
+  </ul></li>
   <li><a href="#on-unix-and-macos" id="toc-on-unix-and-macos" class="nav-link" data-scroll-target="#on-unix-and-macos">On UNIX and macOS</a>
   <ul class="collapse">
   <li><a href="#generating-ssh-keys" id="toc-generating-ssh-keys" class="nav-link" data-scroll-target="#generating-ssh-keys">Generating SSH Keys</a></li>
-  <li><a href="#uploading-the-public-key-1" id="toc-uploading-the-public-key-1" class="nav-link" data-scroll-target="#uploading-the-public-key-1">Uploading the public key</a></li>
   <li><a href="#installing-the-public-key-1" id="toc-installing-the-public-key-1" class="nav-link" data-scroll-target="#installing-the-public-key-1">Installing the public key</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -609,19 +607,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./monitoring.html">Remote Access</a></li><li class="breadcrumb-item"><a href="./ssh.html">Secure Shell</a></li><li class="breadcrumb-item"><a href="./ssh-keys.html">Manage SSH Keys</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Manage SSH Keys</h1>
+</div>
 
 
 
-<section id="manage-ssh-keys" class="level1">
-<h1>Manage SSH Keys</h1>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>It is possible to open an SSH connection without having to type your password everytime. Instead, you can use a passphrase in combination with SSH “key pairs”. On macOS or UNIX, you will be able to type in your passphrase once at login, and during that session, connect to different remote computers without typing in a password or passphrase each time. On Windows PCs, using the passphrase enables you to connect to different accounts or hosts in the same session seamlessly, without having to type in a password or passphrase every time.</p>
 <p>You will need to create an SSH keypair to facilitate this process. One key, the private key, stays on the machine you will connect from. The other key, the public key, can be put in any account you connect to. Think of this process as leaving a real key (the public key) in a remote door. The door will only open if you have the associated private key as you approach. This is why you must keep the private key to yourself, otherwise people who have a copy of it can pass through all the doors in which you left your public key.</p>
 <section id="on-windows" class="level2">
 <h2 class="anchored" data-anchor-id="on-windows">On Windows</h2>
 <p>Note: newer versions of Windows 10 may have native SSH clients. If you have the software already installed, see the UNIX and macOS instructions below. You can run the same commands in the Windows command prompt program.</p>
-</section>
-<section id="creating-the-key-pair" class="level2">
-<h2 class="anchored" data-anchor-id="creating-the-key-pair">Creating the key pair</h2>
+<section id="creating-the-key-pair" class="level3">
+<h3 class="anchored" data-anchor-id="creating-the-key-pair">Creating the key pair</h3>
 <ol type="1">
 <li>Install PuTTY on your machine, and go to Start Menu &gt; PuTTY &gt; PuTTYgen.</li>
 <li>A new window will appear. At the bottom, for “Type of key”, choose RSA, ECDSA, or ED25519. Then click the the “Generate” button. You may need to move your mouse about in the small window area in order to generate randomness that the process requires.</li>
@@ -629,13 +640,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Click on the “Save Public Key” and “Save Private Key” buttons to save the keys.</li>
 </ol>
 </section>
-<section id="uploading-the-public-key" class="level2">
-<h2 class="anchored" data-anchor-id="uploading-the-public-key">Uploading the public key</h2>
+<section id="uploading-the-public-key" class="level3">
+<h3 class="anchored" data-anchor-id="uploading-the-public-key">Uploading the public key</h3>
 <p>Once you have generated the key pair, you will need to transfer the public key to the remote site. You can transfer the public key in any number of ways, such as by emailing it to the owner of the remote account or an administrator, or SCP or SFTP if you have access. The public key file is actually just a text file.</p>
 </section>
-<section id="installing-the-public-key" class="level2">
-<h2 class="anchored" data-anchor-id="installing-the-public-key">Installing the public key</h2>
+<section id="installing-the-public-key" class="level3">
+<h3 class="anchored" data-anchor-id="installing-the-public-key">Installing the public key</h3>
 <p>See the UNIX instructions for this step below as they are identical.</p>
+</section>
 </section>
 <section id="on-unix-and-macos" class="level2">
 <h2 class="anchored" data-anchor-id="on-unix-and-macos">On UNIX and macOS</h2>
@@ -648,10 +660,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> passphrase <span class="er">(</span><span class="ex">empty</span> for no passphrase<span class="kw">)</span><span class="bu">:</span> </span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> same passphrase again:  Your identification has been saved in <span class="va">$HOME</span>/.ssh/id_ed25519.</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">our</span> public key has been saved in <span class="va">$HOME</span>/.ssh/id_ed25519.pub.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>&nbsp;</p>
-</section>
-<section id="uploading-the-public-key-1" class="level3">
-<h3 class="anchored" data-anchor-id="uploading-the-public-key-1">Uploading the public key</h3>
+<p>&nbsp; ### Uploading the public key</p>
 <p>Once you have generated the key pair, you will need to transfer the public key, e.g.&nbsp;<code>id_ed25519.pub</code>, to the remote site. You can transfer the public key in any number of ways, such as FTP, SFTP, or even by email as an attachment. The public key file is actually just a text file. Upload the file to anyplace in the top-level of your home directory.</p>
 <p>To transfer the file to the remote machine using SCP, execute:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> ~/.ssh/id_ed25519.pub username@remotehost:mynewkey.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -663,7 +672,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm ~/mynewkey.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-</section>
 </section>
 </section>
 
