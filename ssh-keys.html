@@ -599,6 +599,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#on-unix-and-macos" id="toc-on-unix-and-macos" class="nav-link" data-scroll-target="#on-unix-and-macos">On UNIX and macOS</a>
   <ul class="collapse">
   <li><a href="#generating-ssh-keys" id="toc-generating-ssh-keys" class="nav-link" data-scroll-target="#generating-ssh-keys">Generating SSH Keys</a></li>
+  <li><a href="#uploading-the-public-key-1" id="toc-uploading-the-public-key-1" class="nav-link" data-scroll-target="#uploading-the-public-key-1">Uploading the public key</a></li>
   <li><a href="#installing-the-public-key-1" id="toc-installing-the-public-key-1" class="nav-link" data-scroll-target="#installing-the-public-key-1">Installing the public key</a></li>
   </ul></li>
   </ul>
@@ -653,15 +654,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="on-unix-and-macos">On UNIX and macOS</h2>
 <section id="generating-ssh-keys" class="level3">
 <h3 class="anchored" data-anchor-id="generating-ssh-keys">Generating SSH Keys</h3>
-<p>You can generate keys with the ‘<strong>ssh-keygen</strong>’ command:</p>
+<p>You can generate keys with <code>ssh-keygen</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> ssh-keygen <span class="at">-t</span> ed25519</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Generating</span> public/private ed25519 key pair.</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> file in which to save the key <span class="er">(</span><span class="va">$HOME</span><span class="ex">/.ssh/id_ed25519</span><span class="kw">)</span><span class="bu">:</span>    </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> passphrase <span class="er">(</span><span class="ex">empty</span> for no passphrase<span class="kw">)</span><span class="bu">:</span> </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> same passphrase again:  Your identification has been saved in <span class="va">$HOME</span>/.ssh/id_ed25519.</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">our</span> public key has been saved in <span class="va">$HOME</span>/.ssh/id_ed25519.pub.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>&nbsp; ### Uploading the public key</p>
-<p>Once you have generated the key pair, you will need to transfer the public key, e.g.&nbsp;<code>id_ed25519.pub</code>, to the remote site. You can transfer the public key in any number of ways, such as FTP, SFTP, or even by email as an attachment. The public key file is actually just a text file. Upload the file to anyplace in the top-level of your home directory.</p>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> same passphrase again:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Your</span> identification has been saved in <span class="va">$HOME</span>/.ssh/id_ed25519.</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Your</span> public key has been saved in <span class="va">$HOME</span>/.ssh/id_ed25519.pub.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="uploading-the-public-key-1" class="level3">
+<h3 class="anchored" data-anchor-id="uploading-the-public-key-1">Uploading the public key</h3>
+<p>Once you have generated the key pair, you will need to transfer the public key, e.g.&nbsp;<code>id_ed25519.pub</code>, to the remote site. You can transfer the public key in any number of ways, such as SFTP, or even by copying its content and pasting it into a new file. The public key file is actually just a text file. Upload the file to anyplace in the top-level of your home directory.</p>
 <p>To transfer the file to the remote machine using SCP, execute:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> ~/.ssh/id_ed25519.pub username@remotehost:mynewkey.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
