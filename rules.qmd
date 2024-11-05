@@ -1,4 +1,6 @@
-# Account Rules
+---
+title: Account Rules
+---
 
 1.  Do not give out your account information to any other individual.
     Any individual found accessing another individual's account will
@@ -151,20 +153,18 @@
         -   100 pages for each upper division undergraduate class
             account.
 
-        -   \*160 pages for each graduate class account.
+        -   160 pages for each graduate class account.[^1]
 
         -   40 pages/semester for each undergraduate student account.
 
-        +160 pages/semester for each graduate student account.
-
-        d Contractor, research, and non-statistics UC staff accounts are
+        Contractor, research, and non-statistics UC staff accounts are
         charged for all printing and should refer to the current rate
         schedule.
 
-        \*Students enrolled in Stat 299 can have their quota increased
+        [^1]: Students enrolled in Stat 299 can have their quota increased
         to 500 pages during the period their thesis is being reviewed.
 
-        +Alumni accounts will be charged at the rate of $0.05/page for
+        Alumni accounts will be charged at the rate of $0.05/page for
         all printing.
 
     -   Media: Only the costs for the media are charged when
