@@ -1,4 +1,6 @@
-# SSH Tunneling
+---
+title: SSH Tunneling
+---
 
 An SSH tunnel establishes a connection between your local machine and
 the remote machine via a TCP port. When you configure your local
@@ -54,9 +56,9 @@ Type (on your local machine) in a terminal window:
 ssh -l username -L LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME
 ```
 
-where LISTEN\_PORT is the Listen Port, DESTINATION\_PORT is the
-Destination Port, and EML\_HOSTNAME is any EML computer. See our
-[dashboards](/monitoring) for a list of EML computers.
+where `LISTEN_PORT` is the Listen Port, `DESTINATION_PORT` is the
+Destination Port, and `EML_HOSTNAME` is any EML computer. See our
+[dashboards](monitoring.qmd) for a list of EML computers.
 
 You may included more than one tunnel on the command-line, for example:
 
