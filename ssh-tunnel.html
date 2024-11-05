@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ssh-tunnel – Econometrics Laboratory</title>
+<title>SSH Tunneling – Econometrics Laboratory</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -590,9 +590,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ssh-tunneling" id="toc-ssh-tunneling" class="nav-link active" data-scroll-target="#ssh-tunneling">SSH Tunneling</a>
-  <ul class="collapse">
-  <li><a href="#typical-configurations" id="toc-typical-configurations" class="nav-link" data-scroll-target="#typical-configurations">Typical Configurations</a></li>
+  <li><a href="#typical-configurations" id="toc-typical-configurations" class="nav-link active" data-scroll-target="#typical-configurations">Typical Configurations</a></li>
   <li><a href="#in-windows---putty" id="toc-in-windows---putty" class="nav-link" data-scroll-target="#in-windows---putty">In Windows - putty</a></li>
   <li><a href="#macos-and-linux" id="toc-macos-and-linux" class="nav-link" data-scroll-target="#macos-and-linux">macOS and Linux</a>
   <ul class="collapse">
@@ -604,18 +602,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#jstor" id="toc-jstor" class="nav-link" data-scroll-target="#jstor">JSTOR</a></li>
   <li><a href="#remote-desktop" id="toc-remote-desktop" class="nav-link" data-scroll-target="#remote-desktop">Remote Desktop</a></li>
   </ul></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./monitoring.html">Remote Access</a></li><li class="breadcrumb-item"><a href="./ssh.html">Secure Shell</a></li><li class="breadcrumb-item"><a href="./ssh-tunnel.html">SSH Tunneling</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">SSH Tunneling</h1>
+</div>
 
 
 
-<section id="ssh-tunneling" class="level1">
-<h1>SSH Tunneling</h1>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>An SSH tunnel establishes a connection between your local machine and the remote machine via a TCP port. When you configure your local application to use an SSH tunnel you tell it to connect to your local machine at a specified port, rather than the remote machine. The tunnel then carries your traffic securely to the remote machine.</p>
 <section id="typical-configurations" class="level2">
 <h2 class="anchored" data-anchor-id="typical-configurations">Typical Configurations</h2>
@@ -683,7 +694,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="macos-and-linux">macOS and Linux</h2>
 <p>Type (on your local machine) in a terminal window:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-l</span> username <span class="at">-L</span> LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>where LISTEN_PORT is the Listen Port, DESTINATION_PORT is the Destination Port, and EML_HOSTNAME is any EML computer. See our <a href="./monitoring">dashboards</a> for a list of EML computers.</p>
+<p>where <code>LISTEN_PORT</code> is the Listen Port, <code>DESTINATION_PORT</code> is the Destination Port, and <code>EML_HOSTNAME</code> is any EML computer. See our <a href="./monitoring.html">dashboards</a> for a list of EML computers.</p>
 <p>You may included more than one tunnel on the command-line, for example:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-l</span> username <span class="at">-L</span> 25:DESTINATION_HOST:25 <span class="at">-L</span> 110:DESTINATION_HOST:110 EML_HOSTNAME</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="alternative-ports" class="level3">
@@ -712,7 +723,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>and then connect your RDP client (e.g.&nbsp;Microsoft Remote Desktop) to localhost:53389.</p>
 
 
-</section>
 </section>
 </section>
 
