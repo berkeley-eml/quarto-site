@@ -1,4 +1,6 @@
-# Manage SSH Keys
+---
+title: Manage SSH Keys
+---
 
 It is possible to open an SSH connection without having to type your
 password everytime. Instead, you can use a passphrase in combination
@@ -25,7 +27,7 @@ have the software already installed, see the UNIX and macOS instructions
 below. You can run the same commands in the Windows command prompt
 program.
 
-## Creating the key pair
+### Creating the key pair
 
 1.  Install PuTTY on your machine, and go to Start Menu &gt; PuTTY &gt;
     PuTTYgen.
@@ -40,7 +42,7 @@ program.
 4.  Click on the "Save Public Key" and "Save Private Key" buttons to
     save the keys.
 
-## Uploading the public key
+### Uploading the public key
 
 Once you have generated the key pair, you will need to transfer the
 public key to the remote site. You can transfer the public key in any
@@ -48,7 +50,7 @@ number of ways, such as by emailing it to the owner of the remote
 account or an administrator, or SCP or SFTP if you have access. The
 public key file is actually just a text file.
 
-## Installing the public key
+### Installing the public key
 
 See the UNIX instructions for this step below as they are identical.
 
@@ -67,7 +69,6 @@ Enter same passphrase again:  Your identification has been saved in $HOME/.ssh/i
 our public key has been saved in $HOME/.ssh/id_ed25519.pub.
 ```
  
-
 ### Uploading the public key
 
 Once you have generated the key pair, you will need to transfer the
