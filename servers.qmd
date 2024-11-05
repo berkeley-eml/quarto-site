@@ -4,7 +4,7 @@ This is a partial list of EML servers (with the memory available on the
 machines in parentheses). Some have access restrictions.
 
 You can also browse a list of EML computers on the General overview of
-our [dashboards](/monitoring).
+our [dashboards](monitoring.qmd).
 
  - fargo.berkeley.edu (376 GB)
  - griliches.berkeley.edu (6 GB)
