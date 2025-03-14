@@ -1,82 +1,5 @@
 [
   {
-    "objectID": "ssh-tunnel.html",
-    "href": "ssh-tunnel.html",
-    "title": "SSH Tunneling",
-    "section": "",
-    "text": "An SSH tunnel establishes a connection between your local machine and the remote machine via a TCP port. When you configure your local application to use an SSH tunnel you tell it to connect to your local machine at a specified port, rather than the remote machine. The tunnel then carries your traffic securely to the remote machine.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH Tunneling"
-    ]
-  },
-  {
-    "objectID": "ssh-tunnel.html#typical-configurations",
-    "href": "ssh-tunnel.html#typical-configurations",
-    "title": "SSH Tunneling",
-    "section": "Typical Configurations",
-    "text": "Typical Configurations\nHere is a list of application-specific tunnel settings. Note that in order to bind to ports lower than 1024 on Linux and Mac, one must have administrative privileges.\n\nTunnel Settings\n\n\nApplication\nType\nListen Port\n\n\n\n\nSMB\nTCP\n139\n\n\nSMB\nTCP\n445\n\n\nPrinting\nTCP\n515\n\n\nRemote Desktop\nTCP\n3389\n\n\nMySQL\nTCP\n3306\n\n\nVNC\nTCP\n5901\n\n\nJSTOR\nTCP\n8000",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH Tunneling"
-    ]
-  },
-  {
-    "objectID": "ssh-tunnel.html#in-windows---putty",
-    "href": "ssh-tunnel.html#in-windows---putty",
-    "title": "SSH Tunneling",
-    "section": "In Windows - putty",
-    "text": "In Windows - putty\n\nClick the plus sign by the SSH menu choice in the left pane of the main window.\nClick on Tunnels.\nSet Source port to the value of the listen port and Destination to DESTINATION_HOST:DESTINATION_PORT given your specific tunneling options. (see table above)\nOnce the information is in place, click the Add button to create the tunnel.\nClick on the Session menu choice at the top of the left hand pane and enter any valid EML host in the Host Name window. Click on Open, and log in with your EML username and password.\nIf you are using an Remote Desktop application, under computername, type localhost:53389",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH Tunneling"
-    ]
-  },
-  {
-    "objectID": "ssh-tunnel.html#macos-and-linux",
-    "href": "ssh-tunnel.html#macos-and-linux",
-    "title": "SSH Tunneling",
-    "section": "macOS and Linux",
-    "text": "macOS and Linux\nType (on your local machine) in a terminal window:\nssh -l username -L LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME\nwhere LISTEN_PORT is the Listen Port, DESTINATION_PORT is the Destination Port, and EML_HOSTNAME is any EML computer. See our dashboards for a list of EML computers.\nYou may included more than one tunnel on the command-line, for example:\nssh -l username -L 25:DESTINATION_HOST:25 -L 110:DESTINATION_HOST:110 EML_HOSTNAME\n\nAlternative Ports\nIf you receive a message that the port is in use or are denied permission, you will need to choose a different port number for the local port. For example you would specify port 5445 rather than 445 as in the example below.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH Tunneling"
-    ]
-  },
-  {
-    "objectID": "ssh-tunnel.html#examples",
-    "href": "ssh-tunnel.html#examples",
-    "title": "SSH Tunneling",
-    "section": "Examples",
-    "text": "Examples\n\nSMB\nConnect to the EML file server from off campus:\nssh -L 5445:eml.berkeley.edu:445 username@EML_HOSTNAME\nand then connect your SMB client to smb://localhost:5445/homes (or \\localhost:5445on Windows).\n\n\nJSTOR\nRead JSTOR from off campus:\nssh -L 8000:www.jstor.org:80 username@EML_HOSTNAME\nand then connect your web browser to http://localhost:8000.\n\n\nRemote Desktop\nConnect to an EML server through the VPN:\nssh -L 53389:localhost:3389 username@EML_HOSTNAME\nand then connect your RDP client (e.g. Microsoft Remote Desktop) to localhost:53389.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "SSH Tunneling"
-    ]
-  },
-  {
-    "objectID": "savio.html",
-    "href": "savio.html",
-    "title": "EML Condo Node at Savio",
-    "section": "",
-    "text": "EML has purchased two nodes in a condo at Savio, the high-performance computational cluster managed by the Berkeley Research Computing (BRC) program. As of 2024, these nodes are quite old won’t have as high performance as new Savio nodes or as new nodes on the EML, but they are available, and in addition, because of the condo, users are entitled to use the extra resource available on the Savio cluster through a low priority QoS.\nIf you are interested in using this resource, please create an account at the MyBRC user portal. Once your account is created and you’ve signed the cluster user access agreement, from the welcome page, click on Join next to Create or join a project. Look for co_econ and click Join next to it. You will receive notification when your request has been approved.\nInstructions on how to access the SAVIO cluster, hardware details, filesystems, job scheduler, and how to submit jobs to the condo all are available at the user guide.",
-    "crumbs": [
-      "Home",
-      "Cluster",
-      "EML Condo Node at Savio"
-    ]
-  },
-  {
     "objectID": "x2go.html",
     "href": "x2go.html",
     "title": "X2Go",
@@ -345,6 +268,45 @@
     ]
   },
   {
+    "objectID": "ssh-keys.html",
+    "href": "ssh-keys.html",
+    "title": "Manage SSH Keys",
+    "section": "",
+    "text": "It is possible to open an SSH connection without having to type your password everytime. Instead, you can use a passphrase in combination with SSH “key pairs”. On macOS or UNIX, you will be able to type in your passphrase once at login, and during that session, connect to different remote computers without typing in a password or passphrase each time. On Windows PCs, using the passphrase enables you to connect to different accounts or hosts in the same session seamlessly, without having to type in a password or passphrase every time.\nYou will need to create an SSH keypair to facilitate this process. One key, the private key, stays on the machine you will connect from. The other key, the public key, can be put in any account you connect to. Think of this process as leaving a real key (the public key) in a remote door. The door will only open if you have the associated private key as you approach. This is why you must keep the private key to yourself, otherwise people who have a copy of it can pass through all the doors in which you left your public key.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "Manage SSH Keys"
+    ]
+  },
+  {
+    "objectID": "ssh-keys.html#on-windows",
+    "href": "ssh-keys.html#on-windows",
+    "title": "Manage SSH Keys",
+    "section": "On Windows",
+    "text": "On Windows\nNote: newer versions of Windows 10 may have native SSH clients. If you have the software already installed, see the UNIX and macOS instructions below. You can run the same commands in the Windows command prompt program.\n\nCreating the key pair\n\nInstall PuTTY on your machine, and go to Start Menu &gt; PuTTY &gt; PuTTYgen.\nA new window will appear. At the bottom, for “Type of key”, choose RSA, ECDSA, or ED25519. Then click the the “Generate” button. You may need to move your mouse about in the small window area in order to generate randomness that the process requires.\nType in a unique passphrase in the Key and Confirm passphrase fields. The passphrase is used to protect your key and you will be asked for it when you connect via SSH using public key authentication.\nClick on the “Save Public Key” and “Save Private Key” buttons to save the keys.\n\n\n\nUploading the public key\nOnce you have generated the key pair, you will need to transfer the public key to the remote site. You can transfer the public key in any number of ways, such as by emailing it to the owner of the remote account or an administrator, or SCP or SFTP if you have access. The public key file is actually just a text file.\n\n\nInstalling the public key\nSee the UNIX instructions for this step below as they are identical.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "Manage SSH Keys"
+    ]
+  },
+  {
+    "objectID": "ssh-keys.html#on-unix-and-macos",
+    "href": "ssh-keys.html#on-unix-and-macos",
+    "title": "Manage SSH Keys",
+    "section": "On UNIX and macOS",
+    "text": "On UNIX and macOS\n\nGenerating SSH Keys\nYou can generate keys with ssh-keygen:\n% ssh-keygen -t ed25519\nGenerating public/private ed25519 key pair.\nEnter file in which to save the key ($HOME/.ssh/id_ed25519):    \nEnter passphrase (empty for no passphrase): \nEnter same passphrase again:\nYour identification has been saved in $HOME/.ssh/id_ed25519.\nYour public key has been saved in $HOME/.ssh/id_ed25519.pub.\n\n\nUploading the public key\nOnce you have generated the key pair, you will need to transfer the public key, e.g. id_ed25519.pub, to the remote site. You can transfer the public key in any number of ways, such as SFTP, or even by copying its content and pasting it into a new file. The public key file is actually just a text file. Upload the file to anyplace in the top-level of your home directory.\nTo transfer the file to the remote machine using SCP, execute:\nscp ~/.ssh/id_ed25519.pub username@remotehost:mynewkey.pub\n\n\nInstalling the public key\nAppend the public key to ~/.ssh/authorized_keys on the remote machine. SSH to that computer and run:\n$ cat ~/mynewkey.pub &gt;&gt; ~/.ssh/authorized_keys\n$ rm ~/mynewkey.pub",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "Manage SSH Keys"
+    ]
+  },
+  {
     "objectID": "software.html",
     "href": "software.html",
     "title": "Software Inventory",
@@ -541,6 +503,18 @@
     ]
   },
   {
+    "objectID": "savio.html",
+    "href": "savio.html",
+    "title": "EML Condo Node at Savio",
+    "section": "",
+    "text": "EML has purchased two nodes in a condo at Savio, the high-performance computational cluster managed by the Berkeley Research Computing (BRC) program. As of 2024, these nodes are quite old won’t have as high performance as new Savio nodes or as new nodes on the EML, but they are available, and in addition, because of the condo, users are entitled to use the extra resource available on the Savio cluster through a low priority QoS.\nIf you are interested in using this resource, please create an account at the MyBRC user portal. Once your account is created and you’ve signed the cluster user access agreement, from the welcome page, click on Join next to Create or join a project. Look for co_econ and click Join next to it. You will receive notification when your request has been approved.\nInstructions on how to access the SAVIO cluster, hardware details, filesystems, job scheduler, and how to submit jobs to the condo all are available at the user guide.",
+    "crumbs": [
+      "Home",
+      "Cluster",
+      "EML Condo Node at Savio"
+    ]
+  },
+  {
     "objectID": "rules-policies.html",
     "href": "rules-policies.html",
     "title": "Rules and Policies",
@@ -728,7 +702,7 @@
     "href": "jupyterhub.html",
     "title": "JupyterHub",
     "section": "",
-    "text": "EML’s JupyterHub is deployed for users to remotely run Jupyter Lab (with Python, R, MATLAB, and iTorch), terminal sessions, RStudio, VS Code, and even graphical desktop sessions on EML machines.\n\n\nBy default, your notebook will be spawned onto the first available standalone Linux server. For more processing power, choose the partition that will use the high-performance computing cluster: “low” for the low priority partition and the “high” for the high priority partition\nYou can also pass SBATCH options to your notebook and specify prologue commands that will run prior to your notebook startup.\n\n\n\nTo stop your server (and free up resources for other users), please visit the “Hub Control Panel” and choose “Stop My Server”. Note that selecting “Logout” does not free up resources for other users as it keeps your server running.\n\n\n\nSome research accounts are shared among multiple people to ease the management burden of large datasets and/or code development. SSH access to such accounts is managed through SSH keys, however our JupyterHub has a different method. If you have been authorized to use a shared account, you can specify a username of `your_username@shared_username`, and then your own password, e.g. `jane_doe@big_research`. You can request access to shared accounts through the faculty who manages the account or through manager@econ.berkeley.edu.\nUsers of shared accounts are encourage to create independent named servers within JupyterHub, as documented below.\n\n\n\nIt is possible to start up multiple servers on the cluster, analogously to how you might start up more than one job on the cluster. This is useful if you want to provide your jupyter server with different hardware resources or cluster options, or if you are sharing a research account and want to let each user run a different jupyter server.\nAfter you login, do not click Start on the Server Options page. Instead, visit the control panel at https://jupyter.econ.berkeley.edu/hub/home. You can get there by clicking the Home button at the top-left. Specify a name in the “Name your server” field, then click “Add New Server”. If you are using a shared account, consider naming the server after your own EML username or after your name. This helps the other account users to tell the servers apart. If you are working from your own account, consider naming your additional servers after your project or the cluster characteristics of your job. After naming and adding the server, you will then be prompted to specify spawning options.\nIf you have multiple named servers running, just navigate to the hub control panel by clicking the Home button at the top left, clicking File &gt; Hub Control Panel from within Lab, or by visiting https://jupyter.econ.berkeley.edu/hub/home directly. There is no hub control panel button from within RStudio. You can access, modify, or stop the servers there. Note that your default server will be available at https://jupyter.econ.berkeley.edu/user/username while your named servers will be available at https://jupyter.econ.berkeley.edu/user/username/servername/.\n\n\n\nWithin JupyterLab, click the application from the launcher. If you don’t see the launcher, click File &gt; New Launcher.",
+    "text": "EML’s JupyterHub is deployed for users to remotely run Jupyter Lab (with Python, R, MATLAB, and iTorch), terminal sessions, RStudio, VS Code, and even graphical desktop sessions on EML machines.\n\n\nBy default, your notebook will be spawned onto the first available standalone Linux server. For more processing power, choose the partition that will use the high-performance computing cluster: “low” for the low priority partition and the “high” for the high priority partition\nYou can also pass SBATCH options to your notebook and specify prologue commands that will run prior to your notebook startup.\n\n\n\nInteractive programs like Jupyter Lab, RStudio, or VS Code might not respond well if you launch long running jobs interactively from their UIs, and then close your device, reconnect to another network, and re-open your browser. They will often work just fine, but there can be problems. If you need to run code that you expect to take a long time to complete, it would be best to run it as a batch job on the cluster. You can submit the job from your Jupyter session or by connecting with SSH to a login node.\n\n\n\nTo stop your server (and free up resources for other users), please visit the “Hub Control Panel” and choose “Stop My Server”. Note that selecting “Logout” does not free up resources for other users as it keeps your server running.\n\n\n\nSome research accounts are shared among multiple people to ease the management burden of large datasets and/or code development. SSH access to such accounts is managed through SSH keys, however our JupyterHub has a different method. If you have been authorized to use a shared account, you can specify a username of `your_username@shared_username`, and then your own password, e.g. `jane_doe@big_research`. You can request access to shared accounts through the faculty who manages the account or through manager@econ.berkeley.edu.\nUsers of shared accounts are encourage to create independent named servers within JupyterHub, as documented below.\n\n\n\nIt is possible to start up multiple servers on the cluster, analogously to how you might start up more than one job on the cluster. This is useful if you want to provide your jupyter server with different hardware resources or cluster options, or if you are sharing a research account and want to let each user run a different jupyter server.\nAfter you login, do not click Start on the Server Options page. Instead, visit the control panel at https://jupyter.econ.berkeley.edu/hub/home. You can get there by clicking the Home button at the top-left. Specify a name in the “Name your server” field, then click “Add New Server”. If you are using a shared account, consider naming the server after your own EML username or after your name. This helps the other account users to tell the servers apart. If you are working from your own account, consider naming your additional servers after your project or the cluster characteristics of your job. After naming and adding the server, you will then be prompted to specify spawning options.\nIf you have multiple named servers running, just navigate to the hub control panel by clicking the Home button at the top left, clicking File &gt; Hub Control Panel from within Lab, or by visiting https://jupyter.econ.berkeley.edu/hub/home directly. There is no hub control panel button from within RStudio. You can access, modify, or stop the servers there. Note that your default server will be available at https://jupyter.econ.berkeley.edu/user/username while your named servers will be available at https://jupyter.econ.berkeley.edu/user/username/servername/.\n\n\n\nWithin JupyterLab, click the application from the launcher. If you don’t see the launcher, click File &gt; New Launcher.",
     "crumbs": [
       "Home",
       "Remote Access",
@@ -741,6 +715,18 @@
     "title": "JupyterHub",
     "section": "",
     "text": "By default, your notebook will be spawned onto the first available standalone Linux server. For more processing power, choose the partition that will use the high-performance computing cluster: “low” for the low priority partition and the “high” for the high priority partition\nYou can also pass SBATCH options to your notebook and specify prologue commands that will run prior to your notebook startup.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "JupyterHub"
+    ]
+  },
+  {
+    "objectID": "jupyterhub.html#long-running-code",
+    "href": "jupyterhub.html#long-running-code",
+    "title": "JupyterHub",
+    "section": "",
+    "text": "Interactive programs like Jupyter Lab, RStudio, or VS Code might not respond well if you launch long running jobs interactively from their UIs, and then close your device, reconnect to another network, and re-open your browser. They will often work just fine, but there can be problems. If you need to run code that you expect to take a long time to complete, it would be best to run it as a batch job on the cluster. You can submit the job from your Jupyter session or by connecting with SSH to a login node.",
     "crumbs": [
       "Home",
       "Remote Access",
@@ -1602,6 +1588,32 @@
     ]
   },
   {
+    "objectID": "rules.html",
+    "href": "rules.html",
+    "title": "Account Rules",
+    "section": "",
+    "text": "Do not give out your account information to any other individual. Any individual found accessing another individual’s account will have his/her account closed immediately, and this may result in further disciplinary action.\n\nEach individual is responsible for ALL activity associated with his/her account.\nDO NOT log into your account from another individual’s account.\nSend mail to “manager” immediately if you suspect that someone has gained access to your account.\n\nAbuse of any computer account by an individual within the EML system or abuse of any other computer system may lead to termination of the individual’s EML account and permanent suspension of all EML system privileges. Abuse of an account includes, but is not limited to:\n\nUnauthorized attempts to access accounts, files, or system resources.\nMalicious mischief of any sort.\nAny activity originating from a local account (on any computer system) that results in an official complaint being logged against the user.\nUnsolicited electronic communications with an individual who is not known to the user and/or the recipient.\nUse of electronic communications for advertising, selling, personal solicitations, or sending chain letters (The use of departmental aliases is restricted to University business).\nFailure to cooperate with requests of the System Staff regarding use of system resources.\nPlaying of games.\nRepeated failure to follow posted rules.\n\nIndividuals are not allowed to connect or remove computer equipment to or from the network connections in any room or office. An individual may request a connection for a personal computer and will be assigned a DHCP connection to use with the purple cables installed in offices. Attempting to attach any other computer equipment to an office network outlet is prohibited. This includes connecting switches, hubs, laptops or other computers from outside of the department.\nAll network connections within the department are controlled by the EML. All network related requests for service or reports of problems should be directed to the EML.\nThe contents of all accounts (including files that are owned or created by the user regardless of location) are subject to copyright laws, and all users must comply with those laws. All “original works of authorship” that are produced or distributed are covered by copyright law. An individual can not store or distribute (make available), in part or in whole, any item that is protected by copyright law without the written permission of the copyright owner. In order not to fall under the provisions of Senate Bill 1386, users are prohibited from storing/creating information that contains an individuals name in combination with personal information as defined by either a social security number, drivers license number, or financial/credit card number.\nEML accounts are not to be used for storing personal music or videos not directly related to course work or research. EML accounts can be used to transfer personal music or video files but the files must be removed within 48 hours.\nRestrictions on files located under the home directory with names that begin with a ‘.’ prefix (referred to as ‘dot’ files):\n\nOnly the owner is permitted to have “write” access to a ‘dot’ file.\nDot files can not be a ‘link’ to a file outside of the user’s account.\nA “.rhosts” file can not contain the name of any non-EML computer. Undergraduate class accounts are prohibited from using a “.rhosts” file.\n\nLimitations on the use of computer resources require that users do not run more that one large job on a computer at a time and do not run jobs on more than 8 computers simultaneously. When printing do not place more than 10 jobs in a printer queue. For information on resource usage see “help bigjobs”.\nRemove messages from the incoming mail file after they have been read. Do not save messages in the incoming mail file (/var/mail/[user-name]). If the incoming mail file grows to more than 0.1MB the mail file will be truncated and messages older than 30 days may be automatically deleted. Class accounts can not be used to subscribe to news groups, listing services, or are allowed to post messages to the net.\nUsers are restricted to creating and modifying files under their account (home directory). With the exception of the use of the directory “/tmp” the placement or modification of files in any other location without authorization is prohibited. The /tmp directory can be used for temporary (one day only) storage of files. Files older than 24 hours will be automatically deleted, but users should remove their files as soon as their work has been completed (See “help tmp”).\nAccounts must be renewed according to the following schedule:\n\nClass accounts expire at the end of each semester and can not be renewed.\nGraduate accounts for Economics students are valid as long as the individual is currently enrolled. Alumni accounts are issued upon request to individuals who have left the Department in good standing and are valid for one year after separation from the Department. Alumni accounts can not be renewed.\nAll other student accounts expire on Jan 1 and July 1 of each year and must be renewed.\nGuest accounts must be renewed each year by July 1 and require approval of the sponsoring faculty member.\nFaculty & visitor (associate research fellows) accounts expire upon termination of their appointments.\nContractor accounts are valid indefinitely, as long as the account is in good standing.\nAll other accounts expire on July 1 of each year and must be renewed.\n\nRequests for an extension of an account must be received within 15 days of the account expiration date (send electronic mail to “manager@econ”). There is a $20 fee to recover files from an account that has expired. Refer to “help accounts” for more information.\nServices requiring reimbursement for materials.\n\nPrinting: Student accounts are charged $0.05/page for any printing above their quota established according to the following categories:\n\n40 pages for each lower division undergraduate class account.\n100 pages for each upper division undergraduate class account.\n160 pages for each graduate class account.1\n40 pages/semester for each undergraduate student account.\n\nContractor, research, and non-statistics UC staff accounts are charged for all printing and should refer to the current rate schedule.\nAlumni accounts will be charged at the rate of $0.05/page for all printing.\nMedia: Only the costs for the media are charged when transferring files to a removable media.\n\nPlease report any problems regarding equipment or system software to the EML staff by sending mail to “trouble” or by reporting the problem directly to either room 643 or 498/499. For information/questions on the use of application packages (eg. blss, sas, S), programming languages and libraries send mail to “consult”. Questions/problems regarding accounts should be sent to “manager”. Refer to “help emergency” for a list of people to contact in case of an emergency.",
+    "crumbs": [
+      "Home",
+      "Accounts",
+      "Policies and Rules",
+      "Account Rules"
+    ]
+  },
+  {
+    "objectID": "rules.html#footnotes",
+    "href": "rules.html#footnotes",
+    "title": "Account Rules",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nStudents enrolled in Stat 299 can have their quota increased to 500 pages during the period their thesis is being reviewed.↩︎",
+    "crumbs": [
+      "Home",
+      "Accounts",
+      "Policies and Rules",
+      "Account Rules"
+    ]
+  },
+  {
     "objectID": "security.html",
     "href": "security.html",
     "title": "Security Issues and Policies",
@@ -1728,6 +1740,71 @@
       "Remote Access",
       "Secure Shell",
       "SSH Agent"
+    ]
+  },
+  {
+    "objectID": "ssh-tunnel.html",
+    "href": "ssh-tunnel.html",
+    "title": "SSH Tunneling",
+    "section": "",
+    "text": "An SSH tunnel establishes a connection between your local machine and the remote machine via a TCP port. When you configure your local application to use an SSH tunnel you tell it to connect to your local machine at a specified port, rather than the remote machine. The tunnel then carries your traffic securely to the remote machine.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "SSH Tunneling"
+    ]
+  },
+  {
+    "objectID": "ssh-tunnel.html#typical-configurations",
+    "href": "ssh-tunnel.html#typical-configurations",
+    "title": "SSH Tunneling",
+    "section": "Typical Configurations",
+    "text": "Typical Configurations\nHere is a list of application-specific tunnel settings. Note that in order to bind to ports lower than 1024 on Linux and Mac, one must have administrative privileges.\n\nTunnel Settings\n\n\nApplication\nType\nListen Port\n\n\n\n\nSMB\nTCP\n139\n\n\nSMB\nTCP\n445\n\n\nPrinting\nTCP\n515\n\n\nRemote Desktop\nTCP\n3389\n\n\nMySQL\nTCP\n3306\n\n\nVNC\nTCP\n5901\n\n\nJSTOR\nTCP\n8000",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "SSH Tunneling"
+    ]
+  },
+  {
+    "objectID": "ssh-tunnel.html#in-windows---putty",
+    "href": "ssh-tunnel.html#in-windows---putty",
+    "title": "SSH Tunneling",
+    "section": "In Windows - putty",
+    "text": "In Windows - putty\n\nClick the plus sign by the SSH menu choice in the left pane of the main window.\nClick on Tunnels.\nSet Source port to the value of the listen port and Destination to DESTINATION_HOST:DESTINATION_PORT given your specific tunneling options. (see table above)\nOnce the information is in place, click the Add button to create the tunnel.\nClick on the Session menu choice at the top of the left hand pane and enter any valid EML host in the Host Name window. Click on Open, and log in with your EML username and password.\nIf you are using an Remote Desktop application, under computername, type localhost:53389",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "SSH Tunneling"
+    ]
+  },
+  {
+    "objectID": "ssh-tunnel.html#macos-and-linux",
+    "href": "ssh-tunnel.html#macos-and-linux",
+    "title": "SSH Tunneling",
+    "section": "macOS and Linux",
+    "text": "macOS and Linux\nType (on your local machine) in a terminal window:\nssh -l username -L LISTEN_PORT:eml.berkeley.edu:DESTINATION_PORT EML_HOSTNAME\nwhere LISTEN_PORT is the Listen Port, DESTINATION_PORT is the Destination Port, and EML_HOSTNAME is any EML computer. See our dashboards for a list of EML computers.\nYou may included more than one tunnel on the command-line, for example:\nssh -l username -L 25:DESTINATION_HOST:25 -L 110:DESTINATION_HOST:110 EML_HOSTNAME\n\nAlternative Ports\nIf you receive a message that the port is in use or are denied permission, you will need to choose a different port number for the local port. For example you would specify port 5445 rather than 445 as in the example below.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "SSH Tunneling"
+    ]
+  },
+  {
+    "objectID": "ssh-tunnel.html#examples",
+    "href": "ssh-tunnel.html#examples",
+    "title": "SSH Tunneling",
+    "section": "Examples",
+    "text": "Examples\n\nSMB\nConnect to the EML file server from off campus:\nssh -L 5445:eml.berkeley.edu:445 username@EML_HOSTNAME\nand then connect your SMB client to smb://localhost:5445/homes (or \\localhost:5445on Windows).\n\n\nJSTOR\nRead JSTOR from off campus:\nssh -L 8000:www.jstor.org:80 username@EML_HOSTNAME\nand then connect your web browser to http://localhost:8000.\n\n\nRemote Desktop\nConnect to an EML server through the VPN:\nssh -L 53389:localhost:3389 username@EML_HOSTNAME\nand then connect your RDP client (e.g. Microsoft Remote Desktop) to localhost:53389.",
+    "crumbs": [
+      "Home",
+      "Remote Access",
+      "Secure Shell",
+      "SSH Tunneling"
     ]
   },
   {
@@ -1963,71 +2040,6 @@
       "Home",
       "Remote Access",
       "X Windows"
-    ]
-  },
-  {
-    "objectID": "rules.html",
-    "href": "rules.html",
-    "title": "Account Rules",
-    "section": "",
-    "text": "Do not give out your account information to any other individual. Any individual found accessing another individual’s account will have his/her account closed immediately, and this may result in further disciplinary action.\n\nEach individual is responsible for ALL activity associated with his/her account.\nDO NOT log into your account from another individual’s account.\nSend mail to “manager” immediately if you suspect that someone has gained access to your account.\n\nAbuse of any computer account by an individual within the EML system or abuse of any other computer system may lead to termination of the individual’s EML account and permanent suspension of all EML system privileges. Abuse of an account includes, but is not limited to:\n\nUnauthorized attempts to access accounts, files, or system resources.\nMalicious mischief of any sort.\nAny activity originating from a local account (on any computer system) that results in an official complaint being logged against the user.\nUnsolicited electronic communications with an individual who is not known to the user and/or the recipient.\nUse of electronic communications for advertising, selling, personal solicitations, or sending chain letters (The use of departmental aliases is restricted to University business).\nFailure to cooperate with requests of the System Staff regarding use of system resources.\nPlaying of games.\nRepeated failure to follow posted rules.\n\nIndividuals are not allowed to connect or remove computer equipment to or from the network connections in any room or office. An individual may request a connection for a personal computer and will be assigned a DHCP connection to use with the purple cables installed in offices. Attempting to attach any other computer equipment to an office network outlet is prohibited. This includes connecting switches, hubs, laptops or other computers from outside of the department.\nAll network connections within the department are controlled by the EML. All network related requests for service or reports of problems should be directed to the EML.\nThe contents of all accounts (including files that are owned or created by the user regardless of location) are subject to copyright laws, and all users must comply with those laws. All “original works of authorship” that are produced or distributed are covered by copyright law. An individual can not store or distribute (make available), in part or in whole, any item that is protected by copyright law without the written permission of the copyright owner. In order not to fall under the provisions of Senate Bill 1386, users are prohibited from storing/creating information that contains an individuals name in combination with personal information as defined by either a social security number, drivers license number, or financial/credit card number.\nEML accounts are not to be used for storing personal music or videos not directly related to course work or research. EML accounts can be used to transfer personal music or video files but the files must be removed within 48 hours.\nRestrictions on files located under the home directory with names that begin with a ‘.’ prefix (referred to as ‘dot’ files):\n\nOnly the owner is permitted to have “write” access to a ‘dot’ file.\nDot files can not be a ‘link’ to a file outside of the user’s account.\nA “.rhosts” file can not contain the name of any non-EML computer. Undergraduate class accounts are prohibited from using a “.rhosts” file.\n\nLimitations on the use of computer resources require that users do not run more that one large job on a computer at a time and do not run jobs on more than 8 computers simultaneously. When printing do not place more than 10 jobs in a printer queue. For information on resource usage see “help bigjobs”.\nRemove messages from the incoming mail file after they have been read. Do not save messages in the incoming mail file (/var/mail/[user-name]). If the incoming mail file grows to more than 0.1MB the mail file will be truncated and messages older than 30 days may be automatically deleted. Class accounts can not be used to subscribe to news groups, listing services, or are allowed to post messages to the net.\nUsers are restricted to creating and modifying files under their account (home directory). With the exception of the use of the directory “/tmp” the placement or modification of files in any other location without authorization is prohibited. The /tmp directory can be used for temporary (one day only) storage of files. Files older than 24 hours will be automatically deleted, but users should remove their files as soon as their work has been completed (See “help tmp”).\nAccounts must be renewed according to the following schedule:\n\nClass accounts expire at the end of each semester and can not be renewed.\nGraduate accounts for Economics students are valid as long as the individual is currently enrolled. Alumni accounts are issued upon request to individuals who have left the Department in good standing and are valid for one year after separation from the Department. Alumni accounts can not be renewed.\nAll other student accounts expire on Jan 1 and July 1 of each year and must be renewed.\nGuest accounts must be renewed each year by July 1 and require approval of the sponsoring faculty member.\nFaculty & visitor (associate research fellows) accounts expire upon termination of their appointments.\nContractor accounts are valid indefinitely, as long as the account is in good standing.\nAll other accounts expire on July 1 of each year and must be renewed.\n\nRequests for an extension of an account must be received within 15 days of the account expiration date (send electronic mail to “manager@econ”). There is a $20 fee to recover files from an account that has expired. Refer to “help accounts” for more information.\nServices requiring reimbursement for materials.\n\nPrinting: Student accounts are charged $0.05/page for any printing above their quota established according to the following categories:\n\n40 pages for each lower division undergraduate class account.\n100 pages for each upper division undergraduate class account.\n160 pages for each graduate class account.1\n40 pages/semester for each undergraduate student account.\n\nContractor, research, and non-statistics UC staff accounts are charged for all printing and should refer to the current rate schedule.\nAlumni accounts will be charged at the rate of $0.05/page for all printing.\nMedia: Only the costs for the media are charged when transferring files to a removable media.\n\nPlease report any problems regarding equipment or system software to the EML staff by sending mail to “trouble” or by reporting the problem directly to either room 643 or 498/499. For information/questions on the use of application packages (eg. blss, sas, S), programming languages and libraries send mail to “consult”. Questions/problems regarding accounts should be sent to “manager”. Refer to “help emergency” for a list of people to contact in case of an emergency.",
-    "crumbs": [
-      "Home",
-      "Accounts",
-      "Policies and Rules",
-      "Account Rules"
-    ]
-  },
-  {
-    "objectID": "rules.html#footnotes",
-    "href": "rules.html#footnotes",
-    "title": "Account Rules",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nStudents enrolled in Stat 299 can have their quota increased to 500 pages during the period their thesis is being reviewed.↩︎",
-    "crumbs": [
-      "Home",
-      "Accounts",
-      "Policies and Rules",
-      "Account Rules"
-    ]
-  },
-  {
-    "objectID": "ssh-keys.html",
-    "href": "ssh-keys.html",
-    "title": "Manage SSH Keys",
-    "section": "",
-    "text": "It is possible to open an SSH connection without having to type your password everytime. Instead, you can use a passphrase in combination with SSH “key pairs”. On macOS or UNIX, you will be able to type in your passphrase once at login, and during that session, connect to different remote computers without typing in a password or passphrase each time. On Windows PCs, using the passphrase enables you to connect to different accounts or hosts in the same session seamlessly, without having to type in a password or passphrase every time.\nYou will need to create an SSH keypair to facilitate this process. One key, the private key, stays on the machine you will connect from. The other key, the public key, can be put in any account you connect to. Think of this process as leaving a real key (the public key) in a remote door. The door will only open if you have the associated private key as you approach. This is why you must keep the private key to yourself, otherwise people who have a copy of it can pass through all the doors in which you left your public key.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "Manage SSH Keys"
-    ]
-  },
-  {
-    "objectID": "ssh-keys.html#on-windows",
-    "href": "ssh-keys.html#on-windows",
-    "title": "Manage SSH Keys",
-    "section": "On Windows",
-    "text": "On Windows\nNote: newer versions of Windows 10 may have native SSH clients. If you have the software already installed, see the UNIX and macOS instructions below. You can run the same commands in the Windows command prompt program.\n\nCreating the key pair\n\nInstall PuTTY on your machine, and go to Start Menu &gt; PuTTY &gt; PuTTYgen.\nA new window will appear. At the bottom, for “Type of key”, choose RSA, ECDSA, or ED25519. Then click the the “Generate” button. You may need to move your mouse about in the small window area in order to generate randomness that the process requires.\nType in a unique passphrase in the Key and Confirm passphrase fields. The passphrase is used to protect your key and you will be asked for it when you connect via SSH using public key authentication.\nClick on the “Save Public Key” and “Save Private Key” buttons to save the keys.\n\n\n\nUploading the public key\nOnce you have generated the key pair, you will need to transfer the public key to the remote site. You can transfer the public key in any number of ways, such as by emailing it to the owner of the remote account or an administrator, or SCP or SFTP if you have access. The public key file is actually just a text file.\n\n\nInstalling the public key\nSee the UNIX instructions for this step below as they are identical.",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "Manage SSH Keys"
-    ]
-  },
-  {
-    "objectID": "ssh-keys.html#on-unix-and-macos",
-    "href": "ssh-keys.html#on-unix-and-macos",
-    "title": "Manage SSH Keys",
-    "section": "On UNIX and macOS",
-    "text": "On UNIX and macOS\n\nGenerating SSH Keys\nYou can generate keys with ssh-keygen:\n% ssh-keygen -t ed25519\nGenerating public/private ed25519 key pair.\nEnter file in which to save the key ($HOME/.ssh/id_ed25519):    \nEnter passphrase (empty for no passphrase): \nEnter same passphrase again:\nYour identification has been saved in $HOME/.ssh/id_ed25519.\nYour public key has been saved in $HOME/.ssh/id_ed25519.pub.\n\n\nUploading the public key\nOnce you have generated the key pair, you will need to transfer the public key, e.g. id_ed25519.pub, to the remote site. You can transfer the public key in any number of ways, such as SFTP, or even by copying its content and pasting it into a new file. The public key file is actually just a text file. Upload the file to anyplace in the top-level of your home directory.\nTo transfer the file to the remote machine using SCP, execute:\nscp ~/.ssh/id_ed25519.pub username@remotehost:mynewkey.pub\n\n\nInstalling the public key\nAppend the public key to ~/.ssh/authorized_keys on the remote machine. SSH to that computer and run:\n$ cat ~/mynewkey.pub &gt;&gt; ~/.ssh/authorized_keys\n$ rm ~/mynewkey.pub",
-    "crumbs": [
-      "Home",
-      "Remote Access",
-      "Secure Shell",
-      "Manage SSH Keys"
     ]
   }
 ]
