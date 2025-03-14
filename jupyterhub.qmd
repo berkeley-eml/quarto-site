@@ -15,6 +15,10 @@ priority partition and the "high" for the high priority partition
 You can also pass SBATCH options to your notebook and specify prologue
 commands that will run prior to your notebook startup.
 
+## Long Running Code
+
+Interactive programs like Jupyter Lab, RStudio, or VS Code might not respond well if you launch long running jobs interactively from their UIs, and then close your device, reconnect to another network, and re-open your browser. They will often work just fine, but there can be problems. If you need to run code that you expect to take a long time to complete, it would be best to run it as a batch job [on the cluster](cluster.qmd). You can submit the job from your Jupyter session or by connecting with SSH to a login node.
+
 ## Stopping Your Server
 
 To stop your server (and free up resources for other users), please
