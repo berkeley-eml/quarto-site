@@ -1630,20 +1630,7 @@
     "href": "servers.html",
     "title": "Login Servers",
     "section": "",
-    "text": "This is a partial list of EML servers (with the memory available on the machines in parentheses). Some have access restrictions.\nYou can also browse a list of EML computers on the General overview of our dashboards.\n\nfargo.berkeley.edu (376 GB)\ngriliches.berkeley.edu (6 GB)\niia.berkeley.edu (125 GB)\njorgenson.berkeley.edu (188 GB)\nklein.berkeley.edu (754 GB)\nlaffont.berkeley.edu (94 GB)\nlogit.berkeley.edu (15 GB)\nnerlove.berkeley.edu (125 GB) 1\nquesnay.berkeley.edu (251 GB)\nradner.berkeley.edu (31 GB)\ntheil.berkeley.edu (125 GB)\n\nThese are shared machines and CPU and memory use of user jobs is not restricted by the system. This means that other jobs running on a machine could prevent your job from getting the memory it needs and lead to an out of memory error.",
-    "crumbs": [
-      "Home",
-      "Cluster",
-      "Login/Standalone Servers",
-      "Login Servers"
-    ]
-  },
-  {
-    "objectID": "servers.html#footnotes",
-    "href": "servers.html#footnotes",
-    "title": "Login Servers",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nAccess to nerlove is restricted to individuals who have obtained instructions regarding the use and limitations of running jobs on the compute servers. Please contact the EML staff to register as a restricted compute server user or to schedule access to additional resources on the EML compute servers.↩︎",
+    "text": "Login Servers\nThis is a partial list of EML servers (with the memory available on the machines in parentheses). Some have access restrictions.\nYou can also browse a list of EML computers on the General overview of our dashboards.\n\nfargo.berkeley.edu (376 GB)\niia.berkeley.edu (125 GB)\njorgenson.berkeley.edu (188 GB)\nklein.berkeley.edu (754 GB)\nlaffont.berkeley.edu (94 GB)\nlogit.berkeley.edu (15 GB)\nquesnay.berkeley.edu (251 GB)\nradner.berkeley.edu (31 GB)\ntheil.berkeley.edu (125 GB)\n\nThese are shared machines and CPU and memory use of user jobs is not restricted by the system. This means that other jobs running on a machine could prevent your job from getting the memory it needs and lead to an out of memory error.",
     "crumbs": [
       "Home",
       "Cluster",
