@@ -50,8 +50,7 @@ using their EML logon.
 Currently users may submit jobs on the following standalone Linux
 servers (aka 'submit hosts'):
 
-    blundell, frisch, hicks, jorgensen, laffont, logit,
-    marlowe, marshall, nerlove, radner, theil
+    blundell, jorgensen, laffont, logit, radner, theil
 
 Users can also start [JupyterHub sessions](jupyterhub.qmd) to get
 browser-based access to the cluster nodes.
