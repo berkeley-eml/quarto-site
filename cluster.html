@@ -649,8 +649,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="access-and-job-restrictionstime-limits">Access and Job Restrictions/Time Limits</h2>
 <p>The cluster is open to a restricted set of Department of Economics faculty, grad students, project account collaborators, and visitors using their EML logon.</p>
 <p>Currently users may submit jobs on the following standalone Linux servers (aka ‘submit hosts’):</p>
-<pre><code>blundell, frisch, hicks, jorgensen, laffont, logit,
-marlowe, marshall, nerlove, radner, theil</code></pre>
+<pre><code>blundell, jorgensen, laffont, logit, radner, theil</code></pre>
 <p>Users can also start <a href="./jupyterhub.html">JupyterHub sessions</a> to get browser-based access to the cluster nodes.</p>
 <p>The cluster has three job queues (called partitions by Slurm) called ‘high’ (the default), ‘low’, and ‘gpu’. Interactive jobs can also be run in any queue.</p>
 <p>One important note about using the cluster is that your code will not be able to use any more cores than you have requested via Slurm when submitting your job (this is enforced by a Linux tool called ‘cgroups’).</p>
