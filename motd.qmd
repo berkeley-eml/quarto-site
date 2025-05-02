@@ -1,0 +1,16 @@
+---
+title: "MOTD"
+listing:
+  contents: motd
+  sort: "date desc"
+  type: default
+  categories: true
+  feed: true
+resources:
+  - motd.qmd
+---
+  - trouble@econ.berkeley.edu - Get help.
+  - https://eml.berkeley.edu/monitoring.html - View a list of all public machines.
+
+NO food or drinks permitted in 616, 614, and 608A at any time!
+616 is reserved M-F 12-4 for students in 244 and 250B.

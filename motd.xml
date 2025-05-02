@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Econometrics Laboratory</title>
+<link>https://eml.berkeley.edu/motd.html</link>
+<atom:link href="https://eml.berkeley.edu/motd.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<image>
+<url>https://eml.berkeley.edu/images/EML_logo_small.png</url>
+<title>Econometrics Laboratory</title>
+<link>https://eml.berkeley.edu/motd.html</link>
+<height>39</height>
+<width>144</width>
+</image>
+<generator>quarto-1.7.29</generator>
+<lastBuildDate>Tue, 29 Apr 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Tape Backups</title>
+  <dc:creator>Ryan Lovett</dc:creator>
+  <link>https://eml.berkeley.edu/motd/2025-04-29-backups.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>We will be running the monthly backups Sunday, May 4 beginning in the afternoon.</p>
+<p>Computers will not be rebooted or unavailable, nor will processes be terminated. You may experience slightly slower input/output performance until the dumps are complete.</p>
+
+
+
+ ]]></description>
+  <category>Maintenance</category>
+  <category>Backups</category>
+  <guid>https://eml.berkeley.edu/motd/2025-04-29-backups.html</guid>
+  <pubDate>Tue, 29 Apr 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Brief network maintenance</title>
+  <dc:creator>Ryan Lovett</dc:creator>
+  <link>https://eml.berkeley.edu/motd/2025-04-25-network.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>We’ll be doing some maintenance to the network interfaces of our file server starting today at 2p. Our goal is to increase the network bandwidth of our file server. We anticipate that the outage will be very brief (one minute), however there is a slim possibility we may have to reboot the machine. Running jobs should not be terminated in either case.</p>
+
+
+
+ ]]></description>
+  <category>Network</category>
+  <guid>https://eml.berkeley.edu/motd/2025-04-25-network.html</guid>
+  <pubDate>Fri, 25 Apr 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>JupyterHub: new default python kernel, desktop extension</title>
+  <dc:creator>Ryan Lovett</dc:creator>
+  <link>https://eml.berkeley.edu/motd/2025-04-03-jupyterhub.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I have updated the default python kernel from 3.12 to 3.13 to match the login environment of our recently upgraded systems. The previous kernel is still available as “Python 3.12” in the jupyter lab launcher.</p>
+<p>I’ve also updated the remote desktop feature. The latest version supports copy/paste and desktop resizing, has a link back to the hub, and uses a unix socket for security.</p>
+
+
+
+ ]]></description>
+  <category>JupyterHub</category>
+  <category>Python</category>
+  <category>Remote Desktop</category>
+  <guid>https://eml.berkeley.edu/motd/2025-04-03-jupyterhub.html</guid>
+  <pubDate>Thu, 03 Apr 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Python and R Upgrades</title>
+  <dc:creator>Chris Paciorek</dc:creator>
+  <link>https://eml.berkeley.edu/motd/2025-04-01-software.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>With the recent operating system upgrade to Ubuntu 24.04, we have also upgraded to Python 3.13 and R 4.4.3. Older versions are available via the module system.</p>
+
+
+
+ ]]></description>
+  <category>Python</category>
+  <category>R</category>
+  <category>Ubuntu</category>
+  <guid>https://eml.berkeley.edu/motd/2025-04-01-software.html</guid>
+  <pubDate>Tue, 01 Apr 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Downtime notice: Cluster node OS upgrade</title>
+  <dc:creator>Dan Ackerman</dc:creator>
+  <link>https://eml.berkeley.edu/motd/2025-03-21-os-upgrades.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>We will be performing operating system upgrades on all of our compute servers during the upcoming spring break. The upgrades will occur in batches from Monday, March 24, through Thursday, March 27, starting each morning at approximately 8:30am. We will begin with the least active nodes.</p>
+<p>Your home and scratch directories will not be affected, however /tmp and /var/tmp on each machine will be wiped. /data partitions, which exist on a small number of systems, will not be impacted.</p>
+<p>We will place reservations on the systems to be upgraded about 72 hours in advance. If you currently have or plan to start jobs that you expect to run into next week, please ensure that your code can resume from where it left off if interrupted. For jobs starting before the upgrade, we recommend setting a time limit of no more than 72 hours.</p>
+<p>Self-Installed Packages If you have installed your own R packages, you will need to reinstall them after the upgrade or request that we install them system-wide. Check your packages in ~/R/x86_64-pc-linux-gnu-library in versioned subdirectories. Although these directories will remain after the upgrade, R on the new system will look in ~/R/x86_64-pc-linux-gnu-library-ubuntu-24.04/. This is necessary because compiled R packages link against system libraries from the old OS, which may not exist or have different versions on the new OS. To request system-wide installation, please contact us at consult@econ.berkeley.edu.</p>
+<p>Python packages installed via conda are not affected. If you have installed Python packages using pip and the setup involves compiling shared objects, these libraries will need to be reinstalled. Compiling shared objects typically means that the package installation involves building components that link to system libraries. If you’re unsure which packages need reinstallation, you can check the package documentation or contact us for assistance.</p>
+
+
+
+ ]]></description>
+  <category>Ubuntu</category>
+  <category>Maintenance</category>
+  <guid>https://eml.berkeley.edu/motd/2025-03-21-os-upgrades.html</guid>
+  <pubDate>Fri, 21 Mar 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Maintenance reminder: Slurm scheduler software update</title>
+  <dc:creator>Dan Ackerman</dc:creator>
+  <link>https://eml.berkeley.edu/motd/2025-03-11-slurm-scheduler.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is a reminder for the upgrade announcement originally sent on February 19.</p>
+</div>
+</div>
+<section id="announcement" class="level2">
+<h2 class="anchored" data-anchor-id="announcement">Announcement</h2>
+<p>We are planning to do a minor software update on the EML SLURM scheduler, which manages batch and JupyterHub jobs on the cluster, on Tuesday, March 11 at 1:00pm.</p>
+<p>We anticipate that jobs that are currently running or queued on the cluster will experience no interruption. However, the ability to run or queue new jobs will be impacted for up to 60 minutes.</p>
+<p>There is a very small possibility that currently-running jobs may be interrupted. We will be taking every possible precaution to ensure this does not happen, and we will send an announcement immediately if this does occur.</p>
+<p>Please email trouble@econ.berkeley.edu if you have any questions or concerns regarding this announcement.</p>
+</section>
+<section id="update" class="level2">
+<h2 class="anchored" data-anchor-id="update">Update</h2>
+<p>The EML Slurm scheduler software update is now complete. The cluster is back online and accepting jobs. So far we have seen no indication that any of the already running jobs were impacted.</p>
+<p>If you notice any new issues with Slurm, please contact trouble@econ.berkeley.edu with a description of the problem.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Ubuntu</category>
+  <category>Maintenance</category>
+  <category>SLURM</category>
+  <guid>https://eml.berkeley.edu/motd/2025-03-11-slurm-scheduler.html</guid>
+  <pubDate>Tue, 11 Mar 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Unexpected downtime: Evans Hall networks down</title>
+  <dc:creator>Ryan Lovett</dc:creator>
+  <link>https://eml.berkeley.edu/motd/2025-02-06-evans-networks.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="investigating-2025-02-06-1130p" class="level2">
+<h2 class="anchored" data-anchor-id="investigating-2025-02-06-1130p">Investigating 2025-02-06 11:30p</h2>
+<p>Several wired networks in Evans Hall are down at the moment. I’ve reported it to campus.</p>
+</section>
+<section id="resolved-2025-02-07-1228a" class="level2">
+<h2 class="anchored" data-anchor-id="resolved-2025-02-07-1228a">Resolved 2025-02-07 12:28a</h2>
+<p>The networks started to come back online a few minutes after midnight.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Network</category>
+  <category>Incident</category>
+  <guid>https://eml.berkeley.edu/motd/2025-02-06-evans-networks.html</guid>
+  <pubDate>Thu, 06 Feb 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Unexpected downtime: Campus power outage</title>
+  <dc:creator>Ryan Lovett</dc:creator>
+  <link>https://eml.berkeley.edu/motd/2025-01-04-power-outage.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="investigating-2025-01-04-927a" class="level2">
+<h2 class="anchored" data-anchor-id="investigating-2025-01-04-927a">Investigating 2025-01-04 9:27a</h2>
+<p>I just received word that there is a power outage affecting the north side of campus. Unfortunately this has hit our server rooms and all systems are down. I’ll respond with updates when I know more.</p>
+</section>
+<section id="monitoring-2025-01-04-1106a" class="level2">
+<h2 class="anchored" data-anchor-id="monitoring-2025-01-04-1106a">Monitoring 2025-01-04 11:06a</h2>
+<p>Power is still out in Evans Hall. Emergency lights are on, and the card readers are not functional.</p>
+</section>
+<section id="resolved-2025-01-04-400p" class="level2">
+<h2 class="anchored" data-anchor-id="resolved-2025-01-04-400p">Resolved 2025-01-04 4:00p</h2>
+<p>Campus issued WarnMe notifications that power was restored Saturday afternoon. Most machines were brought up by 4p or so, although some need local attention so I’ll bring them up Monday.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Power</category>
+  <category>Incident</category>
+  <guid>https://eml.berkeley.edu/motd/2025-01-04-power-outage.html</guid>
+  <pubDate>Sat, 04 Jan 2025 00:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

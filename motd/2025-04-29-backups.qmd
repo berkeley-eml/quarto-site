@@ -1,0 +1,17 @@
+---
+title: "Tape Backups"
+author: "Ryan Lovett"
+date: "2025-04-29"
+resources:
+  - 2025-04-29-backups.qmd
+categories:
+  - Maintenance
+  - Backups
+---
+
+We will be running the monthly backups Sunday, May  4 beginning in the
+afternoon.
+
+Computers will not be rebooted or unavailable, nor will processes
+be terminated. You may experience slightly slower input/output
+performance until the dumps are complete.

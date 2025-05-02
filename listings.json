@@ -1,0 +1,15 @@
+[
+  {
+    "listing": "/motd.html",
+    "items": [
+      "/motd/2025-04-29-backups.html",
+      "/motd/2025-04-25-network.html",
+      "/motd/2025-04-03-jupyterhub.html",
+      "/motd/2025-04-01-software.html",
+      "/motd/2025-03-21-os-upgrades.html",
+      "/motd/2025-03-11-slurm-scheduler.html",
+      "/motd/2025-02-06-evans-networks.html",
+      "/motd/2025-01-04-power-outage.html"
+    ]
+  }
+]
