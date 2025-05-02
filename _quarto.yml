@@ -104,6 +104,7 @@ website:
           - julia-packages.qmd
           - tensorflow.qmd
           - ucthesis.qmd
+      - motd.qmd
 
 format:
   html:
