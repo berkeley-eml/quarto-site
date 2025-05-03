@@ -3,6 +3,7 @@ title: "Brief network maintenance"
 #description: "Documentation and service change"
 author: "Ryan Lovett"
 date: "2025-04-25"
+site-hide-after: "2025-04-26"
 resources:
   - 2025-04-25-network.qmd
 categories:

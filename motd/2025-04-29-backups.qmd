@@ -2,6 +2,7 @@
 title: "Tape Backups"
 author: "Ryan Lovett"
 date: "2025-04-29"
+site-hide-after: "2025-05-05"
 resources:
   - 2025-04-29-backups.qmd
 categories:
