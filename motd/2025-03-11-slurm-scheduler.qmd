@@ -4,7 +4,7 @@ author: "Dan Ackerman"
 date: "2025-03-11"
 date-modified: "2025-03-011"
 resources:
-  - 2025-03-03-slurm-scheduler.qmd
+  - 2025-03-11-slurm-scheduler.qmd
 categories:
   - Ubuntu
   - Maintenance
