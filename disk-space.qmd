@@ -2,10 +2,10 @@
 
 ## Determining usage
 
-Each user is assigned a disk space quota, or allotment, when their
+Each user is assigned a disk space quota, or allotment, for their home directorywhen their
 account is created to insure that there will be sufficient disk space
 for all our users' needs. If you need additional space, please submit
-your request to manager@econ.berkeley.edu.
+your request to trouble@econ.berkeley.edu. When you do so, please let us know how much space you think you need and if you think you need backed-up space or if scratch space could be used (e.g., for datasets or output that don't need to be backed up).
 
 The commands below can show you how disk space you are consuming. For
 additional information, consult the respective man pages.
@@ -34,6 +34,19 @@ additional information, consult the respective man pages.
 </tr>
 </tbody>
 </table>
+
+## Scratch space
+
+Directories under `/scratch` exist on the file server and can be
+accessed from every machine. Unlike users' home directories, they are
+not backed up, but can usually accommodate larger data files. If space
+becomes limited we may automatically compress files or (if time
+permitting) ask users to either remove or archive files that are no
+longer needed in order to make room for other users. Files that are not
+actively being used should be compressed if possible.
+
+Send email to <trouble@econ.berkeley.edu> to request scratch space.
+
 
 ## Temporary disk space
 
@@ -83,18 +96,6 @@ secondary disks. This directory functions similarly to `/var/tmp`,
 however, it does not get erased when the computer is reinstalled or
 reconfigured.
 
-### /scratch
-
-Directories under `/scratch` exist on the file server and can be
-accessed from every machine. Unlike users' home directories, they are
-not backed up, but can usually accommodate larger data files. If space
-becomes limited we may automatically compress files or (if time
-permitting) ask users to either remove or archive files that are no
-longer needed in order to make room for other users. Files that are not
-actively being used should be compressed if possible.
-
-Send email to <manager@econ.berkeley.edu> to request space under
-`/scratch`.
 
 ## Compression
 

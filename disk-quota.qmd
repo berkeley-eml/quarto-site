@@ -1,23 +1,26 @@
-# Disk Quota
+# Disk Space and Quota
 
-Each user is assigned a disk space quota, or allotment, when their
+Each user is assigned a disk space quota, or allotment, for their
+home directory when their
 account is created to insure that there will be sufficient disk space
 for all our users' needs.
 
 Once you are over quota, programs may fail to run and you may also be prevented
 from logging in.
 
+In addition, upon request we can provide additional (often much larger) amounts of "scratch" space, which is generally used for downloaded input data or produced output that doesn't need to be backed up.
+
 Each user is expected to monitor their own disk usage and to attempt to
-stay within their quota. To view your current usage, type `quota` on the
-command line.
+stay within their quota. To view your current usage in your home directory and scratch directory, type `quota` on the command line.
 
 The best practice is to check your quota occasionally, and if it appears
 you are nearing your limit, you should see what files you may be able to
 remove from your account to provide yourself with more disk space.
 
+:::{.callout-tip title="Ask us if you need more space"}
+
 You should never need to remove files that you need in order to meet
-your disk quota. If you anticipate a long-term need for an unusually
-large amount of disk space, please notify the EML staff before the need
-becomes acute, so that we can find a suitable location for your files
-without encroaching on the files of other users. Additional disk space
-may be requested by sending mail to manager@econ.berkeley.edu.
+your disk quota. If you need more space, please email us at
+trouble@econ.berkeley.edu. When you do so, please let us know how much space you think you need and if you think you need backed-up space or if scratch space could be used (e.g., for datasets or output that don't need to be backed up).
+
+:::
