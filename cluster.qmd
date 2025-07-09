@@ -336,9 +336,10 @@ Submitted batch job 380
 ```
 
 To use CUDA or cuDNN, you'll need to load the 'cuda' or 'cudnn' modules.
-To use Tensorflow with the GPU, you'll need to load the 'tensorflow'
-module (without loading the `cuda` or `cudnn` modules, as CUDA and
-cuDNN will be available to Tensorflow via a different mechanism).
+
+To use PyTorch with the GPU, you just need to run `import torch`.
+At the moment, one can't directly use Tensorflow with the GPU, but
+if you need this, please contact us as we can fix that or give a work-around (basically creating a Conda environment using Python 3.12 and then `pip install tensorflow[and-cuda]`.
 
 ### How to Monitor Jobs
 
