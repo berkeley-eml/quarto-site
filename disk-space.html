@@ -472,7 +472,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./disk-quota.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Disk Quota</span></a>
+ <span class="menu-text">Disk Space and Quota</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -567,12 +567,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#manage-disk-space" id="toc-manage-disk-space" class="nav-link active" data-scroll-target="#manage-disk-space">Manage Disk Space</a>
   <ul class="collapse">
   <li><a href="#determining-usage" id="toc-determining-usage" class="nav-link" data-scroll-target="#determining-usage">Determining usage</a></li>
+  <li><a href="#scratch-space" id="toc-scratch-space" class="nav-link" data-scroll-target="#scratch-space">Scratch space</a></li>
   <li><a href="#temporary-disk-space" id="toc-temporary-disk-space" class="nav-link" data-scroll-target="#temporary-disk-space">Temporary disk space</a>
   <ul class="collapse">
   <li><a href="#tmp" id="toc-tmp" class="nav-link" data-scroll-target="#tmp">/tmp</a></li>
   <li><a href="#vartmp-usersshared" id="toc-vartmp-usersshared" class="nav-link" data-scroll-target="#vartmp-usersshared">/var/tmp, /Users/Shared</a></li>
   <li><a href="#vartmpscratch" id="toc-vartmpscratch" class="nav-link" data-scroll-target="#vartmpscratch">/var/tmp/scratch</a></li>
-  <li><a href="#scratch" id="toc-scratch" class="nav-link" data-scroll-target="#scratch">/scratch</a></li>
   </ul></li>
   <li><a href="#compression" id="toc-compression" class="nav-link" data-scroll-target="#compression">Compression</a></li>
   <li><a href="#deleting-files" id="toc-deleting-files" class="nav-link" data-scroll-target="#deleting-files">Deleting Files</a></li>
@@ -590,7 +590,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Manage Disk Space</h1>
 <section id="determining-usage" class="level2">
 <h2 class="anchored" data-anchor-id="determining-usage">Determining usage</h2>
-<p>Each user is assigned a disk space quota, or allotment, when their account is created to insure that there will be sufficient disk space for all our users’ needs. If you need additional space, please submit your request to manager@econ.berkeley.edu.</p>
+<p>Each user is assigned a disk space quota, or allotment, for their home directorywhen their account is created to insure that there will be sufficient disk space for all our users’ needs. If you need additional space, please submit your request to trouble@econ.berkeley.edu. When you do so, please let us know how much space you think you need and if you think you need backed-up space or if scratch space could be used (e.g., for datasets or output that don’t need to be backed up).</p>
 <p>The commands below can show you how disk space you are consuming. For additional information, consult the respective man pages.</p>
 <table class="table">
 <tbody>
@@ -637,6 +637,11 @@ Reports your disk quota and current disk use.
 </tbody>
 </table>
 </section>
+<section id="scratch-space" class="level2">
+<h2 class="anchored" data-anchor-id="scratch-space">Scratch space</h2>
+<p>Directories under <code>/scratch</code> exist on the file server and can be accessed from every machine. Unlike users’ home directories, they are not backed up, but can usually accommodate larger data files. If space becomes limited we may automatically compress files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users. Files that are not actively being used should be compressed if possible.</p>
+<p>Send email to <a href="mailto:trouble@econ.berkeley.edu" class="email">trouble@econ.berkeley.edu</a> to request scratch space.</p>
+</section>
 <section id="temporary-disk-space" class="level2">
 <h2 class="anchored" data-anchor-id="temporary-disk-space">Temporary disk space</h2>
 <p>There are several places where users can temporarily store data. These areas are often larger than home directories, but they are not backed up and may be removed without notice.</p>
@@ -654,11 +659,6 @@ Reports your disk quota and current disk use.
 <section id="vartmpscratch" class="level3">
 <h3 class="anchored" data-anchor-id="vartmpscratch">/var/tmp/scratch</h3>
 <p>The <code>/var/tmp/scratch</code> directory exists on some workstations that have secondary disks. This directory functions similarly to <code>/var/tmp</code>, however, it does not get erased when the computer is reinstalled or reconfigured.</p>
-</section>
-<section id="scratch" class="level3">
-<h3 class="anchored" data-anchor-id="scratch">/scratch</h3>
-<p>Directories under <code>/scratch</code> exist on the file server and can be accessed from every machine. Unlike users’ home directories, they are not backed up, but can usually accommodate larger data files. If space becomes limited we may automatically compress files or (if time permitting) ask users to either remove or archive files that are no longer needed in order to make room for other users. Files that are not actively being used should be compressed if possible.</p>
-<p>Send email to <a href="mailto:manager@econ.berkeley.edu" class="email">manager@econ.berkeley.edu</a> to request space under <code>/scratch</code>.</p>
 </section>
 </section>
 <section id="compression" class="level2">
@@ -1100,8 +1100,8 @@ cc -s ...       Similarly for cc.</code></pre></li>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./disk-quota.html" class="pagination-link" aria-label="Disk Quota">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Disk Quota</span>
+      <a href="./disk-quota.html" class="pagination-link" aria-label="Disk Space and Quota">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Disk Space and Quota</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
