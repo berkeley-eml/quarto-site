@@ -20,7 +20,7 @@ users can access is listed on our [dashboards](monitoring.qmd).
 
 #### Command-line Access
 
-[PuTTY](http://www.putty.org) is a free SSH client for Windows.
+[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/) is a free SSH client for Windows.
 ![](images/putty.png){fig-alt="putty image" width="156" height="138"}
 
 1.  Click on the session category

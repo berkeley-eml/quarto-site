@@ -16,7 +16,7 @@ the name of the primary program that implements the protocol.
 Newer versions of Windows 10 come with a built-in SSH client. It must be
 [enabled](https://www.howtogeek.com/336775/how-to-enable-and-use-windows-10s-built-in-ssh-commands/).
 
-The most popular SSH program for Windows is [putty](https://www.putty.org). The putty
+The most popular SSH program for Windows is [putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/). The putty
 executable is a single file, so it can be stored wherever you find it
 convenient.
 
