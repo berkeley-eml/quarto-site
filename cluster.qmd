@@ -738,15 +738,16 @@ than one core per worker as discussed below.
 
 There are two ways to use MATLAB Parallel Server.
 
-#### Option 1a - submit a Slurm job via sbatch that uses MATLAB Parallel Server (new approach for MATLAB R2023a, as well as R2022a)
+#### Option 1 - submit a Slurm job via sbatch that uses MATLAB Parallel Server (new approach for MATLAB R2023a, as well as R2022a)
 
 As a one-time setup step (you only need to do this the first time you
 are using the approach), go to "Environment-&gt;Parallel-&gt;Create and
 Manage Cluster Profiles" in the MATLAB Desktop toolbar; this will open
 the Cluster Profile Manager. Then click on 'Import' and navigate to
 `/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings`
-(`dcsProfile.settings` in MATLAB R2022a) and click 'Open'. Then exit
-out of the Cluster Profile Manager.
+(`dcsProfile.settings` in MATLAB R2022a) and click 'Open'. If it imports
+under the name `dcs_Import` rather than `dcs`, rename it to `dcs`.
+Then exit out of the Cluster Profile Manager.
 
 To submit a MATLAB Parallel Server job, you'll need to specify the
 number of MATLAB workers (by using the -n or --ntasks flag). Unlike in
@@ -788,48 +789,6 @@ You should also be able to use the "batch" command to execute a script
 or function across multiple workers as described under Option 2 below.
 Other uses of MATLAB parallel server functionality may also be possible.
 
-#### Option 1b - submit a Slurm job via sbatch that uses MATLAB Parallel Server (deprecated approach for MATLAB R2022a and earlier)
-
-To submit a MATLAB Parallel Server job, you'll need to specify the
-number of MATLAB workers (by using the -n or --ntasks flag) and indicate
-that a Parallel Server job will be run (by using '-C dcs'). This won't
-work with srun, only with sbatch. Here's an example job script that
-would use 40 cores for 40 workers (making sure to use the '-n' flag when
-requesting the number of cores):
-
-```bash
-#!/bin/bash
-#SBATCH -n 40 -C dcs
-matlab -nodesktop -nodisplay < code.m > code.mout
-```
-
-Then in your MATLAB code, simply invoke parpool as:
-
-```matlab
-pool = parpool(str2num(getenv('SLURM_NTASKS')));
-```
-
-Note that the workers will run as the user "matlabdcs", so if you
-interactively log into a node with some of the workers on it, you will
-see MATLAB processes running as this user if you use 'top' or 'ps'.
-
-If you'd like to use multiple threads per worker, please set
---cpus-per-task equal to the number of threads per worker you desire and
-then use this appraoch in your MATLAB code:
-
-```matlab
-cl = parcluster('dcs');
-cl.NumThreads = str2num(getenv('SLURM_CPUS_PER_TASK'));
-
-% Start a 20-worker pool of multi-core workers on the EML cluster
-pool = cl.parpool('dcs', 20);
-
-% execute code
-% ...
-
-% Delete the job to release its cluster resources
-delete(pool);
-```
 
 #### Option 2 - run your MATLAB code on an EML Linux machine and offload parallel code to the cluster from within MATLAB
 
@@ -855,7 +814,9 @@ Manage Cluster Profiles" in the MATLAB Desktop toolbar; this will open
 the Cluster Profile Manager. Then click on 'Import' and navigate to
 `/usr/local/linux/MATLAB/current/toolbox/parallel/dcs.mlsettings`
 (`dcsProfile.settings` in R2022a and earlier versions) and click
-'Open'. Then exit out of the Cluster Profile Manager.
+'Open'. If it imports
+under the name `dcs_Import` rather than `dcs`, rename it to `dcs`.
+Then exit out of the Cluster Profile Manager.
 
 Now, whenever you want to start up a pool of workers, simply do the
 following (here for 40 workers):
